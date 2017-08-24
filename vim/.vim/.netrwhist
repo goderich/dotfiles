@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/home/iwaka/Dropbox/phono'
+let g:netrw_dirhist_2='/home/iwaka/.ghc'
+let g:netrw_dirhist_3='/home/iwaka/.spacemacs'
+let g:netrw_dirhist_4='/home/iwaka/bin'

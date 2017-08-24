@@ -1,0 +1,2 @@
+ macro pager \cb <pipe-entry>'urlview'<enter> 'Follow links with urlview'
+
