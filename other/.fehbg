@@ -1,2 +1,2 @@
 #!/bin/sh
-feh  --bg-scale '/home/iwaka/.config/i3/wp3.jpg' 
+'feh' '--bg-scale' '/home/iwaka/.config/i3/wp3.jpg' 
