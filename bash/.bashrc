@@ -24,10 +24,11 @@ alias emacs-compose='LC_CTYPE=zh_TW.UTF-8 XMODIFIERS=@im=fcitx emacs'
 
 # Include stack and go in PATH (for Google drive)
 GOPATH=$HOME/gopath
-PATH=~/.local/bin:$HOME/.cargo/bin:$GOPATH:$GOPATH/bin:$HOME/bin:$PATH
+export PATH=~/.local/bin:$HOME/.cargo/bin:$GOPATH:$GOPATH/bin:$HOME/bin:$PATH
 
-EDITOR=/usr/bin/nvim
-BROWSER=/usr/bin/qutebrowser
+export EDITOR=/usr/bin/nvim
+export BROWSER=/usr/bin/qutebrowser
+export PAGER=less
 
 # Ignore duplicates
 HISTCONTROL=ignoredups
