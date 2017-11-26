@@ -2,10 +2,10 @@ export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 
-# make Pause a Compose key to have it appear on the mapping, and map it to an AltGr press
 setxkbmap us -variant dvorak-intl \
              -option 'caps:ctrl_modifier' \
              -option 'shift:both_capslock' \
-             -option 'compose:paus'
-xcape -e 'Caps_Lock=Escape;ISO_Level3_Shift=Multi_key'
+             -option 'compose:ralt'
+# ISO_Level3_Shift no longer needed because I'm setting AltR to be the Compose Key above
+xcape -e 'Caps_Lock=Escape'
 
