@@ -36,5 +36,6 @@ HISTSIZE=10000
 HISTIGNORE="ls:cd:cal*:pass*:mirrorlist:nvim:vim:history*"
 
 # Autocompletion for pass
-source ~/.password-store/.pass.bash-completion
+# (not necessary now that I'm using fish)
+# source ~/.password-store/.pass.bash-completion
 
