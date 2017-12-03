@@ -2,6 +2,7 @@
 set fish_greeting
 
 # Set environment variables
-set -gx EDITOR nvim
-set -gx BROWSER qutebrowser
-set -gx PAGER less
+set -gx PATH $PATH $HOME/.local/bin
+set -gx EDITOR /usr/bin/nvim
+set -gx BROWSER /usr/bin/qutebrowser
+set -gx PAGER /usr/bin/less
