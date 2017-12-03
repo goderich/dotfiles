@@ -155,6 +155,11 @@ values."
                                :size 18
                                :weight normal
                                :width normal
+                               :powerline-scale 1.1,
+                               "Noto Sans Mono CJK TC"
+                               :size 18
+                               :weight normal
+                               :width normal
                                :powerline-scale 1.1)
    ;; The leader key
    dotspacemacs-leader-key "SPC"
@@ -335,6 +340,18 @@ you should place your code here."
   ;; Set qutebrowser as the default browser
   (setq browse-url-browser-function 'browse-url-generic
         browse-url-generic-program "qutebrowser")
+
+  ;; Bibliography settings
+  (setq reftex-default-bibliography '("/home/iwaka/Dropbox/Library.bib"))
+
+  ;; see org-ref for use of these variables
+  (setq org-ref-default-bibliography '("/home/iwaka/Dropbox/Library.bib"))
+
+  (autoload 'helm-bibtex "helm-bibtex" "" t)
+
+  (setq bibtex-completion-bibliography
+        '("/home/iwaka/Dropbox/Library.bib"))
+
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
