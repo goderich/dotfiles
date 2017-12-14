@@ -137,7 +137,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec --no-startup-id "i3-nagbar -t warning -m 'Quitting is for the weak. If you want to shut the computer down, use the terminal.' -b 'Forgive me...' 'i3-msg exit'"
+bindsym $mod+Shift+e exec --no-startup-id "i3-nagbar -t warning -m 'Really quit?' -b 'Yes really' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -230,10 +230,8 @@ exec_always --no-startup-id dropbox
 # NetworkManager applet
 exec_always --no-startup-id nm-applet
 
-# Battery icon
-# (Now that I have a script to print out the percentage of
-#  the two batteries, it's not necessary)
-# exec --no-startup-id cbatticon
+# Call papis in rofi mode
+bindsym $mod+p exec --no-startup-id papis gui --rofi
 
 # Hide mouse when not in use
 exec --no-startup-id unclutter
