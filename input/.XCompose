@@ -13,7 +13,7 @@
 <Multi_key> <comma> <z> : "ʐ" U0290
 <Multi_key> <l> <p> <s> : "ɕ" U0255
 <Multi_key> <v> <p> <s> : "ʑ" U0291
-
+<Multi_key> <u> <u> : "ʉ" U0289
 
 # UTF-8 (Unicode) compose sequence
 # David.Monniaux@ens.fr
@@ -1204,7 +1204,6 @@
 <Multi_key> <b> <U>              	: "Ŭ"   U016C # LATIN CAPITAL LETTER U WITH BREVE
 <dead_breve> <u>                 	: "ŭ"   U016D # LATIN SMALL LETTER U WITH BREVE
 <Multi_key> <U> <u>              	: "ŭ"   U016D # LATIN SMALL LETTER U WITH BREVE
-<Multi_key> <u> <u>              	: "ŭ"   U016D # LATIN SMALL LETTER U WITH BREVE
 <Multi_key> <b> <u>              	: "ŭ"   U016D # LATIN SMALL LETTER U WITH BREVE
 <dead_abovering> <U>             	: "Ů"   U016E # LATIN CAPITAL LETTER U WITH RING ABOVE
 <Multi_key> <o> <U>              	: "Ů"   U016E # LATIN CAPITAL LETTER U WITH RING ABOVE
