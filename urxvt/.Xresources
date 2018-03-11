@@ -68,7 +68,7 @@ URxvt*colorUL: #87afd7
 ! URxvt*borderColor: colour
 
 ! Select the fonts to be used. This is a comma separated list of font names that are checked in order when trying to find glyphs for characters.
-URxvt*font: xft:Source Code Pro:size=16,xft:Noto Sans Mono CJK TC:size=16
+URxvt*font: xft:Source Code Pro:size=18,xft:Noto Sans Mono CJK TC:size=20
 ! URxvt*font: xft:DejaVu Sans Mono:size=12,xft:WenQuanYi Micro Hei Mono:size=12
 
 ! URxvt*boldFont: fontlist

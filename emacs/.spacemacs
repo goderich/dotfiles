@@ -157,7 +157,7 @@ values."
                                :width normal
                                :powerline-scale 1.1,
                                "Noto Sans Mono CJK TC"
-                               :size 18
+                               :size 20
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
