@@ -14,6 +14,9 @@
 <Multi_key> <l> <p> <s> : "ɕ" U0255
 <Multi_key> <v> <p> <s> : "ʑ" U0291
 <Multi_key> <u> <u> : "ʉ" U0289
+<Multi_key> <l> <l> : "ɭ" U026D
+<Multi_key> <l> <z> : "ɮ" U026E
+
 
 # UTF-8 (Unicode) compose sequence
 # David.Monniaux@ens.fr
