@@ -41,8 +41,7 @@ set send_charset="utf-8"
 unset record
 
 # Show new messages on top
-set sort=reverse-threads
-set sort_aux=date-received
+set sort=reverse-date
 
 # Use arrow keys to navigate inside email
 bind pager <up> previous-line
