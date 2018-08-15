@@ -230,8 +230,8 @@ exec_always --no-startup-id dropbox
 # NetworkManager applet
 exec_always --no-startup-id nm-applet
 
-# Call papis in rofi mode
-bindsym $mod+p exec --no-startup-id papis gui --rofi
+# Open pass in dmenu
+bindsym $mod+p exec --no-startup-id passmenu
 
 # Hide mouse when not in use
 exec --no-startup-id unclutter
