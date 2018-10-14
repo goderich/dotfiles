@@ -22,9 +22,9 @@ alias rm='rm -v'
 # for just the compose key, you can use 'XMODIFIERS=@im=none emacs'
 alias emacs-compose='LC_CTYPE=zh_TW.UTF-8 XMODIFIERS=@im=fcitx emacs'
 
-# Include stack and go in PATH (for Google drive)
-GOPATH=$HOME/gopath
-export PATH=~/.local/bin:$HOME/.cargo/bin:$GOPATH:$GOPATH/bin:$HOME/bin:$PATH
+export PATH=~/.local/bin:$HOME/.cargo/bin:$HOME/bin:$PATH
+PYTHONPATH="${PYTHONPATH}:/usr/lib/python3.6/site-packages/:/usr/lib/python3.6/site-packages/prompt_toolkit/:~/.local/lib/python3.6/site-packages/:/usr/lib/python3.6/site-packages/IPython/"
+export PYTHONPATH
 
 export EDITOR=/usr/bin/nvim
 export BROWSER=/usr/bin/qutebrowser
