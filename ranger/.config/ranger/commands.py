@@ -37,7 +37,7 @@ class my_edit(Command):
             # reference to the currently selected file.
             target_filename = self.fm.thisfile.path
 
-        # This is a generic function to print text in ranger.  
+        # This is a generic function to print text in ranger.
         self.fm.notify("Let's edit the file " + target_filename + "!")
 
         # Using bad=True in fm.notify allows you to print error messages:
@@ -61,7 +61,8 @@ class my_edit(Command):
 class rename_before_filetype(Command):
     """:rename_before_filetype
 
-    Creates an open_console for the rename command, erasing the filename before the file extension (first dot) and placing the cursor before it.
+    Creates an open_console for the rename command, erasing the filename
+    before the file extension (first dot) and placing the cursor before it.
     """
 
     def execute(self):
@@ -72,4 +73,3 @@ class rename_before_filetype(Command):
             self.fm.open_console('rename ' + extension, position=7)
         else:
             self.fm.open_console('rename ')
-
