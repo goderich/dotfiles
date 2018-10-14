@@ -63,3 +63,5 @@ set send_charset="utf-8"
 # Display attachment names correctly
 set rfc2047_parameters
 
+# Do not automatically mark unread messages as "old"
+set mark_old=no
