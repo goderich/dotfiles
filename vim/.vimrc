@@ -169,3 +169,6 @@ set shiftround " Round indent to nearest shiftwidth multiple
 " Disable automatic line wrap when used with mutt
 au BufRead /tmp/mutt-* set tw=0 fo=cq
 
+" Set system clipboard as default
+set clipboard+=unnamedplus
+
