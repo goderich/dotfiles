@@ -16,6 +16,8 @@
 <Multi_key> <u> <u> : "ʉ" U0289
 <Multi_key> <l> <l> : "ɭ" U026D
 <Multi_key> <l> <z> : "ɮ" U026E
+<Multi_key> <i> <i> : "ɨ" U0268
+
 
 
 # UTF-8 (Unicode) compose sequence
