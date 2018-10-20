@@ -2,3 +2,4 @@ mutt/.mutt/aliases
 ranger/.config/ranger/bookmarks
 ranger/.config/ranger/history
 qutebrowser/.config/qutebrowser/qsettings/QtProject.conf
+systemd/.config/systemd/user/default.target.wants
