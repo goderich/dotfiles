@@ -1,0 +1,9 @@
+patch:
+
+  # Turns off Eng/Chi switching on CapsLock
+  # If on, it interferes with Caps as Esc/Ctrl
+  ascii_composer/switch_key:
+    Caps_Lock: noop
+
+  schema_list:
+    - schema: cangjie5
