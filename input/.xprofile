@@ -6,6 +6,4 @@ setxkbmap us -variant dvorak-intl \
              -option 'caps:ctrl_modifier' \
              -option 'shift:both_capslock' \
              -option 'compose:ralt'
-# ISO_Level3_Shift no longer needed because I'm setting AltR to be the Compose Key above
-xcape -e 'Caps_Lock=Escape'
-
+xcape -e 'Caps_Lock=Escape;Shift_L=parenleft;Shift_R=parenright'
