@@ -17,6 +17,10 @@
 <Multi_key> <l> <l> : "ɭ" U026D
 <Multi_key> <l> <z> : "ɮ" U026E
 <Multi_key> <i> <i> : "ɨ" U0268
+<Multi_key> <s> <i> <g> : "σ" U03C3
+<Multi_key> <1> <s> : "ˈ" U02C8
+<Multi_key> <2> <s> : "ˌ" U02CC
+<Multi_key> <colon> <colon> : "ː" U02D0
 
 
 
