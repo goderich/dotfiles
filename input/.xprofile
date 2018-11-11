@@ -2,7 +2,7 @@ export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 
-setxkbmap us -variant dvorak-intl \
+setxkbmap us -variant dvorak \
              -option 'caps:ctrl_modifier' \
              -option 'shift:both_capslock' \
              -option 'compose:ralt'
