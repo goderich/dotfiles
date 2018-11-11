@@ -240,13 +240,21 @@ root.buttons(gears.table.join(
 globalkeys = gears.table.join(
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
-    awful.key({ modkey,           }, "Left",   awful.tag.viewprev,
-              {description = "view previous", group = "tag"}),
-    awful.key({ modkey,           }, "Right",  awful.tag.viewnext,
-              {description = "view next", group = "tag"}),
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore,
               {description = "go back", group = "tag"}),
 
+    awful.key({ modkey,           }, "Right",
+        function ()
+            awful.client.focus.byidx( 1)
+        end,
+        {description = "focus next by index", group = "client"}
+    ),
+    awful.key({ modkey,           }, "Left",
+        function ()
+            awful.client.focus.byidx(-1)
+        end,
+        {description = "focus previous by index", group = "client"}
+    ),
     awful.key({ modkey,           }, "j",
         function ()
             awful.client.focus.byidx( 1)
@@ -263,6 +271,14 @@ globalkeys = gears.table.join(
               {description = "show main menu", group = "awesome"}),
 
     -- Layout manipulation
+    awful.key({ modkey, "Shift"   }, "Right", function () awful.client.swap.byidx(  1)    end,
+              {description = "swap with next client by index", group = "client"}),
+    awful.key({ modkey, "Shift"   }, "Left", function () awful.client.swap.byidx( -1)    end,
+              {description = "swap with previous client by index", group = "client"}),
+    awful.key({ modkey, "Control" }, "Right", function () awful.screen.focus_relative( 1) end,
+              {description = "focus the next screen", group = "screen"}),
+    awful.key({ modkey, "Control" }, "Left", function () awful.screen.focus_relative(-1) end,
+              {description = "focus the previous screen", group = "screen"}),
     awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end,
               {description = "swap with next client by index", group = "client"}),
     awful.key({ modkey, "Shift"   }, "k", function () awful.client.swap.byidx( -1)    end,
@@ -539,11 +555,6 @@ client.connect_signal("request::titlebars", function(c)
             layout  = wibox.layout.flex.horizontal
         },
         { -- Right
-            awful.titlebar.widget.floatingbutton (c),
-            awful.titlebar.widget.maximizedbutton(c),
-            awful.titlebar.widget.stickybutton   (c),
-            awful.titlebar.widget.ontopbutton    (c),
-            awful.titlebar.widget.closebutton    (c),
             layout = wibox.layout.fixed.horizontal()
         },
         layout = wibox.layout.align.horizontal
