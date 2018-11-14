@@ -204,21 +204,25 @@ awful.screen.connect_for_each_screen(function(s)
     -- Create the wibox
     s.mywibox = awful.wibar({ position = "bottom", screen = s })
 
+    -- Create battery and volume widget
+    mybattwidget = awful.widget.watch('bash /home/iwaka/.config/awesome/batt.sh', 15)
+
     -- Add widgets to the wibox
     s.mywibox:setup {
         layout = wibox.layout.align.horizontal,
         { -- Left widgets
             layout = wibox.layout.fixed.horizontal,
-            mylauncher,
             s.mytaglist,
             s.mypromptbox,
         },
-        s.mytasklist, -- Middle widget
+        -- Middle widget
+        s.mytasklist,
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
-            mykeyboardlayout,
-            wibox.widget.systray(),
+            mybattwidget,
+            wibox.widget.textbox(' | '),
             mytextclock,
+            wibox.widget.systray(),
             s.mylayoutbox,
         },
     }
