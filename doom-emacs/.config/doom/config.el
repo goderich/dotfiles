@@ -9,5 +9,6 @@
 (load! "+org")
 (load! "+ui")
 (load! "+keybindings")
+(load! "+mail")
 
 ;;; config.el ends here

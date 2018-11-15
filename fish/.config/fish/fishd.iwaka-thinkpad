@@ -8,6 +8,7 @@ SET FZF_PREVIEW_DIR_CMD:exa
 SET FZF_PREVIEW_FILE_CMD:head\x20\x2dn\x2010
 SET FZF_TMUX_HEIGHT:40\x25
 SET PAGER:less
+SET_EXPORT XAPIAN_CJK_NGRAM:1
 SET __fish_classic_git_prompt_initialized:\x1d
 SET __fish_init_2_39_8:\x1d
 SET __fish_init_2_3_0:\x1d
