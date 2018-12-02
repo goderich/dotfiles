@@ -4,6 +4,9 @@
 (global-visual-line-mode 1)
 
 ;; Disable auto-fill-mode
-(auto-fill-mode -1)
-(remove-hook 'markdown-mode-hook #'auto-fill-mode)
 (remove-hook 'org-mode-hook #'auto-fill-mode)
+(remove-hook 'markdown-mode-hook #'auto-fill-mode)
+
+(defun my-markdown-mode-hook ()
+  (auto-fill-mode -1))
+(add-hook 'markdown-mode-hook #'my-markdown-mode-hook)
