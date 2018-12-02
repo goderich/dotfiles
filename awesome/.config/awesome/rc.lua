@@ -47,6 +47,7 @@ beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 terminal = "alacritty"
 editor = os.getenv("EDITOR") or "nvim"
 editor_cmd = terminal .. " -e " .. editor
+launcher = "rofi -show run -lines 6 -location 1 -width 40 -padding 3 -bw 2"
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
@@ -118,7 +119,7 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 
 -- {{{ Wibar
 -- Create a textclock widget
-mytextclock = wibox.widget.textclock()
+mytextclock = wibox.widget.textclock(" %A, %b %d. %T", 1)
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
@@ -207,6 +208,9 @@ awful.screen.connect_for_each_screen(function(s)
     -- Create battery and volume widget
     mybattwidget = awful.widget.watch('bash /home/iwaka/.config/awesome/batt.sh', 15)
 
+    -- Haskell widget
+    myhaskwidget = awful.widget.watch("bash -c '/home/iwaka/.config/awesome/bar'", 15)
+
     -- Add widgets to the wibox
     s.mywibox:setup {
         layout = wibox.layout.align.horizontal,
@@ -219,7 +223,7 @@ awful.screen.connect_for_each_screen(function(s)
         s.mytasklist,
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
-            mybattwidget,
+            myhaskwidget,
             wibox.widget.textbox(' | '),
             mytextclock,
             wibox.widget.systray(),
@@ -303,8 +307,6 @@ globalkeys = gears.table.join(
         {description = "go back", group = "client"}),
 
     -- Standard program
-    awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
-              {description = "open a terminal", group = "launcher"}),
     awful.key({ modkey, "Control" }, "r", awesome.restart,
               {description = "reload awesome", group = "awesome"}),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit,
@@ -353,8 +355,16 @@ globalkeys = gears.table.join(
               end,
               {description = "lua execute prompt", group = "awesome"}),
     -- Menubar
-    awful.key({ modkey }, "p", function() menubar.show() end,
-              {description = "show the menubar", group = "launcher"})
+--    awful.key({ modkey }, "p", function() menubar.show() end,
+--              {description = "show the menubar", group = "launcher"}),
+
+-- My own keybinds
+    awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
+              {description = "open a terminal", group = "launcher"}),
+    awful.key({ modkey,           }, "d", function () awful.spawn(launcher) end,
+              {description = "open application launcher", group = "launcher"}),
+    awful.key({ modkey,           }, "p", function () awful.spawn("passmenu") end,
+              {description = "open pass in dmenu", group = "launcher"})
 )
 
 clientkeys = gears.table.join(
