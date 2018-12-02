@@ -181,7 +181,8 @@ hide_edge_borders both
 
 # bar
 bar {
-  	status_command ~/.config/i3/i3bar.sh
+  	# status_command ~/.config/i3/i3bar.sh
+        status_command i3status --config ~/.config/i3status/config
 	colors {
 		background $bg-color
 	    	separator #757575
@@ -227,10 +228,10 @@ bindsym Print exec --no-startup-id gnome-screenshot
 exec_always --no-startup-id dropbox
 
 # NetworkManager applet
-exec_always --no-startup-id nm-applet
+# exec_always --no-startup-id nm-applet
 
 # Open pass in dmenu
 bindsym $mod+p exec --no-startup-id passmenu
 
 # Hide mouse when not in use
-exec --no-startup-id unclutter
+exec_always --no-startup-id unclutter
