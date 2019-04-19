@@ -1,4 +1,4 @@
 function l
-  command exa $argv
+  command lsd $argv
 end
 
