@@ -1,0 +1,71 @@
+source "gpg2 -dq $HOME/.mutt-pass.gpg |"
+source ~/.config/mutt/colors.linux
+source ~/.mutt/aliases
+set alias_file=~/.mutt/aliases
+
+set imap_user=yuhsien77@gmail.com
+set imap_pass=$my_pwd
+set folder=imaps://imap.gmail.com/
+set spoolfile=+INBOX
+mailboxes =INBOX
+
+# Store message headers locally to speed things up.
+# If hcache is a folder, Mutt will create sub cache folders for each account which may speeds things up even more.
+set header_cache = ~/.cache/mutt
+
+# Store messages locally to speed things up, like searching message bodies.
+# Can be the same folder as header_cache.
+# This will cost important disk usage according to your e-mail amount.
+set message_cachedir = "~/.cache/mutt"
+
+# Specify where to save and/or look for postponed messages.
+set postponed = +[Gmail]/Drafts
+
+# Allow Mutt to open new imap connection automatically.
+unset imap_passive
+
+# Keep IMAP connection alive by polling intermittently (time in seconds).
+set imap_keepalive = 120
+
+# How often to check for new mail (time in seconds).
+set mail_check = 120
+
+# Set up SMTP for sending mail:
+set smtp_url=smtps://yuhsien77:$imap_pass@smtp.gmail.com
+set realname = '郭育賢 Andre Goderich'
+set from = yuhsien77@gmail.com
+set use_from = yes
+set editor=nvim
+set send_charset="utf-8"
+
+# Do not store sent messages
+unset record
+
+# Show new messages on top
+set sort=reverse-date
+
+# Be fast
+set sleep_time = 0
+
+set smart_wrap
+
+# Open html emails in w3m
+set mailcap_path = ~/.mutt/mailcap
+auto_view text/html
+alternative_order text/plain text/html
+
+# Send email in Unicode
+set send_charset="utf-8"
+
+# Display attachment names correctly
+set rfc2047_parameters
+
+# Do not automatically mark unread messages as "old"
+set mark_old=no
+
+# My keybinds
+bind pager <up> previous-line
+bind pager <down> next-line
+bind index g  noop
+bind index gg first-entry
+#bind index,pager M compose-to-sender
