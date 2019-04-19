@@ -1,0 +1,14 @@
+# key: ic
+# name: incollection
+# expand-env: ((yas-indent-line (quote fixed)))
+# --
+@incollection{${1:$(downcase yas-text)}$10$0,
+  address = { ${11:Taipei} },
+  author = { ${1:Surname}, ${2:Name} },
+  booktitle = { ${3:Book} },
+  editor = { ${4:Surname}, ${5:Name} },
+  pages = { ${6:1}--${7:10} },
+  publisher = { ${8:Academia Sinica} },
+  title = { ${9:Title} },
+  year = { ${10:2000} },
+}

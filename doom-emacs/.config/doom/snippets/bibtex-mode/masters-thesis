@@ -1,0 +1,10 @@
+# key: ma
+# name: masters-thesis
+# expand-env: ((yas-indent-line (quote fixed)))
+# --
+@mastersthesis{${1:$(downcase yas-text)}$5,
+   author    = { ${1:Surname}, ${2:First name} },
+   title     = { ${3:Title} },
+   school    = { ${4:National Tsing Hua University} },
+   year      = { ${5:2000} },
+}
