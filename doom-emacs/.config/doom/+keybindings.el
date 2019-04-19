@@ -8,7 +8,8 @@
 (map!
  (:leader
    (:prefix "t"
-    :desc "Toggle writeroom mode" :n "w" 'writeroom-mode)))
+    :desc "Toggle writeroom mode" :n "w" 'writeroom-mode)
+    :desc "Make a new Emacs frame" :nv "F" 'make-frame))
 
 ;; org-mode keybindings
 (after! org
@@ -18,22 +19,7 @@
         :desc "org-todo" :nv "t" 'org-todo)
         ))
 
+;; markdown-mode keybindings
+(map! :map markdown-mode-map
+      :nv "<tab>" 'markdown-cycle)
 
-;;;; mu4e keybindings
-;; headers-mode
-;; (after! mu4e-headers
-;;  (add-hook 'mu4e-headers-mode-hook #'evil-normalize-keymaps))
-;; (after! mu4e-headers
-;;   (evil-define-key 'normal mu4e-headers-mode-map "r" 'mu4e-compose-reply))
-(map! :after mu4e-headers
-      :map mu4e-headers-mode-map
-      :n "r" 'mu4e-compose-reply)
-
-;; compose-mode
-(map! :after mu4e-compose
-      :map mu4e-compose-mode-map
-      :localleader
-      :desc "Cancel and delete" :nv "k" 'mu4e-message-kill-buffer
-      :desc "Add attachment" :nv "a" 'mail-add-attachment
-      :desc "Send" :nv "s" 'message-send
-        )

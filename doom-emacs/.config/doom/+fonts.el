@@ -4,7 +4,7 @@
 (setq doom-font
       (font-spec
        :family "Source Code Pro"
-       :size 14.0))
+       :size 16.0))
 
 (setq doom-unicode-font
       (font-spec
