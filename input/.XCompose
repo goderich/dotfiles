@@ -21,6 +21,10 @@
 <Multi_key> <1> <s> : "ˈ" U02C8
 <Multi_key> <2> <s> : "ˌ" U02CC
 <Multi_key> <colon> <colon> : "ː" U02D0
+<Multi_key> <o> <o> : "ɔ" U0254
+<Multi_key> <3> <3> : "ɛ" U025B
+<Multi_key> <a> <a> : "ɑ" U0251
+<Multi_key> <h> <h> : "ʰ" U02B0
 
 
 
@@ -162,7 +166,6 @@
 <Multi_key> <I> <j>              	: "Ĳ"   U0132 # LATIN CAPITAL LIGATURE IJ
 <Multi_key> <i> <j>              	: "ĳ"   U0133 # LATIN SMALL LIGATURE IJ
 
-<Multi_key> <o> <o>              	: "°"   degree # DEGREE SIGN
 <Multi_key> <asterisk> <0> 		: "°"   degree # DEGREE SIGN
 <Multi_key> <0> <asterisk> 		: "°"   degree # DEGREE SIGN
 
@@ -713,7 +716,6 @@
 <Multi_key> <o> <a>              	: "å"   aring # LATIN SMALL LETTER A WITH RING ABOVE
 <Multi_key> <asterisk> <a> 		: "å"   aring # LATIN SMALL LETTER A WITH RING ABOVE
 <Multi_key> <a> <asterisk> 		: "å"   aring # LATIN SMALL LETTER A WITH RING ABOVE
-<Multi_key> <a> <a> 			: "å"   aring # LATIN SMALL LETTER A WITH RING ABOVE
 <dead_cedilla> <c>               	: "ç"   ccedilla # LATIN SMALL LETTER C WITH CEDILLA
 <Multi_key> <comma> <c>          	: "ç"   ccedilla # LATIN SMALL LETTER C WITH CEDILLA
 <Multi_key> <c> <comma> 		: "ç"   ccedilla # LATIN SMALL LETTER C WITH CEDILLA
