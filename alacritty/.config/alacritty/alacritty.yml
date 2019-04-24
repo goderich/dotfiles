@@ -216,6 +216,10 @@ mouse:
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>"
 
+  # When set to `true`, selected text will be copied to the primary clipboard.
+  save_to_clipboard: false
+
+# Allow terminal applications to change Alacritty's window title.
 dynamic_title: true
 
 # Style of the cursor
@@ -291,12 +295,14 @@ key_bindings:
   - { key: Home,                    chars: "\x1b[H",   mode: ~AppCursor  }
   - { key: End,                     chars: "\x1bOF",   mode: AppCursor   }
   - { key: End,                     chars: "\x1b[F",   mode: ~AppCursor  }
+  - { key: PageUp,   mods: Shift,   action: ScrollPageUp,   mode: ~Alt   }
+  - { key: PageUp,   mods: Shift,   chars: "\x1b[5;2~",     mode: Alt    }
   - { key: PageUp,   mods: Control, chars: "\x1b[5;5~"                   }
   - { key: PageUp,                  chars: "\x1b[5~"                     }
+  - { key: PageDown, mods: Shift,   action: ScrollPageDown, mode: ~Alt   }
+  - { key: PageDown, mods: Shift,   chars: "\x1b[6;2~",     mode: Alt    }
   - { key: PageDown, mods: Control, chars: "\x1b[6;5~"                   }
   - { key: PageDown,                chars: "\x1b[6~"                     }
-  - { key: PageUp,   mods: Shift,   action: ScrollPageUp                 }
-  - { key: PageDown, mods: Shift,   action: ScrollPageDown               }
   - { key: End,      mods: Shift,   action: ScrollToBottom               }
   - { key: Home,     mods: Shift,   action: ScrollToTop                  }
   - { key: Tab,      mods: Shift,   chars: "\x1b[Z"                      }
@@ -406,4 +412,4 @@ scrolling:
 
   # Automatically scroll to the bottom when new text is written
   # to the terminal.
-  auto_scroll: false
+  auto_scroll: true
