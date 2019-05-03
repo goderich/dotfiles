@@ -18,5 +18,8 @@
 (add-hook 'org-mode-hook #'turn-off-smartparens-mode)
 (add-hook 'markdown-mode-hook #'turn-off-smartparens-mode)
 
+;; Use external applications to open pdfs
+(after! org
+  (add-to-list 'org-file-apps '("\\.pdf\\'" . "xdg-open %s")))
 
 ;;; config.el ends here
