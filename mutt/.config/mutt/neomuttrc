@@ -57,6 +57,13 @@ alternative_order text/plain text/html
 # Send email in Unicode
 set send_charset="utf-8"
 
+# Use format=flowed in sent text mail
+set reflow_text = yes
+set reflow_wrap = 78
+
+# Wrap received messages at this length
+set wrap = 78
+
 # Display attachment names correctly
 set rfc2047_parameters
 
@@ -68,4 +75,5 @@ bind pager <up> previous-line
 bind pager <down> next-line
 bind index g  noop
 bind index gg first-entry
+# bind editor <Tab> complete-query
 #bind index,pager M compose-to-sender
