@@ -128,9 +128,6 @@ bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
-# assign [class="Firefox"] $ws2
-# assign [class="Pidgin"] $ws8
-
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -195,8 +192,6 @@ bar {
 
 # Rofi Application Launcher
 bindsym $mod+d exec --no-startup-id rofi -show run -lines 4 -location 1 -width 40 -padding 3 -bw 2
-# colour settings now in .Xresources
-# -bc "#FAC863" -bg "$bg-color" -fg "$text-color" -hlbg "#FAC863" -hlfg "#1B2B34" -font "System San Francisco Display 12"
 
 # Pulse Audio daemon
 exec_always --no-startup-id pulseaudio --start
@@ -216,7 +211,7 @@ exec_always --no-startup-id fcitx
 for_window [class="Skype"] floating enable
 for_window [class="Pidgin"] floating enable
 for_window [class="Anki"] floating enable
-for_window [title="pinentry"] floating enable
+for_window [class="(?i)pinentry"] sticky enable
 
 # Compton
 exec_always --no-startup-id compton -bf
@@ -227,11 +222,18 @@ bindsym Print exec --no-startup-id gnome-screenshot
 # Dropbox
 exec_always --no-startup-id dropbox
 
-# NetworkManager applet
-# exec_always --no-startup-id nm-applet
-
 # Open pass in dmenu
-bindsym $mod+p exec --no-startup-id passmenu
+bindsym $mod+p exec --no-startup-id rofi-pass
+
+# Clipboard manager (Greenclip)
+bindsym $mod+c exec --no-startup-id rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
 
 # Hide mouse when not in use
 exec_always --no-startup-id unclutter
+
+# Open the automount daemon
+exec_always --no-startup-id devmon
+
+# Light controls
+bindsym $mod+F5 exec --no-startup-id light -U 5
+bindsym $mod+F6 exec --no-startup-id light -A 5
