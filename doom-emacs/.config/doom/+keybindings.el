@@ -13,13 +13,26 @@
 
 ;; org-mode keybindings
 (after! org
-  (map! :map evil-org-mode-map
-        (:localleader
-        :desc "Open link" :nv "l" 'org-open-at-point
-        :desc "org-todo" :nv "t" 'org-todo)
-        ))
+  ;; Unbind the already defined keys first.
+  ;; general.el does this automatically for most things,
+  ;; but not for newly defined prefix keys, so I need to
+  ;; unbind "T" manually
+  (map! :map org-mode-map
+        :localleader "T" nil)
+  (map! :map org-mode-map
+      :localleader
+      :desc "C-c C-c"     ","   #'org-ctrl-c-ctrl-c
+      :desc "Open link"   "l"   #'org-open-at-point
+      :desc "org-todo"    "t"   #'org-todo
+      (:prefix ("T" . "tags")
+        :desc "Toggle tag groups" "g" #'org-toggle-tags-groups)))
 
 ;; markdown-mode keybindings
 (map! :map markdown-mode-map
-      :nv "<tab>" 'markdown-cycle)
+      :nvi "<tab>" 'markdown-cycle
+      (:prefix "g"
+        :nv "h" 'markdown-up-heading))
 
+(map! :map pdf-view-mode-map
+      (:localleader
+      :desc "Add text annotation" "t" 'pdf-annot-add-text-annotation))
