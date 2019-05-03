@@ -22,7 +22,7 @@
   (map! :map org-mode-map
       :localleader
       :desc "C-c C-c"     ","   #'org-ctrl-c-ctrl-c
-      :desc "Open link"   "l"   #'org-open-at-point
+      :desc "Open link"   "l"   #'open!
       :desc "org-todo"    "t"   #'org-todo
       (:prefix ("T" . "tags")
         :desc "Toggle tag groups" "g" #'org-toggle-tags-groups)))
