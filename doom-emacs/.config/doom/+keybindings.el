@@ -21,9 +21,11 @@
         :localleader "T" nil)
   (map! :map org-mode-map
       :localleader
-      :desc "C-c C-c"     ","   #'org-ctrl-c-ctrl-c
-      :desc "Open link"   "l"   #'open!
-      :desc "org-todo"    "t"   #'org-todo
+      :desc "C-c C-c"           ","   #'org-ctrl-c-ctrl-c
+      :desc "Open link"         "l"   #'open!
+      :desc "Archive subtree"   "A"   #'org-archive-subtree
+      :desc "Open agenda"       "a"   #'org-agenda
+      :desc "org-todo"          "t"   #'org-todo
       (:prefix ("T" . "tags")
         :desc "Toggle tag groups" "g" #'org-toggle-tags-groups)))
 
