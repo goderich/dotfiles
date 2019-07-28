@@ -25,6 +25,8 @@
 <Multi_key> <3> <3> : "ɛ" U025B
 <Multi_key> <a> <a> : "ɑ" U0251
 <Multi_key> <h> <h> : "ʰ" U02B0
+<Multi_key> <r> <minus> : "ṟ" U1E5F
+<Multi_key> <minus> <r> : "ṟ" U1E5F
 
 
 
