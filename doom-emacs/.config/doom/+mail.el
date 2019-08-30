@@ -49,10 +49,15 @@
 (setq message-kill-buffer-on-exit t)
 
 ;; don't use org-mode to compose email
-(setq mu4e-compose-mode-hook '(flyspell-mode))
+(setq mu4e-compose-mode-hook
+      '(flyspell-mode))
 
 ;; enable automatic wrapping of emails
 (add-hook 'message-mode-hook 'auto-fill-mode)
+(setq fill-column 72)
 (setq mu4e-compose-format-flowed t)
 ;; optional:
 (setq visual-line-fringe-indicators '(left-curly-arrow right-curly-arrow))
+
+;; use messages-are-flowing package
+(add-hook 'message-mode-hook 'messages-are-flowing-use-and-mark-hard-newlines)
