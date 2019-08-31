@@ -37,7 +37,6 @@
 ;; sending mail -- replace USERNAME with your gmail username
 ;; also, make sure the gnutls command line utils are installed
 ;; package 'gnutls-bin' in Debian/Ubuntu
-
 (require 'smtpmail)
 (setq message-send-mail-function 'smtpmail-send-it
     smtpmail-stream-type 'starttls
@@ -54,8 +53,9 @@
 
 ;; enable automatic wrapping of emails
 (add-hook 'message-mode-hook 'auto-fill-mode)
-(setq fill-column 72)
-(setq mu4e-compose-format-flowed t)
+(setq fill-column 65
+      mu4e-compose-dont-reply-to-self t
+      mu4e-compose-format-flowed t)
 ;; optional:
 (setq visual-line-fringe-indicators '(left-curly-arrow right-curly-arrow))
 
