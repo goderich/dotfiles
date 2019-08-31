@@ -166,8 +166,8 @@ set softtabstop=4 " Insert 4 spaces when tab is pressed
 set shiftwidth=4 " An indent is 4 spaces
 set shiftround " Round indent to nearest shiftwidth multiple
 
-" Use automatic line wrap with neomutt
-au BufRead /tmp/neomutt-* setl tw=72 fo=tacwqmBjn comments+=nb:>
+" Do not use automatic line wrap with neomutt, soft wrap at 72
+au BufRead /tmp/neomutt-* setl tw=0 fo=tcqj comments+=nb:> co=72
 
 " Set system clipboard as default
 set clipboard+=unnamedplus
