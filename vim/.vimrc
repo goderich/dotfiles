@@ -1,4 +1,3 @@
-
 " An example for a vimrc file.
 "
 " Maintainer:	Bram Moolenaar <Bram@vim.org>
@@ -22,12 +21,8 @@ set nocompatible
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
-if has("vms")
-  set nobackup		" do not keep a backup file, use versions instead
-else
-  set backup		" keep a backup file (restore to previous version)
-  set undofile		" keep an undo file (undo changes after closing)
-endif
+set nobackup            " Do not make backups
+set undofile		" keep an undo file (undo changes after closing)
 set history=50		" keep 50 lines of command line history
 set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
@@ -112,16 +107,10 @@ set breakindent
 set whichwrap=b,s,<,>,[,]
 set number
 set relativenumber
-" let base16colorspace=256
 colorscheme desert
-" set guiheadroom=0
 set gfn=DejaVu\ Sans\ Mono\ 12
 set background=dark
 set nohlsearch
-
-" Do not make backups
-set nobackup
-" set nowb
 
 " Make J and K move by visual lines when used without a count,
 " and by physical lines when used with a count.
@@ -154,7 +143,7 @@ let g:tex_flavor='latex'
 " This is mostly a matter of taste. but LaTeX looks good with just a bit
 " of indentation.
 set sw=2
-" TIP: if you write your \label's as \label{fig:something}, then if you
+" TIP: if you write your \labels as \label{fig:something}, then if you
 " type in \ref{fig: and press <C-n> you will automatically cycle through
 " all the figure labels. Very useful!
 set iskeyword+=:
@@ -172,3 +161,17 @@ au BufRead /tmp/neomutt-* setl tw=0 fo=tcqj comments+=nb:> co=72
 " Set system clipboard as default
 set clipboard+=unnamedplus
 
+" vim-plug
+"
+" Specify a directory for plugins
+" - Avoid using standard Vim directory names like 'plugin'
+call plug#begin('~/.local/share/nvim/plugged')
+
+" Make sure you use single quotes
+
+Plug 'https://github.com/SirVer/ultisnips'
+Plug 'justinmk/vim-sneak'
+Plug 'https://github.com/tpope/vim-surround'
+
+" Initialize plugin system
+call plug#end()
