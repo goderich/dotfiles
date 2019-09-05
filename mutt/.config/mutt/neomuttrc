@@ -52,17 +52,22 @@ set smart_wrap
 # Open html emails in w3m
 set mailcap_path = ~/.mutt/mailcap
 auto_view text/html
-alternative_order text/plain text/html
+
+# Prefer plain text to html.
+# However, for brain dead clients that bundle attachments inside a
+# multipart/alternative, prefer that alternative.
+alternative_order multipart/mixed multipart/related text/plain
 
 # Send email in Unicode
 set send_charset="utf-8"
 
 # Use format=flowed in sent text mail
-set reflow_text = yes
-set reflow_wrap = 78
+# set text_flowed = yes
+# set reflow_text = yes
+# set reflow_wrap = 72
 
 # Wrap received messages at this length
-set wrap = 78
+# set wrap = 72
 
 # Display attachment names correctly
 set rfc2047_parameters
@@ -75,5 +80,8 @@ bind pager <up> previous-line
 bind pager <down> next-line
 bind index g  noop
 bind index gg first-entry
-# bind editor <Tab> complete-query
-#bind index,pager M compose-to-sender
+bind editor <Tab> complete-query
+bind index,pager M compose-to-sender
+
+# notmuch settings
+set nm_default_uri = "notmuch:///home/iwaka/.mail"
