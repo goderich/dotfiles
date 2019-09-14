@@ -4,5 +4,6 @@ ranger/.config/ranger/history
 qutebrowser/.config/qutebrowser/qsettings/QtProject.conf
 qutebrowser/.config/qutebrowser/quickmarks
 qutebrowser/.config/qutebrowser/bookmarks/*
+qutebrowser/.config/qutebrowser/autoconfig.yml
 vim/.config/nvim/.netrwhist
 systemd/.config/systemd/user/default.target.wants
