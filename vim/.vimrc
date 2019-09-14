@@ -172,6 +172,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'https://github.com/SirVer/ultisnips'
 Plug 'justinmk/vim-sneak'
 Plug 'https://github.com/tpope/vim-surround'
+Plug 'https://github.com/tpope/vim-repeat'
 
 " Initialize plugin system
 call plug#end()
