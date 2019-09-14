@@ -39,3 +39,4 @@ HISTIGNORE="ls:cd:cal*:pass*:mirrorlist:nvim:vim:history*"
 # (not necessary now that I'm using fish)
 # source ~/.password-store/.pass.bash-completion
 
+exec fish
