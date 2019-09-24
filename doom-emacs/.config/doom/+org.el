@@ -11,9 +11,12 @@
 
 ;; Set org file associations
 (after! org
-    (setq org-file-apps
-        '((auto-mode . emacs)
-        ("\\.pdf::\\([0-9]+\\)?\\'" . "zathura %s -P %1")
-        ("\\.pdf\\'" . "zathura %s")
-        ("\\.x?html?\\'" . "qutebrowser %s")
-        (directory . emacs))))
+  ;; browser needs to be set with a separate function
+  (setq browse-url-browser-function 'browse-url-generic
+        browse-url-generic-program "qutebrowser")
+
+  (setq org-file-apps
+      '((auto-mode . emacs)
+      ("\\.pdf::\\([0-9]+\\)?\\'" . "zathura %s -P %1")
+      ("\\.pdf\\'" . "zathura %s")
+      (directory . emacs))))
