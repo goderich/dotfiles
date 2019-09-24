@@ -18,11 +18,14 @@
   ;; but not for newly defined prefix keys, so I need to
   ;; unbind "T" manually
   (map! :map org-mode-map
-        :localleader "T" nil)
+      :localleader "T" nil)
   (map! :map org-mode-map
+    (:prefix "g"
+      :nv "h" #'org-up-element
+      :nv "k" #'org-previous-visible-heading)
       :localleader
       :desc "C-c C-c"           ","   #'org-ctrl-c-ctrl-c
-      :desc "Open link"         "l"   #'open!
+      :desc "Open link"         "l"   #'org-open-at-point
       :desc "Archive subtree"   "A"   #'org-archive-subtree
       :desc "Open agenda"       "a"   #'org-agenda
       :desc "org-todo"          "t"   #'org-todo
