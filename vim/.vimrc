@@ -66,7 +66,7 @@ endif
 " Also switch on highlighting the last used search pattern.
 if &t_Co > 2 || has("gui_running")
   syntax on
-  " set hlsearch
+  set hlsearch
 endif
 
 " Only do this part when compiled with support for autocommands.
@@ -81,9 +81,6 @@ if has("autocmd")
   " Put these in an autocmd group, so that we can delete them easily.
   augroup vimrcEx
   au!
-
-  " For all text files set 'textwidth' to 78 characters.
-  autocmd FileType text setlocal textwidth=78
 
   " When editing a file, always jump to the last known cursor position.
   " Don't do it when the position is invalid or when inside an event handler
@@ -117,9 +114,6 @@ if has('langmap') && exists('+langnoremap')
 endif
 
 " General settings
-filetype plugin indent on
-set grepprg=grep\ -nH\ $*
-let g:tex_flavor = "latex"
 set guioptions=im
 set linebreak
 set breakindent
@@ -136,46 +130,32 @@ set nohlsearch
 noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
 noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
 
-" Disable the arrow keys because I'm a masochist
-" inoremap <Up> <NOP>
-" inoremap <Down> <NOP>
-" inoremap <Left> <NOP>
-" inoremap <Right> <NOP>
-" noremap <Up> <NOP>
-" noremap <Down> <NOP>
-" noremap <Left> <NOP>
-" noremap <Right> <NOP>
-
 " IMPORTANT: grep will sometimes skip displaying the file name if you
 " search in a singe file. This will confuse Latex-Suite. Set your grep
 " program to always generate a file-name.
 set grepprg=grep\ -nH\ $*
-
-" OPTIONAL: This enables automatic indentation as you type.
-filetype indent on
 
 " OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults
 " to 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
 " The following changes the default filetype back to 'tex':
 let g:tex_flavor='latex'
 
-" This is mostly a matter of taste. but LaTeX looks good with just a bit
-" of indentation.
-set sw=2
 " TIP: if you write your \labels as \label{fig:something}, then if you
 " type in \ref{fig: and press <C-n> you will automatically cycle through
 " all the figure labels. Very useful!
 set iskeyword+=:
 
 " Tab specific options (for Haskell)
-set tabstop=8 " A tab is 8 spaces
-set expandtab " Always use spaces instead of tabs
+set tabstop=8     " A tab is 8 spaces
+set expandtab     " Always use spaces instead of tabs
 set softtabstop=4 " Insert 4 spaces when tab is pressed
-set shiftwidth=4 " An indent is 4 spaces
-set shiftround " Round indent to nearest shiftwidth multiple
+set shiftwidth=4  " An indent is 4 spaces
+set shiftround    " Round indent to nearest shiftwidth multiple
 
-" Do not use automatic line wrap with neomutt, soft wrap at 72
-au BufRead /tmp/neomutt-* setl tw=0 fo=tcqj comments+=nb:> co=72
+" Do not use automatic line wrap with neomutt, soft wrap at 80
+au BufRead /tmp/neomutt-* set comments+=nb:>
+au BufRead /tmp/neomutt-* if (&columns > 80) | set columns=80 | endif
+au BufRead /tmp/neomutt-* setl tw=0
 
 " Set system clipboard as default
 set clipboard+=unnamedplus
