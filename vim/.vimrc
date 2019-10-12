@@ -128,6 +128,10 @@ set background=dark
 nmap <esc><esc> :noh<return>
 set ignorecase " ignore case in searches
 
+" Leader key bindings
+let mapleader = " "
+let maplocalleader = ","
+
 " Make J and K move by visual lines when used without a count,
 " and by physical lines when used with a count.
 noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
