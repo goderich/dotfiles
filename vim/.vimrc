@@ -123,7 +123,10 @@ set relativenumber
 colorscheme darcula
 set gfn=DejaVu\ Sans\ Mono\ 12
 set background=dark
-set nohlsearch
+
+" Clear search highlighting with double ESC
+nmap <esc><esc> :noh<return>
+set ignorecase " ignore case in searches
 
 " Make J and K move by visual lines when used without a count,
 " and by physical lines when used with a count.
