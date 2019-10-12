@@ -9,14 +9,33 @@
 "  for MS-DOS and Win32:  $VIM\_vimrc
 "	    for OpenVMS:  sys$login:.vimrc
 
-" When started as "evim", evim.vim will already have done these settings.
-if v:progname =~? "evim"
-  finish
-endif
-
 " Use Vim settings, rather than Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 set nocompatible
+
+" vim-plug
+"
+" Specify a directory for plugins
+" - Avoid using standard Vim directory names like 'plugin'
+call plug#begin('~/.local/share/nvim/plugged')
+
+" Make sure you use single quotes
+
+Plug 'https://github.com/SirVer/ultisnips'
+Plug 'justinmk/vim-sneak'
+Plug 'https://github.com/tpope/vim-surround'
+Plug 'https://github.com/tpope/vim-repeat'
+Plug 'https://github.com/tpope/vim-commentary'
+Plug 'https://github.com/godlygeek/tabular'
+Plug 'https://github.com/airblade/vim-gitgutter'
+Plug 'junegunn/goyo.vim'
+Plug 'https://github.com/tpope/vim-fugitive'
+Plug 'dense-analysis/ale'
+Plug 'elmcast/elm-vim'
+Plug 'doums/darcula'
+
+" Initialize plugin system
+call plug#end()
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
@@ -107,7 +126,7 @@ set breakindent
 set whichwrap=b,s,<,>,[,]
 set number
 set relativenumber
-colorscheme desert
+colorscheme darcula
 set gfn=DejaVu\ Sans\ Mono\ 12
 set background=dark
 set nohlsearch
@@ -161,18 +180,3 @@ au BufRead /tmp/neomutt-* setl tw=0 fo=tcqj comments+=nb:> co=72
 " Set system clipboard as default
 set clipboard+=unnamedplus
 
-" vim-plug
-"
-" Specify a directory for plugins
-" - Avoid using standard Vim directory names like 'plugin'
-call plug#begin('~/.local/share/nvim/plugged')
-
-" Make sure you use single quotes
-
-Plug 'https://github.com/SirVer/ultisnips'
-Plug 'justinmk/vim-sneak'
-Plug 'https://github.com/tpope/vim-surround'
-Plug 'https://github.com/tpope/vim-repeat'
-
-" Initialize plugin system
-call plug#end()
