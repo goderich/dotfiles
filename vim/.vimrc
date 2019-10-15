@@ -124,9 +124,13 @@ colorscheme darcula
 set gfn=DejaVu\ Sans\ Mono\ 12
 set background=dark
 
+" SEARCHING
 " Clear search highlighting with double ESC
 nmap <esc><esc> :noh<return>
 set ignorecase " ignore case in searches
+set smartcase
+" use my .vimrc search case options with sneak
+let g:sneak#use_ic_scs = 1
 
 " Leader key bindings
 let mapleader = " "
