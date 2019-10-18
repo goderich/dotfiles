@@ -20,3 +20,19 @@
       ("\\.pdf::\\([0-9]+\\)?\\'" . "zathura %s -P %1")
       ("\\.pdf\\'" . "zathura %s")
       (directory . emacs))))
+
+;; Org todo keywords and colours
+(after! org
+  (setq org-todo-keywords
+        '((sequence "TODO(t)" "|" "DONE(d)")
+          (sequence "NEXT(n)" "WAITING(w)" "LATER(l)" "|" "CANCELLED(c)")))
+
+  (setq org-todo-keyword-faces
+        '(("LATER" :inherit
+           (warning bold))
+          ("NEXT" :inherit
+           (bold default))
+          ("WAITING" :inherit
+           (warning bold))
+          ("CANCELLED" :inherit
+           (error bold)))))
