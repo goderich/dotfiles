@@ -29,6 +29,7 @@
       :desc "Archive subtree"   "A"   #'org-archive-subtree
       :desc "Open agenda"       "a"   #'org-agenda
       :desc "org-todo"          "t"   #'org-todo
+      :desc "org-rifle"         "r"   #'helm-org-rifle
       (:prefix ("T" . "tags")
         :desc "Toggle tag groups" "g" #'org-toggle-tags-groups)))
 

@@ -9,3 +9,5 @@
 
 ;; Citations
 (package! org-ref)
+
+(package! helm-org-rifle)
