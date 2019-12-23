@@ -27,7 +27,7 @@
 <Multi_key> <h> <h> : "ʰ" U02B0
 <Multi_key> <r> <minus> : "ṟ" U1E5F
 <Multi_key> <minus> <r> : "ṟ" U1E5F
-
+<Multi_key> <l> <a> : "λ" U03BB
 
 
 # UTF-8 (Unicode) compose sequence
