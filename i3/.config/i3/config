@@ -30,8 +30,8 @@ font pango:System San Francisco Display 10
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec --no-startup-id termite
-bindsym $mod+semicolon exec --no-startup-id termite
+bindsym $mod+Return exec --no-startup-id alacritty
+bindsym $mod+semicolon exec --no-startup-id alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -191,7 +191,7 @@ bar {
 }
 
 # Rofi Application Launcher
-bindsym $mod+d exec --no-startup-id rofi -show run -lines 4 -location 1 -width 40 -padding 3 -bw 2
+bindsym $mod+d exec --no-startup-id rofi -show run -lines 4 -location 1 -width 40 -bw 2
 
 # Pulse Audio daemon
 exec_always --no-startup-id pulseaudio --start
