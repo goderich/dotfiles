@@ -33,6 +33,14 @@
       (:prefix ("T" . "tags")
         :desc "Toggle tag groups" "g" #'org-toggle-tags-groups)))
 
+;; lisp editing keybindings
+(map! :map (emacs-lisp-mode-map racket-mode-map)
+      (:localleader
+        :desc "Forward slurp"    ")"   #'sp-forward-slurp-sexp
+        :desc "Backward slurp"   "("   #'sp-backward-slurp-sexp
+        :desc "Forward barf"     "<"   #'sp-forward-barf-sexp
+        :desc "Backward barf"    ">"   #'sp-backward-barf-sexp))
+
 ;; markdown-mode keybindings
 (map! :map markdown-mode-map
       :nvi "<tab>" 'markdown-cycle
