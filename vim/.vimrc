@@ -33,6 +33,7 @@ Plug 'https://github.com/tpope/vim-fugitive'
 Plug 'dense-analysis/ale'
 Plug 'elmcast/elm-vim'
 Plug 'doums/darcula'
+Plug 'https://github.com/vim-scripts/visualrepeat'
 
 " Initialize plugin system
 call plug#end()
