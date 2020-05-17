@@ -45,7 +45,9 @@
 (map! :map markdown-mode-map
       :nvi "<tab>" 'markdown-cycle
       (:prefix "g"
-        :nv "h" 'markdown-up-heading))
+        :nv "h" 'markdown-up-heading)
+      (:localleader
+        :desc "Insert citation"   "c"  #'org-ref-helm-insert-cite-link))
 
 (map! :map pdf-view-mode-map
       (:localleader
