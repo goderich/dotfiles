@@ -34,6 +34,7 @@ Plug 'dense-analysis/ale'
 Plug 'elmcast/elm-vim'
 Plug 'doums/darcula'
 Plug 'https://github.com/vim-scripts/visualrepeat'
+Plug 'https://github.com/markonm/traces.vim'
 
 " Initialize plugin system
 call plug#end()
