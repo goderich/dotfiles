@@ -2,7 +2,7 @@
 # name: article
 # expand-env: ((yas-indent-line 'fixed))
 # --
-@article{$0${1:$(downcase yas-text)}$8,
+@article{${1:$(downcase yas-text)}$8$0,
   author = { ${1:Surname}, ${2:Name} },
   journaltitle = { ${3:Journal of Journalism} },
   pages = { ${4:1--10} },
