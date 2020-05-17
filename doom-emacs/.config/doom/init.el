@@ -119,11 +119,11 @@
        ;;plantuml          ; diagrams for confusing people more
        ;;purescript        ; javascript, but functional
        python            ; beautiful is better than ugly
-       qt                ; the 'cutest' gui framework ever
+       ;; qt                ; the 'cutest' gui framework ever
        racket            ; a DSL for DSLs
        ;;rest              ; Emacs as a REST client
        ;;ruby              ; 1.step do {|i| p "Ruby is #{i.even? ? 'love' : 'life'}"}
-       rust              ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
+       ;; rust              ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
        ;;scala             ; java, but good
        (sh +fish)        ; she sells (ba|z|fi)sh shells on the C xor
        ;;solidity          ; do you need a blockchain? No.
@@ -165,7 +165,7 @@
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
    (quote
-    ("0713580a6845e8075113a70275b3421333cfe7079e48228c52300606fa5ce73b" default)))
+    ("a2286409934b11f2f3b7d89b1eaebb965fd63bc1e0be1c159c02e396afb893c8" "728eda145ad16686d4bbb8e50d540563573592013b10c3e2defc493f390f7d83" "bd6ced8badda12f95e16e641d76d861de096c691720ede6388a226914e97cf23" "0713580a6845e8075113a70275b3421333cfe7079e48228c52300606fa5ce73b" default)))
  '(org-agenda-files (list org-directory))
  '(org-directory "~/Dropbox/org"))
 (custom-set-faces
