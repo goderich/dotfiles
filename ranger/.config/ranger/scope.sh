@@ -92,10 +92,10 @@ handle_extension() {
 handle_image() {
     local mimetype="${1}"
     case "${mimetype}" in
-        # SVG
-        # image/svg+xml)
+        # svg files take forever to preview and eat CPU like crazy
+        image/svg+xml)
+            exit 1;;
         #     convert "${FILE_PATH}" "${IMAGE_CACHE_PATH}" && exit 6
-        #     exit 1;;
 
         # Image
         image/*)
