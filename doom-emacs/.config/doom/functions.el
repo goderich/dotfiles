@@ -7,7 +7,7 @@
    amount of lines to prepend the numerals to.
    The numbers are followed by a dot and whitespace."
   (interactive "sPrepend how many times? ")
-  ;; (beginning-of-line)
+  (beginning-of-line)
   (dotimes (i (string-to-number numlines))
     (insert (format "%d. " (1+ i)))
     (forward-line)
@@ -19,6 +19,6 @@
    each time. The argument specifies the total
    amount of lines to create."
   (interactive "sInsert how many lines? ")
-  ;; (beginning-of-line)
+  (beginning-of-line)
   (dotimes (i (string-to-number numlines))
-    (insert (format "%2d\n" (1+ i)))))
+    (insert (format "%d\n" (1+ i)))))
