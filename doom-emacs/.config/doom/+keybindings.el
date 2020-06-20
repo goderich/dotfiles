@@ -7,9 +7,13 @@
 ;; Global keybindings
 (map!
  (:leader
-   (:prefix "t"
-    :desc "Toggle writeroom mode" :n "w" 'writeroom-mode)
-    :desc "Make a new Emacs frame" :nv "F" 'make-frame))
+  (:prefix "i"
+   (:prefix ("n" . "Insert numbers")
+    :desc "Insert on new lines" :n "n" 'insert-numbers
+    :desc "Prepend to existing lines" :n "p" 'prepend-numbers))
+  (:prefix "t"
+   :desc "Toggle writeroom mode" :n "w" 'writeroom-mode)
+  :desc "Make a new Emacs frame" :nv "F" 'make-frame))
 
 ;; org-mode keybindings
 (after! org
