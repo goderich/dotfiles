@@ -52,3 +52,7 @@
 (map! :map pdf-view-mode-map
       (:localleader
       :desc "Add text annotation" "t" 'pdf-annot-add-text-annotation))
+
+(map! (:leader
+        (:prefix "g"
+          :nv "n" #'git-gutter:next-hunk)))
