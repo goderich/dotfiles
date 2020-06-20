@@ -8,6 +8,7 @@
 (load! "+fonts")
 (load! "+org")
 (load! "+ui")
+(load! "functions")
 (load! "+keybindings")
 (load! "+referencing")
 
