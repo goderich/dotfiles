@@ -3,7 +3,7 @@
 # expand-env: ((yas-indent-line (quote fixed)))
 # --
 @book{${1:$(downcase yas-text)}$5$0,
-  address { ${6:City} },
+  address = { ${6:City} },
   author = { ${1:Surname}, ${2:Name} },
   title = { ${3:Title} },
   publisher = { ${4:Academia Sinica} },
