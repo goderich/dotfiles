@@ -2,4 +2,4 @@
 	email = yuhsien77@gmail.com
 	name = Goderich
 [core]
-	pager = diff-so-fancy | less --tabs=4 -RFX
+    pager = delta --theme='DarkNeon'
