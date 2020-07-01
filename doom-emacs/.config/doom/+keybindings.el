@@ -15,6 +15,12 @@
    :desc "Toggle writeroom mode" :n "w" 'writeroom-mode)
   :desc "Make a new Emacs frame" :nv "F" 'make-frame))
 
+;; Use 'B' to manipulate curly bracket objects
+(map! :map (evil-inner-text-objects-map
+            evil-operator-state-map
+            evil-visual-state-map)
+      :nv "B" #'evil-inner-curly)
+
 ;; org-mode keybindings
 (after! org
   ;; Unbind the already defined keys first.
