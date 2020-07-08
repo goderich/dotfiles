@@ -38,7 +38,7 @@
      :desc "Toggle tag groups" "g" #'org-toggle-tags-groups)))
 
 ;; lisp editing keybindings
-(map! :map (emacs-lisp-mode-map racket-mode-map)
+(map! :map (emacs-lisp-mode-map dune-mode-map)
       (:localleader
         :desc "Forward slurp"    ")"   #'sp-forward-slurp-sexp
         :desc "Backward slurp"   "("   #'sp-backward-slurp-sexp
