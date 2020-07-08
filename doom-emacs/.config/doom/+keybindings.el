@@ -27,15 +27,15 @@
     (:prefix "g"
       :nv "h" #'org-up-element
       :nv "k" #'org-previous-visible-heading)
-      :localleader
-      :desc "C-c C-c"           ","   #'org-ctrl-c-ctrl-c
-      :desc "Open link"         "l"   #'org-open-at-point
-      :desc "Archive subtree"   "A"   #'org-archive-subtree
-      :desc "Open agenda"       "a"   #'org-agenda
-      :desc "org-todo"          "t"   #'org-todo
-      :desc "org-rifle"         "r"   #'helm-org-rifle-current-buffer
-      (:prefix ("T" . "tags")
-        :desc "Toggle tag groups" "g" #'org-toggle-tags-groups)))
+    :localleader
+    :desc "C-c C-c"           ","   #'org-ctrl-c-ctrl-c
+    :desc "Open link"         "l"   #'org-open-at-point
+    :desc "Archive subtree"   "A"   #'org-archive-subtree
+    :desc "Open agenda"       "a"   #'org-agenda
+    :desc "org-todo"          "t"   #'org-todo
+    :desc "org-rifle"         "r"   #'helm-org-rifle-current-buffer
+    (:prefix ("T" . "tags")
+     :desc "Toggle tag groups" "g" #'org-toggle-tags-groups)))
 
 ;; lisp editing keybindings
 (map! :map (emacs-lisp-mode-map racket-mode-map)
