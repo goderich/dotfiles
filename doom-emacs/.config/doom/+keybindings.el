@@ -42,8 +42,8 @@
       (:localleader
         :desc "Forward slurp"    ")"   #'sp-forward-slurp-sexp
         :desc "Backward slurp"   "("   #'sp-backward-slurp-sexp
-        :desc "Forward barf"     "<"   #'sp-forward-barf-sexp
-        :desc "Backward barf"    ">"   #'sp-backward-barf-sexp))
+        :desc "Forward barf"     ">"   #'sp-forward-barf-sexp
+        :desc "Backward barf"    "<"   #'sp-backward-barf-sexp))
 
 ;; markdown-mode keybindings
 (map! :map markdown-mode-map
