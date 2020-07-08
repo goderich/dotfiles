@@ -14,3 +14,11 @@
 ;; Do not display line numbers
 (remove-hook! '(prog-mode-hook text-mode-hook conf-mode-hook)
               #'display-line-numbers-mode)
+
+;; Center screen on consecutive searches (n/N)
+(advice-add 'evil-ex-search-next :after
+            (lambda (&rest _)
+              (evil-scroll-line-to-center (line-number-at-pos))))
+(advice-add 'evil-ex-search-previous :after
+            (lambda (&rest _)
+              (evil-scroll-line-to-center (line-number-at-pos))))
