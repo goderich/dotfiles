@@ -11,7 +11,6 @@
   (auto-fill-mode -1))
 (add-hook 'markdown-mode-hook #'my-markdown-mode-hook)
 
-(setq display-line-numbers 'relative)
-(defun no-linum-hook ()
-  (setq display-line-numbers nil))
-(add-hook 'org-mode-hook #'no-linum-hook)
+;; Do not display line numbers
+(remove-hook! '(prog-mode-hook text-mode-hook conf-mode-hook)
+              #'display-line-numbers-mode)
