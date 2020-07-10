@@ -15,6 +15,9 @@
 ;; Disable company-mode in org and markdown
 (setq company-global-modes '(not org-mode markdown-mode))
 
+;; Add detailed diffs in magit
+(setq magit-diff-refine-hunk 'all)
+
 ;; Disable smartparens-mode in org and markdown
 (add-hook 'org-mode-hook #'turn-off-smartparens-mode)
 (add-hook 'markdown-mode-hook #'turn-off-smartparens-mode)
