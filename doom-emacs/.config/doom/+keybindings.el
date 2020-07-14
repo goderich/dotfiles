@@ -15,6 +15,11 @@
    :desc "Toggle writeroom mode" :n "w" 'writeroom-mode)
   :desc "Make a new Emacs frame" :nv "F" 'make-frame))
 
+;; evil-ex keybindings
+;; I haven't found a way to map these with the `map!' macro,
+;; so I'm assuming it can't be used that way.
+(evil-ex-define-cmd "q" #'kill-this-buffer)
+
 ;; org-mode keybindings
 (after! org
   ;; Unbind the already defined keys first.
