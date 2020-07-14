@@ -47,9 +47,11 @@
 
 ;; markdown-mode keybindings
 (map! :map markdown-mode-map
-      :nvi "<tab>" 'markdown-cycle
+      :nvi "<tab>" #'markdown-cycle
+      :nv "k" #'evil-previous-visual-line
+      :nv "j" #'evil-next-visual-line
       (:prefix "g"
-        :nv "h" 'markdown-up-heading)
+        :nv "h" #'markdown-up-heading)
       (:localleader
         :desc "Insert citation"   "c"  #'org-ref-helm-insert-cite-link))
 
