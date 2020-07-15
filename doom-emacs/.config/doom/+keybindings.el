@@ -42,6 +42,13 @@
     (:prefix ("T" . "tags")
      :desc "Toggle tag groups" "g" #'org-toggle-tags-groups)))
 
+;; org agenda keybindings
+;; These complement the keybinds already set in evil-collection
+(after! org-agenda
+  (map! :map evil-org-agenda-mode-map
+        :m "b" #'org-agenda-earlier
+        :m "f" #'org-agenda-later))
+
 ;; lisp editing keybindings
 (map! :map (emacs-lisp-mode-map dune-mode-map)
       (:localleader
