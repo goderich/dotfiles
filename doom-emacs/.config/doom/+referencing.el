@@ -4,6 +4,9 @@
 (setq org-ref-default-bibliography reftex-default-bibliography)
 (setq bibtex-completion-bibliography reftex-default-bibliography)
 
+; Activate Yasnippets in BibTeX files
+(add-hook 'bibtex-mode-hook #'yas-minor-mode-on)
+
 ; Formatting of helm-bibtex results
 (after! org-ref-helm-bibtex
   (setq bibtex-completion-display-formats
