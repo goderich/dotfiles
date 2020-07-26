@@ -7,9 +7,7 @@
 (remove-hook 'org-mode-hook #'auto-fill-mode)
 (remove-hook 'markdown-mode-hook #'auto-fill-mode)
 
-(defun my-markdown-mode-hook ()
-  (auto-fill-mode -1))
-(add-hook 'markdown-mode-hook #'my-markdown-mode-hook)
+(add-hook 'markdown-mode-hook (lambda () (auto-fill-mode -1)))
 
 ;; Do not display line numbers
 (remove-hook! '(prog-mode-hook text-mode-hook conf-mode-hook)
