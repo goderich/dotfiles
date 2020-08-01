@@ -19,6 +19,7 @@ end
 
 run sxhkd
 launch-polybar
+run compton -bf
 run fcitx
 run devmon
 run dropbox
