@@ -1,11 +1,26 @@
-#! /bin/sh
+#! /bin/fish
 
-sxhkd &
-~/.config/polybar/launch.sh
-fcitx &
-devmon &
-dropbox &
-unclutter &
+function run
+    pgrep -x $argv > /dev/null; or $argv
+end
+
+function launch-polybar
+    # Terminate already running bar instances
+    killall -q polybar
+    # Wait until the processes have been shut down
+    while pgrep -u $UID -x polybar > /dev/null
+        sleep 1
+    end
+    # Launch Polybar using default config location
+    polybar example &
+end
+
+run sxhkd
+launch-polybar
+run fcitx
+run devmon
+run dropbox
+run unclutter
 
 bspc monitor -d I II III IV V VI VII VIII IX X
 
