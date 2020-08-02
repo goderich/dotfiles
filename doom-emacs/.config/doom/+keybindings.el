@@ -15,6 +15,12 @@
    :desc "Toggle writeroom mode" :n "w" 'writeroom-mode)
   :desc "Make a new Emacs frame" :nv "F" 'make-frame))
 
+;; evil keybindings
+(after! evil
+  (map!
+   :nv "k" #'evil-previous-visual-line
+   :nv "j" #'evil-next-visual-line))
+
 ;; evil-ex keybindings
 ;; I haven't found a way to map these with the `map!' macro,
 ;; so I'm assuming it can't be used that way.
@@ -60,8 +66,6 @@
 ;; markdown-mode keybindings
 (map! :map markdown-mode-map
       :nvi "<tab>" #'markdown-cycle
-      :nv "k" #'evil-previous-visual-line
-      :nv "j" #'evil-next-visual-line
       (:prefix "g"
         :nv "h" #'markdown-up-heading)
       (:localleader
