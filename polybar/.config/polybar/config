@@ -63,12 +63,13 @@ tray-position = right
 tray-padding = 2
 ;tray-background = #0063ff
 
-;wm-restack = bspwm
+; Hide the bar in fullscreen mode
+override-redirect = true
+wm-restack = bspwm
 ;wm-restack = i3
 
 bottom = true
 
-;override-redirect = true
 
 ;scroll-up = bspwm-desknext
 ;scroll-down = bspwm-deskprev
