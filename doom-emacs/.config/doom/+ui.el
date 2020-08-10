@@ -4,10 +4,10 @@
 (global-visual-line-mode 1)
 
 ;; Disable auto-fill-mode
-(remove-hook 'org-mode-hook #'auto-fill-mode)
-(remove-hook 'markdown-mode-hook #'auto-fill-mode)
-
-(add-hook 'markdown-mode-hook (lambda () (auto-fill-mode -1)))
+(add-hook! '(markdown-mode-hook
+             org-mode-hook
+             mu4e-compose-mode-hook)
+           #'turn-off-auto-fill)
 
 ;; Do not display line numbers
 (remove-hook! '(prog-mode-hook text-mode-hook conf-mode-hook)
