@@ -13,6 +13,7 @@
     :desc "Prepend to existing lines" :n "p" 'prepend-numbers))
   (:prefix "t"
    :desc "Toggle writeroom mode" :n "w" 'writeroom-mode)
+  :desc "Switch to another buffer" :nv "," #'+ivy/switch-buffer
   :desc "Make a new Emacs frame" :nv "F" 'make-frame))
 
 ;; evil keybindings
