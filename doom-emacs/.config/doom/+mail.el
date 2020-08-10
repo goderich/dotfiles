@@ -52,9 +52,8 @@
 ;; emails display decently on different devices is to send
 ;; them in long lines. Editing these is a pain though, hence
 ;; this setting.
-(add-hook 'mu4e-compose-mode-hook
-          #'visual-fill-column-mode
-          :local (setq fill-column 80))
+(add-hook 'mu4e-compose-mode-hook (lambda () (setq fill-column 80)))
+(add-hook 'mu4e-compose-mode-hook #'visual-fill-column-mode)
 
 ;; optional:
 (setq visual-line-fringe-indicators '(left-curly-arrow right-curly-arrow))
