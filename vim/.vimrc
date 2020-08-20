@@ -21,7 +21,6 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 " Make sure you use single quotes
 
-Plug 'https://github.com/SirVer/ultisnips'
 Plug 'justinmk/vim-sneak'
 Plug 'https://github.com/tpope/vim-surround'
 Plug 'https://github.com/tpope/vim-repeat'
@@ -30,8 +29,6 @@ Plug 'https://github.com/godlygeek/tabular'
 Plug 'https://github.com/airblade/vim-gitgutter'
 Plug 'junegunn/goyo.vim'
 Plug 'https://github.com/tpope/vim-fugitive'
-Plug 'dense-analysis/ale'
-Plug 'elmcast/elm-vim'
 Plug 'doums/darcula'
 Plug 'https://github.com/vim-scripts/visualrepeat'
 Plug 'https://github.com/markonm/traces.vim'
