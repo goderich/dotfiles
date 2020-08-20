@@ -40,6 +40,12 @@
       mu4e-compose-format-flowed nil
       mu4e-compose-dont-reply-to-self t)
 
+;; Use a normal date format
+(setq mu4e-headers-date-format "%F")
+
+;; Default location for saving attachments
+(setq mu4e-attachment-dir "~/Downloads")
+
 ;; Don't keep message buffers around
 (setq message-kill-buffer-on-exit t)
 
