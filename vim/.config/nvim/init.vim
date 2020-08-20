@@ -1,1 +1,1 @@
-/home/iwaka/.vimrc
+../../.vimrc
