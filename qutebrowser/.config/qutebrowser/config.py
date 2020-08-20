@@ -766,7 +766,7 @@ c.fonts.statusbar = '11pt monospace'
 
 ## Font used in the tab bar.
 ## Type: QtFont
-#c.fonts.tabs = '11pt monospace'
+# c.fonts.tabs = '11pt monospace'
 
 ## Font family for cursive fonts.
 ## Type: FontFamily
@@ -840,7 +840,7 @@ c.hints.chars = 'oaeuidhtns'
 ## Valid values:
 ##   - javascript: Better but slower
 ##   - python: Slightly worse but faster
-c.hints.find_implementation = 'javascript'
+# c.hints.find_implementation = 'javascript'
 
 ## Hide unmatched hints in rapid mode.
 ## Type: Bool
@@ -1011,7 +1011,7 @@ c.messages.timeout = 3000
 ## Enable smooth scrolling for web pages. Note smooth scrolling does not
 ## work with the `:scroll-px` command.
 ## Type: Bool
-# c.scrolling.smooth = False
+c.scrolling.smooth = True
 
 ## The name of the session to save by default. If this is set to null,
 ## the session which was last loaded is saved.
@@ -1548,3 +1548,6 @@ config.bind('<Shift-Up>', 'command-history-prev', mode='command')
 
 ## Bindings for register mode
 # config.bind('<Escape>', 'leave-mode', mode='register')
+
+# Nyan cat mode!
+config.source('qutenyan/nyan.py')
