@@ -13,6 +13,9 @@
 (remove-hook! '(prog-mode-hook text-mode-hook conf-mode-hook)
               #'display-line-numbers-mode)
 
+(after! evil-vars
+  (setq evil-ex-substitute-global t))
+
 ;; Center screen on consecutive searches (n/N)
 (advice-add 'evil-ex-search-next :after
             (lambda (&rest _)
