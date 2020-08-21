@@ -8,6 +8,6 @@
 (add-hook 'bibtex-mode-hook #'yas-minor-mode-on)
 
 ; Formatting of helm-bibtex results
-(after! bibtex-completion
+(after! org-ref-helm-bibtex
   (setq bibtex-completion-display-formats
         '((t . "${author:18} ${year:5} ${title:*}"))))
