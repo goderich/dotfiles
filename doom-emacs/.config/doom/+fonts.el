@@ -10,7 +10,3 @@
       (font-spec
        :family "Noto Sans Mono CJK TC"
        :lang "zh"))
-
-;; Setup Chinese fonts to look all nice and shit
-(add-hook 'after-make-frame-functions 'cnfonts-set-font-with-saved-step)
-(add-hook 'window-setup-hook 'cnfonts-set-font-with-saved-step)
