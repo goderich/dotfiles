@@ -20,6 +20,9 @@
 (after! writeroom-mode
   (setq writeroom-fullscreen-effect 'maximized))
 
+;; Banish the pointer to the upper-right corner on any keypress
+(mouse-avoidance-mode 'banish)
+
 ;; Center screen on consecutive searches (n/N)
 (advice-add 'evil-ex-search-next :after
             (lambda (&rest _)
