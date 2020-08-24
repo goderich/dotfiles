@@ -146,6 +146,8 @@
         ;;+attach          ; custom attachment system
         +babel           ; running code in org
         +capture         ; org-capture in and outside of Emacs
+        +pandoc
+        +roam
         +export)          ; Exporting org to whatever you want
         ;;+present)        ; Emacs for presentations
        ;;php               ; perl's insecure younger brother

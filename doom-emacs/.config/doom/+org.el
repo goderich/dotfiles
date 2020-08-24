@@ -32,3 +32,10 @@
           ("NEXT" :inherit (bold default))
           ("WAITING" :inherit (warning bold))
           ("CANCELLED" :inherit (error bold)))))
+
+;; org-roam config
+(setq org-roam-directory "~/Dropbox/org/roam")
+
+(use-package org-roam-bibtex
+  :after org-roam
+  :hook (org-roam-mode . org-roam-bibtex-mode))
