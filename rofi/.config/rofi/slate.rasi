@@ -4,6 +4,11 @@
   text-color: #8ca0aa;
   spacing: 0;
   width: 512px;
+  font: "Knack Nerd Font 14";
+}
+
+window {
+  border-radius: 40px;
 }
 
 inputbar {
@@ -41,3 +46,4 @@ element {
 element selected {
   background-color: #2e343f;
 }
+
