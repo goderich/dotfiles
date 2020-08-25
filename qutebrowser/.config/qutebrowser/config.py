@@ -1158,7 +1158,7 @@ c.scrolling.smooth = True
 ##   - prev: Select the tab which came before the closed one (left in horizontal, above in vertical).
 ##   - next: Select the tab which came after the closed one (right in horizontal, below in vertical).
 ##   - last-used: Select the previously selected tab.
-# c.tabs.select_on_remove = 'next'
+c.tabs.select_on_remove = 'last-used'
 
 ## When to show the tab bar.
 ## Type: String
