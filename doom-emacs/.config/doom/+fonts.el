@@ -9,4 +9,5 @@
 (setq doom-unicode-font
       (font-spec
        :family "Noto Sans Mono CJK TC"
-       :lang "zh"))
+       :lang "zh"
+       :size 17.0))
