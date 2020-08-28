@@ -4,6 +4,5 @@ export XMODIFIERS=@im=fcitx
 
 setxkbmap us -variant dvorak \
              -option 'caps:ctrl_modifier' \
-             -option 'shift:both_capslock' \
              -option 'compose:ralt'
 xcape -e 'Caps_Lock=Escape;Shift_L=parenleft;Shift_R=parenright'
