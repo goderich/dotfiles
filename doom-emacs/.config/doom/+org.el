@@ -20,7 +20,7 @@
 
   ;; Use blank lines between texts and following headings
   (setq org-blank-before-new-entry
-        '((heading . t) (plain-list-item . t)))
+        '((heading . t) (plain-list-item . nil)))
 
   ;; Org todo keywords and colours
   (setq org-todo-keywords
