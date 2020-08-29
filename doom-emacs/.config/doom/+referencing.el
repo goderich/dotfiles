@@ -10,4 +10,10 @@
 ; Formatting of helm-bibtex results
 (after! org-ref-helm-bibtex
   (setq bibtex-completion-display-formats
-        '((t . "${author:18} ${year:5} ${title:*}"))))
+        '((t . "${author:18} ${year:5} ${title:*}")))
+
+  (setq bibtex-completion-format-citation-functions
+        '((org-mode . my/bibtex-completion-format-citation-pandoc-citeproc)
+          (latex-mode . bibtex-completion-format-citation-cite)
+          (markdown-mode . bibtex-completion-format-citation-pandoc-citeproc)
+          (default . bibtex-completion-format-citation-default))))

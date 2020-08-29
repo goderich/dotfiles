@@ -93,3 +93,11 @@
      (apply 'concat (make-list table-columns "l "))
      "} \\toprule")
     (re-search-backward "]")))
+
+(defun my/bibtex-completion-format-citation-pandoc-citeproc (keys)
+  "Format pandoc-citeproc citations for the entries in KEYS."
+  (let* ((prenote  (if bibtex-completion-cite-prompt-for-optional-arguments (read-from-minibuffer "Prenote: ") ""))
+         (postnote (if bibtex-completion-cite-prompt-for-optional-arguments (read-from-minibuffer "Postnote: ") ""))
+         (prenote  (if (string= "" prenote)  "" (concat prenote  " ")))
+         (postnote (if (string= "" postnote) "" (concat ", " postnote))))
+    (format "%s%s%s" prenote (s-join "; " (--map (concat "@" it) keys)) postnote)))
