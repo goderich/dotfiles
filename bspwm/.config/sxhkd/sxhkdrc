@@ -18,7 +18,10 @@ super + Escape
 super + c
 	rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
 
-#
+# Open pass in rofi
+super + p
+	rofi-pass
+
 # bspwm hotkeys
 #
 
@@ -36,7 +39,7 @@ super + m
 
 # send the newest marked node to the newest preselected node
 super + y
-	bspc node newest.marked.local -n newest.!automatic.local
+	alacritty -e pacfzf
 
 # swap the current node and the biggest node
 super + g
@@ -63,8 +66,8 @@ super + {_,shift + }{h,j,k,l}
 	bspc node -{f,s} {west,south,north,east}
 
 # focus the node for the given path jump
-super + {p,b,comma,period}
-	bspc node -f @{parent,brother,first,second}
+# super + {p,b,comma,period}
+# 	bspc node -f @{parent,brother,first,second}
 
 # focus the next/previous node in the current desktop
 # super + {_,shift + }c
