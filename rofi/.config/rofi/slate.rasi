@@ -8,6 +8,7 @@
 }
 
 window {
+  location: center;
   border-radius: 40px;
 }
 
