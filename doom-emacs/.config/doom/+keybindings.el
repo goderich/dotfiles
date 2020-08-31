@@ -46,6 +46,7 @@
     :desc "Open agenda"       "a"   #'org-agenda
     :desc "org-todo"          "t"   #'org-todo
     :desc "org-rifle"         "r"   #'helm-org-rifle-current-buffer
+    :desc "Insert citation"   "c"   #'org-ref-helm-insert-cite-link
     (:prefix ("T" . "tags")
      :desc "Toggle tag groups" "g" #'org-toggle-tags-groups)))
 
