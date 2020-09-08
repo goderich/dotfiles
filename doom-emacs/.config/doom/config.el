@@ -5,6 +5,7 @@
 
 ;;; Code:
 
+(load! "+vars")
 (load! "+fonts")
 (load! "+org")
 (load! "+ui")
