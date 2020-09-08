@@ -17,3 +17,9 @@
           (latex-mode . bibtex-completion-format-citation-cite)
           (markdown-mode . bibtex-completion-format-citation-pandoc-citeproc)
           (default . bibtex-completion-format-citation-default))))
+
+; Ebib settings
+(after! ebib
+  (setq ebib-preload-bib-files '("~/Documents/bibliography.bib"))
+  (setq ebib-file-associations '(("pdf" . "zathura") ("ps" . "gv")))
+  (setq ebib-notes-directory "~/Documents/org/literature-notes"))

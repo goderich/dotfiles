@@ -15,3 +15,6 @@
 (unpin! org-roam company-org-roam)
 ;; When using bibtex-completion via the `biblio` module
 (unpin! bibtex-completion helm-bibtex ivy-bibtex)
+
+;; Bibliography management
+(package! ebib)
