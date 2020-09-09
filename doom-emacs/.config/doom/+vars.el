@@ -8,4 +8,7 @@
         (if (string= (system-name) "iwaka-thinkpad")
             ,x ,y)))
 
-(choose-var my/org-directory "~/Dropbox/org" "")
+(choose-var my/org-directory "~/Dropbox/org"  "~/Documents/org")
+(choose-var my/org-roam-directory "" "~/Documents/org/roam")
+(choose-var my/default-bibliography "" "~/Documents/bibliography.bib")
+(choose-var my/ebib-notes "" "~/Documents/org/literature-notes")

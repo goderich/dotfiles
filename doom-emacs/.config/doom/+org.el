@@ -2,7 +2,7 @@
 
 ;; Setup org agenda
 (custom-set-variables
- '(org-directory "~/Dropbox/org")
+ '(org-directory my/org-directory)
  '(org-agenda-files (list org-directory)))
 
 (after! org
@@ -34,7 +34,7 @@
           ("CANCELLED" :inherit (error bold)))))
 
 ;; org-roam config
-(setq org-roam-directory "~/Dropbox/org/roam")
+(setq org-roam-directory my/org-roam-directory)
 
 (use-package org-roam-bibtex
   :after org-roam

@@ -1,6 +1,6 @@
 ;;; ~/dotfiles/doom-emacs/.config/doom/+referencing.el -*- lexical-binding: t; -*-
 
-(setq reftex-default-bibliography "~/pap.bib")
+(setq reftex-default-bibliography my/default-bibliography)
 (setq org-ref-default-bibliography reftex-default-bibliography)
 (setq bibtex-completion-bibliography reftex-default-bibliography)
 
@@ -20,6 +20,6 @@
 
 ; Ebib settings
 (after! ebib
-  (setq ebib-preload-bib-files '("~/Documents/bibliography.bib"))
+  (setq ebib-preload-bib-files `(,my/default-bibliography))
   (setq ebib-file-associations '(("pdf" . "zathura") ("ps" . "gv")))
-  (setq ebib-notes-directory "~/Documents/org/literature-notes"))
+  (setq ebib-notes-directory my/ebib-notes))
