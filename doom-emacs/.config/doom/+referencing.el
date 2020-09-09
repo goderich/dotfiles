@@ -22,4 +22,5 @@
 (after! ebib
   (setq ebib-preload-bib-files `(,my/default-bibliography))
   (setq ebib-file-associations '(("pdf" . "zathura") ("ps" . "gv")))
-  (setq ebib-notes-directory my/ebib-notes))
+  (setq ebib-notes-directory my/ebib-notes)
+  (setq ebib-bibtex-dialect 'biblatex))
