@@ -9,6 +9,8 @@
             ,x ,y)))
 
 (choose-var my/org-directory "~/Dropbox/org"  "~/Documents/org")
-(choose-var my/org-roam-directory "" "~/Documents/org/roam")
-(choose-var my/default-bibliography "" "~/Documents/bibliography.bib")
-(choose-var my/ebib-notes "" "~/Documents/org/literature-notes")
+(choose-var my/default-bibliography "~/Dropbox/pap.bib" "~/Documents/bibliography.bib")
+
+;; Variables with relative paths
+(defvar my/org-roam-directory (f-join my/org-directory "roam"))
+(defvar my/ebib-notes (f-join my/org-directory "literature-notes"))
