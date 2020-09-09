@@ -80,3 +80,6 @@
 (map! (:leader
         (:prefix "g"
           :nv "n" #'git-gutter:next-hunk)))
+
+(map! :map ebib-index-mode-map
+      :n "J" #'ebib-jump-to-entry)
