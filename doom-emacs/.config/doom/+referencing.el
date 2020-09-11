@@ -11,7 +11,14 @@
   (setq ebib-bibtex-dialect 'biblatex)
   (setq ebib-index-columns '(("Author/Editor" 20 t)
                              ("Year" 6 t)
-                             ("Title" 40 t))))
+                             ("Title" 40 t)))
+  ; is there a better way to modify a nested list?
+  ; (yes: let-alist macro)
+;; (let-alist ebib-citation-commands
+;;       (car .org-mode))
+  (setf (cadadr ebib-citation-commands)
+        '(("text" "@%K%< [%A]%>")
+          ("paren" "[%(%<%A %>@%K%<, %A%>%; )]"))))
 
 ; Visual line mode makes entries occupy 2 or even more lines in the index.
 ; This is unnecessary, because I can see the full list of authors and title
