@@ -16,3 +16,6 @@
 
 ;; Let my window manager manage my windows
 (package! frames-only-mode)
+
+;; Nested alist manipulation
+(package! let-alist)
