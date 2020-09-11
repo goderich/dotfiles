@@ -4,11 +4,6 @@
 ;; No-distraction writing
 (package! writeroom-mode)
 
-;; Citations
-(package! org-ref)
-
-(package! helm-org-rifle)
-
 (package! org-roam-bibtex
   :recipe (:host github :repo "org-roam/org-roam-bibtex"))
 ;; When using org-roam via the `+roam` flag
