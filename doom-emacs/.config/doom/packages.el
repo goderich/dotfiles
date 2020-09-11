@@ -13,3 +13,6 @@
 
 ;; Bibliography management
 (package! ebib)
+
+;; Let my window manager manage my windows
+(package! frames-only-mode)
