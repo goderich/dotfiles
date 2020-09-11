@@ -13,6 +13,8 @@
     :desc "Prepend to existing lines" :n "p" 'prepend-numbers))
   (:prefix "t"
    :desc "Toggle writeroom mode" :n "w" 'writeroom-mode)
+  (:prefix "o"
+   :desc "Ebib" :nv "e" #'ebib)
   :desc "Switch to another buffer" :nv "," #'+ivy/switch-buffer
   :desc "Make a new Emacs frame" :nv "F" 'make-frame))
 
@@ -46,7 +48,7 @@
     :desc "Open agenda"       "a"   #'org-agenda
     :desc "org-todo"          "t"   #'org-todo
     :desc "org-rifle"         "r"   #'helm-org-rifle-current-buffer
-    :desc "Insert citation"   "c"   #'org-ref-helm-insert-cite-link
+    :desc "Insert citation"   "c"   #'ebib-insert-citation
     (:prefix ("T" . "tags")
      :desc "Toggle tag groups" "g" #'org-toggle-tags-groups)))
 
@@ -71,7 +73,7 @@
       (:prefix "g"
         :nv "h" #'markdown-up-heading)
       (:localleader
-        :desc "Insert citation"   "c"  #'org-ref-helm-insert-cite-link))
+        :desc "Insert citation"   "c"  #'ebib-insert-citation))
 
 (map! :map pdf-view-mode-map
       (:localleader
@@ -81,5 +83,12 @@
         (:prefix "g"
           :nv "n" #'git-gutter:next-hunk)))
 
+;; ebib keybindings
+;; ebib has several windows, which use different maps
 (map! :map ebib-index-mode-map
-      :n "J" #'ebib-jump-to-entry)
+      :n "J" #'ebib-jump-to-entry
+      :n "TAB" #'ebib-edit-entry)
+
+(map! :map ebib-entry-mode-map
+      :n "TAB" #'evil-window-next
+      :n "z" #'ebib-leave-ebib-windows)
