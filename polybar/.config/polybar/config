@@ -55,8 +55,8 @@ font-0 = fixed:pixelsize=10;1
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
 
-modules-left = bspwm i3
-modules-center = mpd
+modules-left = bspwm
+;modules-center = mpd
 modules-right = alsa pulseaudio memory cpu wlan battery0 battery1 temperature date powermenu
 
 tray-position = right
