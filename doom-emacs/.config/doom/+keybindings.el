@@ -16,7 +16,9 @@
   (:prefix "o"
    :desc "Ebib" :nv "e" #'ebib)
   :desc "Switch to another buffer" :nv "," #'+ivy/switch-buffer
-  :desc "Make a new Emacs frame" :nv "F" 'make-frame))
+  :desc "Make a new Emacs frame" :nv "F" 'make-frame
+  (:prefix "g"
+   :nv "n" #'git-gutter:next-hunk)))
 
 ;; evil keybindings
 (after! evil
@@ -78,10 +80,6 @@
 (map! :map pdf-view-mode-map
       (:localleader
       :desc "Add text annotation" "t" 'pdf-annot-add-text-annotation))
-
-(map! (:leader
-        (:prefix "g"
-          :nv "n" #'git-gutter:next-hunk)))
 
 ;; ebib keybindings
 ;; ebib has several windows, which use different maps
