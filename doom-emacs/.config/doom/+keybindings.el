@@ -88,5 +88,5 @@
       :n "TAB" #'ebib-edit-entry)
 
 (map! :map ebib-entry-mode-map
-      :n "TAB" #'evil-window-next
+      :n "TAB" #'ebib-quit-entry-buffer
       :n "z" #'ebib-leave-ebib-windows)
