@@ -5,6 +5,9 @@
  '(org-directory my/org-directory)
  '(org-agenda-files (list org-directory)))
 
+;; Fix ox-pandoc source blocks
+(add-hook 'org-export-before-parsing-hook #'tb/ox-pandoc-fix-export-blocks)
+
 (after! org
 
   ;; Set org file associations

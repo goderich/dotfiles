@@ -94,3 +94,20 @@
      "} \\toprule")
     (re-search-backward "]")))
 
+;; This function is from https://github.com/kawabata/ox-pandoc/issues/51
+(defun tb/ox-pandoc-fix-export-blocks (backend)
+  "Wrap all export blocks with =BEGIN_EXPORT org=, so ox-pandoc does not remove them"
+  (when (or (eq backend 'pandoc) (eq backend 'org))
+    (let ((blocks
+           (org-element-map
+               (org-element-parse-buffer)
+               'export-block
+             'identity)))
+      (seq-map
+       (lambda (b)
+         (unless (string= (org-element-property :type b) "ORG")
+           (goto-char (org-element-property :end b))
+           (insert "#+END_EXPORT\n")
+           (goto-char (org-element-property :begin b))
+           (insert "#+BEGIN_EXPORT org\n,")))
+       (reverse blocks)))))
