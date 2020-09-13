@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: References div
+# key: <refs
+# https://github.com/kawabata/ox-pandoc/issues/68
+# --
+#+BEGIN_EXPORT org
+#+ATTR_HTML: :id refs
+#+BEGIN_bib
+#+END_bib
+#+END_EXPORT
