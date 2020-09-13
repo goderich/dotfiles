@@ -21,6 +21,10 @@
 ;; Add detailed diffs in magit
 (setq magit-diff-refine-hunk 'all)
 
+;; TAB always indents
+;; (to insert an actual TAB, use "C-v TAB")
+(setq tab-always-indent t)
+
 ;; Disable smartparens-mode in org and markdown
 (add-hook 'org-mode-hook #'turn-off-smartparens-mode)
 (add-hook 'markdown-mode-hook #'turn-off-smartparens-mode)
