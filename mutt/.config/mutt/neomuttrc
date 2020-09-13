@@ -5,27 +5,33 @@ set alias_file=~/.mutt/aliases
 
 set imap_user=yuhsien77@gmail.com
 set imap_pass=$my_pwd
-set folder=imaps://imap.gmail.com/
-set spoolfile=+INBOX
-mailboxes =INBOX
+#set folder=imaps://imap.gmail.com/
+set folder=~/.mail
+set spoolfile="+inbox"
+set mbox = "+[Gmail]/All Mail"
+set mbox_type=Maildir
+set postponed = +[Gmail]/Drafts
+mailboxes +inbox
+#mailboxes +NTHU
+mailboxes +NTHU/Histling-2019 +NTHU/Language-Contact-2019
+mailboxes +NTHU/Dissertation
+mailboxes +Documents
+unset record # Do not store sent messages
 
 # Store message headers locally to speed things up.
 # If hcache is a folder, Mutt will create sub cache folders for each account which may speeds things up even more.
-set header_cache = ~/.cache/mutt
+# set header_cache = ~/.cache/mutt
 
 # Store messages locally to speed things up, like searching message bodies.
 # Can be the same folder as header_cache.
 # This will cost important disk usage according to your e-mail amount.
-set message_cachedir = "~/.cache/mutt"
-
-# Specify where to save and/or look for postponed messages.
-set postponed = +[Gmail]/Drafts
+# set message_cachedir = "~/.cache/mutt"
 
 # Allow Mutt to open new imap connection automatically.
 unset imap_passive
 
 # Keep IMAP connection alive by polling intermittently (time in seconds).
-set imap_keepalive = 120
+# set imap_keepalive = 120
 
 # How often to check for new mail (time in seconds).
 set mail_check = 120
@@ -37,9 +43,6 @@ set from = yuhsien77@gmail.com
 set use_from = yes
 set editor=nvim
 set send_charset="utf-8"
-
-# Do not store sent messages
-unset record
 
 # Show new messages on top
 set sort=reverse-date
@@ -73,15 +76,24 @@ set send_charset="utf-8"
 set rfc2047_parameters
 
 # Do not automatically mark unread messages as "old"
-set mark_old=no
+unset mark_old
 
 # My keybinds
 bind pager <up> previous-line
 bind pager <down> next-line
 bind index g  noop
 bind index gg first-entry
-bind editor <Tab> complete-query
 bind index,pager M compose-to-sender
+#bind editor <Tab> complete-query
+
+# Sidebar settings
+set sidebar_visible
+bind index,pager B sidebar-toggle-visible
+# Shorten and indent names with '/' in them
+set sidebar_short_path
+set sidebar_delim_chars="/"
+set sidebar_folder_indent
+set sidebar_indent_string="  "
 
 # notmuch settings
 set nm_default_uri = "notmuch:///home/iwaka/.mail"
