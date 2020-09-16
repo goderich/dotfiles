@@ -22,6 +22,10 @@ super + c
 super + p
 	rofi-pass
 
+# Take a screenshot
+Print
+	gnome-screenshot
+
 # bspwm hotkeys
 #
 
