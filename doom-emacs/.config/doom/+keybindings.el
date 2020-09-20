@@ -26,6 +26,18 @@
    :nv "k" #'evil-previous-visual-line
    :nv "j" #'evil-next-visual-line))
 
+;; evil-snipe keybindings
+(after! evil-snipe
+  (map! :map evil-snipe-parent-transient-map
+;; After a successful snipe, evil-snipe switches to a
+;; transient mode, where f/t/s (whichever one was used
+;; for the search), search for the next occurrence instead
+;; of the usual behaviour, and F/T/S search in the other
+;; direction. This mode also grabs the ";" and "," keys
+;; for the same purpose. I'm okay with the ";" key being
+;; used this way, but I prefer if "," wasn't touched.
+        "," nil))
+
 ;; evil-ex keybindings
 ;; I haven't found a way to map these with the `map!' macro,
 ;; so I'm assuming it can't be used that way.
