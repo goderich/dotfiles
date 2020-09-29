@@ -60,11 +60,17 @@
     :desc "Open link"         "l"   #'org-open-at-point
     :desc "Archive subtree"   "A"   #'org-archive-subtree
     :desc "Open agenda"       "a"   #'org-agenda
+    :desc "Edit source block" "s"   #'org-edit-src-code
     :desc "org-todo"          "t"   #'org-todo
     :desc "org-rifle"         "r"   #'helm-org-rifle-current-buffer
     :desc "Insert citation"   "c"   #'ebib-insert-citation
     (:prefix ("T" . "tags")
      :desc "Toggle tag groups" "g" #'org-toggle-tags-groups)))
+
+(after! org-src
+  (map! :map org-src-mode-map
+        :nv "Z Z" #'org-edit-src-exit
+        :nv "Z Q" #'org-edit-src-abort))
 
 ;; org agenda keybindings
 ;; These complement the keybinds already set in evil-collection
