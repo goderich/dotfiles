@@ -12,6 +12,9 @@
   (setq ebib-index-columns '(("Author/Editor" 20 t)
                              ("Year" 6 t)
                              ("Title" 40 t)))
+  (map-put! ebib-reference-templates
+            "Article"
+            "{Author}. {Date|Year}. {\"Title\".} {Journaltitle|Journal} {Volume}{(Issue)}{:Pages}. {Doi.}")
   (let-alist ebib-citation-commands ; requires let-alist package
     (setf (car .org-mode)
           '(("text" "@%K%< [%A]%>")
