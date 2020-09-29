@@ -4,10 +4,10 @@
 (setq doom-font
       (font-spec
        :family "Source Code Pro"
-       :size 14.0))
+       :size 20.0))
 
 (setq doom-unicode-font
       (font-spec
        :family "Noto Sans Mono CJK TC"
        :lang "zh"
-       :size 17.0))
+       :size 22.0))
