@@ -44,8 +44,4 @@
 ;; org-roam config
 (setq org-roam-directory my/org-roam-directory)
 
-(use-package org-roam-bibtex
-  :after org-roam
-  :hook (org-roam-mode . org-roam-bibtex-mode))
-
 (setq +org-roam-open-buffer-on-find-file nil)
