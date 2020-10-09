@@ -19,6 +19,10 @@
 (after! evil-vars
   (setq evil-ex-substitute-global t))
 
+;; Show diff when committing in Magit
+(after! magit-commit
+  (setq magit-commit-show-diff t))
+
 ;; Do not automatically fullscreen a frame on entering writeroom mode
 (after! writeroom-mode
   (setq writeroom-fullscreen-effect 'maximized))
