@@ -49,8 +49,8 @@
 ;; Don't keep message buffers around
 (setq message-kill-buffer-on-exit t)
 
-;; Don't use org-mode to compose email
-(remove-hook 'mu4e-compose-mode-hook #'org-mu4e-compose-org-mode)
+;; Use org-mode to compose email
+(add-hook 'mu4e-compose-mode-hook #'org-msg-post-setup)
 
 ;; Visually wrap lines at 80 colums when composing.
 ;; I have tried format=flowing before, but any shenanigans
@@ -63,3 +63,6 @@
 
 ;; optional:
 (setq visual-line-fringe-indicators '(left-curly-arrow right-curly-arrow))
+
+(after! org-msg
+  (setq org-msg-text-plain-alternative nil))
