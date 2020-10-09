@@ -79,6 +79,14 @@
         :m "b" #'org-agenda-earlier
         :m "f" #'org-agenda-later))
 
+;; org-msg keybindings
+;; These are used when composing emails in mu4e
+(after! org-msg
+  (map! :map org-msg-edit-mode-map
+        :localleader
+        :desc "Send message and exit" :nv "S" #'org-ctrl-c-ctrl-c
+        :desc "Attach file"           :nv "a" #'org-msg-attach-attach))
+
 ;; lisp editing keybindings
 (map! :map (emacs-lisp-mode-map dune-mode-map)
       (:localleader
