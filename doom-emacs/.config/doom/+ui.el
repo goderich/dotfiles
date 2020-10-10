@@ -3,9 +3,6 @@
 ;; Soft wrap long lines
 (global-visual-line-mode 1)
 
-;; Use frames instead of windows
-(frames-only-mode)
-
 ;; Disable auto-fill-mode
 (add-hook! '(markdown-mode-hook
              org-mode-hook
