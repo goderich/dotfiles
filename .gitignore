@@ -6,6 +6,7 @@ qutebrowser/.config/qutebrowser/quickmarks
 qutebrowser/.config/qutebrowser/bookmarks/*
 qutebrowser/.config/qutebrowser/autoconfig.yml
 vim/.config/nvim/.netrwhist
+vim/.config/nvim/autoload
 systemd/.config/systemd/user/default.target.wants
 fish/.config/fish/fish_variables
 fish/.config/fish/functions/__fzf*
