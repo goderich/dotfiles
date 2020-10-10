@@ -49,6 +49,12 @@
 ;; Don't keep message buffers around
 (setq message-kill-buffer-on-exit t)
 
+;; Changing filenames when moving works better with mbsync,
+;; but not with offlineimap, which is what I'm using now.
+;; Having it as `t' gives me errors that mu4e can't find
+;; the file.
+(setq mu4e-change-filenames-when-moving nil)
+
 ;; Use org-mode to compose email
 (add-hook 'mu4e-compose-mode-hook #'org-msg-post-setup)
 
