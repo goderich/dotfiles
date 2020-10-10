@@ -8,11 +8,6 @@
 ;; Fix ox-pandoc source blocks
 (add-hook 'org-export-before-parsing-hook #'tb/ox-pandoc-fix-export-blocks)
 
-;; Workaround for Return key not working in org-mode, see:
-;; https://github.com/hlissner/doom-emacs/issues/3172
-(add-hook 'org-mode-hook
-          (lambda () (electric-indent-local-mode -1)))
-
 (after! org
 
   ;; Set org file associations
