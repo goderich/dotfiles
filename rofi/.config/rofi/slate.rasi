@@ -4,7 +4,7 @@
   text-color: #8ca0aa;
   spacing: 0;
   width: 512px;
-  font: "Knack Nerd Font 14";
+  font: "Knack Nerd Font 16";
 }
 
 window {
