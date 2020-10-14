@@ -64,7 +64,9 @@
        word-wrap         ; soft wrapping with language-aware indent
 
        :emacs
-       dired             ; making dired pretty [functional]
+       (dired             ; making dired pretty [functional]
+       +ranger
+       +icons)
        ediff             ; comparing files in Emacs
        electric          ; smarter, keyword-based electric-indent
        ;;ibuffer         ; interactive buffer management
