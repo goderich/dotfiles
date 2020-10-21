@@ -111,3 +111,10 @@
            (goto-char (org-element-property :begin b))
            (insert "#+BEGIN_EXPORT org\n,")))
        (reverse blocks)))))
+
+(defun gd/send-confirm-has-recipient ()
+  "Confirm that the addressee field is not empty before sending."
+  (interactive)
+  (if (not (message-field-value "To"))
+      (message "Empty addressee field!")
+    (org-msg-ctrl-c-ctrl-c)))

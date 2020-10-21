@@ -84,7 +84,7 @@
 (after! org-msg
   (map! :map org-msg-edit-mode-map
         :localleader
-        :desc "Send message and exit" :nv "S" #'org-ctrl-c-ctrl-c
+        :desc "Send message and exit" :nv "s" #'gd/send-confirm-has-recipient
         :desc "Attach file"           :nv "a" #'org-msg-attach-attach))
 
 ;; lisp editing keybindings
