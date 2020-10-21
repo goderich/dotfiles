@@ -58,17 +58,5 @@
 ;; Use org-mode to compose email
 (add-hook 'mu4e-compose-mode-hook #'org-msg-post-setup)
 
-;; Visually wrap lines at 80 colums when composing.
-;; I have tried format=flowing before, but any shenanigans
-;; with line wrapping break in Gmail. The only way to have
-;; emails display decently on different devices is to send
-;; them in long lines. Editing these is a pain though, hence
-;; this setting.
-(add-hook 'mu4e-compose-mode-hook (lambda () (setq fill-column 80)))
-(add-hook 'mu4e-compose-mode-hook #'visual-fill-column-mode)
-
-;; optional:
-(setq visual-line-fringe-indicators '(left-curly-arrow right-curly-arrow))
-
 (after! org-msg
   (setq org-msg-text-plain-alternative nil))
