@@ -113,8 +113,8 @@
        (reverse blocks)))))
 
 (defun gd/send-confirm-has-recipient ()
-  "Confirm that the addressee field is not empty before sending."
+  "Confirm that the recipient field is not empty before sending."
   (interactive)
   (if (not (message-field-value "To"))
-      (message "Empty addressee field!")
+      (message "Empty recipient field!")
     (org-msg-ctrl-c-ctrl-c)))
