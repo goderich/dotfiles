@@ -5,9 +5,6 @@
  '(org-directory my/org-directory)
  '(org-agenda-files (list org-directory)))
 
-;; Fix ox-pandoc source blocks
-(add-hook 'org-export-before-parsing-hook #'tb/ox-pandoc-fix-export-blocks)
-
 (after! org
 
   ;; Set org file associations
@@ -35,6 +32,13 @@
           ("NEXT" :inherit (bold default))
           ("WAITING" :inherit (warning bold))
           ("CANCELLED" :inherit (error bold)))))
+
+;; ox-pandoc config
+;; special settings for beamer-pdf and latex-pdf exporters
+(setq org-pandoc-options-for-beamer-pdf '((pdf-engine . "xelatex")))
+(setq org-pandoc-options-for-latex-pdf '((pdf-engine . "xelatex")))
+;; Fix ox-pandoc source blocks
+(add-hook 'org-export-before-parsing-hook #'tb/ox-pandoc-fix-export-blocks)
 
 ;; org-roam config
 (setq org-roam-directory my/org-roam-directory)
