@@ -112,6 +112,44 @@
            (insert "#+BEGIN_EXPORT org\n,")))
        (reverse blocks)))))
 
+(after! ebib
+  ; These functions need to be loaded after ebib,
+  ; which itself doesn't get loaded until it is called manually.
+
+  (defun gd/ebib-get-author-names (key)
+    (-->
+     (ebib-get-field-value "author" key ebib--cur-db "default" 'unbraced)
+     (s-split " and " it)
+     (--map (car (s-split "," it)) it)
+     (if (< 2 (length it))
+         (concat (car it) " et al")
+       (s-join " and " it))))
+
+  (defun gd/ebib-get-year (key)
+    (or
+     (ebib-get-field-value "year" key ebib--cur-db "default" 'unbraced)
+     (ebib-get-field-value "date" key ebib--cur-db "default" 'unbraced)))
+
+  (defun gd/ebib-get-title (key)
+    (-->
+     (ebib-get-field-value "title" key ebib--cur-db "default" 'unbraced)
+     (s-split ":" it)
+     (car it)
+     (replace-regexp-in-string "[{}]" "" it)
+     (s-trim it)
+     (s-truncate 50 it "")))
+
+  (defun gd/ebib-generate-filename (key)
+    (let ((names (gd/ebib-get-author-names key))
+          (year (gd/ebib-get-year key))
+          (title (gd/ebib-get-title key)))
+      (->> `(,names ,year ,title)
+       (-filter #'identity) ; remove nil values
+       (s-join " ")
+       (replace-regexp-in-string " " "_"))))
+
+) ; end `after!' block
+
 (defun gd/send-confirm-has-recipient ()
   "Confirm that the recipient field is not empty before sending."
   (interactive)

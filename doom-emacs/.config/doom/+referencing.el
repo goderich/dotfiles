@@ -15,6 +15,7 @@
   (map-put! ebib-reference-templates
             "Article"
             "{Author}. {Date|Year}. {\"Title\".} {Journaltitle|Journal} {Volume}{(Issue)}{:Pages}. {Doi.}")
+  (setq ebib-name-transform-function #'gd/ebib-generate-filename)
   (let-alist ebib-citation-commands ; requires let-alist package
     (setf (car .org-mode)
           '(("text" "@%K%< [%A]%>")
