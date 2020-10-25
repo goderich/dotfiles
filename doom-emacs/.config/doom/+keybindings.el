@@ -15,7 +15,6 @@
    :desc "Toggle writeroom mode" :n "w" 'writeroom-mode)
   (:prefix "o"
    :desc "Ebib" :nv "e" #'ebib)
-  :desc "Switch to another buffer" :nv "," #'+ivy/switch-buffer
   :desc "Make a new Emacs frame" :nv "F" 'make-frame
   (:prefix "g"
    :nv "n" #'git-gutter:next-hunk)))
