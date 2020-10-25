@@ -88,7 +88,7 @@
         :desc "Attach file"           :nv "a" #'org-msg-attach-attach))
 
 ;; lisp editing keybindings
-(map! :map (emacs-lisp-mode-map dune-mode-map)
+(map! :map (emacs-lisp-mode-map racket-mode-map dune-mode-map)
       (:localleader
         :desc "Forward slurp"    ")"   #'sp-forward-slurp-sexp
         :desc "Backward slurp"   "("   #'sp-backward-slurp-sexp
