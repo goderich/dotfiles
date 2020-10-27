@@ -35,4 +35,4 @@
             (lambda (&rest _)
               (evil-scroll-line-to-center (line-number-at-pos))))
 
-(evil-set-initial-state 'racket-repl-mode 'emacs)
+(evil-set-initial-state 'sly-mrepl-mode 'emacs)
