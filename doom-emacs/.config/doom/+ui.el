@@ -36,3 +36,9 @@
               (evil-scroll-line-to-center (line-number-at-pos))))
 
 (evil-set-initial-state 'sly-mrepl-mode 'emacs)
+
+;; Disable popup windows by default
+;; (make things open in new buffers instead).
+;; I have also added a keybinding to toggle this mode (SPC t p).
+(after! popup
+  (+popup-mode -1))

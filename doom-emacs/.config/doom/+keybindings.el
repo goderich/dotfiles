@@ -9,13 +9,14 @@
  (:leader
   (:prefix "i"
    (:prefix ("n" . "Insert numbers")
-    :desc "Insert on new lines" :n "n" 'insert-numbers
-    :desc "Prepend to existing lines" :n "p" 'prepend-numbers))
+    :desc "Insert on new lines" :n "n" #'insert-numbers
+    :desc "Prepend to existing lines" :n "p" #'prepend-numbers))
   (:prefix "t"
-   :desc "Toggle writeroom mode" :n "w" 'writeroom-mode)
+   :desc "Toggle writeroom mode" :n "w" #'writeroom-mode
+   :desc "Toggle pop-up windows" :n "p" #'+popup-mode)
   (:prefix "o"
    :desc "Ebib" :nv "e" #'ebib)
-  :desc "Make a new Emacs frame" :nv "F" 'make-frame
+  :desc "Make a new Emacs frame" :nv "F" #'make-frame
   (:prefix "g"
    :nv "n" #'git-gutter:next-hunk)))
 
