@@ -34,6 +34,13 @@
 (advice-add 'evil-ex-search-previous :after
             (lambda (&rest _)
               (evil-scroll-line-to-center (line-number-at-pos))))
+;; And also on git-gutter hunk searches
+(advice-add 'git-gutter:next-hunk :after
+            (lambda (&rest _)
+              (evil-scroll-line-to-center (line-number-at-pos))))
+(advice-add 'git-gutter:previous-hunk :after
+            (lambda (&rest _)
+              (evil-scroll-line-to-center (line-number-at-pos))))
 
 (evil-set-initial-state 'sly-mrepl-mode 'emacs)
 
