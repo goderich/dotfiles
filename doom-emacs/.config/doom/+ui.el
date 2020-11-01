@@ -27,20 +27,33 @@
 ;; Banish the pointer to the upper-right corner on any keypress
 (mouse-avoidance-mode 'banish)
 
-;; Center screen on consecutive searches (n/N)
-(advice-add 'evil-ex-search-next :after
-            (lambda (&rest _)
-              (evil-scroll-line-to-center (line-number-at-pos))))
-(advice-add 'evil-ex-search-previous :after
-            (lambda (&rest _)
-              (evil-scroll-line-to-center (line-number-at-pos))))
-;; And also on git-gutter hunk searches
-(advice-add 'git-gutter:next-hunk :after
-            (lambda (&rest _)
-              (evil-scroll-line-to-center (line-number-at-pos))))
-(advice-add 'git-gutter:previous-hunk :after
-            (lambda (&rest _)
-              (evil-scroll-line-to-center (line-number-at-pos))))
+(defun center-screen-after-fn (fn)
+  "Return an advice that centers the screen after using FN.
+
+This function is written specifically for the `center-screen-after'
+macro."
+  `(advice-add ,fn :after
+               (lambda (&rest _)
+                 (evil-scroll-line-to-center (line-number-at-pos)))))
+
+(defmacro center-screen-after (fns)
+  "Center screen after using any of the functions in FNS.
+
+This is a convenience macro that takes an unquoted list
+of function symbols (i.e. each function should be quoted
+individually, this makes more sense with Emacs's autocomplete).
+It generates an advice for each function that centers the
+screen after the function is used. This is helpful with
+various functions that move the screen during searching.
+The advice is generated using the `center-screen-after-fn'
+function."
+  `(progn ,@(mapcar #'center-screen-after-fn fns)))
+
+;; Center screen on various search functions
+(center-screen-after ('evil-ex-search-next
+                      'evil-ex-search-previous
+                      'git-gutter:next-hunk
+                      'git-gutter:previous-hunk))
 
 (evil-set-initial-state 'sly-mrepl-mode 'emacs)
 
