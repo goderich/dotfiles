@@ -46,7 +46,13 @@ It generates an advice for each function that centers the
 screen after the function is used. This is helpful with
 various functions that move the screen during searching.
 The advice is generated using the `center-screen-after-fn'
-function."
+function.
+
+Demo:
+
+(center-screen-after ('evil-ex-search-next
+                      'evil-ex-search-previous))
+"
   (macroexp-progn (mapcar #'center-screen-after-fn fns)))
 
 ;; Center screen on various search functions
