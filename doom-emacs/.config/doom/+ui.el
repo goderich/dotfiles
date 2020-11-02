@@ -61,7 +61,8 @@ Demo:
                       'git-gutter:next-hunk
                       'git-gutter:previous-hunk))
 
-(evil-set-initial-state 'sly-mrepl-mode 'emacs)
+(set-evil-initial-state!
+  '(sly-repl-mode racket-repl-mode) 'emacs)
 
 ;; Disable popup windows by default
 ;; (make things open in new buffers instead).
