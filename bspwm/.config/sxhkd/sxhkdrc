@@ -45,11 +45,6 @@ super + m
 super + y
 	alacritty -e pacfzf
 
-# swap the current node and the biggest node
-super + g
-	bspc node -s biggest
-
-#
 # state/flags
 #
 
