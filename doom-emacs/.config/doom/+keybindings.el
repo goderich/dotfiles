@@ -67,6 +67,8 @@
     (:prefix ("T" . "tags")
      :desc "Toggle tag groups" "g" #'org-toggle-tags-groups)))
 
+;; org-src keybindings
+;; These are active when editing a source code block in a separate window.
 (after! org-src
   (map! :map org-src-mode-map
         :nv "Z Z" #'org-edit-src-exit
