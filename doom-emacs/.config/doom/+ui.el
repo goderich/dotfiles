@@ -69,3 +69,7 @@ Demo:
 ;; I have also added a keybinding to toggle this mode (SPC t p).
 (after! popup
   (+popup-mode -1))
+
+;; Show Racket xp information in the echo area instead of a tooltip
+(after! racket-xp
+  (setq racket-show-functions '(racket-show-echo-area)))
