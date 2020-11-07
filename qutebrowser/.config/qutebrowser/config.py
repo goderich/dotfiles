@@ -1548,6 +1548,3 @@ config.bind('<Shift-Up>', 'command-history-prev', mode='command')
 
 ## Bindings for register mode
 # config.bind('<Escape>', 'leave-mode', mode='register')
-
-# Nyan cat mode!
-config.source('qutenyan/nyan.py')
