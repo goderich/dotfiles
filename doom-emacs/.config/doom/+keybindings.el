@@ -18,6 +18,7 @@
    :desc "Ebib" :nv "e" #'ebib)
   :desc "Make a new Emacs frame" :nv "F" #'make-frame
   (:prefix "g"
+   :nv "p" #'git-gutter:previous-hunk
    :nv "n" #'git-gutter:next-hunk)))
 
 ;; evil keybindings
