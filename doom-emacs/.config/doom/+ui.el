@@ -58,6 +58,8 @@ Demo:
 ;; Center screen on various search functions
 (center-screen-after ('evil-ex-search-next
                       'evil-ex-search-previous
+                      'evil-ex-search-forward
+                      'evil-ex-search-backward
                       'git-gutter:next-hunk
                       'git-gutter:previous-hunk))
 
