@@ -122,3 +122,7 @@
 (map! :map ebib-entry-mode-map
       :n "TAB" #'ebib-quit-entry-buffer
       :n "z" #'ebib-leave-ebib-windows)
+
+(map! :map racket-mode-map
+      (:localleader
+       :n "e e" #'racket-eval-last-sexp))
