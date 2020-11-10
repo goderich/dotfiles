@@ -63,9 +63,6 @@ Demo:
                       'git-gutter:next-hunk
                       'git-gutter:previous-hunk))
 
-(set-evil-initial-state!
-  '(sly-repl-mode racket-repl-mode) 'emacs)
-
 ;; Disable popup windows by default
 ;; (make things open in new buffers instead).
 ;; I have also added a keybinding to toggle this mode (SPC t p).
