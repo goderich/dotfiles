@@ -54,7 +54,7 @@
       :localleader "T" nil)
   (map! :map org-mode-map
     (:prefix "g"
-      :nv "h" #'org-up-element
+      :nv "h" #'gd/org-up-heading
       :nv "k" #'org-previous-visible-heading)
     :localleader
     :desc "C-c C-c"           ","   #'org-ctrl-c-ctrl-c

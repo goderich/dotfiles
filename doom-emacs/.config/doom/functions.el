@@ -156,3 +156,13 @@
   (if (not (message-field-value "To"))
       (message "Empty recipient field!")
     (org-msg-ctrl-c-ctrl-c)))
+
+(defun gd/org-up-heading ()
+  "Go up to the nearest heading, or to a higher level heading.
+If not on a heading, finds the next heading backwards.
+If already on a heading, goes higher up in the tree. This
+makes sense to me to combine into a single keybinding."
+  (interactive)
+  (if (org-at-heading-p)
+      (org-up-element)
+    (org-previous-visible-heading 1)))
