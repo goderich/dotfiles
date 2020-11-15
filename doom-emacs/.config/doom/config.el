@@ -15,8 +15,11 @@
 (if (string= (system-name) "iwaka-thinkpad")
     (load! "+mail"))
 
-;; Disable company-mode in org and markdown
-(setq company-global-modes '(not org-mode markdown-mode))
+;; Disable company-mode in the following modes
+(setq company-global-modes
+      '(not org-mode
+            org-msg-edit-mode
+            markdown-mode))
 
 ;; Add detailed diffs in magit
 (setq magit-diff-refine-hunk 'all)
