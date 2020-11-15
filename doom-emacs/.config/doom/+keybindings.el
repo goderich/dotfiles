@@ -21,6 +21,10 @@
    :nv "p" #'git-gutter:previous-hunk
    :nv "n" #'git-gutter:next-hunk)))
 
+;; TAB always indents
+;; (to insert an actual TAB, use "C-v TAB")
+(setq tab-always-indent t)
+
 ;; evil keybindings
 (after! evil
   (map!
