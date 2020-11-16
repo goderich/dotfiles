@@ -6,10 +6,10 @@
 ;;; Code:
 
 (load! "+vars")
+(load! "functions")
 (load! "+fonts")
 (load! "+org")
 (load! "+ui-ux")
-(load! "functions")
 (load! "+keybindings")
 (load! "+referencing")
 (if (string= (system-name) "iwaka-thinkpad")
