@@ -25,4 +25,5 @@
 ; This is unnecessary, because I can see the full list of authors and title
 ; right below in the entry window. It's better to see more entries at the
 ; same time in the index window.
-(add-hook 'ebib-index-mode-hook (lambda () (visual-line-mode -1)))
+
+(add-hook 'ebib-index-mode-hook #'turn-off-visual-line-mode)

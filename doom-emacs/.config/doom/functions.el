@@ -190,3 +190,6 @@ Demo:
                       evil-ex-search-previous))
 "
   (macroexp-progn (mapcar #'center-screen-after-fn fns)))
+
+(defun turn-off-visual-line-mode ()
+  (visual-line-mode -1))
