@@ -17,4 +17,4 @@
                    scheme:vi-normal *my-keymap*))))
 
 (define-configuration (buffer web-buffer)
-  ((default-modes (append '(my-mode) %slot-default))))
+  ((default-modes (append '(my-mode vi-normal-mode) %slot-default))))
