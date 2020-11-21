@@ -1,2 +1,3 @@
 set vertical-center true
 set selection-clipboard clipboard
+set scroll-full-overlap 0.1
