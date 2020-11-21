@@ -6,7 +6,8 @@
   "up" 'nyxt/web-mode:scroll-up
   "h" 'nyxt/web-mode:follow-hint
   "H" 'nyxt/web-mode:follow-hint-new-buffer
-  "f" 'nyxt/web-mode:history-backwards)
+  "f" 'nyxt/web-mode:history-backwards
+  "escape" 'nyxt/web-mode:remove-search-hints)
 
 (define-mode my-mode ()
   "Dummy mode for the custom key bindings in `*my-keymap*'."
