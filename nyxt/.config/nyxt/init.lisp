@@ -7,6 +7,10 @@
   "h" 'nyxt/web-mode:follow-hint
   "H" 'nyxt/web-mode:follow-hint-new-buffer
   "f" 'nyxt/web-mode:history-backwards
+  "?" 'nyxt/web-mode:search-buffers
+  "b b" 'switch-buffer
+  "r" 'reload-current-buffer
+  "R" 'reload-buffer
   "escape" 'nyxt/web-mode:remove-search-hints)
 
 (define-mode my-mode ()
