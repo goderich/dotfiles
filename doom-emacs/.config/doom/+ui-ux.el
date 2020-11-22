@@ -26,6 +26,7 @@
 (remove-hook! '(prog-mode-hook text-mode-hook conf-mode-hook)
               #'display-line-numbers-mode)
 
+;; Make substitution with :s global by default
 (after! evil-vars
   (setq evil-ex-substitute-global t))
 

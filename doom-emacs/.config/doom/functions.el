@@ -182,7 +182,7 @@ of functions. It generates an advice for each function
 that centers the screen after the function is used. This
 is helpful with various functions that move the screen
 during searching. The advice is generated using the
-`center-screen-after-fn'function.
+`center-screen-after-fn' function.
 
 Demo:
 
