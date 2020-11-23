@@ -11,6 +11,8 @@
   "b b" 'switch-buffer
   "r" 'reload-current-buffer
   "R" 'reload-buffer
+  "; d" 'nyxt/web-mode:download-hint-url
+  "; y" 'nyxt/web-mode:copy-hint-url
   "escape" 'nyxt/web-mode:remove-search-hints)
 
 (define-mode my-mode ()
