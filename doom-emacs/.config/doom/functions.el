@@ -127,8 +127,8 @@
 
   (defun gd/ebib-get-year (key)
     (or
-     (ebib-get-field-value "year" key ebib--cur-db "default" 'unbraced)
-     (ebib-get-field-value "date" key ebib--cur-db "default" 'unbraced)))
+     (ebib-get-field-value "year" key ebib--cur-db 'noerror 'unbraced)
+     (ebib-get-field-value "date" key ebib--cur-db 'noerror 'unbraced)))
 
   (defun gd/ebib-get-title (key)
     (-->
