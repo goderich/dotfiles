@@ -3,6 +3,9 @@
 ;; Soft wrap long lines
 (global-visual-line-mode 1)
 
+;; Start the week on Mondays
+(setq calendar-week-start-day 1)
+
 ;; Disable auto-fill-mode
 (add-hook! '(markdown-mode-hook
              org-mode-hook
