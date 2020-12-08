@@ -8,7 +8,7 @@ super + Return
 
 # program launcher
 super + d
-	rofi -show run -lines 4 -location 1 -width 40 -bw 2
+	rofi -m -1 -show run -lines 4 -location 1 -width 40 -bw 2
 
 # make sxhkd reload its configuration files:
 super + Escape
@@ -16,11 +16,11 @@ super + Escape
 
 # Clipboard manager (Greenclip)
 super + c
-	rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
+	rofi -m -1 -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
 
 # Open pass in rofi
 super + p
-	rofi-pass
+	rofi-pass -m -1
 
 # Take a screenshot
 Print
