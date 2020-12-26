@@ -129,4 +129,6 @@
 
 (map! :map racket-mode-map
       (:localleader
-       :n "e e" #'racket-eval-last-sexp))
+       :n "e e" #'racket-eval-last-sexp
+       :nv "r" #'racket-run-and-switch-to-repl
+       :nv "R" #'racket-run))
