@@ -4,8 +4,8 @@
 ##   qute://help/settings.html
 
 ## This is here so configs done via the GUI are still loaded.
-## Remove it to not load settings done via the GUI.
-# config.load_autoconfig()
+## Pass False to not load settings done via the GUI.
+config.load_autoconfig()
 
 ## Aliases for commands. The keys of the given dictionary are the
 ## aliases, while the values are the commands they map to.
@@ -516,14 +516,14 @@ c.content.headers.accept_language = 'en-US,en,zh-TW'
 
 ## Whether host blocking is enabled.
 ## Type: Bool
-c.content.host_blocking.enabled = True
+c.content.blocking.enabled = True
 
 ## List of URLs of lists which contain hosts to block.  The file can be
 ## in one of the following formats:  - An `/etc/hosts`-like file - One
 ## host per line - A zip-file of any of the above, with either only one
 ## file, or a file named   `hosts` (with any extension).
 ## Type: List of Url
-c.content.host_blocking.lists = ['https://www.malwaredomainlist.com/hostslist/hosts.txt', 'http://someonewhocares.org/hosts/hosts', 'http://winhelp2002.mvps.org/hosts.zip', 'http://malwaredomains.lehigh.edu/files/justdomains.zip', 'https://pgl.yoyo.org/adservers/serverlist.php?hostformat=hosts&mimetype=plaintext']
+c.content.blocking.hosts.lists = ['https://www.malwaredomainlist.com/hostslist/hosts.txt', 'http://someonewhocares.org/hosts/hosts', 'http://winhelp2002.mvps.org/hosts.zip', 'http://malwaredomains.lehigh.edu/files/justdomains.zip', 'https://pgl.yoyo.org/adservers/serverlist.php?hostformat=hosts&mimetype=plaintext']
 
 ## List of domains that should always be loaded, despite being ad-
 ## blocked. Domains may contain * and ? wildcards and are otherwise
