@@ -23,8 +23,10 @@
       ("/bak.sent"   . ?s)
       ("/bak.trash"  . ?t)))
 
-;; Allow for updating mail using 'u' in the main view:
-(setq mu4e-get-mail-command "offlineimap")
+;; Allow for updating mail using 'u' in the main view.
+;; Warning: fdm needs a -k flag or a "keep" action in the .fdm.conf file,
+;; otherwise it will nuke mail on the server.
+(setq mu4e-get-mail-command "fdm fetch")
 
 ;; My credentials
 (setq user-mail-address "yuhsien77@gmail.com"
