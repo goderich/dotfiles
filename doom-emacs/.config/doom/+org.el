@@ -31,7 +31,13 @@
         '(("LATER" :inherit (warning bold))
           ("NEXT" :inherit (bold default))
           ("WAITING" :inherit (warning bold))
-          ("CANCELLED" :inherit (error bold)))))
+          ("CANCELLED" :inherit (error bold))))
+
+  ;; File to use with org-books mode
+  (after! f
+    (setq org-books-file (f-join (f-slash org-directory) "books.org")))
+
+  ) ; end of after! block
 
 ;; ox-pandoc config
 ;; special settings for beamer-pdf and latex-pdf exporters
