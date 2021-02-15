@@ -9,3 +9,8 @@
 
 ;; Nested alist manipulation
 (package! let-alist)
+
+;; Book management
+(package! org-books :recipe (:host github
+                             :repo "goderich/org-books"
+                             :branch "goodr-deets"))
