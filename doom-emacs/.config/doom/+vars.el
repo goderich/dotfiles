@@ -5,12 +5,13 @@
 (defun choose-var-helper (vars)
   "Comb VARS for three variables: VAR, X, and Y.
 Assign X to VAR if on laptop, otherwise assign Y to VAR."
-  (let ((var (car vars))
-        (x (cadr vars))
-        (y (caddr vars)))
+  (let ((var (cl-first vars))
+        (x (cl-second vars))
+        (y (cl-third vars)))
     `(defvar ,var
-       (if (string= (system-name) "iwaka-thinkpad")
-           ,x ,y))))
+       (pcase (system-name)
+         ("iwaka-thinkpad" ,x)
+         (_ ,y)))))
 
 (defmacro choose-vars (lst)
   "Use X if on laptop, otherwise Y.
