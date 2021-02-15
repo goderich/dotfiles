@@ -5,14 +5,14 @@
 
 ;;; Code:
 
-(load! "+vars")
+(load! "vars")
 (load! "functions")
-(load! "+fonts")
-(load! "+org")
-(load! "+ui-ux")
-(load! "+keybindings")
-(load! "+referencing")
+(load! "fonts")
+(load! "org")
+(load! "ui-ux")
+(load! "keybindings")
+(load! "referencing")
 (if (string= (system-name) "iwaka-thinkpad")
-    (load! "+mail"))
+    (load! "mail"))
 
 ;;; config.el ends here
