@@ -28,19 +28,55 @@
 ;; otherwise it will nuke mail on the server.
 (setq mu4e-get-mail-command "fdm fetch")
 
-;; My credentials
-(setq user-mail-address "yuhsien77@gmail.com"
-      user-full-name  "郭育賢 Andre Goderich")
+(setq mu4e-bookmarks
+      '((:name "Unread messages" :query "flag:unread AND NOT flag:trashed AND maildir:/inbox" :key ?u)
+        (:name "Today's messages" :query "date:today..now AND maildir:/inbox" :key ?t)
+        (:name "Last 7 days" :query "date:7d..now AND maildir:/inbox" :hide-unread t :key ?w)))
+
+;; Set this to hide trashed items instead? (but what about sent?)
+;; (setq mu4e-headers-hide-predicate
+;;       (lambda (msg)
+;;         (member 'trashed (mu4e-message-field msg :flags))))
 
 ;; Sending mail
 (require 'smtpmail)
-(setq message-send-mail-function 'smtpmail-send-it
+(setq message-send-mail-function #'smtpmail-send-it
       smtpmail-stream-type 'starttls
       smtpmail-default-smtp-server "smtp.gmail.com"
-      smtpmail-smtp-server "smtp.gmail.com"
-      smtpmail-smtp-service 587
       mu4e-compose-format-flowed nil
       mu4e-compose-dont-reply-to-self t)
+
+(setq mu4e-context-policy 'pick-first)
+(setq mu4e-compose-context-policy 'ask-if-none)
+
+(setq mu4e-contexts
+      `( ,(make-mu4e-context
+           :name "Private"
+           :enter-func (lambda () (mu4e-message "Entering Private context"))
+           :leave-func (lambda () (mu4e-message "Leaving Private context"))
+           :match-func (lambda (msg)
+                         (when msg
+                           (mu4e-message-contact-field-matches msg :to "yuhsien77@gmail.com")))
+           :vars '((user-mail-address . "yuhsien77@gmail.com")
+                   (user-full-name . "郭育賢 Andre Goderich")
+                   (smtpmail-smtp-server . "smtp.gmail.com")
+                   (smtpmail-smtp-service . 587)))
+
+         ;; Right now I can't send emails from the school address without a school IP.
+         ;; (see here: https://olis.ncue.edu.tw/ct.asp?xItem=7767&ctNode=1137&mp=1)
+         ;; It might be possible to choose an SMTP server that lets me send email anywhere.
+         ;; ,(make-mu4e-context
+         ;;   :name "NCUE"
+         ;;   :enter-func (lambda () (mu4e-message "Entering NCUE context"))
+         ;;   :leave-func (lambda () (mu4e-message "Leaving NCUE context"))
+         ;;   :match-func (lambda (msg)
+         ;;                 (when msg
+         ;;                   (mu4e-message-contact-field-matches msg :to "goderich@cc.ncue.edu.tw")))
+         ;;   :vars '((user-mail-address . "goderich@cc.ncue.edu.tw")
+         ;;           (user-full-name . "郭育賢 Andre Goderich")
+         ;;           (smtpmail-smtp-server . "cc.ncue.edu.tw")
+         ;;           (smtpmail-smtp-service . 25)))
+         ))
 
 ;; Use a normal date format
 (setq mu4e-headers-date-format "%F")
