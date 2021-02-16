@@ -33,9 +33,14 @@
           ("WAITING" :inherit (warning bold))
           ("CANCELLED" :inherit (error bold))))
 
-  ;; File to use with org-books mode
+  ;; org-books
   (after! f
-    (setq org-books-file (f-join (f-slash org-directory) "books.org")))
+    ;; File to use with org-books mode
+    (setq org-books-file (f-join (f-slash org-directory) "books.org"))
+    ;; Derive a separate mode for org-books-specific keybinds
+    (define-derived-mode org-books-mode org-mode "Org books mode")
+    ;; Autostart this mode when opening the org-books file
+    (add-to-list 'auto-mode-alist `(,org-books-file . org-books-mode)))
 
   ) ; end of after! block
 

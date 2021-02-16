@@ -95,6 +95,13 @@
         :desc "Send message and exit" :nv "s" #'gd/send-confirm-has-recipient
         :desc "Attach file"           :nv "a" #'org-msg-attach-attach))
 
+;; org-books keybindings
+;; These are used with my own derived org-books-mode within the books.org file
+(map! :map org-books-mode-map
+      :localleader
+      :desc "Add book from URL"    "u" #'org-books-add-url
+      :desc "Finish and rate book" "f" #'org-books-rate-book)
+
 ;; lisp editing keybindings
 (map! :map (emacs-lisp-mode-map
             racket-mode-map
