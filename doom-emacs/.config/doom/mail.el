@@ -34,10 +34,8 @@
         (:name "Today's messages" :query "date:today..now" :key ?t)
         (:name "Last 7 days" :query "date:7d..now" :key ?w)))
 
-;; Set this to hide trashed items instead? (but what about sent?)
-;; (setq mu4e-headers-hide-predicate
-;;       (lambda (msg)
-;;         (member 'trashed (mu4e-message-field msg :flags))))
+;; Disable visual-line-mode in the headers view for better alignment.
+(add-hook 'mu4e-headers-mode-hook #'turn-off-visual-line-mode)
 
 ;; Sending mail
 (require 'smtpmail)
