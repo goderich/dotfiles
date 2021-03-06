@@ -19,7 +19,8 @@
 ;; then, when you want archive some messages, move them to
 ;; the 'All Mail' folder by pressing ``ma''.
 (setq mu4e-maildir-shortcuts
-    '(("/inbox"      . ?i)
+    '(("/gmail"      . ?g)
+      ("/ncue"       . ?n)
       ("/bak.sent"   . ?s)
       ("/bak.trash"  . ?t)))
 
