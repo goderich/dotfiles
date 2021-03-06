@@ -30,9 +30,9 @@
 (setq mu4e-get-mail-command "fdm fetch")
 
 (setq mu4e-bookmarks
-      '((:name "Unread messages" :query "flag:unread AND NOT flag:trashed AND maildir:/inbox" :key ?u)
-        (:name "Today's messages" :query "date:today..now AND maildir:/inbox" :key ?t)
-        (:name "Last 7 days" :query "date:7d..now AND maildir:/inbox" :hide-unread t :key ?w)))
+      '((:name "Unread messages" :query "flag:unread" :key ?u)
+        (:name "Today's messages" :query "date:today..now" :key ?t)
+        (:name "Last 7 days" :query "date:7d..now" :key ?w)))
 
 ;; Set this to hide trashed items instead? (but what about sent?)
 ;; (setq mu4e-headers-hide-predicate
