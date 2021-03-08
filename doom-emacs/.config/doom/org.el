@@ -42,6 +42,12 @@
     ;; Autostart this mode when opening the org-books file
     (add-to-list 'auto-mode-alist `(,org-books-file . org-books-mode)))
 
+  ;; org-agenda settings
+  ;; Display one week starting from last Monday
+  ;; (this forces the agenda to always start on a Monday).
+  (setq org-agenda-span 'week
+        org-agenda-start-day "-Mon")
+
   ) ; end of after! block
 
 ;; ox-pandoc config
