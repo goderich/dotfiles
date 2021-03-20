@@ -45,12 +45,12 @@
 (mouse-avoidance-mode 'banish)
 
 ;; Center screen on various search functions
-(center-screen-after (evil-ex-search-next
-                      evil-ex-search-previous
-                      evil-ex-search-forward
-                      evil-ex-search-backward
-                      git-gutter:next-hunk
-                      git-gutter:previous-hunk))
+(center-screen-after '(evil-ex-search-next
+                       evil-ex-search-previous
+                       evil-ex-search-forward
+                       evil-ex-search-backward
+                       git-gutter:next-hunk
+                       git-gutter:previous-hunk))
 
 ;; Disable popup windows by default
 ;; (make things open in new buffers instead).

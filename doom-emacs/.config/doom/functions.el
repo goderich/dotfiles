@@ -177,7 +177,7 @@ macro."
 
 (defmacro center-screen-after (fns)
   "Center screen after using any of the functions in FNS.
-This is a convenience macro that takes an unquoted list
+This is a convenience macro that takes a quoted list
 of functions. It generates an advice for each function
 that centers the screen after the function is used. This
 is helpful with various functions that move the screen
@@ -189,7 +189,7 @@ Demo:
 (center-screen-after (evil-ex-search-next
                       evil-ex-search-previous))
 "
-  (macroexp-progn (mapcar #'center-screen-after-fn fns)))
+  (macroexp-progn (mapcar #'center-screen-after-fn (evil-unquote fns))))
 
 (defun turn-off-visual-line-mode ()
   (visual-line-mode -1))
