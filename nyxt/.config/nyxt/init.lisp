@@ -24,3 +24,6 @@
 
 (define-configuration (buffer web-buffer)
   ((default-modes (append '(my-mode) %slot-default))))
+
+(define-configuration browser
+  ((session-restore-prompt :always-restore)))
