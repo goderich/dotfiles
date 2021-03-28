@@ -24,7 +24,7 @@ sxhkd &
 
 # manage wallpaper
 if [ -x /usr/bin/feh ]; then
-    feh --bg-scale /home/iwaka/dotfiles/wallpapers/wp3.jpg
+    feh --bg-scale ~/dotfiles/wallpapers/wp3.jpg
 fi
 
 # display compositor
