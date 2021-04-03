@@ -16,6 +16,7 @@
 (setq company-global-modes
       '(not org-mode
             org-msg-edit-mode
+            org-books-mode
             markdown-mode))
 
 ;; Add detailed diffs in magit
