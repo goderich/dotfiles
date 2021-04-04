@@ -45,8 +45,8 @@
   ;; org-agenda settings
   ;; Display one week starting from last Monday
   ;; (this forces the agenda to always start on a Monday).
-  (setq org-agenda-span 'week
-        org-agenda-start-day "-Mon")
+  (setq org-agenda-span 'week)
+  (add-hook 'org-agenda-mode-hook #'gd/set-org-agenda-start-day)
 
   ) ; end of after! block
 
