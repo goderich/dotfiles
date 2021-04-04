@@ -10,9 +10,9 @@
   ;; Set org file associations
   (setq org-file-apps
       '((auto-mode . emacs)
-      ("\\.pdf::\\([0-9]+\\)?\\'" . "zathura %s -P %1")
-      ("\\.pdf\\'" . "zathura %s")
-      (directory . emacs)))
+        ("\\.pdf::\\([0-9]+\\)?\\'" . "zathura %s -P %1")
+        ("\\.pdf\\'" . "zathura %s")
+        (directory . emacs)))
 
   ;; browser needs to be set with a separate function
   (setq browse-url-browser-function 'browse-url-generic
@@ -28,9 +28,9 @@
           (sequence "NEXT(n)" "WAITING(w)" "LATER(l)" "|" "CANCELLED(c)")))
 
   (setq org-todo-keyword-faces
-        '(("LATER" :inherit (warning bold))
-          ("NEXT" :inherit (bold default))
-          ("WAITING" :inherit (warning bold))
+        '(("LATER"     :inherit (warning bold))
+          ("NEXT"      :inherit (bold default))
+          ("WAITING"   :inherit (warning bold))
           ("CANCELLED" :inherit (error bold))))
 
   ;; org-books
