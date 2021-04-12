@@ -171,9 +171,7 @@ makes sense to me to combine into a single keybinding."
   "Return an advice that centers the screen after using FN.
 This function is written specifically for the `center-screen-after'
 macro."
-  `(advice-add ',fn :after
-               (lambda (&rest _)
-                 (evil-scroll-line-to-center (line-number-at-pos)))))
+  `(advice-add ',fn :after (lambda (&rest _) (recenter))))
 
 (defmacro center-screen-after (fns)
   "Center screen after using any of the functions in FNS.
@@ -186,8 +184,8 @@ during searching. The advice is generated using the
 
 Demo:
 
-(center-screen-after (evil-ex-search-next
-                      evil-ex-search-previous))
+(center-screen-after '(evil-ex-search-next
+                       evil-ex-search-previous))
 "
   (macroexp-progn (mapcar #'center-screen-after-fn (evil-unquote fns))))
 
