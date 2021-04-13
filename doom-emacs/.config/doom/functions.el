@@ -203,3 +203,13 @@ correct day to be checked each time I start the agenda."
         (if (= 1 (calendar-day-of-week (calendar-current-date)))
             "today"
           "-Mon")))
+
+(defun org-move-subtree-all-the-way-down ()
+  "Move the current subtree down past all siblings.
+Only moves past headings of the same level, but not past
+headings of a higher level. Use instead of mashing Alt+down."
+  (interactive)
+  (while (org-get-next-sibling)
+    (org-get-last-sibling)
+    (org-move-subtree-down))
+  (outline-previous-heading))
