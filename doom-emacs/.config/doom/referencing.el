@@ -5,9 +5,10 @@
 
 ; Ebib settings
 (after! ebib
-  (setq ebib-preload-bib-files `(,my/default-bibliography))
-  (setq ebib-file-associations '(("pdf" . "zathura") ("ps" . "gv")))
+  (setq ebib-preload-bib-files (list my/default-bibliography))
   (setq ebib-notes-directory my/ebib-notes)
+  (setq ebib-file-search-dirs (list my/ebib-file-search-dir))
+  (setq ebib-file-associations '(("pdf" . "zathura") ("ps" . "gv")))
   (setq ebib-bibtex-dialect 'biblatex)
   (setq ebib-index-columns '(("Author/Editor" 20 t)
                              ("Year" 6 t)
@@ -22,9 +23,11 @@
           '(("text" "@%K%< [%A]%>")
             ("paren" "[%(%<%A %>@%K%<, %A%>%; )]")))))
 
-; Visual line mode makes entries occupy 2 or even more lines in the index.
-; This is unnecessary, because I can see the full list of authors and title
-; right below in the entry window. It's better to see more entries at the
-; same time in the index window.
-
-(add-hook 'ebib-index-mode-hook #'turn-off-visual-line-mode)
+;; Visual line mode makes entries occupy 2 or even more lines in the index.
+;; This is unnecessary, because I can see the full list of authors and title
+;; right below in the entry window. It's better to see more entries at the
+;; same time in the index window.
+;; I also turn off `evil-snipe-mode' so that I can use the s and S keys
+;; in my own keybindings.
+(add-hook! 'ebib-index-mode-hook #'turn-off-visual-line-mode
+                                 #'turn-off-evil-snipe-mode)

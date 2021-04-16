@@ -129,12 +129,15 @@
 ;; ebib keybindings
 ;; ebib has several windows, which use different maps
 (map! :map ebib-index-mode-map
-      :n "J" #'ebib-jump-to-entry
-      :n "TAB" #'ebib-edit-entry)
+      :n "s"   #'ebib-save-current-database
+      :n "S"   #'ebib-save-all-databases
+      :n "J"   #'ebib-jump-to-entry
+      :n [tab] #'ebib-edit-entry)
 
 (map! :map ebib-entry-mode-map
-      :n "TAB" #'ebib-quit-entry-buffer
-      :n "z" #'ebib-leave-ebib-windows)
+      :n [tab] #'ebib-quit-entry-buffer
+      :n "z"   #'ebib-leave-ebib-windows
+      :n "E"   #'gd/ebib-edit-as-string)
 
 (map! :map racket-mode-map
       (:localleader

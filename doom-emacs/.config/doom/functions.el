@@ -137,17 +137,25 @@
      (car it)
      (replace-regexp-in-string "[{}]" "" it)
      (s-trim it)
-     (s-truncate 50 it "")))
+     (s-truncate 100 it "")))
 
   (defun gd/ebib-generate-filename (key)
     (let ((names (gd/ebib-get-author-names key))
           (year (gd/ebib-get-year key))
           (title (gd/ebib-get-title key)))
-      (->> `(,names ,year ,title)
+      (->> (list names year title)
        (-filter #'identity) ; remove nil values
        (s-join " ")
        (replace-regexp-in-string " " "_"))))
 
+(defun gd/ebib-edit-as-string ()
+  "Edit the current field as a string.
+This is a function for `ebib-entry-mode'. Since `ebib-edit-field'
+has to take a numeric prefix /= 1 in order to begin string
+editing, it seems easier to abstract this into a function and
+give it its own name and keybinding."
+  (interactive)
+  (ebib-edit-field 2))
 ) ; end `after!' block
 
 (defun gd/send-confirm-has-recipient ()
