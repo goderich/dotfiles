@@ -12,8 +12,7 @@
 
 ;; Book management
 (package! org-books :recipe (:host github
-                             :repo "goderich/org-books"
-                             :branch "goodr-deets"))
+                             :repo "goderich/org-books"))
 
 (package! ox-pandoc :recipe (:host github
                              :repo "goderich/ox-pandoc"))
