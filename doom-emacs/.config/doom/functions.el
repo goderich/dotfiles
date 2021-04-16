@@ -148,14 +148,14 @@
        (s-join " ")
        (replace-regexp-in-string " " "_"))))
 
-(defun gd/ebib-edit-as-string ()
-  "Edit the current field as a string.
+  (defun gd/ebib-edit-as-string ()
+    "Edit the current field as a string.
 This is a function for `ebib-entry-mode'. Since `ebib-edit-field'
 has to take a numeric prefix /= 1 in order to begin string
 editing, it seems easier to abstract this into a function and
 give it its own name and keybinding."
-  (interactive)
-  (ebib-edit-field 2))
+    (interactive)
+    (ebib-edit-field 2))
 ) ; end `after!' block
 
 (defun gd/send-confirm-has-recipient ()
