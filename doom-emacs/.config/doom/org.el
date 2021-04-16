@@ -40,7 +40,9 @@
     ;; Derive a separate mode for org-books-specific keybinds
     (define-derived-mode org-books-mode org-mode "Org books mode")
     ;; Autostart this mode when opening the org-books file
-    (add-to-list 'auto-mode-alist `(,org-books-file . org-books-mode)))
+    (add-to-list 'auto-mode-alist `(,org-books-file . org-books-mode))
+    ;; Add new books at the bottom of the chosen subtree.
+    (setq org-books-add-to-top nil))
 
   ;; org-agenda settings
   ;; Display one week starting from last Monday
