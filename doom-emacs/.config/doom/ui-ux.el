@@ -30,6 +30,10 @@
 (remove-hook! '(prog-mode-hook text-mode-hook conf-mode-hook)
               #'display-line-numbers-mode)
 
+;; Make evil commands operate on logical, not visual lines
+(after! evil
+  (setq evil-respect-visual-line-mode nil))
+
 ;; Make substitution with :s global by default
 (after! evil-vars
   (setq evil-ex-substitute-global t))
