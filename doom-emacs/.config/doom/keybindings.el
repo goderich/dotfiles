@@ -60,7 +60,8 @@
   (map! :map org-mode-map
     (:prefix "g"
       :nv "h" #'gd/org-up-heading
-      :nv "k" #'org-previous-visible-heading)
+      :nv "k" #'org-previous-visible-heading
+      :nv "j" #'org-next-visible-heading)
     :localleader
     :desc "C-c C-c"           ","   #'org-ctrl-c-ctrl-c
     :desc "Open link"         "l"   #'org-open-at-point
