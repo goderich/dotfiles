@@ -102,6 +102,7 @@
       :localleader
       :desc "Add book from URL"       "u" #'org-books-add-url
       :desc "Add book from clipboard" "c" #'org-books-cliplink
+      :desc "Start reading a book"    "r" #'gd/org-books-start-reading
       :desc "Finish and rate book"    "f" #'org-books-rate-book)
 
 ;; lisp editing keybindings

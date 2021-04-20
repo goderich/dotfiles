@@ -221,3 +221,12 @@ headings of a higher level. Use instead of mashing Alt+down."
     (org-get-last-sibling)
     (org-move-subtree-down))
   (outline-previous-heading))
+
+(defun gd/org-books-start-reading ()
+  "Mark book at point as READING.
+Also sets the started property to today's date.
+This is a convenience function. Can be called anywhere from
+inside a heading."
+  (interactive)
+  (org-todo "READING")
+  (org-set-property "STARTED" (format-time-string "[%Y-%02m-%02d]")))
