@@ -173,7 +173,7 @@ makes sense to me to combine into a single keybinding."
   (interactive)
   (if (org-at-heading-p)
       (org-up-element)
-    (org-previous-visible-heading 1)))
+    (org-back-to-heading)))
 
 (defun center-screen-after-fn (fn)
   "Return an advice that centers the screen after using FN.
@@ -230,3 +230,15 @@ inside a heading."
   (interactive)
   (org-todo "READING")
   (org-set-property "STARTED" (format-time-string "[%Y-%02m-%02d]")))
+
+(defun gd/org-next-heading ()
+  "Go to the next sibling, or next heading."
+  (interactive)
+  (or (org-get-next-sibling)
+      (org-next-visible-heading)))
+
+(defun gd/org-previous-heading ()
+  "Go to the previous sibling, or previous heading."
+  (interactive)
+  (or (org-get-last-sibling)
+      (org-previous-visible-heading)))
