@@ -234,11 +234,9 @@ inside a heading."
 (defun gd/org-next-heading ()
   "Go to the next sibling, or next heading."
   (interactive)
-  (or (org-get-next-sibling)
-      (org-next-visible-heading)))
+  (org-get-next-sibling))
 
 (defun gd/org-previous-heading ()
   "Go to the previous sibling, or previous heading."
   (interactive)
-  (or (org-get-last-sibling)
-      (org-previous-visible-heading)))
+  (org-get-last-sibling))
