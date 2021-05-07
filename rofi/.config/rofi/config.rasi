@@ -1,5 +1,5 @@
 configuration {
-	modi: "combi";
+	modi: "combi,run";
 /*	width: 50;*/
 /*	lines: 15;*/
 /*	columns: 1;*/
