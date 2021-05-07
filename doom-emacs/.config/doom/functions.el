@@ -102,7 +102,7 @@
            (org-element-map
                (org-element-parse-buffer)
                'export-block
-             'identity)))
+             #'identity)))
       (seq-map
        (lambda (b)
          (unless (string= (org-element-property :type b) "ORG")

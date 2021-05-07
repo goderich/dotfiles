@@ -1,6 +1,5 @@
 ;;; ~/dotfiles/doom-emacs/.config/doom/+keybindings.el -*- lexical-binding: t; -*-
 
-
 ;; comma as localleader is baws
 (setq doom-localleader-key ",")
 
@@ -127,7 +126,7 @@
 
 (map! :map pdf-view-mode-map
       (:localleader
-      :desc "Add text annotation" "t" 'pdf-annot-add-text-annotation))
+      :desc "Add text annotation" "t" #'pdf-annot-add-text-annotation))
 
 ;; ebib keybindings
 ;; ebib has several windows, which use different maps
