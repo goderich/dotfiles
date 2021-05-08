@@ -1,0 +1,7 @@
+# Ignore everything
+*
+# Except for..
+!.gitignore
+!init.el
+!config.org
+!themes/
