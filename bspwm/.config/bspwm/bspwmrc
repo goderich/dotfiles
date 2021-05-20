@@ -28,8 +28,8 @@ if [ -x /usr/bin/feh ]; then
 fi
 
 # display compositor
-if [ -x /usr/bin/compton ]; then
-    compton -bf &
+if [ -x /usr/bin/picom ]; then
+    picom -b &
 fi
 
 if [ -x /usr/bin/devmon ]; then
