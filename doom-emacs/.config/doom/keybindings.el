@@ -128,6 +128,10 @@
       (:localleader
       :desc "Add text annotation" "t" #'pdf-annot-add-text-annotation))
 
+(map! :map pdf-annot-edit-contents-minor-mode-map
+      :desc "Commit annotation" :nv "Z Z" #'pdf-annot-edit-contents-commit
+      :desc "Abort annotation"  :nv "Z Q" #'pdf-annot-edit-contents-abort)
+
 ;; ebib keybindings
 ;; ebib has several windows, which use different maps
 (map! :map ebib-index-mode-map
