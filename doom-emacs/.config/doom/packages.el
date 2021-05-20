@@ -16,3 +16,5 @@
 
 (package! ox-pandoc :recipe (:host github
                              :repo "goderich/ox-pandoc"))
+
+(package! pandoc-mode)
