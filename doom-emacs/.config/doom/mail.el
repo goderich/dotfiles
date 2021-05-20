@@ -25,9 +25,7 @@
       ("/bak.trash"  . ?t)))
 
 ;; Allow for updating mail using 'u' in the main view.
-;; Warning: fdm needs a -k flag or a "keep" action in the .fdm.conf file,
-;; otherwise it will nuke mail on the server.
-(setq mu4e-get-mail-command "fdm fetch")
+(setq mu4e-get-mail-command "mbsync -a")
 
 (setq mu4e-bookmarks
       '((:name "Unread messages" :query "flag:unread" :key ?u)
@@ -56,27 +54,23 @@
            :leave-func (lambda () (mu4e-message "Leaving Private context"))
            :match-func (lambda (msg)
                          (when msg
-                           (mu4e-message-contact-field-matches msg :to "yuhsien77@gmail.com")))
+                           (mu4e-message-contact-field-matches msg :to "yuhsien77")))
            :vars '((user-mail-address . "yuhsien77@gmail.com")
                    (user-full-name . "郭育賢 Andre Goderich")
                    (smtpmail-smtp-server . "smtp.gmail.com")
                    (smtpmail-smtp-service . 587)))
 
-         ;; Right now I can't send emails from the school address without a school IP.
-         ;; (see here: https://olis.ncue.edu.tw/ct.asp?xItem=7767&ctNode=1137&mp=1)
-         ;; It might be possible to choose an SMTP server that lets me send email anywhere.
-         ;; ,(make-mu4e-context
-         ;;   :name "NCUE"
-         ;;   :enter-func (lambda () (mu4e-message "Entering NCUE context"))
-         ;;   :leave-func (lambda () (mu4e-message "Leaving NCUE context"))
-         ;;   :match-func (lambda (msg)
-         ;;                 (when msg
-         ;;                   (mu4e-message-contact-field-matches msg :to "goderich@cc.ncue.edu.tw")))
-         ;;   :vars '((user-mail-address . "goderich@cc.ncue.edu.tw")
-         ;;           (user-full-name . "郭育賢 Andre Goderich")
-         ;;           (smtpmail-smtp-server . "cc.ncue.edu.tw")
-         ;;           (smtpmail-smtp-service . 25)))
-         ))
+         ,(make-mu4e-context
+           :name "NCUE"
+           :enter-func (lambda () (mu4e-message "Entering NCUE context"))
+           :leave-func (lambda () (mu4e-message "Leaving NCUE context"))
+           :match-func (lambda (msg)
+                         (when msg
+                           (mu4e-message-contact-field-matches msg :to "goderich.*ncue.edu.tw")))
+           :vars '((user-mail-address . "goderich@gm.ncue.edu.tw")
+                   (user-full-name . "郭育賢 Andre Goderich")
+                   (smtpmail-smtp-server . "smtp.gmail.com")
+                   (smtpmail-smtp-service . 587)))))
 
 ;; Use a normal date format
 (setq mu4e-headers-date-format "%F")
