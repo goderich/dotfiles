@@ -50,12 +50,17 @@
 (mouse-avoidance-mode 'banish)
 
 ;; Center screen on various search functions
-(center-screen-after '(evil-ex-search-next
-                       evil-ex-search-previous
-                       evil-ex-search-forward
-                       evil-ex-search-backward
-                       git-gutter:next-hunk
-                       git-gutter:previous-hunk))
+(advice-add! '(evil-ex-search-next evil-ex-search-previous
+               evil-ex-search-forward evil-ex-search-backward
+               git-gutter:next-hunk git-gutter:previous-hunk
+               +lookup/definition)
+             :after
+             (lambda (&rest _) (recenter)))
+
+;; Scroll line to top after some search functions
+(advice-add! '(counsel-org-goto)
+             :after
+             (lambda (&rest _) (evil-scroll-line-to-top nil)))
 
 ;; Disable popup windows by default
 ;; (make things open in new buffers instead).

@@ -197,6 +197,16 @@ Demo:
 "
   (macroexp-progn (mapcar #'center-screen-after-fn (evil-unquote fns))))
 
+(defun advice-add! (symbols where functions)
+  "Like `advice-add', except SYMBOLS and FUNCTIONS can be lists."
+  (unless (listp symbols) (setq symbols (list symbols)))
+  (unless (and (not (functionp functions))
+               (listp functions))
+    (setq functions (list functions)))
+  (dolist (sym symbols)
+    (dolist (fn functions)
+      (advice-add sym where fn))))
+
 (defun turn-off-visual-line-mode ()
   (visual-line-mode -1))
 
