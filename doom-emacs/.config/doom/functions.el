@@ -175,28 +175,6 @@ makes sense to me to combine into a single keybinding."
       (org-up-element)
     (org-back-to-heading)))
 
-(defun center-screen-after-fn (fn)
-  "Return an advice that centers the screen after using FN.
-This function is written specifically for the `center-screen-after'
-macro."
-  `(advice-add ',fn :after (lambda (&rest _) (recenter))))
-
-(defmacro center-screen-after (fns)
-  "Center screen after using any of the functions in FNS.
-This is a convenience macro that takes a quoted list
-of functions. It generates an advice for each function
-that centers the screen after the function is used. This
-is helpful with various functions that move the screen
-during searching. The advice is generated using the
-`center-screen-after-fn' function.
-
-Demo:
-
-(center-screen-after '(evil-ex-search-next
-                       evil-ex-search-previous))
-"
-  (macroexp-progn (mapcar #'center-screen-after-fn (evil-unquote fns))))
-
 (defun advice-add! (symbols where functions)
   "Like `advice-add', except SYMBOLS and FUNCTIONS can be lists."
   (unless (listp symbols) (setq symbols (list symbols)))
