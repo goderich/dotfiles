@@ -240,3 +240,9 @@ inside a heading."
   "Go to the previous sibling, or previous heading."
   (interactive)
   (org-get-last-sibling))
+
+(defun save-and-kill-this-buffer ()
+  "Save the current buffer and close it."
+  (interactive)
+  (save-buffer)
+  (kill-this-buffer))

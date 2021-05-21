@@ -46,7 +46,9 @@
 ;; evil-ex keybindings
 ;; I haven't found a way to map these with the `map!' macro,
 ;; so I'm assuming it can't be used that way.
-(evil-ex-define-cmd "q" #'kill-this-buffer)
+(evil-ex-define-cmd "q"  #'kill-this-buffer)
+(evil-ex-define-cmd "wq" #'save-and-kill-this-buffer)
+(evil-ex-define-cmd "x"  #'save-and-kill-this-buffer)
 
 ;; org-mode keybindings
 (after! org
