@@ -225,3 +225,13 @@ headings of a higher level. Use instead of mashing Alt+down."
   (interactive)
   (save-buffer)
   (kill-this-buffer))
+
+(defun gd/reply-received ()
+  "Reply to an email with a simple acknowledgement."
+  (interactive)
+  (mu4e-compose-reply)
+  (sleep-for 1) ; wait for the buffer to load
+  (let ((buff (car (buffer-list))))
+    (with-current-buffer buff
+      (insert "Received, thank you.")
+      (message-send-and-exit))))
