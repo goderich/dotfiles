@@ -27,6 +27,9 @@
 ;; Allow for updating mail using 'u' in the main view.
 (setq mu4e-get-mail-command "mbsync -a")
 
+(setq mu4e-index-cleanup t
+      mu4e-index-lazy-check nil)
+
 (setq mu4e-bookmarks
       '((:name "Unread messages" :query "flag:unread" :key ?u)
         (:name "Today's messages" :query "date:today..now" :key ?t)
@@ -44,7 +47,7 @@
       mu4e-compose-dont-reply-to-self t
       mu4e-compose-in-new-frame t)
 
-(setq mu4e-context-policy 'pick-first)
+(setq mu4e-context-policy 'ask-if-none)
 (setq mu4e-compose-context-policy 'ask-if-none)
 
 (setq mu4e-contexts
@@ -81,11 +84,8 @@
 ;; Don't keep message buffers around
 (setq message-kill-buffer-on-exit t)
 
-;; Changing filenames when moving works better with mbsync,
-;; but not with offlineimap, which is what I'm using now.
-;; Having it as `t' gives me errors that mu4e can't find
-;; the file.
-(setq mu4e-change-filenames-when-moving nil)
+;; Changing filenames when moving works better with mbsync.
+(setq mu4e-change-filenames-when-moving t)
 
 ;; Use org-mode to compose email
 (add-hook 'mu4e-compose-mode-hook #'org-msg-post-setup)
