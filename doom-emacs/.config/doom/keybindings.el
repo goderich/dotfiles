@@ -152,3 +152,13 @@
        :n "e e" #'racket-eval-last-sexp
        :nv "r" #'racket-run-and-switch-to-repl
        :nv "R" #'racket-run))
+
+;; mu4e keybindings
+
+;; When viewing email headers as a list
+(map! :map mu4e-headers-mode-map
+      :nv "r" #'mu4e-compose-reply)
+
+;; When opening individual emails
+(map! :map mu4e-view-mode-map
+      :nv "r" #'mu4e-compose-reply)
