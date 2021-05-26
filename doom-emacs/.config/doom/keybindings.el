@@ -26,14 +26,14 @@
 (setq tab-always-indent t)
 
 ;; evil keybindings
-(after! evil
-  (map!
-   :nv "k" #'evil-previous-visual-line
-   :nv "j" #'evil-next-visual-line))
+(map!
+ :after evil
+ :nv "k" #'evil-previous-visual-line
+ :nv "j" #'evil-next-visual-line)
 
 ;; evil-snipe keybindings
-(after! evil-snipe
-  (map! :map evil-snipe-parent-transient-map
+(map! :map evil-snipe-parent-transient-map
+      :after evil-snipe
 ;; After a successful snipe, evil-snipe switches to a
 ;; transient mode, where f/t/s (whichever one was used
 ;; for the search), search for the next occurrence instead
@@ -41,7 +41,7 @@
 ;; direction. This mode also grabs the ";" and "," keys
 ;; for the same purpose. I'm okay with the ";" key being
 ;; used this way, but I prefer if "," wasn't touched.
-        "," nil))
+      "," nil)
 
 ;; evil-ex keybindings
 ;; I haven't found a way to map these with the `map!' macro,
@@ -51,52 +51,51 @@
 (evil-ex-define-cmd "x"  #'save-and-kill-this-buffer)
 
 ;; org-mode keybindings
-(after! org
-  ;; Unbind the already defined keys first.
-  ;; general.el does this automatically for most things,
-  ;; but not for newly defined prefix keys, so I need to
-  ;; unbind "T" manually
-  (map! :map org-mode-map
-      :localleader "T" nil)
-  (map! :map org-mode-map
-    (:prefix "g"
-      :nv "h" #'gd/org-up-heading
-      :nv "k" #'gd/org-previous-heading
-      :nv "j" #'gd/org-next-heading
-      :nv "l" #'org-next-visible-heading)
-    :localleader
-    :desc "C-c C-c"           ","   #'org-ctrl-c-ctrl-c
-    :desc "Open link"         "l"   #'org-open-at-point
-    :desc "Archive subtree"   "A"   #'org-archive-subtree
-    :desc "Open agenda"       "a"   #'org-agenda
-    :desc "Edit source block" "s"   #'org-edit-src-code
-    :desc "org-todo"          "t"   #'org-todo
-    :desc "org-rifle"         "r"   #'helm-org-rifle-current-buffer
-    :desc "Insert citation"   "c"   #'ebib-insert-citation
-    (:prefix ("T" . "tags")
-     :desc "Toggle tag groups" "g" #'org-toggle-tags-groups)))
+(map! :map org-mode-map
+      :after org
+      (:prefix "g"
+       :nv "h" #'gd/org-up-heading
+       :nv "k" #'gd/org-previous-heading
+       :nv "j" #'gd/org-next-heading
+       :nv "l" #'org-next-visible-heading)
+      :localleader
+      :desc "C-c C-c"           ","   #'org-ctrl-c-ctrl-c
+      :desc "Open link"         "l"   #'org-open-at-point
+      :desc "Archive subtree"   "A"   #'org-archive-subtree
+      :desc "Open agenda"       "a"   #'org-agenda
+      :desc "Edit source block" "s"   #'org-edit-src-code
+      :desc "org-todo"          "t"   #'org-todo
+      :desc "org-rifle"         "r"   #'helm-org-rifle-current-buffer
+      :desc "Insert citation"   "c"   #'ebib-insert-citation
+      ;; Unbind the already defined keys first.
+      ;; general.el does this automatically for most things,
+      ;; but not for newly defined prefix keys, so I need to
+      ;; unbind "T" manually
+      "T" nil
+      (:prefix ("T" . "tags")
+       :desc "Toggle tag groups" "g" #'org-toggle-tags-groups))
 
 ;; org-src keybindings
 ;; These are active when editing a source code block in a separate window.
-(after! org-src
-  (map! :map org-src-mode-map
-        :nv "Z Z" #'org-edit-src-exit
-        :nv "Z Q" #'org-edit-src-abort))
+(map! :map org-src-mode-map
+      :after org-src
+      :nv "Z Z" #'org-edit-src-exit
+      :nv "Z Q" #'org-edit-src-abort)
 
 ;; org agenda keybindings
 ;; These complement the keybinds already set in evil-collection
-(after! org-agenda
-  (map! :map evil-org-agenda-mode-map
-        :m "b" #'org-agenda-earlier
-        :m "f" #'org-agenda-later))
+(map! :map evil-org-agenda-mode-map
+      :after org-agenda
+      :m "b" #'org-agenda-earlier
+      :m "f" #'org-agenda-later)
 
 ;; org-msg keybindings
 ;; These are used when composing emails in mu4e
-(after! org-msg
-  (map! :map org-msg-edit-mode-map
-        :localleader
-        :desc "Send message and exit" :nv "s" #'gd/send-confirm-has-recipient
-        :desc "Attach file"           :nv "a" #'org-msg-attach-attach))
+(map! :map org-msg-edit-mode-map
+      :after org-msg
+      :localleader
+      :desc "Send message and exit" :nv "s" #'gd/send-confirm-has-recipient
+      :desc "Attach file"           :nv "a" #'org-msg-attach-attach)
 
 ;; org-books keybindings
 ;; These are used with my own derived org-books-mode within the books.org file
