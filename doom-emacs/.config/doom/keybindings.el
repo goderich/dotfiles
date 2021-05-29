@@ -127,7 +127,8 @@
 
 (map! :map pdf-view-mode-map
       (:localleader
-      :desc "Add text annotation" "t" #'pdf-annot-add-text-annotation))
+      :desc "Add text annotation" "t" #'pdf-annot-add-text-annotation
+      :desc "Add highlight"       "h" #'pdf-annot-add-highlight-markup-annotation))
 
 (map! :map pdf-annot-edit-contents-minor-mode-map
       :desc "Commit annotation" :nv "Z Z" #'pdf-annot-edit-contents-commit
