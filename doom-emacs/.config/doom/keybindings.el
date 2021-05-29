@@ -67,6 +67,7 @@
       :desc "org-todo"          "t"   #'org-todo
       :desc "org-rifle"         "r"   #'helm-org-rifle-current-buffer
       :desc "Insert citation"   "c"   #'ebib-insert-citation
+      :desc "Insert link"       "L"   #'org-insert-last-stored-link
       ;; Unbind the already defined keys first.
       ;; general.el does this automatically for most things,
       ;; but not for newly defined prefix keys, so I need to
