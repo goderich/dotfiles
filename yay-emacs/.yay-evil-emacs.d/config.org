@@ -282,7 +282,7 @@ subsequently killing Emacs.
       (define-key evil-insert-state-map (kbd "C-p") nil))
     (define-key evil-normal-state-map (kbd "SPC .") #'find-file)
     (define-key evil-normal-state-map (kbd "SPC w w") #'evil-window-next)
-    (define-key evil-normal-state-map (kbd "SPC w d") #'evil-window-delete)
+    (define-key evil-normal-state-map (kbd "SPC w q") #'evil-window-delete)
     (define-key evil-normal-state-map (kbd ", e e") #'eval-last-sexp)
     (define-key evil-normal-state-map (kbd "SPC :") #'execute-extended-command)
     (evil-ex-define-cmd "q" #'kill-this-buffer)
