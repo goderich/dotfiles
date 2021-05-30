@@ -165,5 +165,4 @@
 (map! :map mu4e-view-mode-map
       :after mu4e
       :nv "r" #'mu4e-compose-reply
-      (:when (string= "goderich-ncue" (system-name))
-       :nv "R" #'gd/reply-received))
+      :nv "R" #'gd/reply-received)
