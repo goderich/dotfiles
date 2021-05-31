@@ -1,0 +1,24 @@
+[class]
+image_default = [
+    { command = "sxiv", fork = true, silent = true } ]
+video_default = [
+    { command = "mpv", fork = true, silent = true } ]
+audio_default = [
+    { command = "mplayer"} ]
+
+[extension]
+# images
+png.inherit = "image_default"
+
+# video
+mkv.inherit = "video_default"
+webm.inherit = "video_default"
+mp4.inherit = "video_default"
+
+# audio
+mp3.inherit = "audio_default"
+wav.inherit = "audio_default"
+WAV.inherit = "audio_default"
+
+pdf.app_list = [
+             { command = "zathura", fork = true, silent = true } ]
