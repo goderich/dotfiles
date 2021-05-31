@@ -104,9 +104,6 @@ keys = [ "y", "n" ]
 command = "copy_filepath"
 keys = [ "y", "p" ]
 [[mapcommand]]
-command = "copy_dir"
-keys = [ "y", "d" ]
-[[mapcommand]]
 command = "paste_files"
 keys = [ "p", "p" ]
 [[mapcommand]]
@@ -124,7 +121,7 @@ command = "rename_append"
 keys = [ "a" ]
 [[mapcommand]]
 command = "rename_prepend"
-keys = [ "A" ]
+keys = [ "i" ]
 
 [[mapcommand]]
 command = "select --toggle=true"
@@ -139,6 +136,9 @@ keys = [ "/" ]
 [[mapcommand]]
 command = ":search_glob "
 keys = [ "\\" ]
+[[mapcommand]]
+command = "search_skim"
+keys = [ "f" ]
 [[mapcommand]]
 command = "search_next"
 keys = [ "n" ]
@@ -156,6 +156,9 @@ keys = [ "=" ]
 [[mapcommand]]
 command = ":"
 keys = [ ";" ]
+[[mapcommand]]
+command = ":"
+keys = [ ":" ]
 [[mapcommand]]
 command = ":mkdir "
 keys = [ "m", "k" ]
