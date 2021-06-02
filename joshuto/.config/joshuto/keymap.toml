@@ -129,6 +129,9 @@ keys = [ " " ]
 [[mapcommand]]
 command = "select --toggle=true --all=true"
 keys = [ "t" ]
+[[mapcommand]]
+command = "select --deselect=true --all=true"
+keys = [ "u", "v" ]
 
 [[mapcommand]]
 command = ":search "
@@ -185,6 +188,9 @@ keys = [ "s", "r" ]
 [[mapcommand]]
 command = "cd /"
 keys = [ "g", "/" ]
+[[mapcommand]]
+command = "cd ~"
+keys = [ "g", "h" ]
 [[mapcommand]]
 command = "cd /etc"
 keys = [ "g", "e" ]
