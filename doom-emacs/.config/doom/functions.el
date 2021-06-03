@@ -7,11 +7,12 @@
    amount of lines to prepend the numerals to.
    The numbers are followed by a dot and whitespace."
   (interactive "nPrepend how many times? ")
-  (beginning-of-line)
-  (dotimes (i numlines)
-    (insert (format "%d. " (1+ i)))
-    (forward-line)
-    (beginning-of-line)))
+  (save-excursion
+    (beginning-of-line)
+    (dotimes (i numlines)
+      (insert (format "%d. " (1+ i)))
+      (forward-line)
+      (beginning-of-line))))
 
 (defun insert-numbers (numlines)
   "Insert new lines with incrementing numbers.
@@ -19,9 +20,10 @@
    each time. The argument specifies the total
    amount of lines to create."
   (interactive "nInsert how many lines? ")
-  (beginning-of-line)
-  (dotimes (i numlines)
-    (insert (format "%d\n" (1+ i)))))
+  (save-excursion
+    (beginning-of-line)
+    (dotimes (i numlines)
+      (insert (format "%d\n" (1+ i))))))
 
 (defun md-table->latex ()
   "Convert a Markdown table preceding the point into LaTeX."
