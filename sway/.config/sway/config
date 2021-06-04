@@ -22,6 +22,7 @@ font pango:System San Francisco Display 10
 input "type:keyboard" {
   xkb_layout us
   xkb_variant dvorak
+  xkb_options compose:ralt
   # xkb_options ctrl:nocaps
 }
 
