@@ -40,8 +40,8 @@ if [ -x /usr/bin/unclutter ]; then
     unclutter &
 fi
 
-if [ -x /usr/bin/fcitx ]; then
-    fcitx &
+if [ -x /usr/bin/fcitx5 ]; then
+    fcitx5 &
 fi
 
 if [ -x /usr/bin/dropbox ]; then
