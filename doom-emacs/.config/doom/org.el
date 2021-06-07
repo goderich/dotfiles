@@ -35,8 +35,11 @@
 
   ;; org-books
   (after! f
-    ;; File to use with org-books mode
-    (setq org-books-file (f-join (f-slash org-directory) "books.org"))
+
+    (defvar org-books-file
+      (f-join (f-slash org-directory) "books.org")
+      "File to use with org-books mode")
+
     ;; Derive a separate mode for org-books-specific keybinds
     (define-derived-mode org-books-mode org-mode "Org books mode")
     ;; Autostart this mode when opening the org-books file
