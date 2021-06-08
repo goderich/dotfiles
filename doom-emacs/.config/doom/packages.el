@@ -14,7 +14,5 @@
 (package! org-books :recipe (:host github
                              :repo "goderich/org-books"))
 
-(package! ox-pandoc :recipe (:host github
-                             :repo "goderich/ox-pandoc"))
-
+;; Using pandoc within Emacs
 (package! pandoc-mode)
