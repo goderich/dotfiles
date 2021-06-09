@@ -52,6 +52,7 @@
 ;; Center screen on various search functions
 (advice-add! '(evil-ex-search-next evil-ex-search-previous
                evil-ex-search-forward evil-ex-search-backward
+               evil-insert-resume
                git-gutter:next-hunk git-gutter:previous-hunk
                +lookup/definition)
              :after
