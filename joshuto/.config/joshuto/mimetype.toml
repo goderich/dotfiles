@@ -22,6 +22,6 @@ wav.inherit = "audio_default"
 WAV.inherit = "audio_default"
 
 pdf.app_list = [
-             { command = "zathura", fork = true, silent = true }
-             { command = "llpp", fork = true, silent = true }
+             { command = "zathura", fork = true, silent = true },
+             { command = "llpp", fork = true, silent = true },
              { command = "mupdf", fork = true, silent = true } ]
