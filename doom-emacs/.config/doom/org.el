@@ -9,9 +9,9 @@
 
   ;; Set org file associations
   (setq org-file-apps
-      '((auto-mode . emacs)
-        ("\\.pdf::\\([0-9]+\\)?\\'" . "zathura %s -P %1")
-        ("\\.pdf\\'" . "zathura %s")
+      `((auto-mode . emacs)
+        (,(rx ".pdf::" (group (one-or-more digit)) string-end) . "zathura %s -P %1")
+        (,(rx ".pdf" string-end) . "zathura %s")
         (directory . emacs)))
 
   ;; browser needs to be set with a separate function
