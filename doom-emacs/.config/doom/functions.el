@@ -219,3 +219,13 @@ headings of a higher level. Use instead of mashing Alt+down."
     (with-current-buffer buff
       (insert "Received, thank you.")
       (message-send-and-exit))))
+
+(defun gd/org-copy-this-link ()
+  "Copy the link under cursor."
+  (interactive)
+  (if (org-in-regexp org-link-bracket-re 1) ; in a link
+      (progn
+        ;; Copy the first parenthesized group in the regexp
+        (kill-new (match-string-no-properties 1))
+        (message "Copied link!"))
+    (message "Not on a valid link!")))
