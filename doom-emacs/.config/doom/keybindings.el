@@ -61,6 +61,7 @@
       :localleader
       :desc "C-c C-c"           ","   #'org-ctrl-c-ctrl-c
       :desc "Open link"         "l"   #'org-open-at-point
+      :desc "Copy link"         "y"   #'gd/org-copy-this-link
       :desc "Archive subtree"   "A"   #'org-archive-subtree
       :desc "Open agenda"       "a"   #'org-agenda
       :desc "Edit source block" "s"   #'org-edit-src-code
