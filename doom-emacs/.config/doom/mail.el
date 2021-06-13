@@ -43,7 +43,7 @@
 (setq message-send-mail-function #'smtpmail-send-it
       smtpmail-stream-type 'starttls
       smtpmail-default-smtp-server "smtp.gmail.com"
-      mu4e-compose-format-flowed t
+      mu4e-compose-format-flowed nil
       mu4e-compose-dont-reply-to-self t
       mu4e-compose-in-new-frame t)
 
