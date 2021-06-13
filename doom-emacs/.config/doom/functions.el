@@ -229,3 +229,26 @@ headings of a higher level. Use instead of mashing Alt+down."
         (kill-new (match-string-no-properties 1))
         (message "Copied link!"))
     (message "Not on a valid link!")))
+
+;; This function is adapted from
+;; https://www.reddit.com/r/emacs/comments/nvhb82/can_i_use_racket_like_i_use_elisp/h13ug8i/
+(defun vz/racket-eros-eval-last-sexp ()
+  "Eval the previous sexp asynchronously and create an eros overlay."
+  (interactive)
+  (unless (racket--repl-live-p)
+    (user-error "No repl session available."))
+  (racket--cmd/async
+   (racket--repl-session-id)
+   `(eval ,(buffer-substring-no-properties (racket--repl-last-sexp-start) (point)))
+   (lambda (result)
+     (let ((point (point))
+           ;; Using :duration 'command (which is my current value of
+           ;; `eros-eval-result-duration') didn't work without setting
+           ;; `this-command'. The variable got nulled somewhere during
+           ;; the call, and eros would delete the overlay before even
+           ;; displaying it.
+           (this-command 'vz/racket-eros-eval-last-sexp))
+       (message "%s" result)
+       (eros--make-result-overlay result
+         :where point
+         :duration eros-eval-result-duration)))))

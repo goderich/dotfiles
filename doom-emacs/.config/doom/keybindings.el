@@ -151,9 +151,9 @@
 
 (map! :map racket-mode-map
       (:localleader
-       :n "e e" #'racket-eval-last-sexp
-       :nv "r" #'racket-run-and-switch-to-repl
-       :nv "R" #'racket-run))
+       :n  "e e" #'vz/racket-eros-eval-last-sexp
+       :nv "r"   #'racket-run-and-switch-to-repl
+       :nv "R"   #'racket-run))
 
 ;; mu4e keybindings
 
