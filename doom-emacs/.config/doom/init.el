@@ -46,7 +46,7 @@
        vc-gutter         ; vcs diff in the fringe
        ;; vi-tilde-fringe   ; fringe tildes to mark beyond EOB
        ;;window-select     ; visually switch windows
-       workspaces        ; tab emulation, persistence & separate workspaces
+       ;; workspaces        ; tab emulation, persistence & separate workspaces
        ;;zen               ; distraction-free coding or writing
 
        :editor
@@ -67,7 +67,6 @@
        (dired             ; making dired pretty [functional]
        +ranger
        +icons)
-       ediff             ; comparing files in Emacs
        electric          ; smarter, keyword-based electric-indent
        ;;ibuffer         ; interactive buffer management
        undo              ; persistent, smarter undo for your inevitable mistakes
@@ -148,9 +147,7 @@
         ;;+attach          ; custom attachment system
         +babel           ; running code in org
         +capture         ; org-capture in and outside of Emacs
-        ;; +pandoc
-        +roam
-        +export)          ; Exporting org to whatever you want
+        +roam)
         ;;+present)        ; Emacs for presentations
        ;;php               ; perl's insecure younger brother
        ;;plantuml          ; diagrams for confusing people more
