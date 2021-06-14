@@ -75,7 +75,13 @@
       ;; unbind "T" manually
       "T" nil
       (:prefix ("T" . "tags")
-       :desc "Toggle tag groups" "g" #'org-toggle-tags-groups))
+       :desc "Toggle tag groups" "g" #'org-toggle-tags-groups)
+      ;; Bindings for pandoc-mode
+      :after pandoc-mode
+      ;; =, p= is a prefix in Doom's org keybindings,
+      ;; so I need to unbind it first.
+      "p" nil
+      :desc "Pandoc export" "p" #'pandoc-main-hydra/body)
 
 ;; org-src keybindings
 ;; These are active when editing a source code block in a separate window.
