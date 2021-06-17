@@ -16,3 +16,6 @@
 
 ;; Using pandoc within Emacs
 (package! pandoc-mode)
+
+;; Properly align tables with CJK in them
+(package! valign)
