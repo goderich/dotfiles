@@ -25,13 +25,11 @@
 ;; (to insert an actual TAB, use "C-v TAB")
 (setq tab-always-indent t)
 
-;; evil keybindings
 (map!
  :after evil
  :nv "k" #'evil-previous-visual-line
  :nv "j" #'evil-next-visual-line)
 
-;; evil-snipe keybindings
 (map! :map evil-snipe-parent-transient-map
       :after evil-snipe
 ;; After a successful snipe, evil-snipe switches to a
@@ -43,14 +41,13 @@
 ;; used this way, but I prefer if "," wasn't touched.
       "," nil)
 
-;; evil-ex keybindings
+;; evil-ex keybindings (: commands)
 ;; I haven't found a way to map these with the `map!' macro,
 ;; so I'm assuming it can't be used that way.
 (evil-ex-define-cmd "q"  #'kill-this-buffer)
 (evil-ex-define-cmd "wq" #'save-and-kill-this-buffer)
 (evil-ex-define-cmd "x"  #'save-and-kill-this-buffer)
 
-;; org-mode keybindings
 (map! :map org-mode-map
       :after org
       (:prefix "g"
@@ -82,21 +79,18 @@
       "p" nil
       :desc "Pandoc export" "p" #'pandoc-main-hydra/body)
 
-;; org-src keybindings
 ;; These are active when editing a source code block in a separate window.
 (map! :map org-src-mode-map
       :after org-src
       :nv "Z Z" #'org-edit-src-exit
       :nv "Z Q" #'org-edit-src-abort)
 
-;; org agenda keybindings
 ;; These complement the keybinds already set in evil-collection
 (map! :map evil-org-agenda-mode-map
       :after org-agenda
       :m "b" #'org-agenda-earlier
       :m "f" #'org-agenda-later)
 
-;; org-msg keybindings
 ;; These are used when composing emails in mu4e
 (map! :map org-msg-edit-mode-map
       :after org-msg
@@ -104,7 +98,6 @@
       :desc "Send message and exit" :nv "s" #'gd/send-confirm-has-recipient
       :desc "Attach file"           :nv "a" #'org-msg-attach-attach)
 
-;; org-books keybindings
 ;; These are used with my own derived org-books-mode within the books.org file
 (map! :map org-books-mode-map
       :localleader
@@ -125,7 +118,6 @@
         :desc "Forward barf"     ">"   #'sp-forward-barf-sexp
         :desc "Backward barf"    "<"   #'sp-backward-barf-sexp))
 
-;; markdown-mode keybindings
 (map! :map markdown-mode-map
       :nvi "<tab>" #'markdown-cycle
       (:prefix "g"
@@ -162,7 +154,6 @@
        :nv "R"   #'racket-run))
 
 ;; mu4e keybindings
-
 ;; When viewing email headers as a list
 (map! :map mu4e-headers-mode-map
       :after mu4e
