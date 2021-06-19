@@ -173,3 +173,7 @@
       :after mu4e
       :nv "r" #'mu4e-compose-reply
       :nv "R" #'gd/reply-received)
+
+(map! :map helpful-mode-map
+      :after helpful
+      :nv "q" #'evil-delete-buffer)
