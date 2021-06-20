@@ -73,3 +73,6 @@
 ;; Show Racket xp information in the echo area instead of a tooltip
 (after! racket-xp
   (setq racket-show-functions '(racket-show-echo-area)))
+
+;; Racket: indent all lines in a `do' block to the same level.
+(add-hook 'racket-xp-mode-hook #'gd/set-racket-do-indent)
