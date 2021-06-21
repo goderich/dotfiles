@@ -75,4 +75,6 @@
   (setq racket-show-functions '(racket-show-echo-area)))
 
 ;; Racket: indent all lines in a `do' block to the same level.
+;; For some reason I couldn't make this work with Doom's `after!'
+;; macros,so I used a hook instead.
 (add-hook 'racket-xp-mode-hook #'gd/set-racket-do-indent)

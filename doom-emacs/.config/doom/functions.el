@@ -254,7 +254,5 @@ headings of a higher level. Use instead of mashing Alt+down."
          :duration eros-eval-result-duration)))))
 
 (defun gd/set-racket-do-indent ()
-  "Set up indentation for `do' in Racket.
-For some reason I couldn't make this work with Doom's `after!' macros,
-so I used a hook instead."
+  "Set up indentation for `do' in Racket."
   (put 'do 'racket-indent-function 0))
