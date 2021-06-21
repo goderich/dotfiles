@@ -8,11 +8,11 @@
  (:leader
   (:prefix "i"
    (:prefix ("n" . "Insert numbers")
-    :desc "Insert on new lines" :n "n" #'insert-numbers
+    :desc "Insert on new lines"       :n "n" #'insert-numbers
     :desc "Prepend to existing lines" :n "p" #'prepend-numbers))
   (:prefix ("t" . "Toggle...")
    :desc "Toggle writeroom mode" :n "w" #'writeroom-mode
-   :desc "Toggle flyspell mode" :nv "s" #'flyspell-mode
+   :desc "Toggle flyspell mode"  :n "s" #'flyspell-mode
    :desc "Toggle pop-up windows" :n "p" #'+popup-mode)
   (:prefix "o"
    :desc "Ebib" :nv "e" #'ebib)
