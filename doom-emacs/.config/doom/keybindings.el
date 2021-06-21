@@ -108,15 +108,14 @@
       :desc "DNF a book"              "n" #'org-books-dnf)
 
 ;; lisp editing keybindings
-(map! :map (emacs-lisp-mode-map
-            racket-mode-map
-            sly-mode-map
-            dune-mode-map)
+(map! :map (emacs-lisp-mode-map ielm-map
+            racket-mode-map racket-repl-mode-map
+            sly-mode-map dune-mode-map)
       (:localleader
-        :desc "Forward slurp"    ")"   #'sp-forward-slurp-sexp
-        :desc "Backward slurp"   "("   #'sp-backward-slurp-sexp
-        :desc "Forward barf"     ">"   #'sp-forward-barf-sexp
-        :desc "Backward barf"    "<"   #'sp-backward-barf-sexp))
+       :desc "Forward slurp"  :n ")" #'sp-forward-slurp-sexp
+       :desc "Backward slurp" :n "(" #'sp-backward-slurp-sexp
+       :desc "Forward barf"   :n ">" #'sp-forward-barf-sexp
+       :desc "Backward barf"  :n "<" #'sp-backward-barf-sexp))
 
 (map! :map markdown-mode-map
       :nvi "<tab>" #'markdown-cycle
