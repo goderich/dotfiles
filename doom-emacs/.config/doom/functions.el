@@ -256,3 +256,12 @@ headings of a higher level. Use instead of mashing Alt+down."
 (defun gd/set-racket-do-indent ()
   "Set up indentation for `do' in Racket."
   (put 'do 'racket-indent-function 0))
+
+(defun gd/beginning-or-first-non-blank ()
+  "Move the point to the beginning of the line.
+If point is already at the beginning, move to the first
+non-blank character instead."
+  (interactive)
+  (if (zerop (current-column))
+      (evil-first-non-blank)
+    (evil-beginning-of-line-or-digit-argument)))

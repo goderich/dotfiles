@@ -28,7 +28,8 @@
 (map!
  :after evil
  :nv "k" #'evil-previous-visual-line
- :nv "j" #'evil-next-visual-line)
+ :nv "j" #'evil-next-visual-line
+ :nv "0" #'gd/beginning-or-first-non-blank)
 
 (map! :map evil-snipe-parent-transient-map
       :after evil-snipe
