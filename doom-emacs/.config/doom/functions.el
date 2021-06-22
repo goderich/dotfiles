@@ -265,3 +265,9 @@ non-blank character instead."
   (if (zerop (current-column))
       (evil-first-non-blank)
     (evil-beginning-of-line-or-digit-argument)))
+
+(defun gd/scroll-line-to-top-minus-2 ()
+  "Scroll line almost to the very top, but not quite."
+  (interactive)
+  (save-excursion
+    (evil-scroll-line-to-top (- (line-number-at-pos) 2))))

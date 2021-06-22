@@ -62,7 +62,7 @@
 ;; Scroll line to top after some search functions
 (advice-add! '(counsel-org-goto)
              :after
-             (lambda (&rest _) (evil-scroll-line-to-top nil)))
+             (lambda (&rest _) (gd/scroll-line-to-top-minus-2)))
 
 ;; Disable popup windows by default
 ;; (make things open in new buffers instead).
