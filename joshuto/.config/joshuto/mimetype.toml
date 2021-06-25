@@ -5,6 +5,8 @@ video_default = [
     { command = "mpv", fork = true, silent = true } ]
 audio_default = [
     { command = "mplayer"} ]
+spreadsheet_default = [
+    { command = "gnumeric", fork = true, silent = true } ]
 
 [extension]
 # images
@@ -20,6 +22,11 @@ mp4.inherit = "video_default"
 mp3.inherit = "audio_default"
 wav.inherit = "audio_default"
 WAV.inherit = "audio_default"
+
+# spreadsheets
+xls.inherit = "spreadsheet_default"
+xlsx.inherit = "spreadsheet_default"
+gnumeric.inherit = "spreadsheet_default"
 
 pdf.app_list = [
              { command = "zathura", fork = true, silent = true },
