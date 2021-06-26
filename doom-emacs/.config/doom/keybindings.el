@@ -167,6 +167,14 @@
       :localleader
       :nv "l" #'mu4e~view-browse-url-from-binding)
 
+(map! :map tuareg-mode-map
+      :after tuareg
+      :localleader
+      (:prefix ("e" . "Eval")
+       :n  "e" #'tuareg-eval-phrase
+       :v  "e" #'tuareg-eval-region
+       :nv "b" #'tuareg-eval-buffer))
+
 (map! :map helpful-mode-map
       :after helpful
       :nv "q" #'evil-delete-buffer)
