@@ -16,7 +16,7 @@ Layout=
 # Name
 Name=rime
 # Layout
-Layout=us
+Layout=us-alt-intl
 
 [GroupOrder]
 0="Group 1"
