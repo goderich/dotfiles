@@ -121,9 +121,11 @@
 (map! :map markdown-mode-map
       :nvi "<tab>" #'markdown-cycle
       (:prefix "g"
-        :nv "h" #'markdown-up-heading)
+       :nv "h" #'markdown-up-heading)
       (:localleader
-        :desc "Insert citation"   "c"  #'ebib-insert-citation))
+       :desc "Insert citation" "c" #'ebib-insert-citation
+       :after pandoc-mode
+       :desc "Pandoc export"   "p" #'pandoc-main-hydra/body))
 
 (map! :map pdf-view-mode-map
       (:localleader
