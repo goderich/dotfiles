@@ -53,8 +53,6 @@
   (setq org-agenda-span 'week)
   (add-hook 'org-agenda-mode-hook #'gd/set-org-agenda-start-day)
 
-  ;; Align org tables with CJK characters
-  (add-hook 'org-mode-hook #'valign-mode)
   ) ; end of after! block
 
 ;; org-roam config
