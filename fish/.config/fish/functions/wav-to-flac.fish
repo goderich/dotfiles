@@ -1,6 +1,6 @@
 function wav-to-flac
   for wav in *.{WAV,wav}
-    set flac (echo $wav | sed 's/\.wav$/.flac/I')
+    set flac (string replace -ri 'wav$' 'flac' $wav)
     ffmpeg -i $wav $flac
   end
 end
