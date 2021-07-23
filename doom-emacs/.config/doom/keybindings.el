@@ -106,7 +106,8 @@
       :desc "Add book from clipboard" "c" #'org-books-cliplink
       :desc "Start reading a book"    "r" #'org-books-start-reading
       :desc "Finish and rate book"    "f" #'org-books-rate-book
-      :desc "DNF a book"              "n" #'org-books-dnf)
+      :desc "DNF a book"              "n" #'org-books-dnf
+      :desc "Jump to a current book"  "j" #'org-books-jump-to-reading)
 
 ;; lisp editing keybindings
 (map! :map (emacs-lisp-mode-map ielm-map
