@@ -27,11 +27,16 @@
         '((sequence "TODO(t)" "|" "DONE(d)")
           (sequence "NEXT(n)" "WAITING(w)" "LATER(l)" "|" "CANCELLED(c)")))
 
+  ;; My custom faces for todo items. I'm reusing most from:
+  ;; ~/.emacs.d/modules/lang/org/config.el
+  (with-no-warnings
+    (custom-declare-face '+org-todo-important '((t (:inherit (bold default)))) ""))
+
   (setq org-todo-keyword-faces
-        '(("LATER"     :inherit (warning bold))
-          ("NEXT"      :inherit (bold default))
-          ("WAITING"   :inherit (warning bold))
-          ("CANCELLED" :inherit (error bold))))
+        '(("LATER"     +org-todo-onhold)
+          ("NEXT"      +org-todo-important)
+          ("WAITING"   +org-todo-onhold)
+          ("CANCELLED" +org-todo-cancel)))
 
   ;; org-books
   (after! f
