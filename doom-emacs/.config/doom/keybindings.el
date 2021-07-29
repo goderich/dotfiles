@@ -148,7 +148,10 @@
 (map! :map ebib-entry-mode-map
       :n [tab] #'ebib-quit-entry-buffer
       :n "z"   #'ebib-leave-ebib-windows
-      :n "E"   #'gd/ebib-edit-as-string)
+      :n "E"   #'gd/ebib-edit-as-string
+      :n "s"   #'ebib-save-current-database
+      (:localleader
+       :n "f" #'ebib-import-file))
 
 (map! :map racket-mode-map
       (:localleader
