@@ -71,8 +71,9 @@
       ;; but not for newly defined prefix keys, so I need to
       ;; unbind "T" manually
       "T" nil
-      (:prefix ("T" . "tags")
-       :desc "Toggle tag groups" "g" #'org-toggle-tags-groups)
+      (:prefix ("T" . "toggle")
+       :desc "Toggle tag groups"  "g" #'org-toggle-tags-groups
+       :desc "Toggle valign mode" "v" #'valign-mode)
       ;; Bindings for pandoc-mode
       :after pandoc-mode
       ;; =, p= is a prefix in Doom's org keybindings,
