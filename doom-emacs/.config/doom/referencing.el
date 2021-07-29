@@ -31,3 +31,4 @@
 ;; in my own keybindings.
 (add-hook! 'ebib-index-mode-hook #'turn-off-visual-line-mode
                                  #'turn-off-evil-snipe-mode)
+(add-hook! 'ebib-entry-mode-hook #'turn-off-evil-snipe-mode)
