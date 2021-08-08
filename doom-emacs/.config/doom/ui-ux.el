@@ -78,3 +78,6 @@
 ;; For some reason I couldn't make this work with Doom's `after!'
 ;; macros,so I used a hook instead.
 (add-hook 'racket-xp-mode-hook #'gd/set-racket-do-indent)
+
+(after! markdown-mode
+  (setq markdown-list-indent-width 2))
