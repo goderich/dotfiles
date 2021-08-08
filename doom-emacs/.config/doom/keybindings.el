@@ -122,13 +122,19 @@
        :desc "Backward barf"  :n "<" #'sp-backward-barf-sexp))
 
 (map! :map markdown-mode-map
-      :nvi "<tab>" #'markdown-cycle
+      :nvi "<tab>"      #'markdown-cycle
+      :nvi "M-<left>"   #'markdown-promote
+      :nvi "M-<right>"  #'markdown-demote
+      :nvi "M-<up>"     #'markdown-move-up
+      :nvi "M-<down>"   #'markdown-move-down
+      :nvi "C-<return>" #'markdown-insert-list-item
       (:prefix "g"
        :nv "h" #'markdown-up-heading)
       (:localleader
-       :desc "Insert citation" "c" #'ebib-insert-citation
+       :desc "Insert citation"    "c" #'ebib-insert-citation
+       :desc "Toggle valign mode" "v" #'valign-mode
        :after pandoc-mode
-       :desc "Pandoc export"   "p" #'pandoc-main-hydra/body))
+       :desc "Pandoc export" "p" #'pandoc-main-hydra/body))
 
 (map! :map pdf-view-mode-map
       (:localleader
