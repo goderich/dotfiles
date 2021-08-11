@@ -19,3 +19,6 @@
 
 ;; Properly align tables with CJK in them
 (package! valign)
+
+;; Do not show email notifications in bar
+(package! mu4e-alert :disable t)
