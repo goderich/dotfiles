@@ -16,6 +16,8 @@
 <Multi_key> <u> <u> : "ʉ" U0289
 <Multi_key> <l> <l> : "ɭ" U026D
 <Multi_key> <l> <z> : "ɮ" U026E
+<Multi_key> <l> <h> : "ɬ" U026C
+<Multi_key> <h> <l> : "ɬ" U026C
 <Multi_key> <i> <i> : "ɨ" U0268
 <Multi_key> <s> <i> <g> : "σ" U03C3
 <Multi_key> <1> <s> : "ˈ" U02C8
