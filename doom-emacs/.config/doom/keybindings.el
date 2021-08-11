@@ -178,6 +178,7 @@
       :after mu4e
       :nv "r" #'mu4e-compose-reply
       :nv "R" #'gd/reply-received
+      :nv "p" #'mu4e-view-mime-part-action
       :localleader
       :nv "l" #'mu4e~view-browse-url-from-binding)
 
