@@ -151,7 +151,9 @@
       :n "s"   #'ebib-save-current-database
       :n "S"   #'ebib-save-all-databases
       :n "J"   #'ebib-jump-to-entry
-      :n [tab] #'ebib-edit-entry)
+      :n [tab] #'ebib-edit-entry
+      (:localleader
+       :n "f" #'gd/ebib-import-file-from-index))
 
 (map! :map ebib-entry-mode-map
       :n [tab] #'ebib-quit-entry-buffer
