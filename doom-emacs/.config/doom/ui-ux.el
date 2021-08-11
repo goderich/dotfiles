@@ -53,7 +53,7 @@
 (advice-add! '(evil-ex-search-next evil-ex-search-previous
                evil-ex-search-forward evil-ex-search-backward
                better-jumper-jump-backward better-jumper-jump-forward
-               evil-insert-resume
+               evil-insert-resume ebib-goto-last-field
                git-gutter:next-hunk git-gutter:previous-hunk
                +lookup/definition)
              :after
