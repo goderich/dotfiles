@@ -194,4 +194,8 @@
 
 (map! :map helpful-mode-map
       :after helpful
-      :nv "q" #'evil-delete-buffer)
+      :nvm "q" #'evil-delete-buffer)
+
+(map! :map Info-mode-map
+      :after info
+      :nvm "q" #'evil-delete-buffer)
