@@ -146,8 +146,7 @@
        (org              ; organize your plain life in plain text
         ;;+attach          ; custom attachment system
         +babel           ; running code in org
-        +capture         ; org-capture in and outside of Emacs
-        +roam)
+        +capture)         ; org-capture in and outside of Emacs
         ;;+present)        ; Emacs for presentations
        ;;php               ; perl's insecure younger brother
        ;;plantuml          ; diagrams for confusing people more
