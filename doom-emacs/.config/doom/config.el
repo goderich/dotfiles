@@ -13,5 +13,6 @@
 (load! "keybindings")
 (load! "referencing")
 (load! "mail")
+(load! "org-moar")
 
 ;;; config.el ends here

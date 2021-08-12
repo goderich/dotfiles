@@ -19,7 +19,11 @@
   :desc "Make a new Emacs frame" :nv "F" #'make-frame
   (:prefix "g"
    :nv "p" #'git-gutter:previous-hunk
-   :nv "n" #'git-gutter:next-hunk)))
+   :nv "n" #'git-gutter:next-hunk)
+  (:after org-moar
+   (:prefix ("m" . "org-moar")
+    :desc "Find note"   :nv "f" #'org-moar-open-note
+    :desc "Insert link" :nv "l" #'org-moar-link-note))))
 
 ;; TAB always indents
 ;; (to insert an actual TAB, use "C-v TAB")
