@@ -62,7 +62,8 @@ The function expects ripgrep's output format."
   (interactive)
   (ivy-read "Note title: "
             (org-moar-get-candidates)
-            :action #'org-moar-find-create-dispatch))
+            :action #'org-moar-find-create-dispatch
+            :preselect "Index"))
 
 (defun org-moar-insert-link (selection)
   "Insert a link to the file in SELECTION."
