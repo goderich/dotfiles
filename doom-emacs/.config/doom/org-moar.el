@@ -35,7 +35,11 @@ The function expects ripgrep's output format."
     (cons title filename)))
 
 (defun org-moar-get-candidates ()
-  "Return an alist of titles and filenames in `org-moar-directory'."
+  "Return an alist of titles and filenames in `org-moar-directory'.
+Depends on ripgrep.
+
+Currently the command is synchronous and will choke on
+a large enough number of files."
   (->>
    (shell-command-to-string
     (format "rg -i --type org -F '#+title:' %s" org-moar-directory))
