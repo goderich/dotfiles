@@ -72,7 +72,7 @@ a large enough number of files."
 (defun org-moar-insert-link (selection)
   "Insert a link to the file in SELECTION."
   (let* ((filename (cdr selection))
-         (link-text (read-string "Link text: "))
+         (link-text (read-string "Link text: " (car selection)))
          (link-string (org-link-make-string filename link-text)))
     (unless (bolp)
       (insert " "))
