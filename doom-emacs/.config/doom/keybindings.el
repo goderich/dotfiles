@@ -20,10 +20,13 @@
   (:prefix "g"
    :nv "p" #'git-gutter:previous-hunk
    :nv "n" #'git-gutter:next-hunk)
+  (:after org-books
+   :prefix ("B" . "org-books")
+   :desc "Jump to reading" :nv "j" #'org-books-jump-to-reading)
   (:after org-moar
-   (:prefix ("m" . "org-moar")
-    :desc "Find note"   :nv "f" #'org-moar-open-note
-    :desc "Insert link" :nv "l" #'org-moar-link-note))))
+   :prefix ("m" . "org-moar")
+   :desc "Find note"   :nv "f" #'org-moar-open-note
+   :desc "Insert link" :nv "l" #'org-moar-link-note)))
 
 ;; TAB always indents
 ;; (to insert an actual TAB, use "C-v TAB")
