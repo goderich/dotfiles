@@ -59,8 +59,3 @@
   (add-hook 'org-agenda-mode-hook #'gd/set-org-agenda-start-day)
 
   ) ; end of after! block
-
-;; org-roam config
-(setq org-roam-directory my/org-roam-directory)
-
-(setq +org-roam-open-buffer-on-find-file nil)
