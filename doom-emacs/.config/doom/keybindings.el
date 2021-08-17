@@ -21,8 +21,7 @@
   (:prefix "g"
    :nv "p" #'git-gutter:previous-hunk
    :nv "n" #'git-gutter:next-hunk)
-  (:after org-books
-   :prefix ("B" . "org-books")
+  (:prefix ("B" . "org-books")
    :desc "Jump to reading" :nv "j" #'org-books-jump-to-reading)
   (:after org-moar
    :prefix ("m" . "org-moar")
