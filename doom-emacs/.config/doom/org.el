@@ -18,9 +18,9 @@
   (setq browse-url-browser-function 'browse-url-generic
         browse-url-generic-program "qutebrowser")
 
-  ;; Use blank lines between texts and following headings
+  ;; Don't use blank lines between text and the following heading
   (setq org-blank-before-new-entry
-        '((heading . t) (plain-list-item . nil)))
+        '((heading . nil) (plain-list-item . nil)))
 
   ;; Org todo keywords and colours
   (setq org-todo-keywords
