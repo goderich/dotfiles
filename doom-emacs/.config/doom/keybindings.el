@@ -5,7 +5,6 @@
 
 ;; Global keybindings
 (map!
- :nv [return] #'counsel-M-x
  (:leader
   (:prefix "i"
    (:prefix ("n" . "Insert numbers")
