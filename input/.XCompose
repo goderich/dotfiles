@@ -13,12 +13,15 @@
 <Multi_key> <comma> <z> : "ʐ" U0290
 <Multi_key> <l> <p> <s> : "ɕ" U0255
 <Multi_key> <v> <p> <s> : "ʑ" U0291
-<Multi_key> <u> <u> : "ʉ" U0289
-<Multi_key> <l> <l> : "ɭ" U026D
+<Multi_key> <u> <u> : "ʊ" U028A
+<Multi_key> <minus> <minus> <u> : "ʉ" U0289
+<Multi_key> <l> <comma> : "ɭ" U026D
+<Multi_key> <comma> <l> : "ɭ" U026D
 <Multi_key> <l> <z> : "ɮ" U026E
 <Multi_key> <l> <h> : "ɬ" U026C
 <Multi_key> <h> <l> : "ɬ" U026C
-<Multi_key> <i> <i> : "ɨ" U0268
+<Multi_key> <i> <i> : "ɪ" U026A
+<Multi_key> <minus> <minus> <i> : "ɨ" U0268
 <Multi_key> <s> <i> <g> : "σ" U03C3
 <Multi_key> <1> <s> : "ˈ" U02C8
 <Multi_key> <2> <s> : "ˌ" U02CC
@@ -1214,11 +1217,8 @@
 <Multi_key> <minus> <u> 		: "ū"   U016B # LATIN SMALL LETTER U WITH MACRON
 <Multi_key> <u> <minus> 		: "ū"   U016B # LATIN SMALL LETTER U WITH MACRON
 <dead_breve> <U>                 	: "Ŭ"   U016C # LATIN CAPITAL LETTER U WITH BREVE
-<Multi_key> <U> <U>              	: "Ŭ"   U016C # LATIN CAPITAL LETTER U WITH BREVE
-<Multi_key> <u> <U>              	: "Ŭ"   U016C # LATIN CAPITAL LETTER U WITH BREVE
 <Multi_key> <b> <U>              	: "Ŭ"   U016C # LATIN CAPITAL LETTER U WITH BREVE
 <dead_breve> <u>                 	: "ŭ"   U016D # LATIN SMALL LETTER U WITH BREVE
-<Multi_key> <U> <u>              	: "ŭ"   U016D # LATIN SMALL LETTER U WITH BREVE
 <Multi_key> <b> <u>              	: "ŭ"   U016D # LATIN SMALL LETTER U WITH BREVE
 <dead_abovering> <U>             	: "Ů"   U016E # LATIN CAPITAL LETTER U WITH RING ABOVE
 <Multi_key> <o> <U>              	: "Ů"   U016E # LATIN CAPITAL LETTER U WITH RING ABOVE
