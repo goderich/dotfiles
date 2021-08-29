@@ -33,7 +33,9 @@
 <Multi_key> <r> <minus> : "ṟ" U1E5F
 <Multi_key> <minus> <r> : "ṟ" U1E5F
 <Multi_key> <l> <a> : "λ" U03BB
-
+<Multi_key> <g> <l> : "λ" U03BB
+<Multi_key> <t> <h> : "θ" U03B8
+<Multi_key> <g> <t> : "θ" U03B8
 
 # UTF-8 (Unicode) compose sequence
 # David.Monniaux@ens.fr
@@ -697,7 +699,7 @@
 <Multi_key> <Y> <acute> 		: "Ý"   Yacute # LATIN CAPITAL LETTER Y WITH ACUTE
 <Multi_key> <apostrophe> <Y>     	: "Ý"   Yacute # LATIN CAPITAL LETTER Y WITH ACUTE
 <Multi_key> <Y> <apostrophe> 		: "Ý"   Yacute # LATIN CAPITAL LETTER Y WITH ACUTE
-<Multi_key> <T> <H>              	: "Þ"   THORN # LATIN CAPITAL LETTER THORN
+<Multi_key> <E> <T> <H>              	: "Þ"   THORN # LATIN CAPITAL LETTER THORN
 <dead_grave> <a>                 	: "à"   agrave # LATIN SMALL LETTER A WITH GRAVE
 <Multi_key> <grave> <a>          	: "à"   agrave # LATIN SMALL LETTER A WITH GRAVE
 <Multi_key> <a> <grave> 		: "à"   agrave # LATIN SMALL LETTER A WITH GRAVE
@@ -822,7 +824,7 @@
 <Multi_key> <y> <acute> 		: "ý"   yacute # LATIN SMALL LETTER Y WITH ACUTE
 <Multi_key> <apostrophe> <y>     	: "ý"   yacute # LATIN SMALL LETTER Y WITH ACUTE
 <Multi_key> <y> <apostrophe> 		: "ý"   yacute # LATIN SMALL LETTER Y WITH ACUTE
-<Multi_key> <t> <h>              	: "þ"   thorn # LATIN SMALL LETTER THORN
+<Multi_key> <e> <t> <h>              	: "þ"   thorn # LATIN SMALL LETTER THORN
 <dead_diaeresis> <y>             	: "ÿ"   ydiaeresis # LATIN SMALL LETTER Y WITH DIAERESIS
 <Multi_key> <quotedbl> <y>       	: "ÿ"   ydiaeresis # LATIN SMALL LETTER Y WITH DIAERESIS
 <Multi_key> <y> <quotedbl> 		: "ÿ"   ydiaeresis # LATIN SMALL LETTER Y WITH DIAERESIS
