@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: phonemic
+# key: /
+# --
+\text{/$1/}$0
