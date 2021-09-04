@@ -1,6 +1,7 @@
 <Multi_key> <g> <s> : "ʔ" U0294
 <Multi_key> <b> <b> : "β" U03B2
 <Multi_key> <r> <r> : "ɹ" U0279
+<Multi_key> <l> <r> : "ɾ" U027E
 <Multi_key> <g> <g> : "ɣ" U0263
 <Multi_key> <h> <minus> : "ħ" U0127
 <Multi_key> <minus> <h> : "ħ" U0127
@@ -28,7 +29,9 @@
 <Multi_key> <colon> <colon> : "ː" U02D0
 <Multi_key> <o> <o> : "ɔ" U0254
 <Multi_key> <3> <3> : "ɛ" U025B
-<Multi_key> <a> <a> : "ɑ" U0251
+<Multi_key> <a> <a> : "ɐ" U0250
+<Multi_key> <a> <o> : "ɑ" U0251
+<Multi_key> <e> <r> : "ɚ" U02DE
 <Multi_key> <h> <h> : "ʰ" U02B0
 <Multi_key> <r> <minus> : "ṟ" U1E5F
 <Multi_key> <minus> <r> : "ṟ" U1E5F
@@ -36,6 +39,7 @@
 <Multi_key> <g> <l> : "λ" U03BB
 <Multi_key> <t> <h> : "θ" U03B8
 <Multi_key> <g> <t> : "θ" U03B8
+<Multi_key> <v> <v> : "ʌ" U028C
 
 # UTF-8 (Unicode) compose sequence
 # David.Monniaux@ens.fr
