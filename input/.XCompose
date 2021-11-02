@@ -10,8 +10,10 @@
 <Multi_key> <z> <h> : "ʒ" U0292
 <Multi_key> <s> <comma> : "ʂ" U0283
 <Multi_key> <comma> <s> : "ʂ" U0283
+<Multi_key> <s> <r> : "ʂ" U0283
 <Multi_key> <z> <comma> : "ʐ" U0290
 <Multi_key> <comma> <z> : "ʐ" U0290
+<Multi_key> <z> <r> : "ʐ" U0290
 <Multi_key> <l> <p> <s> : "ɕ" U0255
 <Multi_key> <v> <p> <s> : "ʑ" U0291
 <Multi_key> <u> <u> : "ʊ" U028A
@@ -40,6 +42,10 @@
 <Multi_key> <t> <h> : "θ" U03B8
 <Multi_key> <g> <t> : "θ" U03B8
 <Multi_key> <v> <v> : "ʌ" U028C
+<Multi_key> <n> <r> : "ɳ" U0273
+<Multi_key> <t> <r> : "ʈ" U0288
+<Multi_key> <d> <r> : "ɖ" U0256
+<Multi_key> <r> <R> : "ɽ" U027D
 
 # UTF-8 (Unicode) compose sequence
 # David.Monniaux@ens.fr
