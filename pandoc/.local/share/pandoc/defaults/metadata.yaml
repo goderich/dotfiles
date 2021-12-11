@@ -1,0 +1,11 @@
+mainfont: Linux Libertine O
+fontsize: 12pt
+CJKmainfont: AR PL UKai TW
+tblPrefix:
+  - "table"
+  - "tables"
+secPrefix:
+  - "section"
+  - "sections"
+figPrefix:
+  - "figure"
