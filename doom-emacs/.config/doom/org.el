@@ -38,6 +38,10 @@
           ("WAITING"   +org-todo-onhold)
           ("CANCELLED" +org-todo-cancel)))
 
+  ;; In the datetime prompt, if entering a time that has already
+  ;; passed today, interpret it as a time for tomorrow.
+  (setq org-read-date-prefer-future 'time)
+
   ;; org-books
   (after! f
 
