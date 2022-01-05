@@ -22,20 +22,21 @@
    :nv "n" #'git-gutter:next-hunk)
   (:prefix ("B" . "org-books")
    :desc "Jump to reading" :nv "j" #'org-books-jump-to-reading)
-  (:after org-moar
-   :prefix ("m" . "org-moar")
+  (:prefix ("m" . "org-moar")
    :desc "Find note"   :nv "f" #'org-moar-open-note
    :desc "Insert link" :nv "l" #'org-moar-link-note)))
 
-;; TAB always indents
-;; (to insert an actual TAB, use "C-v TAB")
+;; TAB always indents (to insert an actual TAB, use "C-v TAB")
 (setq tab-always-indent t)
 
+;; evil keybindings
 (map!
  :after evil
- :nv "k" #'evil-previous-visual-line
- :nv "j" #'evil-next-visual-line
- :nv "0" #'gd/beginning-or-first-non-blank)
+ :nv "k"  #'evil-previous-visual-line
+ :nv "j"  #'evil-next-visual-line
+ :nv "gj" #'evil-next-line
+ :nv "gk" #'evil-previous-line
+ :nv "0"  #'gd/beginning-or-first-non-blank)
 
 (map! :map evil-snipe-parent-transient-map
       :after evil-snipe
@@ -75,7 +76,7 @@
       :desc "Sparse tree"       "S"   #'org-sparse-tree
       ;; Unbind the already defined keys first.
       ;; general.el does this automatically for most things,
-      ;; but not for newly defined prefix keys, so I need to
+      ;; but not for prefix keys, so I need to
       ;; unbind "T" manually
       "T" nil
       (:prefix ("T" . "toggle")
