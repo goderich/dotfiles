@@ -140,6 +140,13 @@ editing, it seems easier to abstract this into a function and
 give it its own name and keybinding."
     (interactive)
     (ebib-edit-field 2))
+
+  (defun gd/ebib-import-file-from-index ()
+    "Import a file and add to the entry at point.
+Used from the ebib index."
+    (interactive)
+    (ebib-edit-entry)
+    (ebib-import-file nil))
 ) ; end `after!' block
 
 (defun gd/send-confirm-has-recipient ()
@@ -271,10 +278,3 @@ non-blank character instead."
   (interactive)
   (save-excursion
     (evil-scroll-line-to-top (- (line-number-at-pos) 2))))
-
-(defun gd/ebib-import-file-from-index ()
-  "Import a file and add to the entry at point.
-Used from the ebib index."
-  (interactive)
-  (ebib-edit-entry)
-  (ebib-import-file nil))
