@@ -22,3 +22,8 @@
 
 ;; Do not show email notifications in bar
 (package! mu4e-alert :disable t)
+
+;; Don't use Doom's snippets
+(package! doom-snippets :ignore t)
+;; Replace with yasnippet's default snippets
+(package! yasnippet-snippets)
