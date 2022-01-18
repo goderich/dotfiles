@@ -20,6 +20,5 @@ Takes a list of (VAR X Y) lists as an argument."
 
 (setq my/org-directory "~/Dropbox/org"
       my/default-bibliography "~/Dropbox/pap.bib"
-      my/org-roam-directory "~/Dropbox/org/roam"
       my/ebib-notes "~/Dropbox/org/literature-notes"
       my/ebib-file-search-dir "~/Dropbox/ebib")
