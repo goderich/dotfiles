@@ -271,7 +271,7 @@ non-blank character instead."
   (interactive)
   (if (zerop (current-column))
       (evil-first-non-blank)
-    (evil-beginning-of-line-or-digit-argument)))
+    (evil-beginning-of-line)))
 
 (defun gd/scroll-line-to-top-minus-2 ()
   "Scroll line almost to the very top, but not quite."
