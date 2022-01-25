@@ -82,3 +82,7 @@
 
 (after! markdown-mode
   (setq markdown-list-indent-width 2))
+
+;; Enter Info-mode with default emacs keybindings
+(after! info
+  (evil-set-initial-state 'Info-mode 'emacs))
