@@ -36,6 +36,8 @@
  :nv "j"  #'evil-next-visual-line
  :nv "gj" #'evil-next-line
  :nv "gk" #'evil-previous-line
+ :nv "zt" #'gd/scroll-line-to-top-minus-2
+ :nv "zT" #'evil-scroll-line-to-top
  :nv "0"  #'gd/beginning-or-first-non-blank)
 
 (map! :map evil-snipe-parent-transient-map
