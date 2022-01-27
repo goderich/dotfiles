@@ -269,7 +269,7 @@ headings of a higher level. Use instead of mashing Alt+down."
 If point is already at the beginning, move to the first
 non-blank character instead."
   (interactive)
-  (if (zerop (current-column))
+  (if (bolp)
       (evil-first-non-blank)
     (evil-beginning-of-line)))
 
