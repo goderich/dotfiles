@@ -30,3 +30,6 @@ export PAGER=less
 HISTCONTROL=ignoredups
 HISTSIZE=10000
 HISTIGNORE="ls:cd:cal*:pass*:mirrorlist:nvim:vim:history*"
+
+export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+gpgconf --launch gpg-agent
