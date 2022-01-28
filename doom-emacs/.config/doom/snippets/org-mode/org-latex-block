@@ -1,0 +1,6 @@
+# key: <l
+# name: org latex block
+# --
+#+BEGIN_LATEX
+$0
+#+END_LATEX
