@@ -11,3 +11,11 @@
        :family "Noto Sans Mono CJK TC"
        :lang "zh"
        :size 22.0))
+
+(setq doom-variable-pitch-font
+      (font-spec
+       :family "Linux Libertine O"))
+
+(after! mixed-pitch
+  (setq mixed-pitch-set-height t)
+  (set-face-attribute 'variable-pitch nil :height 1.2))
