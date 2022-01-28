@@ -86,3 +86,5 @@
 ;; Enter Info-mode with default emacs keybindings
 (after! info
   (evil-set-initial-state 'Info-mode 'emacs))
+
+(add-hook 'Info-mode-hook #'mixed-pitch-mode)

@@ -27,3 +27,6 @@
 (package! doom-snippets :ignore t)
 ;; Replace with yasnippet's default snippets
 (package! yasnippet-snippets)
+
+;; Use variable pitch in some environments
+(package! mixed-pitch)

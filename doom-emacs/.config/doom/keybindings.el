@@ -11,9 +11,10 @@
     :desc "Insert on new lines"       :n "n" #'insert-numbers
     :desc "Prepend to existing lines" :n "p" #'prepend-numbers))
   (:prefix ("t" . "Toggle...")
-   :desc "Toggle writeroom mode" :n "w" #'writeroom-mode
-   :desc "Toggle flyspell mode"  :n "s" #'flyspell-mode
-   :desc "Toggle pop-up windows" :n "p" #'+popup-mode)
+   :desc "Toggle writeroom mode"   :n "w" #'writeroom-mode
+   :desc "Toggle flyspell mode"    :n "s" #'flyspell-mode
+   :desc "Toggle mixed pitch mode" :n "m" #'mixed-pitch-mode
+   :desc "Toggle pop-up windows"   :n "p" #'+popup-mode)
   (:prefix "o"
    :desc "Ebib" :nv "e" #'ebib)
   :desc "Make a new Emacs frame" :nv "F" #'make-frame
