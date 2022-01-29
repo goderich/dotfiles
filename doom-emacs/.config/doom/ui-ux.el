@@ -87,4 +87,5 @@
 (after! info
   (evil-set-initial-state 'Info-mode 'emacs))
 
-(add-hook 'Info-mode-hook #'mixed-pitch-mode)
+;; Use mixed pitch in the following modes
+(add-hook! '(Info-mode-hook org-mode-hook)  #'mixed-pitch-mode)
