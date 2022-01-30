@@ -19,6 +19,9 @@
             "{Author}. {Date|Year}. {\"Title\".} {Journaltitle|Journal} {Volume}{(Issue)}{:Pages}. {Doi.}")
   (setq ebib-notes-name-transform-function #'identity)
   (setq ebib-name-transform-function #'gd/ebib-generate-filename)
+  ;; Set auto-generated citation key options
+  (setq bibtex-autokey-year-length 4
+        bibtex-autokey-titleword-length 0)
   (let-alist ebib-citation-commands ; requires let-alist package
     (setf (car .org-mode)
           '(("text" "@%K%< [%A]%>")
