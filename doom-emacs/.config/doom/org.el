@@ -46,7 +46,7 @@
   (after! f
 
     (defvar org-books-file
-      (f-join (f-slash org-directory) "books.org")
+      (f-join org-directory "books.org")
       "File to use with org-books mode")
 
     ;; Derive a separate mode for org-books-specific keybinds
