@@ -179,18 +179,6 @@ makes sense to me to combine into a single keybinding."
 (defun turn-off-visual-line-mode ()
   (visual-line-mode -1))
 
-(defun gd/set-org-agenda-start-day ()
-  "Set `org-agenda-start-day' to this week's Monday.
-In org, this has to mean 'previous Monday' on most days,
-and 'today' if today is Monday. This is a function as
-opposed to just a variable with an if condition because
-Emacs may run for many days at a time, so I want the
-correct day to be checked each time I start the agenda."
-  (setq org-agenda-start-day
-        (if (= 1 (calendar-day-of-week (calendar-current-date)))
-            "today"
-          "-Mon")))
-
 (defun org-move-subtree-all-the-way-down ()
   "Move the current subtree down past all siblings.
 Only moves past headings of the same level, but not past

@@ -59,9 +59,8 @@
     (setq org-books-file-depth 3))
 
   ;; org-agenda settings
-  ;; Display one week starting from last Monday
-  ;; (this forces the agenda to always start on a Monday).
+  ;; Display one week, always starting from Monday.
   (setq org-agenda-span 'week)
-  (add-hook 'org-agenda-mode-hook #'gd/set-org-agenda-start-day)
+  (setq org-agenda-start-on-weekday 1)
 
   ) ; end of after! block
