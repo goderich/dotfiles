@@ -287,3 +287,9 @@ non-blank character instead."
               :history 'counsel-org-goto-history
               :preselect 0
               :caller 'counsel-org-goto)))
+
+(defun gd/insert-org-link-from-clipboard ()
+  "Insert org link from clipboard."
+  (interactive)
+  (let ((address (substring-no-properties (current-kill 0))))
+    (gd/insert-link address)))
