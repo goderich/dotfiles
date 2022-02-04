@@ -293,3 +293,16 @@ non-blank character instead."
   (interactive)
   (let ((address (substring-no-properties (current-kill 0))))
     (gd/insert-link address)))
+
+(defun gd/insert-link-with-id ()
+  "Insert a link to a heading with completion, using a unique ID."
+  (interactive)
+  (let ((heading)
+        (id))
+    (save-excursion
+      (counsel-org-goto)
+      (setq heading (org-get-heading))
+      (setq id (concat "id:" (org-id-get nil 'create))))
+    (let* ((link-name (read-string "Link name: " "" nil heading))
+           (link-string (org-link-make-string id link-name)))
+      (insert link-string))))
