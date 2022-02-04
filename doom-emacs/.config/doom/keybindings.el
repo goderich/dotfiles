@@ -85,6 +85,10 @@
       (:prefix ("T" . "toggle")
        :desc "Toggle tag groups"  "g" #'org-toggle-tags-groups
        :desc "Toggle valign mode" "v" #'valign-mode)
+      "i" nil
+      (:prefix ("i" . "insert")
+       :nv "l" #'gd/insert-org-link
+       :nv "c" #'gd/insert-org-link-from-clipboard)
       ;; Bindings for pandoc-mode
       :after pandoc-mode
       ;; =, p= is a prefix in Doom's org keybindings,
