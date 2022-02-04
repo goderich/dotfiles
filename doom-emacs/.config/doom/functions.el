@@ -267,13 +267,16 @@ non-blank character instead."
   (save-excursion
     (evil-scroll-line-to-top (- (line-number-at-pos) 2))))
 
-(defun gd/insert-org-link-helper (candidate)
-  (let* ((heading (-last-item (s-split "/" (car candidate))))
-         (link-name (read-string "Link name: " "" nil heading))
-         (link-string (org-link-make-string heading link-name)))
+(defun gd/insert-link (address)
+  (let* ((link-name (read-string "Link name: " "" nil address))
+         (link-string (org-link-make-string address link-name)))
     (unless (bolp)
       (insert " "))
     (insert link-string)))
+
+(defun gd/insert-org-link-helper (candidate)
+  (let ((heading (-last-item (s-split "/" (car candidate)))))
+    (gd/insert-link heading)))
 
 (defun gd/insert-org-link ()
   "Insert link to org-mode heading with completion."
