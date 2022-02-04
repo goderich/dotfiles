@@ -212,7 +212,7 @@ headings of a higher level. Use instead of mashing Alt+down."
   (sleep-for 1) ; wait for the buffer to load
   (let ((buff (car (buffer-list))))
     (with-current-buffer buff
-      (insert "Received, thank you.")
+      (insert "Received, thank you.\n")
       (message-send-and-exit))))
 
 (defun gd/org-copy-this-link ()
