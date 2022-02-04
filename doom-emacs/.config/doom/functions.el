@@ -266,3 +266,21 @@ non-blank character instead."
   (interactive)
   (save-excursion
     (evil-scroll-line-to-top (- (line-number-at-pos) 2))))
+
+(defun gd/insert-org-link-helper (candidate)
+  (let* ((heading (-last-item (s-split "/" (car candidate))))
+         (link-name (read-string "Link name: " "" nil heading))
+         (link-string (org-link-make-string heading link-name)))
+    (unless (bolp)
+      (insert " "))
+    (insert link-string)))
+
+(defun gd/insert-org-link ()
+  "Insert link to org-mode heading with completion."
+  (interactive)
+  (let ((settings (cdr (assq 'org-mode counsel-outline-settings))))
+    (ivy-read "Outline: " (counsel-outline-candidates settings)
+              :action #'gd/insert-org-link-helper
+              :history 'counsel-org-goto-history
+              :preselect 0
+              :caller 'counsel-org-goto)))
