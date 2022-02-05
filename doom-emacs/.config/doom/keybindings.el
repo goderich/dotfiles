@@ -5,6 +5,7 @@
 
 ;; Global keybindings
 (map!
+ :nv ";" #'counsel-M-x
  (:leader
   (:prefix "i"
    (:prefix ("n" . "Insert numbers")
@@ -48,9 +49,9 @@
 ;; for the search), search for the next occurrence instead
 ;; of the usual behaviour, and F/T/S search in the other
 ;; direction. This mode also grabs the ";" and "," keys
-;; for the same purpose. I'm okay with the ";" key being
-;; used this way, but I prefer if "," wasn't touched.
-      "," nil)
+;; for the same purpose. I want those keys for myself.
+      "," nil
+      ";" nil)
 
 ;; evil-ex keybindings (: commands)
 ;; I haven't found a way to map these with the `map!' macro,
