@@ -274,27 +274,27 @@ non-blank character instead."
       (insert " "))
     (insert link-string)))
 
-(defun gd/insert-org-link-helper (candidate)
+(defun gd/org-insert-link-helper (candidate)
   (let ((heading (-last-item (s-split "/" (car candidate)))))
     (gd/insert-link heading)))
 
-(defun gd/insert-org-link ()
+(defun gd/org-insert-link ()
   "Insert link to org-mode heading with completion."
   (interactive)
   (let ((settings (cdr (assq 'org-mode counsel-outline-settings))))
     (ivy-read "Outline: " (counsel-outline-candidates settings)
-              :action #'gd/insert-org-link-helper
+              :action #'gd/org-insert-link-helper
               :history 'counsel-org-goto-history
               :preselect 0
               :caller 'counsel-org-goto)))
 
-(defun gd/insert-org-link-from-clipboard ()
+(defun gd/org-insert-link-from-clipboard ()
   "Insert org link from clipboard."
   (interactive)
   (let ((address (substring-no-properties (current-kill 0))))
-    (gd/insert-link address)))
+    (gd/org-insert-link address)))
 
-(defun gd/insert-link-with-id ()
+(defun gd/org-insert-link-with-id ()
   "Insert a link to a heading with completion, using a unique ID."
   (interactive)
   (let ((heading)

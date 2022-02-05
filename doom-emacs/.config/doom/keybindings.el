@@ -87,9 +87,9 @@
        :desc "Toggle valign mode" "v" #'valign-mode)
       "i" nil
       (:prefix ("i" . "insert")
-       :nv "l" #'gd/insert-org-link
-       :nv "c" #'gd/insert-org-link-from-clipboard
-       :nv "i" #'gd/insert-link-with-id)
+       :nv "l" "Ordinary org link"       #'gd/org-insert-link
+       :nv "c" "Link from clipboard"     #'gd/org-insert-link-from-clipboard
+       :nv "i" "Org link with unique ID" #'gd/org-insert-link-with-id)
       ;; Bindings for pandoc-mode
       :after pandoc-mode
       ;; =, p= is a prefix in Doom's org keybindings,
