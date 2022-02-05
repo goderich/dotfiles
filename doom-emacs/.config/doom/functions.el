@@ -306,3 +306,27 @@ non-blank character instead."
     (let* ((link-name (read-string "Link name: " "" nil heading))
            (link-string (org-link-make-string id link-name)))
       (insert link-string))))
+
+(defun gd/org-insert-reference-heading ()
+  "Insert a pandoc reference to a heading, with completion.
+We use ivy to find the required heading, and then insert a link
+using its CUSTOM_ID property. If the property isn't set, it is
+created.
+
+The function prompts the user for a new custom ID. By default,
+the heading name is used. The user input or heading is then
+transformed into a lisp-case string."
+  (interactive)
+  (let ((custom-id))
+    (save-excursion
+      (counsel-org-goto)
+      (let ((props (org-entry-properties)))
+        (setq custom-id (map-elt props "CUSTOM_ID"))
+        (unless custom-id
+          (setq custom-id
+                (->> (org-get-heading)
+                     (read-string "Create new custom ID: " "" nil)
+                     (s-dashed-words)
+                     (concat "sec:")))
+          (org-set-property "CUSTOM_ID" custom-id))))
+    (insert "@" custom-id)))
