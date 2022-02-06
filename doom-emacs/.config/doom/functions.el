@@ -289,10 +289,11 @@ non-blank character instead."
               :caller 'counsel-org-goto)))
 
 (defun gd/org-insert-link-from-clipboard ()
-  "Insert org link from clipboard."
+  "Insert org link from clipboard.
+Prompts for link name."
   (interactive)
   (let ((address (substring-no-properties (current-kill 0))))
-    (gd/org-insert-link address)))
+    (gd/insert-link address)))
 
 (defun gd/org-insert-link-with-id ()
   "Insert a link to a heading with completion, using a unique ID."
