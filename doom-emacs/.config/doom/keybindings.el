@@ -213,3 +213,12 @@
 (map! :map helpful-mode-map
       :after helpful
       :nvm "q" #'evil-delete-buffer)
+
+;; Info mode keybindings.
+;; I'm using Emacs state in Info, which is fine,
+;; but gg/G are muscle memory by now.
+(map! :map Info-mode-map
+      :after info
+      "G"  #'beginning-of-buffer
+      "gg" #'end-of-buffer
+      "go" #'Info-goto-node)
