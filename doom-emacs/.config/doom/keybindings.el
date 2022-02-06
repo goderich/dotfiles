@@ -12,10 +12,10 @@
     :desc "Insert on new lines"       :n "n" #'insert-numbers
     :desc "Prepend to existing lines" :n "p" #'prepend-numbers))
   (:prefix ("t" . "Toggle...")
-   :desc "Toggle writeroom mode"   :n "w" #'writeroom-mode
-   :desc "Toggle flyspell mode"    :n "s" #'flyspell-mode
-   :desc "Toggle mixed pitch mode" :n "m" #'mixed-pitch-mode
-   :desc "Toggle pop-up windows"   :n "p" #'+popup-mode)
+   :desc "Writeroom mode"   :n "w" #'writeroom-mode
+   :desc "Flyspell mode"    :n "s" #'flyspell-mode
+   :desc "Mixed pitch mode" :n "m" #'mixed-pitch-mode
+   :desc "Pop-up windows"   :n "p" #'+popup-mode)
   (:prefix "o"
    :desc "Ebib" :nv "e" #'ebib)
   :desc "Make a new Emacs frame" :nv "F" #'make-frame
@@ -68,16 +68,16 @@
        :nv "j" #'gd/org-next-heading
        :nv "l" #'org-next-visible-heading)
       :localleader
-      :desc "C-c C-c"           ","   #'org-ctrl-c-ctrl-c
-      :desc "Open link"         "l"   #'org-open-at-point
-      :desc "Copy link"         "y"   #'gd/org-copy-this-link
-      :desc "Archive subtree"   "A"   #'org-archive-subtree
-      :desc "Open agenda"       "a"   #'org-agenda
-      :desc "Edit source block" "s"   #'org-edit-src-code
-      :desc "org-todo"          "t"   #'org-todo
-      :desc "Insert citation"   "c"   #'ebib-insert-citation
-      :desc "Insert link"       "L"   #'org-insert-last-stored-link
-      :desc "Sparse tree"       "S"   #'org-sparse-tree
+      :desc "C-c C-c"           "," #'org-ctrl-c-ctrl-c
+      :desc "Open link"         "l" #'org-open-at-point
+      :desc "Copy link"         "y" #'gd/org-copy-this-link
+      :desc "Archive subtree"   "A" #'org-archive-subtree
+      :desc "Open agenda"       "a" #'org-agenda
+      :desc "Edit source block" "s" #'org-edit-src-code
+      :desc "org-todo"          "t" #'org-todo
+      :desc "Insert citation"   "c" #'ebib-insert-citation
+      :desc "Insert link"       "L" #'org-insert-last-stored-link
+      :desc "Sparse tree"       "S" #'org-sparse-tree
       ;; Unbind the already defined keys first.
       ;; general.el does this automatically for most things,
       ;; but not for prefix keys, so I need to
