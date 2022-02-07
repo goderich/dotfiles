@@ -1,5 +1,8 @@
 ;;; ~/dotfiles/doom-emacs/.config/doom/+ui.el -*- lexical-binding: t; -*-
 
+;; Set the theme
+(setq doom-theme 'doom-solarized-light)
+
 ;; Soft wrap long lines
 (global-visual-line-mode 1)
 
