@@ -154,7 +154,9 @@
       :nvi "M-<down>"   #'markdown-move-down
       :nvi "C-<return>" #'markdown-insert-list-item
       (:prefix "g"
-       :nv "h" #'markdown-up-heading)
+       :nv "h" #'markdown-up-heading
+       :nv "j" #'markdown-next-visible-heading
+       :nv "k" #'markdown-previous-visible-heading)
       (:localleader
        :desc "Insert citation"    "c" #'ebib-insert-citation
        :desc "Toggle valign mode" "v" #'valign-mode
