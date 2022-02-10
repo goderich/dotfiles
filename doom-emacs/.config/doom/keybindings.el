@@ -140,6 +140,14 @@
 
 (map! :map markdown-mode-map
       :nvi "<tab>"      #'markdown-cycle
+      ;; The above TAB binding shadows yas-expand.
+      ;; In order to make yasnippets work, I need to
+      ;; manually pass the binding to `yas-maybe-expand'
+      ;; BELOW the new binding (since it expands only
+      ;; when there is a snippet).
+      ;; Note that `yas-maybe-expand' is NOT a function,
+      ;; so it must not be sharp-quoted.
+      :nvi "<tab>"      yas-maybe-expand
       :nvi "M-<left>"   #'markdown-promote
       :nvi "M-<right>"  #'markdown-demote
       :nvi "M-<up>"     #'markdown-move-up
