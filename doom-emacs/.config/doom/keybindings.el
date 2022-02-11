@@ -139,6 +139,7 @@
        :desc "Backward barf"  :n "<" #'sp-backward-barf-sexp))
 
 (map! :map markdown-mode-map
+      :after yasnippet
       :nvi "<tab>"      #'markdown-cycle
       ;; The above TAB binding shadows yas-expand.
       ;; In order to make yasnippets work, I need to
