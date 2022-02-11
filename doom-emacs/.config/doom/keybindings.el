@@ -230,6 +230,6 @@
 ;; but gg/G are muscle memory by now.
 (map! :map Info-mode-map
       :after info
-      "G"  #'beginning-of-buffer
-      "gg" #'end-of-buffer
+      "G"  #'end-of-buffer
+      "gg" #'beginning-of-buffer
       "go" #'Info-goto-node)
