@@ -270,8 +270,6 @@ non-blank character instead."
 (defun gd/insert-link (address)
   (let* ((link-name (read-string "Link name: " "" nil address))
          (link-string (org-link-make-string address link-name)))
-    (unless (bolp)
-      (insert " "))
     (insert link-string)))
 
 (defun gd/org-insert-link-helper (candidate)
