@@ -89,6 +89,8 @@
 ;; Enter Info-mode with default emacs keybindings
 (after! info
   (evil-set-initial-state 'Info-mode 'emacs))
+(after! racket-stepper
+  (evil-set-initial-state 'racket-stepper-mode 'emacs))
 
 ;; Use mixed pitch in the following modes
 (add-hook! '(Info-mode-hook org-mode-hook markdown-mode-hook)
