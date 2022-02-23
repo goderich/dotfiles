@@ -22,6 +22,8 @@
   (:prefix "g"
    :nv "p" #'git-gutter:previous-hunk
    :nv "n" #'git-gutter:next-hunk)
+  (:prefix "b"
+   :nv "q" #'kill-current-buffer)
   (:prefix ("B" . "org-books")
    :desc "Jump to reading" :nv "j" #'org-books-jump-to-reading)
   (:prefix ("m" . "org-moar")
