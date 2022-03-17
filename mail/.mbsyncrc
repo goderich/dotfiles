@@ -8,9 +8,10 @@ IMAPAccount ncue
 Host imap.gmail.com
 User goderich@gm.ncue.edu.tw
 # To store the password in an encrypted file use PassCmd instead of Pass
-PassCmd "gpg -q --for-your-eyes-only --no-tty -d ~/Dropbox/.password-store/gm.ncue.gpg"
+PassCmd "gpg -q --for-your-eyes-only --no-tty -d ~/Dropbox/.password-store/gm.ncue.2fa.gpg"
 # Use SSL
 SSLType IMAPS
+AuthMechs LOGIN
 # The following line should work. If get certificate errors, uncomment the two following lines and read the "Troubleshooting" section.
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 #CertificateFile ~/.cert/imap.gmail.com.pem
@@ -35,13 +36,14 @@ Patterns * ![Gmail]* "[Gmail]/Starred" "[Gmail]/All Mail"
 IMAPAccount gmail
 Host imap.gmail.com
 User yuhsien77@gmail.com
-PassCmd "gpg -q --for-your-eyes-only --no-tty -d ~/Dropbox/.password-store/gmail.gpg"
+PassCmd "gpg -q --for-your-eyes-only --no-tty -d ~/Dropbox/.password-store/gmail.2fa.gpg"
 SSLType IMAPS
+AuthMechs LOGIN
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 
 # Define the Maildir
 MaildirStore gmail-local
-# Fatten nested Gmail labels. E.g /[Gmail]/Trash becomes /[Gmail].Trash
+# Flatten nested Gmail labels. E.g /[Gmail]/Trash becomes /[Gmail].Trash
 # This also renders 'SubFolders' setting irrelevant
 SubFolders Verbatim
 # Flatten .
