@@ -320,12 +320,11 @@ transformed into a lisp-case string."
     (save-excursion
       (counsel-org-goto)
       (let ((props (org-entry-properties)))
-        (setq custom-id (map-elt props "CUSTOM_ID"))
-        (unless custom-id
-          (setq custom-id
-                (->> (org-get-heading)
-                     (read-string "Create new custom ID: " "" nil)
-                     (s-dashed-words)
-                     (concat "sec:")))
-          (org-set-property "CUSTOM_ID" custom-id))))
+        (setq custom-id
+              (or (map-elt props "CUSTOM_ID")
+                  (->> (org-get-heading)
+                       (read-string "Create new custom ID: " "" nil)
+                       (s-dashed-words)
+                       (concat "sec:"))))
+        (org-set-property "CUSTOM_ID" custom-id)))
     (insert "@" custom-id)))
