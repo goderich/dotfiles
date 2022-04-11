@@ -306,6 +306,21 @@ Prompts for link name."
            (link-string (org-link-make-string id link-name)))
       (insert link-string))))
 
+(defun gd/org-set-custom-id ()
+  "Create a new custom ID property at the current org heading.
+Prompts for user input, converts it to lisp-case, and
+sets that as the new CUSTOM_ID. If the input is left
+blank, uses the heading text itself.
+
+Returns the new CUSTOM_ID value as a string."
+  (let ((custom-id
+         (->> (org-get-heading)
+              (read-string "Create new custom ID: " "" nil)
+              (s-dashed-words)
+              (concat "sec:"))))
+    (org-set-property "CUSTOM_ID" custom-id)
+    custom-id))
+
 (defun gd/org-insert-reference-heading ()
   "Insert a pandoc reference to a heading, with completion.
 We use ivy to find the required heading, and then insert a link
@@ -320,11 +335,6 @@ transformed into a lisp-case string."
     (save-excursion
       (counsel-org-goto)
       (let ((props (org-entry-properties)))
-        (setq custom-id
-              (or (map-elt props "CUSTOM_ID")
-                  (->> (org-get-heading)
-                       (read-string "Create new custom ID: " "" nil)
-                       (s-dashed-words)
-                       (concat "sec:"))))
-        (org-set-property "CUSTOM_ID" custom-id)))
+        (setq custom-id (or (map-elt props "CUSTOM_ID")
+                            (gd/org-set-custom-id)))))
     (insert "@" custom-id)))
