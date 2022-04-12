@@ -24,8 +24,8 @@
         bibtex-autokey-titleword-length 0)
   (let-alist ebib-citation-commands ; requires let-alist package
     (setf (car .org-mode)
-          '(("text" "@%K%< [%A]%>")
-            ("paren" "[%(%<%A %>@%K%<, %A%>%; )]")))))
+          '(("text" "[cite/t: %(@%K%< %A%>%; )]")
+            ("paren" "[cite: %(@%K%< %A%>%; )]")))))
 
 ;; Visual line mode makes entries occupy 2 or even more lines in the index.
 ;; This is unnecessary, because I can see the full list of authors and title
