@@ -63,8 +63,8 @@
 
   ;; org-agenda settings
   ;; Display one week, always starting from Monday.
-  (setq org-agenda-span 'week)
-  (setq org-agenda-start-on-weekday 1)
-  (setq org-agenda-start-day ".")
+  (setq org-agenda-span 'week
+        org-agenda-start-on-weekday 1
+        org-agenda-start-day ".")
 
   ) ; end of after! block
