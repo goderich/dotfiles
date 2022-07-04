@@ -28,7 +28,7 @@
   ;; Org todo keywords and colours
   (setq org-todo-keywords
         '((sequence "TODO(t)" "|" "DONE(d)")
-          (sequence "NEXT(n)" "WAITING(w)" "LATER(l)" "|" "CANCELLED(c)")))
+          (sequence "NEXT(n)" "WAITING(w)" "LATER(l)" "LOOP(p)" "|" "CANCELLED(c)")))
 
   ;; My custom faces for todo items. I'm reusing most from:
   ;; ~/.emacs.d/modules/lang/org/config.el
@@ -39,6 +39,7 @@
         '(("LATER"     +org-todo-onhold)
           ("NEXT"      +org-todo-important)
           ("WAITING"   +org-todo-onhold)
+          ("LOOP"      +org-todo-onhold)
           ("CANCELLED" +org-todo-cancel)))
 
   ;; In the datetime prompt, if entering a time that has already
