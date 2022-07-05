@@ -189,6 +189,16 @@ headings of a higher level. Use instead of mashing Alt+down."
     (org-move-subtree-down))
   (outline-previous-heading))
 
+(defun org-move-subtree-all-the-way-up ()
+  "Move the current subtree up past all siblings.
+Only moves past headings of the same level, but not past
+headings of a higher level. Use instead of mashing Alt+up."
+  (interactive)
+  (while (org-get-last-sibling)
+    (org-get-next-sibling)
+    (org-move-subtree-up))
+  (outline-next-heading))
+
 (defun gd/org-next-heading ()
   "Go to the next sibling, or next heading."
   (interactive)
