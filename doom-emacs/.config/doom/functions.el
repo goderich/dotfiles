@@ -275,7 +275,9 @@ non-blank character instead."
   "Scroll line almost to the very top, but not quite."
   (interactive)
   (save-excursion
-    (evil-scroll-line-to-top (- (line-number-at-pos) 2))))
+    (-> (line-number-at-pos)
+        (- 2)
+        (evil-scroll-line-to-top))))
 
 (defun gd/insert-link (address)
   (let* ((link-name (read-string "Link name: " "" nil address))
