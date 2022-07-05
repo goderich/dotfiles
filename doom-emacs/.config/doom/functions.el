@@ -146,7 +146,8 @@ give it its own name and keybinding."
 Used from the ebib index."
     (interactive)
     (ebib-edit-entry)
-    (ebib-import-file nil))
+    (ebib-import-file nil)
+    (ebib-quit-entry-buffer))
 ) ; end `after!' block
 
 (defun gd/send-confirm-has-recipient ()
