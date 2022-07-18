@@ -30,6 +30,10 @@
         '((sequence "TODO(t)" "|" "DONE(d)")
           (sequence "NEXT(n)" "WAITING(w)" "LATER(l)" "LOOP(p)" "|" "CANCELLED(c)")))
 
+  ;; Use LOOP keyword for repeating tasks
+  ;; (after marking them as done)
+  (setq org-todo-repeat-to-state "LOOP")
+
   ;; My custom faces for todo items. I'm reusing most from:
   ;; ~/.emacs.d/modules/lang/org/config.el
   (with-no-warnings
