@@ -110,9 +110,12 @@ amount of lines to create."
        (s-join " and " it))))
 
   (defun gd/ebib-get-year (key)
-    (or
-     (ebib-get-field-value "year" key ebib--cur-db 'noerror 'unbraced)
-     (ebib-get-field-value "date" key ebib--cur-db 'noerror 'unbraced)))
+    (->>
+     (or
+      (ebib-get-field-value "year" key ebib--cur-db 'noerror 'unbraced)
+      (ebib-get-field-value "date" key ebib--cur-db 'noerror 'unbraced))
+     (s-split "-")
+     (-first-item)))
 
   (defun gd/ebib-get-title (key)
     (-->
