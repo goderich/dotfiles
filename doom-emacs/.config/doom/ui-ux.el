@@ -99,3 +99,7 @@
 ;; Use mixed pitch in the following modes
 (add-hook! '(Info-mode-hook org-mode-hook markdown-mode-hook)
            #'mixed-pitch-mode)
+
+;; Automatically make scripts executable on save
+;; (checks for shebang at the beginning of the file).
+(add-hook 'after-save-hook #'executable-make-buffer-file-executable-if-script-p)
