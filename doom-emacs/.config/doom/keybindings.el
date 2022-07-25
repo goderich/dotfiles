@@ -25,10 +25,7 @@
   (:prefix "b"
    :nv "q" #'kill-current-buffer)
   (:prefix ("B" . "org-books")
-   :desc "Jump to reading" :nv "j" #'org-books-jump-to-reading)
-  (:prefix ("m" . "org-moar")
-   :desc "Find note"   :nv "f" #'org-moar-open-note
-   :desc "Insert link" :nv "l" #'org-moar-link-note)))
+   :desc "Jump to reading" :nv "j" #'org-books-jump-to-reading)))
 
 ;; TAB always indents (to insert an actual TAB, use "C-v TAB")
 (setq tab-always-indent t)
