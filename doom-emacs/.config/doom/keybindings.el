@@ -7,6 +7,7 @@
 (map!
  :nv ";" #'counsel-M-x
  (:leader
+  :desc "Dashboard" "d" #'+doom-dashboard/open
   (:prefix "i"
    (:prefix ("n" . "Insert numbers")
     :desc "Insert on new lines"       :n "n" #'insert-numbers
@@ -58,6 +59,22 @@
 (evil-ex-define-cmd "q"  #'kill-this-buffer)
 (evil-ex-define-cmd "wq" #'save-and-kill-this-buffer)
 (evil-ex-define-cmd "x"  #'save-and-kill-this-buffer)
+
+;; Use shortcuts in Doom's dashboard
+;; Idea stolen from tecosaur's config
+(map! :map +doom-dashboard-mode-map
+      :desc "Find file"        :ne "f" #'find-file
+      :desc "Recent files"     :ne "r" #'counsel-recentf
+      :desc "Config dir"       :ne "c" #'doom/open-private-config
+      :desc "Org dir"          :ne "o" #'gd/browse-org-directory
+      :desc "Switch buffer"    :ne "b" #'+ivy/switch-buffer
+      :desc "IBuffer"          :ne "i" #'ibuffer
+      :desc "Previous buffer"  :ne "p" #'previous-buffer
+      :desc "Weekly agenda"    :ne "a" #'org-agenda-list
+      :desc "Open mu4e"        :ne "m" #'=mu4e
+      :desc "Set theme"        :ne "t" #'counsel-load-theme
+      :desc "Quit"             :ne "Q" #'save-buffers-kill-terminal
+      :desc "Show keybindings" :ne "h" (cmd! (which-key-show-keymap '+doom-dashboard-mode-map)))
 
 (map! :map org-mode-map
       :after org

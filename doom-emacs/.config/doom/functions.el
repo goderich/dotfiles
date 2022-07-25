@@ -365,3 +365,7 @@ created."
 (defun gd/org-insert-capitalized-reference-heading ()
   (interactive)
   (gd/org-insert-reference-heading 'capitalize))
+
+(defun gd/browse-org-directory ()
+  (interactive)
+  (doom-project-browse my/org-directory))
