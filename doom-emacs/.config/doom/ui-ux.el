@@ -103,3 +103,7 @@
 ;; Automatically make scripts executable on save
 ;; (checks for shebang at the beginning of the file).
 (add-hook 'after-save-hook #'executable-make-buffer-file-executable-if-script-p)
+
+;; Set which-key delay to near instant.
+;; (NB. Setting to zero is currently not recommended.)
+(setq which-key-idle-delay 0.1)
