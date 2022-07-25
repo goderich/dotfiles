@@ -6,6 +6,9 @@
 ;; Soft wrap long lines
 (global-visual-line-mode 1)
 
+;; Maintain a small margin when scrolling
+(setq scroll-margin 2)
+
 ;; Start the week on Mondays
 (setq calendar-week-start-day 1)
 
@@ -67,7 +70,7 @@
 (advice-add! '(counsel-org-goto org-books-jump-to-reading
                org-books-add-book)
              :after
-             (lambda (&rest _) (gd/scroll-line-to-top-minus-2)))
+             (lambda (&rest _) (evil-scroll-line-to-top)))
 
 ;; Disable popup windows by default
 ;; (make things open in new buffers instead).
