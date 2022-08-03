@@ -357,10 +357,11 @@ We use ivy to find the required heading, and then insert a link
 using its CUSTOM_ID property. If the property isn't set, it is
 created."
   (interactive)
-  (let ((custom-id (gd/org-get-custom-id)))
-    (if capitalize?
-        (insert "[cite: @" (s-capitalize custom-id) "]")
-      (insert "[cite: @" custom-id "]"))))
+  (let* ((custom-id (gd/org-get-custom-id))
+         (cite-str (if capitalize?
+                       (s-capitalize custom-id)
+                     custom-id)))
+    (insert "[cite: @" cite-str "]")))
 
 (defun gd/org-insert-capitalized-reference-heading ()
   (interactive)
