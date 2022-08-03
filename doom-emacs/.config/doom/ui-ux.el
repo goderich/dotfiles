@@ -77,7 +77,7 @@
 (advice-add! '(counsel-org-goto org-books-jump-to-reading
                org-books-add-book)
              :after
-             (lambda (&rest _) (evil-scroll-line-to-top)))
+             (lambda (&rest _) (evil-scroll-line-to-top nil)))
 
 ;; Disable popup windows by default
 ;; (make things open in new buffers instead).
