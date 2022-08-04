@@ -7,6 +7,7 @@
 (map!
  :nv ";" #'counsel-M-x
  (:leader
+  :desc "Weekly agenda" "a" #'org-agenda-list
   :desc "Dashboard" "d" #'+doom-dashboard/open
   (:prefix "i"
    (:prefix ("n" . "Insert numbers")
