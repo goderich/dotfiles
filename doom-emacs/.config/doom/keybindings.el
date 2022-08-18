@@ -129,10 +129,10 @@
 
 ;; These are used when composing emails in mu4e
 (map! :map org-msg-edit-mode-map
-      :after org-msg
+      :after (mu4e org-msg)
       :localleader
       :desc "Send message and exit" :nv "s" #'gd/send-confirm-has-recipient
-      :desc "Attach file"           :nv "a" #'org-msg-attach-attach)
+      :desc "Attach file"           :nv "a" #'gd/org-msg-attach-file)
 
 ;; These are used with my own derived org-books-mode within the books.org file
 (map! :map org-books-mode-map

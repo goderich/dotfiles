@@ -370,3 +370,14 @@ created."
 (defun gd/browse-org-directory ()
   (interactive)
   (doom-project-browse my/org-directory))
+
+(defun gd/org-msg-attach-file ()
+  "Attach a file to an org-msg buffer and remember the directory.
+A wrapper around `org-msg-attach-attach' that remembers the location
+of the last attachment of the current email. Helpful when attaching
+several files from a deeply nested directory without using dired."
+  (interactive)
+  (let* ((file (read-file-name "Attachment: "))
+         (dir (f-dirname file)))
+    (setq-local default-directory dir)
+    (org-msg-attach-attach file)))
