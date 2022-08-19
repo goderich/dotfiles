@@ -381,3 +381,13 @@ several files from a deeply nested directory without using dired."
          (dir (f-dirname file)))
     (setq-local default-directory dir)
     (org-msg-attach-attach file)))
+
+(defmacro map-put-many! (map &rest rest)
+  "Like `map-put!', but with many key-value pairs.
+Key-value pairs should be supplied without any syntax
+(so not as cons cells), just as a bare list."
+  (when (oddp (length rest))
+    (user-error "Odd number of arguments!"))
+  (cl-loop for (k v) on '(k1 v1 k2 v2) by #'cddr
+           collect `(map-put! map ,k ,v) into expressions
+           finally (return (cons 'progn expressions))))
