@@ -396,3 +396,18 @@ Key-value pairs should be supplied without any syntax
     (user-error "Odd number of arguments!"))
   (cl-loop for (k v) on rest by #'cddr
            do (map-put! map k v)))
+
+(defun gd/org-books-tag-short (&optional pagenum)
+  "Tag a book as short.
+Tags books as short if they are shorter than PAGENUM,
+or 300 pages by default. Books are only tagged as short
+if they don't already have this tag, including inherited
+tags."
+  (let* ((props (org-entry-properties))
+         (pages (map-elt props "PAGES"))
+         (tags (org-get-tags))
+         (local-tags (org-get-tags nil 'local)))
+    (when (and pages
+               (< (string-to-number pages) (or pagenum 300))
+               (not (member "short" tags)))
+      (org-set-tags (-snoc local-tags "short")))))
