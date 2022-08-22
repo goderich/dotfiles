@@ -288,7 +288,7 @@ non-blank character instead."
          (link-string (org-link-make-string address link-name)))
     (insert link-string)))
 
-(defun gd/org-insert-link-helper (candidate)
+(defun gd/org--insert-link-helper (candidate)
   (let ((heading (-last-item (s-split "/" (car candidate)))))
     (gd/insert-link heading)))
 
@@ -297,7 +297,7 @@ non-blank character instead."
   (interactive)
   (let ((settings (cdr (assq 'org-mode counsel-outline-settings))))
     (ivy-read "Outline: " (counsel-outline-candidates settings)
-              :action #'gd/org-insert-link-helper
+              :action #'gd/org--insert-link-helper
               :history 'counsel-org-goto-history
               :preselect 0
               :caller 'counsel-org-goto)))
@@ -309,18 +309,24 @@ Prompts for link name."
   (let ((address (substring-no-properties (current-kill 0))))
     (gd/insert-link address)))
 
+(defun gd/org--get-heading-id-pair ()
+  "Get the text and ID of an org heading.
+Creates the ID if one isn't already present."
+  (save-excursion
+    (counsel-org-goto)
+    (let ((heading (org-get-heading))
+          (id (concat "id:" (org-id-get nil 'create))))
+      (cons heading id))))
+
 (defun gd/org-insert-link-with-id ()
   "Insert a link to a heading with completion, using a unique ID."
   (interactive)
-  (let ((heading)
-        (id))
-    (save-excursion
-      (counsel-org-goto)
-      (setq heading (org-get-heading))
-      (setq id (concat "id:" (org-id-get nil 'create))))
-    (let* ((link-name (read-string "Link name: " "" nil heading))
-           (link-string (org-link-make-string id link-name)))
-      (insert link-string))))
+  (let* ((heading-id-pair (gd/org--get-heading-id-pair))
+         (heading (car heading-id-pair))
+         (id (cdr heading-id-pair))
+         (link-name (read-string "Link name: " "" nil heading))
+         (link-string (org-link-make-string id link-name)))
+    (insert link-string)))
 
 (defun gd/org-set-custom-id ()
   "Create a new custom ID property at the current org heading.
