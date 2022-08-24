@@ -72,8 +72,26 @@
       (make-local-variable 'org-cycle-hook)
       (remove-hook 'org-cycle-hook #'org-cycle-hide-drawers 'local))
 
-    (add-hook 'org-books-mode-hook #'org-books-setup+))
+    (add-hook 'org-books-mode-hook #'org-books-setup+)
 
+    ;;; org-books automatic genre tags settings
+    (after! org-books
+      ;; Here I have tags that need to be manually mapped to genres:
+      (map-put-many! org-books-genre-tag-associations
+                     "Humor" "funny"
+                     "Dark Fantasy" "dark")
+
+      ;; And here is a whitelist of tags that will simply be
+      ;; transformed via `s-snake-case'.
+      (let ((org-books-genre-tag-whitelist
+             '("Mystery" "Urban Fantasy" "Vampires"
+               "Crime" "Dark" "Horror")))
+        (cl-loop for genre in org-books-genre-tag-whitelist
+                 do (map-put! org-books-genre-tag-associations
+                              genre
+                              (s-snake-case genre)))))
+
+    ) ; end of after! block
 
   ;; org-agenda settings
   ;; Display one week, always starting from Monday.
