@@ -133,6 +133,7 @@ amount of lines to create."
       (->> (list names year title)
        (-filter #'identity) ; remove nil values
        (s-join " ")
+       (replace-regexp-in-string "/" "")
        (replace-regexp-in-string " " "_"))))
 
   (defun gd/ebib-edit-as-string ()
