@@ -212,6 +212,7 @@ headings of a higher level. Use instead of mashing Alt+up."
 (defun gd/org-previous-heading ()
   "Go to the previous sibling, or previous heading."
   (interactive)
+  (evil-beginning-of-line)
   (org-get-last-sibling))
 
 (defun save-and-kill-this-buffer ()
