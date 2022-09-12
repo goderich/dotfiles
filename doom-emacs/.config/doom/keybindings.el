@@ -26,6 +26,8 @@
    :nv "n" #'git-gutter:next-hunk)
   (:prefix "b"
    :nv "q" #'kill-current-buffer)
+  (:prefix "w"
+   :nv "c" #'delete-other-windows)
   (:prefix ("B" . "org-books")
    :desc "Jump to reading" :nv "j" #'org-books-jump-to-reading)))
 
@@ -147,7 +149,7 @@
 ;; lisp editing keybindings
 (map! :map (emacs-lisp-mode-map ielm-map
             racket-mode-map racket-repl-mode-map
-            sly-mode-map dune-mode-map)
+            sly-mode-map dune-mode-map clojure-mode-map)
       (:localleader
        :desc "Forward slurp"  :n ")" #'sp-forward-slurp-sexp
        :desc "Backward slurp" :n "(" #'sp-backward-slurp-sexp
@@ -156,7 +158,7 @@
 
 (map! :map markdown-mode-map
       :after yasnippet
-      :nvi "<tab>"      #'markdown-cycle
+      :nvi [tab] #'markdown-cycle
       ;; The above TAB binding shadows yas-expand.
       ;; In order to make yasnippets work, I need to
       ;; manually pass the binding to `yas-maybe-expand'
@@ -164,7 +166,7 @@
       ;; when there is a snippet).
       ;; Note that `yas-maybe-expand' is NOT a function,
       ;; so it must not be sharp-quoted.
-      :nvi "<tab>"      yas-maybe-expand
+      :nvi [tab]        yas-maybe-expand
       :nvi "M-<left>"   #'markdown-promote
       :nvi "M-<right>"  #'markdown-demote
       :nvi "M-<up>"     #'markdown-move-up
