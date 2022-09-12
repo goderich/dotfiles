@@ -413,3 +413,31 @@ tags."
                (< (string-to-number pages) (or pagenum 300))
                (not (member "short" tags)))
       (org-set-tags (-snoc local-tags "short")))))
+
+(defun gd/exercism-submit ()
+  "Submit this file to exercism."
+  (interactive)
+  (call-process "exercism" nil nil nil "submit" (f-this-file)))
+
+(defun gd/wlist->table ()
+  (save-restriction
+    (narrow-to-region (point-at-bol) (point-at-eol))
+    (beginning-of-line)
+    (push-mark)
+    (end-of-line)
+    (insert "||")
+    (goto-char (point-min))
+    (while (search-forward "、" nil t)
+      (replace-match "||\n|"))
+    (pop-mark)
+    (goto-char (mark))
+    (delete-char 2)
+    (insert "|")))
+
+(defun gd/tableize-region (beg end)
+  (interactive "r")
+  (save-restriction
+    (narrow-to-region beg end)
+    (goto-char (point-min))
+    (while (search-forward "•" nil t)
+      (gd/wlist->table))))
