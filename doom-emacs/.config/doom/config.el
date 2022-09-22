@@ -12,6 +12,6 @@
 (load! "ui-ux")
 (load! "keybindings")
 (load! "referencing")
-(load! "mail")
+(after! mu4e (load! "mail"))
 
 ;;; config.el ends here
