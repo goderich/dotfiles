@@ -89,7 +89,8 @@ X:(^text/.*|application/json|inode/x-empty)=$EDITOR;$VISUAL;kak;micro;dte;nvim;v
 !X:(^text/.*|application/json|inode/x-empty)=$EDITOR;$VISUAL;kak;micro;dte;nvim;vim;vis;vi;mg;emacs;ed;nano
 
 # Office documents
-X:^application/.*(open|office)document.*=libreoffice;soffice;ooffice
+X:N:.*\.xlsx?$=gnumeric %f !E !O &;
+X:^application/.*(open|office)document.*=libreoffice %f !E !O &;soffice;ooffice
 
 # Archives
 # Note: 'ad' is CliFMs built-in archives utility (based on atool). Remove it if you
@@ -98,7 +99,7 @@ X:^application/(zip|gzip|zstd|x-7z-compressed|x-xz|x-bzip*|x-tar|x-iso9660-image
 !X:^application/(zip|gzip|zstd|x-7z-compressed|x-xz|x-bzip*|x-tar|x-iso9660-image)=ad
 
 # PDF
-X:.*/pdf$=zathura;mupdf;sioyek;llpp;lpdf;mupdf-x11;apvlv;xpdf;evince;atril;okular;epdfview;qpdfview
+X:.*/pdf$=zathura %f !E !O &;mupdf;sioyek;llpp;lpdf;mupdf-x11;apvlv;xpdf;evince;atril;okular;epdfview;qpdfview
 
 # Images
 X:^image/gif$=sxiv -a;animate;pqiv;nsxiv -a
