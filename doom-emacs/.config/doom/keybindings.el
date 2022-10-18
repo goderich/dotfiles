@@ -5,7 +5,7 @@
 
 ;; Global keybindings
 (map!
- :nv ";" #'counsel-M-x
+ :nv ";" #'execute-extended-command
  (:leader
   :desc "Weekly agenda" "a" #'org-agenda-list
   :desc "Dashboard" "d" #'+doom-dashboard/open
@@ -65,15 +65,15 @@
 ;; Idea stolen from tecosaur's config
 (map! :map +doom-dashboard-mode-map
       :desc "Find file"        :ne "f" #'find-file
-      :desc "Recent files"     :ne "r" #'counsel-recentf
+      :desc "Recent files"     :ne "r" #'consult-recent-file
       :desc "Config dir"       :ne "c" #'doom/open-private-config
       :desc "Org dir"          :ne "o" #'gd/browse-org-directory
-      :desc "Switch buffer"    :ne "b" #'+ivy/switch-buffer
+      :desc "Switch buffer"    :ne "b" #'consult-buffer
       :desc "IBuffer"          :ne "i" #'ibuffer
       :desc "Previous buffer"  :ne "p" #'previous-buffer
       :desc "Weekly agenda"    :ne "a" #'org-agenda-list
       :desc "Open mu4e"        :ne "m" #'=mu4e
-      :desc "Set theme"        :ne "t" #'counsel-load-theme
+      :desc "Set theme"        :ne "t" #'load-theme
       :desc "Quit"             :ne "Q" #'save-buffers-kill-terminal
       :desc "Show keybindings" :ne "h" (cmd! (which-key-show-keymap '+doom-dashboard-mode-map)))
 

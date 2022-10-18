@@ -377,7 +377,7 @@ created."
 
 (defun gd/browse-org-directory ()
   (interactive)
-  (doom-project-browse my/org-directory))
+  (doom-project-browse (f-slash my/org-directory)))
 
 (defun gd/org-msg-attach-file ()
   "Attach a file to an org-msg buffer and remember the directory.
