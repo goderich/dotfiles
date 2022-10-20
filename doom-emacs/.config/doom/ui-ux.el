@@ -74,7 +74,7 @@
              (lambda (&rest _) (recenter)))
 
 ;; Scroll line to top after some search functions
-(advice-add! '(counsel-org-goto org-books-jump-to-reading
+(advice-add! '(gd/consult-org-heading org-books-jump-to-reading
                org-books-add-book)
              :after
              (lambda (&rest _) (evil-scroll-line-to-top nil)))

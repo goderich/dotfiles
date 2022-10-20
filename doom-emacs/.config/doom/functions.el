@@ -441,3 +441,10 @@ tags."
     (goto-char (point-min))
     (while (search-forward "•" nil t)
       (gd/wlist->table))))
+
+(defun gd/consult-org-heading ()
+  "Find an org heading in the current buffer, and open it.
+`consult-org-heading' doesn't do this automatically for some reason."
+  (interactive)
+  (consult-org-heading)
+  (org-fold-show-entry))
