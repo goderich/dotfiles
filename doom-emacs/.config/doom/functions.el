@@ -290,19 +290,16 @@ non-blank character instead."
          (link-string (org-link-make-string address link-name)))
     (insert link-string)))
 
-(defun gd/org--insert-link-helper (candidate)
-  (let ((heading (-last-item (s-split "/" (car candidate)))))
-    (gd/insert-link heading)))
+(defun gd/consult-org-get-heading-text ()
+  "Get the text of an Org heading with completion, using `consult'."
+  (save-excursion
+    (consult-org-heading)
+    (org-get-heading 'no-tags 'no-todo 'no-priority 'no-comment)))
 
 (defun gd/org-insert-link ()
   "Insert link to org-mode heading with completion."
   (interactive)
-  (let ((settings (cdr (assq 'org-mode counsel-outline-settings))))
-    (ivy-read "Outline: " (counsel-outline-candidates settings)
-              :action #'gd/org--insert-link-helper
-              :history 'counsel-org-goto-history
-              :preselect 0
-              :caller 'counsel-org-goto)))
+  (gd/insert-link (gd/consult-org-get-heading-text)))
 
 (defun gd/org-insert-link-from-clipboard ()
   "Insert org link from clipboard.
@@ -315,8 +312,8 @@ Prompts for link name."
   "Get the text and ID of an org heading.
 Creates the ID if one isn't already present."
   (save-excursion
-    (counsel-org-goto)
-    (let ((heading (org-get-heading))
+    (consult-org-heading)
+    (let ((heading (org-get-heading t t t t))
           (id (concat "id:" (org-id-get nil 'create))))
       (cons heading id))))
 
@@ -353,7 +350,7 @@ The function prompts the user for a new custom ID. By default,
 the heading name is used. The user input or heading is then
 transformed into a lisp-case string."
   (save-excursion
-    (counsel-org-goto)
+    (consult-org-heading)
     (let* ((props (org-entry-properties))
            (custom-id (or (map-elt props "CUSTOM_ID")
                           (gd/org-set-custom-id))))
@@ -442,7 +439,7 @@ tags."
     (while (search-forward "•" nil t)
       (gd/wlist->table))))
 
-(defun gd/consult-org-heading ()
+(defun gd/consult-goto-org-heading ()
   "Find an org heading in the current buffer, and open it.
 `consult-org-heading' doesn't do this automatically for some reason."
   (interactive)

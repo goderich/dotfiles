@@ -85,7 +85,7 @@
        :nv "j" #'gd/org-next-heading
        :nv "l" #'org-next-visible-heading)
       :localleader
-      :desc "Find heading"      "." #'gd/consult-org-heading
+      :desc "Find heading"      "." #'gd/consult-goto-org-heading
       :desc "C-c C-c"           "," #'org-ctrl-c-ctrl-c
       :desc "Open link"         "l" #'org-open-at-point
       :desc "Copy link"         "y" #'gd/org-copy-this-link
