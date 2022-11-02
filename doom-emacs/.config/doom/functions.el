@@ -285,8 +285,12 @@ non-blank character instead."
         (- 2)
         (evil-scroll-line-to-top))))
 
-(defun gd/insert-link (address)
-  (let* ((link-name (read-string "Link name: " "" nil address))
+(defun gd/insert-link (address &optional name)
+  "Insert an Org link to ADDRESS.
+Prompts for a link name (the string that will be visible
+as the hyperlink text). If the prompt is left blank,
+uses NAME if it's provided, and ADDRESS otherwise."
+  (let* ((link-name (read-string "Link name: " "" nil (or name address)))
          (link-string (org-link-make-string address link-name)))
     (insert link-string)))
 
@@ -313,7 +317,7 @@ Prompts for link name."
 Creates the ID if one isn't already present."
   (save-excursion
     (consult-org-heading)
-    (let ((heading (org-get-heading t t t t))
+    (let ((heading (org-get-heading 'no-tags 'no-todo 'no-priority 'no-comment))
           (id (concat "id:" (org-id-get nil 'create))))
       (cons heading id))))
 
@@ -322,10 +326,8 @@ Creates the ID if one isn't already present."
   (interactive)
   (let* ((heading-id-pair (gd/org--get-heading-id-pair))
          (heading (car heading-id-pair))
-         (id (cdr heading-id-pair))
-         (link-name (read-string "Link name: " "" nil heading))
-         (link-string (org-link-make-string id link-name)))
-    (insert link-string)))
+         (id (cdr heading-id-pair)))
+    (gd/insert-link id heading)))
 
 (defun gd/org-set-custom-id ()
   "Create a new custom ID property at the current org heading.
@@ -343,7 +345,7 @@ Returns the new CUSTOM_ID value as a string."
     custom-id))
 
 (defun gd/org-get-custom-id ()
-  "Retrieve a custom_id of a heading.
+  "Retrieve the custom_id of a heading.
 If one does not exist, create it.
 
 The function prompts the user for a new custom ID. By default,
