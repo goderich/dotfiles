@@ -211,7 +211,6 @@
 
 (map! :map racket-mode-map
       (:localleader
-       :n  "e e" #'vz/racket-eros-eval-last-sexp
        :nv "r"   #'racket-run-and-switch-to-repl
        :nv "R"   #'racket-run))
 
@@ -251,3 +250,7 @@
       "G"  #'end-of-buffer
       "gg" #'beginning-of-buffer
       "go" #'Info-goto-node)
+
+(map! :map shortdoc-mode-map
+      :after shortdoc
+      :nv "q" #'evil-delete-buffer)
