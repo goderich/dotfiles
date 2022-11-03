@@ -322,3 +322,13 @@ tags."
   (interactive)
   (consult-org-heading)
   (org-fold-show-entry))
+
+(defcustom empty-line-regex (rx bol (0+ space) eol)
+  "Regex for an empty line.")
+
+(defun gd/delete-empty-lines ()
+  "Delete empty lines in visually selected region."
+  (interactive)
+  (if (evil-visual-state-p)
+      (delete-matching-lines empty-line-regex (region-beginning) (region-end))
+    (message "Select a region with visual mode first!")))
