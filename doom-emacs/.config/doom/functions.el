@@ -332,3 +332,11 @@ tags."
   (if (evil-visual-state-p)
       (delete-matching-lines empty-line-regex (region-beginning) (region-end))
     (message "Select a region with visual mode first!")))
+
+(defun gd/org-link-dwim ()
+  "If on a link, open it. If not, insert last stored link.
+This is a convenience function to bind it to a single keystroke."
+  (interactive)
+  (if (org-in-regexp org-link-bracket-re 1)
+      (org-open-at-point)
+    (org-insert-last-stored-link 1)))
