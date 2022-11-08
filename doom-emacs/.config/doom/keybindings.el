@@ -228,7 +228,7 @@
       :nv "p" #'mu4e-view-mime-part-action
       :nv [RET] #'mu4e~view-browse-url-from-binding
       :localleader
-      :nv "l" #'mu4e~view-browse-url-from-binding)
+      :nv "l" #'gd/mu4e-link-dwim)
 
 (map! :map tuareg-mode-map
       :after tuareg

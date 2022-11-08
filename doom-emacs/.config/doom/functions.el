@@ -340,3 +340,12 @@ This is a convenience function to bind it to a single keystroke."
   (if (org-in-regexp org-link-bracket-re 1)
       (org-open-at-point)
     (org-insert-last-stored-link 1)))
+
+(defun gd/mu4e-link-dwim ()
+  "If on a link, open it. If not, store the current message as link.
+This is a convenience function to bind it to a single keystroke,
+to be used within mu4e's view mode."
+  (interactive)
+  (if (thing-at-point-url-at-point)
+    (mu4e~view-browse-url-from-binding)
+    (org-store-link nil 1)))
