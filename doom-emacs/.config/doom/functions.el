@@ -349,3 +349,12 @@ to be used within mu4e's view mode."
   (if (thing-at-point-url-at-point)
     (mu4e~view-browse-url-from-binding)
     (org-store-link nil 1)))
+
+(defun gd/evil-paste-no-kill ()
+  "Paste over visual selection without copying it.
+This is how shift+p functions in visual mode in vim,
+but apparently evil mode does not do this."
+  ;; TODO: add issue?
+  (interactive)
+  (let ((evil-kill-on-visual-paste nil))
+    (evil-visual-paste 1)))

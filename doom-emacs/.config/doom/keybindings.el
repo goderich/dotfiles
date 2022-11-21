@@ -41,7 +41,8 @@
  :nv "j"  #'evil-next-visual-line
  :nv "gj" #'evil-next-line
  :nv "gk" #'evil-previous-line
- :nv "0"  #'gd/beginning-or-first-non-blank)
+ :nv "0"  #'gd/beginning-or-first-non-blank
+ :v  "P"  #'gd/evil-paste-no-kill)
 
 (map! :map evil-snipe-parent-transient-map
       :after evil-snipe
