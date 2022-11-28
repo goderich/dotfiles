@@ -14,14 +14,19 @@
   (setq ebib-index-columns '(("Author/Editor" 20 t)
                              ("Year" 6 t)
                              ("Title" 40 t)))
-  (map-put! ebib-reference-templates
-            "Article"
-            "{Author}. {Date|Year}. {\"Title\".} {Journaltitle|Journal} {Volume}{(Issue)}{:Pages}. {Doi.}")
+  (map-put-many! ebib-reference-templates
+                 "Article"
+                 "{Author}. {Date|Year}. {\"Title\".} {Journaltitle|Journal} {Volume}{(Issue)}{:Pages}.{ Doi.}"
+                 "Book"
+                 "{Author|Editor}. {Date|Year}. {\"Title\".} {Address: }{Publisher.}")
   (setq ebib-notes-name-transform-function #'identity)
   (setq ebib-name-transform-function #'gd/ebib-generate-filename)
   ;; Set auto-generated citation key options
   (setq bibtex-autokey-year-length 4
-        bibtex-autokey-titleword-length 0)
+        bibtex-autokey-titleword-length 0
+        bibtex-autokey-name-separator "-"
+        bibtex-autokey-year-title-separator ""
+        bibtex-autokey-edit-before-use t)
   (let-alist ebib-citation-commands ; requires let-alist package
     (setf (car .org-mode)
           '(("text" "[cite/t: %(@%K%< %A%>%; )]")

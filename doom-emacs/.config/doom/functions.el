@@ -258,7 +258,7 @@ transformed into a lisp-case string."
 
 (defun gd/org-insert-reference-heading (&optional capitalize?)
   "Insert a pandoc reference to a heading, with completion.
-We use ivy to find the required heading, and then insert a link
+We use narrowing to find the required heading, and then insert a link
 using its CUSTOM_ID property. If the property isn't set, it is
 created."
   (interactive)
