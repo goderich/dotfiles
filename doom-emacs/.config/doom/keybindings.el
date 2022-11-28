@@ -219,7 +219,9 @@
 ;; When viewing email headers as a list
 (map! :map mu4e-headers-mode-map
       :after mu4e
-      :nv "r" #'mu4e-compose-reply)
+      :nv "r" #'mu4e-compose-reply
+      :nv "d" #'mu4e-headers-mark-for-delete
+      :nv "D" #'mu4e-headers-mark-for-trash)
 
 ;; When opening individual emails
 (map! :map mu4e-view-mode-map
