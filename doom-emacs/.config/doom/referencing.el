@@ -27,10 +27,10 @@
         bibtex-autokey-name-separator "-"
         bibtex-autokey-year-title-separator ""
         bibtex-autokey-edit-before-use t)
-  (let-alist ebib-citation-commands ; requires let-alist package
-    (setf (car .org-mode)
-          '(("text" "[cite/t: %(@%K%< %A%>%; )]")
-            ("paren" "[cite: %(@%K%< %A%>%; )]")))))
+  (map-put! ebib-citation-commands
+            'org-mode
+            '((("text" "[cite/t: %(@%K%< %A%>%; )]")
+               ("paren" "[cite: %(@%K%< %A%>%; )]")))))
 
 ;; Visual line mode makes entries occupy 2 or even more lines in the index.
 ;; This is unnecessary, because I can see the full list of authors and title
