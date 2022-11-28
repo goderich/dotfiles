@@ -108,7 +108,7 @@ X:^image/.*=sxiv;fim;display;nsxiv;pqiv;gpicview;qview;qimgv;inkscape;mirage;ris
 
 # Video and audio
 X:^video/.*=mpv %f !EO &;mplayer;ffplay;mplayer2;vlc;gmplayer;smplayer;celluloid;qmplayer2;haruna;totem
-X:^audio/.*=ffplay -nodisp -autoexit;mplayer;mplayer2;mpv;vlc;gmplayer;smplayer;totem
+X:^audio/.*=mplayer;mpv;ffplay -nodisp -autoexit;mplayer2;vlc;gmplayer;smplayer;totem
 
 # Fonts
 X:^font/.*=fontforge;fontpreview
