@@ -50,11 +50,6 @@
   ;; passed today, interpret it as a time for tomorrow.
   (setq org-read-date-prefer-future 'time)
 
-  ;; This is a fix for `consult-org-heading', necessary because
-  ;; of a change in org-mode's folding API. See below for details:
-  ;; https://github.com/minad/consult/issues/563
-  (setq org-fold-core-style 'overlay)
-
   ;; org-books
   (after! f
 
