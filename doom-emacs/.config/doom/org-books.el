@@ -2,9 +2,7 @@
 
 ;; org-books setup and configuration
 
-(defvar org-books-file
-  (f-join org-directory "books.org")
-  "File to use with org-books mode")
+(setq org-books-file (f-join org-directory "books.org"))
 
 ;; Derive a separate mode for org-books-specific keybinds
 (define-derived-mode org-books-mode org-mode "Org books mode"
