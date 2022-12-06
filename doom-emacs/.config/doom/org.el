@@ -42,7 +42,7 @@
         ("NEXT"      +org-todo-important)
         ("WAITING"   +org-todo-onhold)
         ("LOOP"      +org-todo-onhold)
-        ("CANCELLED" +org-todo-cancel)))
+        ("CANCELLED" org-done)))
 
 ;; In the datetime prompt, if entering a time that has already
 ;; passed today, interpret it as a time for tomorrow.
