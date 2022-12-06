@@ -23,6 +23,8 @@
 
 (add-hook 'org-books-mode-hook #'org-books-setup+)
 
+(add-hook 'org-books-after-insert-hook #'gd/org-books-tag-short)
+
 ;;; org-books automatic genre tags settings
 (after! org-books
   ;; Here I have tags that need to be manually mapped to genres:
