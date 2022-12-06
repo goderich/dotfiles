@@ -8,7 +8,7 @@
 (load! "vars")
 (load! "functions")
 (load! "fonts")
-(load! "org")
+(after! org (load! "org"))
 (load! "ui-ux")
 (load! "keybindings")
 (load! "referencing")
