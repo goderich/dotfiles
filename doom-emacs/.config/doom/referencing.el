@@ -8,7 +8,7 @@
   (setq ebib-preload-bib-files (list my/default-bibliography))
   (setq ebib-notes-directory my/ebib-notes)
   (setq ebib-file-search-dirs (list my/ebib-file-search-dir))
-  (setq ebib-import-directory "~/Dropbox/papers/articles")
+  (setq ebib-import-directory "~/Dropbox/papers/articles/")
   (setq ebib-file-associations '(("pdf" . "zathura") ("ps" . "gv")))
   (setq ebib-bibtex-dialect 'biblatex)
   (setq ebib-index-columns '(("Author/Editor" 20 t)
