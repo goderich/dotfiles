@@ -54,5 +54,12 @@
       org-agenda-start-on-weekday 1
       org-agenda-start-day ".")
 
+;; Show full context after switching to an item from agenda
+(advice-add! '(org-agenda-switch-to)
+             :after
+             (lambda (&rest _)
+               (org-fold-show-siblings)
+               (org-fold-show-context)))
+
 ;; Load org-books config
 (after! f (load! "org-books"))
