@@ -283,7 +283,7 @@ of the last attachment of the current email. Helpful when attaching
 several files from a deeply nested directory without using dired."
   (interactive)
   (let* ((file (read-file-name "Attachment: "))
-         (dir (f-dirname file)))
+         (dir (f-slash (f-dirname file))))
     (setq-local default-directory dir)
     (org-msg-attach-attach file)))
 
