@@ -249,6 +249,7 @@
 (map! :map Info-mode-map
       :after info
       "G"  #'end-of-buffer
+      "g" nil
       "gg" #'beginning-of-buffer
       "go" #'Info-goto-node)
 
