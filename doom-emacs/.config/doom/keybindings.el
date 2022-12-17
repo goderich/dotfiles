@@ -169,9 +169,13 @@
       ;; so it must not be sharp-quoted.
       :nvi [tab]        yas-maybe-expand
       :nvi "M-<left>"   #'markdown-promote
+      :nvi "M-h"        #'markdown-promote
       :nvi "M-<right>"  #'markdown-demote
+      :nvi "M-l"        #'markdown-demote
       :nvi "M-<up>"     #'markdown-move-up
+      :nvi "M-k"        #'markdown-move-up
       :nvi "M-<down>"   #'markdown-move-down
+      :nvi "M-j"        #'markdown-move-down
       :nvi "C-<return>" #'markdown-insert-list-item
       (:prefix "g"
        :nv "h" #'markdown-up-heading
