@@ -9,3 +9,15 @@ secPrefix:
   - "sections"
 figPrefix:
   - "figure"
+header-includes:
+- |
+  ```{=latex}
+  \AtBeginDocument{%
+  \XeTeXcharclass`^^^^2026=0
+  \XeTeXcharclass`^^^^2019=0
+  \XeTeXcharclass`^^^^2013=0
+  \XeTeXcharclass`“=0
+  \XeTeXcharclass`”=0
+  \XeTeXcharclass`‘=0
+  }
+  ```
