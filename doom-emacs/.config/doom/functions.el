@@ -216,15 +216,13 @@ Creates the ID if one isn't already present."
   (save-excursion
     (consult-org-heading)
     (let ((heading (org-get-heading 'no-tags 'no-todo 'no-priority 'no-comment))
-          (id (concat "id:" (org-id-get nil 'create))))
+          (id (concat "id:" (org-id-get-create))))
       (cons heading id))))
 
 (defun gd/org-insert-link-with-id ()
   "Insert a link to a heading with completion, using a unique ID."
   (interactive)
-  (let* ((heading-id-pair (gd/org--get-heading-id-pair))
-         (heading (car heading-id-pair))
-         (id (cdr heading-id-pair)))
+  (-let [(heading . id) (gd/org--get-heading-id-pair)]
     (gd/insert-link id heading)))
 
 (defun gd/org-set-custom-id ()
