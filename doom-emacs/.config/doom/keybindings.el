@@ -8,6 +8,7 @@
  :nv ";" #'execute-extended-command
  (:leader
   :desc "Weekly agenda" "a" #'org-agenda-list
+  :nv "u" #'link-hint-open-link
   :desc "Dashboard" "d" #'+doom-dashboard/open
   (:prefix "i"
    (:prefix ("n" . "Insert numbers")
