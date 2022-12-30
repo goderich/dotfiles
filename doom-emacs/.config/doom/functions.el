@@ -358,3 +358,13 @@ but apparently evil mode does not do this."
   (interactive)
   (let ((evil-kill-on-visual-paste nil))
     (evil-visual-paste 1)))
+
+(defun gd/pandoc-org->pdf ()
+  "Convert the current file to pdf using pandoc.
+Works only on org files using my pdf template."
+  (interactive)
+  (when (string= "org" (f-ext (f-this-file)))
+    (let* ((input (f-this-file))
+           (output (f-swap-ext input "pdf"))))
+    (concat
+     "pandoc -i " input " -dpdf -o " output)))
