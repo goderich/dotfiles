@@ -129,7 +129,9 @@
 (map! :map evil-org-agenda-mode-map
       :after org-agenda
       :m "b" #'org-agenda-earlier
-      :m "f" #'org-agenda-later)
+      :m "f" #'org-agenda-later
+      :m "(" #'org-agenda-earlier
+      :m ")" #'org-agenda-later)
 
 ;; These are used when composing emails in mu4e
 (map! :map org-msg-edit-mode-map
