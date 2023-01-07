@@ -364,6 +364,6 @@ Works only on org files using my pdf template."
   (interactive)
   (when (string= "org" (f-ext (f-this-file)))
     (let* ((input (f-this-file))
-           (output (f-swap-ext input "pdf"))))
-    (concat
-     "pandoc -i " input " -dpdf -o " output)))
+           (output (f-swap-ext input "pdf")))
+      (start-process "pandoc" "*pandoc*"
+                     "pandoc" "-i"  input "-dpdf" "-o" output))))
