@@ -158,7 +158,8 @@
        :desc "Forward slurp"  :n ")" #'sp-forward-slurp-sexp
        :desc "Backward slurp" :n "(" #'sp-backward-slurp-sexp
        :desc "Forward barf"   :n ">" #'sp-forward-barf-sexp
-       :desc "Backward barf"  :n "<" #'sp-backward-barf-sexp))
+       :desc "Backward barf"  :n "<" #'sp-backward-barf-sexp
+       :desc "Wrap in parens" :n "w" #'sp-wrap-round))
 
 (map! :map markdown-mode-map
       :after yasnippet
