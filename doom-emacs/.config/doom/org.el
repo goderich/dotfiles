@@ -5,6 +5,10 @@
  '(org-directory my/org-directory)
  '(org-agenda-files (list org-directory)))
 
+;; Bugfix for org-id not working properly
+;; TODO: submit bug report
+(setq org-id-locations-file (doom-path doom-cache-dir ".org-id-locations"))
+
 ;; Set org file associations
 (setq org-file-apps
       `((auto-mode . emacs)
