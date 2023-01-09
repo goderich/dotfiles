@@ -119,7 +119,7 @@ Only moves past headings of the same level, but not past
 headings of a higher level. Use instead of mashing Alt+down."
   (interactive)
   (while (org-get-next-sibling)
-    (org-get-last-sibling)
+    (org-get-previous-sibling)
     (org-move-subtree-down))
   (outline-previous-heading))
 
@@ -128,7 +128,7 @@ headings of a higher level. Use instead of mashing Alt+down."
 Only moves past headings of the same level, but not past
 headings of a higher level. Use instead of mashing Alt+up."
   (interactive)
-  (while (org-get-last-sibling)
+  (while (org-get-previous-sibling)
     (org-get-next-sibling)
     (org-move-subtree-up))
   (outline-next-heading))
@@ -142,7 +142,7 @@ headings of a higher level. Use instead of mashing Alt+up."
   "Go to the previous sibling, or previous heading."
   (interactive)
   (evil-beginning-of-line)
-  (org-get-last-sibling))
+  (org-get-previous-sibling))
 
 (defun save-and-kill-this-buffer ()
   "Save the current buffer and close it."
