@@ -319,7 +319,6 @@ tags."
 `consult-org-heading' doesn't do this automatically for some reason."
   (interactive)
   (consult-org-heading)
-  (org-fold-show-siblings)
   (org-fold-show-context)
   (org-fold-show-entry))
 
