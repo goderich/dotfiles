@@ -22,7 +22,7 @@
 
 ;; Don't use blank lines between text and the following heading
 (setq org-blank-before-new-entry
-      '((heading . nil) (plain-list-item . nil)))
+      '((heading . auto) (plain-list-item . auto)))
 
 ;; Don't show empty lines between collapsed headings
 (setq org-cycle-separator-lines 0)
