@@ -320,7 +320,8 @@ tags."
   (interactive)
   (consult-org-heading)
   (org-fold-show-context)
-  (org-fold-show-entry))
+  (org-fold-show-entry)
+  (org-fold-show-children))
 
 (defcustom empty-line-regex (rx bol (0+ space) eol)
   "Regex for an empty line.")
