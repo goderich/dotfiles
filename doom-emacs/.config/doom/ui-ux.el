@@ -114,3 +114,6 @@
 ;; Set which-key delay to near instant.
 ;; (NB. Setting to zero is currently not recommended.)
 (setq which-key-idle-delay 0.1)
+
+;; Use babashka REPL outside Clojure projects.
+(setq cider-jack-in-default 'babashka)
