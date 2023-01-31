@@ -323,7 +323,7 @@ tags."
   (org-fold-show-entry)
   (org-fold-show-children))
 
-(defcustom empty-line-regex (rx bol (0+ space) eol)
+(defconst empty-line-regex (rx bol (0+ space) eol)
   "Regex for an empty line.")
 
 (defun gd/delete-empty-lines ()
@@ -375,3 +375,31 @@ Works only on org files using my pdf template."
                   (when (f-exists? metadata) `("--metadata-file" ,metadata))
                   `("-o" ,output))))
       (apply #'start-process "pandoc" "*pandoc*" args))))
+
+(defun gd/org-get-labels (type)
+  "Get a list of all labels beginning with the string TYPE."
+  ;; TODO: also read in LaTeX style labels.
+  (->> (f-this-file)
+       (shell-quote-argument)
+       (concat "awk \'/^#\\+label: " type "/ {print $2}\' ")
+       (shell-command-to-string)
+       (s-trim-right)
+       (s-split "\n")))
+
+(defun gd/org-insert-ref (type &optional capitalize?)
+  "Insert an org-cite reference of a given TYPE.
+Optionally capitalize it."
+  (let* ((choice (->> (gd/org-get-labels type)
+                      (completing-read "Choose candidate:")))
+         (cite-str (if capitalize?
+                       (s-capitalize choice)
+                     choice)))
+    (insert "[cite: @" cite-str "]")))
+
+(defun gd/org-insert-table-ref ()
+  (interactive)
+  (gd/org-insert-ref "tbl"))
+
+(defun gd/org-insert-capitalized-table-ref ()
+  (interactive)
+  (gd/org-insert-ref "tbl" 'capitalize))

@@ -111,7 +111,9 @@
        :desc "Link from clipboard"     :nv "c" #'gd/org-insert-link-from-clipboard
        :desc "Org link with unique ID" :nv "i" #'gd/org-insert-link-with-id
        :desc "Heading reference"       :nv "r" #'gd/org-insert-reference-heading
-       :desc "Capitalized reference"   :nv "R" #'gd/org-insert-capitalized-reference-heading)
+       :desc "Capitalized reference"   :nv "R" #'gd/org-insert-capitalized-reference-heading
+       :desc "Table reference"         :nv "t" #'gd/org-insert-table-ref
+       :desc "Capitalized table ref"   :nv "T" #'gd/org-insert-capitalized-table-ref)
       ;; Bindings for pandoc-mode
       :after pandoc-mode
       ;; =, p= is a prefix in Doom's org keybindings,
