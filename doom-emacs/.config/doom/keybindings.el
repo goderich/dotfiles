@@ -144,12 +144,14 @@
       :nv "Z Q" #'org-edit-src-abort)
 
 ;; These complement the keybinds already set in evil-collection
-(map! :map org-agenda-mode-map
+(map! :map evil-org-agenda-mode-map
       :after org-agenda
       :m "b" #'org-agenda-earlier
       :m "f" #'org-agenda-later
       :m "(" #'org-agenda-earlier
-      :m ")" #'org-agenda-later)
+      :m ")" #'org-agenda-later
+      :after link-hint
+      :m "u" #'link-hint-open-link)
 
 ;; These are used when composing emails in mu4e
 (map! :map org-msg-edit-mode-map
