@@ -86,6 +86,19 @@
        :nv "k" #'gd/org-previous-heading
        :nv "j" #'gd/org-next-heading
        :nv "l" #'org-next-visible-heading)
+      ;; Insert mode keybindings
+      (:prefix "C-i"
+       :desc "Insert citation"        :i "c" #'ebib-insert-citation
+       :desc "Heading reference"      :i "r" #'gd/org-insert-reference-heading
+       :desc "Capitalized reference"  :i "R" #'gd/org-insert-capitalized-reference-heading
+       :desc "Table reference"        :i "t" #'gd/org-insert-table-ref
+       :desc "Capitalized table ref"  :i "T" #'gd/org-insert-capitalized-table-ref
+       :desc "Figure reference"       :i "f" #'gd/org-insert-figure-ref
+       :desc "Capitalized figure ref" :i "F" #'gd/org-insert-capitalized-figure-ref
+       (:prefix ("l" . "links")
+       :desc "Ordinary org link"       :i "l" #'gd/org-insert-link
+       :desc "Link from clipboard"     :i "c" #'gd/org-insert-link-from-clipboard
+       :desc "Org link with unique ID" :i "i" #'gd/org-insert-link-with-id))
       :localleader
       :desc "Find heading"      "." #'gd/consult-goto-org-heading
       :desc "C-c C-c"           "," #'org-ctrl-c-ctrl-c
@@ -95,7 +108,6 @@
       :desc "Open agenda"       "a" #'org-agenda
       :desc "Edit source block" "s" #'org-edit-src-code
       :desc "org-todo"          "t" #'org-todo
-      :desc "Insert citation"   "c" #'ebib-insert-citation
       :desc "Sparse tree"       "S" #'org-sparse-tree
       ;; Unbind the already defined keys first.
       ;; general.el does this automatically for most things,
@@ -107,15 +119,17 @@
        :desc "Toggle valign mode" "v" #'valign-mode)
       "i" nil
       (:prefix ("i" . "insert")
-       :desc "Ordinary org link"       :nv "l" #'gd/org-insert-link
-       :desc "Link from clipboard"     :nv "c" #'gd/org-insert-link-from-clipboard
-       :desc "Org link with unique ID" :nv "i" #'gd/org-insert-link-with-id
-       :desc "Heading reference"       :nv "r" #'gd/org-insert-reference-heading
-       :desc "Capitalized reference"   :nv "R" #'gd/org-insert-capitalized-reference-heading
-       :desc "Table reference"         :nv "t" #'gd/org-insert-table-ref
-       :desc "Capitalized table ref"   :nv "T" #'gd/org-insert-capitalized-table-ref
-       :desc "Figure reference"        :nv "f" #'gd/org-insert-figure-ref
-       :desc "Capitalized figure ref"  :nv "F" #'gd/org-insert-capitalized-figure-ref)
+       :desc "Insert citation"        "c" #'ebib-insert-citation
+       :desc "Heading reference"      "r" #'gd/org-insert-reference-heading
+       :desc "Capitalized reference"  "R" #'gd/org-insert-capitalized-reference-heading
+       :desc "Table reference"        "t" #'gd/org-insert-table-ref
+       :desc "Capitalized table ref"  "T" #'gd/org-insert-capitalized-table-ref
+       :desc "Figure reference"       "f" #'gd/org-insert-figure-ref
+       :desc "Capitalized figure ref" "F" #'gd/org-insert-capitalized-figure-ref
+       (:prefix ("l" . "links")
+       :desc "Ordinary org link"       "l" #'gd/org-insert-link
+       :desc "Link from clipboard"     "c" #'gd/org-insert-link-from-clipboard
+       :desc "Org link with unique ID" "i" #'gd/org-insert-link-with-id))
       ;; Bindings for pandoc-mode
       :after pandoc-mode
       ;; =, p= is a prefix in Doom's org keybindings,
@@ -130,7 +144,7 @@
       :nv "Z Q" #'org-edit-src-abort)
 
 ;; These complement the keybinds already set in evil-collection
-(map! :map evil-org-agenda-mode-map
+(map! :map org-agenda-mode-map
       :after org-agenda
       :m "b" #'org-agenda-earlier
       :m "f" #'org-agenda-later
@@ -219,6 +233,7 @@
       :n "z"   #'ebib-leave-ebib-windows
       :n "E"   #'gd/ebib-edit-as-string
       :n "s"   #'ebib-save-current-database
+      :n "D"   #'ebib-delete-current-field-contents
       (:localleader
        :n "f" #'ebib-import-file))
 

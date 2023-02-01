@@ -183,93 +183,6 @@ non-blank character instead."
       (evil-first-non-blank)
     (evil-beginning-of-line)))
 
-(defun gd/insert-link (address &optional name)
-  "Insert an Org link to ADDRESS.
-Prompts for a link name (the string that will be visible
-as the hyperlink text). If the prompt is left blank,
-uses NAME if it's provided, and ADDRESS otherwise."
-  (let* ((link-name (read-string "Link name: " "" nil (or name address)))
-         (link-string (org-link-make-string address link-name)))
-    (insert link-string)))
-
-(defun gd/consult-org-get-heading-text ()
-  "Get the text of an Org heading with completion, using `consult'."
-  (save-excursion
-    (consult-org-heading)
-    (org-get-heading 'no-tags 'no-todo 'no-priority 'no-comment)))
-
-(defun gd/org-insert-link ()
-  "Insert link to org-mode heading with completion."
-  (interactive)
-  (gd/insert-link (gd/consult-org-get-heading-text)))
-
-(defun gd/org-insert-link-from-clipboard ()
-  "Insert org link from clipboard.
-Prompts for link name."
-  (interactive)
-  (let ((address (substring-no-properties (current-kill 0))))
-    (gd/insert-link address)))
-
-(defun gd/org--get-heading-id-pair ()
-  "Get the text and ID of an org heading.
-Creates the ID if one isn't already present."
-  (save-excursion
-    (consult-org-heading)
-    (let ((heading (org-get-heading 'no-tags 'no-todo 'no-priority 'no-comment))
-          (id (concat "id:" (org-id-get-create))))
-      (cons heading id))))
-
-(defun gd/org-insert-link-with-id ()
-  "Insert a link to a heading with completion, using a unique ID."
-  (interactive)
-  (-let [(heading . id) (gd/org--get-heading-id-pair)]
-    (gd/insert-link id heading)))
-
-(defun gd/org-set-custom-id ()
-  "Create a new custom ID property at the current org heading.
-Prompts for user input, converts it to lisp-case, and
-sets that as the new CUSTOM_ID. If the input is left
-blank, uses the heading text itself.
-
-Returns the new CUSTOM_ID value as a string."
-  (let ((custom-id
-         (->> (org-get-heading)
-              (read-string "Create new custom ID: " "" nil)
-              (s-dashed-words)
-              (concat "sec:"))))
-    (org-set-property "CUSTOM_ID" custom-id)
-    custom-id))
-
-(defun gd/org-get-custom-id ()
-  "Retrieve the custom_id of a heading.
-If one does not exist, create it.
-
-The function prompts the user for a new custom ID. By default,
-the heading name is used. The user input or heading is then
-transformed into a lisp-case string."
-  (save-excursion
-    (consult-org-heading)
-    (let* ((props (org-entry-properties))
-           (custom-id (or (map-elt props "CUSTOM_ID")
-                          (gd/org-set-custom-id))))
-      custom-id)))
-
-(defun gd/org-insert-reference-heading (&optional capitalize?)
-  "Insert a pandoc reference to a heading, with completion.
-We use narrowing to find the required heading, and then insert a link
-using its CUSTOM_ID property. If the property isn't set, it is
-created."
-  (interactive)
-  (let* ((custom-id (gd/org-get-custom-id))
-         (cite-str (if capitalize?
-                       (s-capitalize custom-id)
-                     custom-id)))
-    (insert "[cite: @" cite-str "]")))
-
-(defun gd/org-insert-capitalized-reference-heading ()
-  (interactive)
-  (gd/org-insert-reference-heading 'capitalize))
-
 (defun gd/browse-org-directory ()
   (interactive)
   (doom-project-browse (f-slash my/org-directory)))
@@ -376,7 +289,99 @@ Works only on org files using my pdf template."
                   `("-o" ,output))))
       (apply #'start-process "pandoc" "*pandoc*" args))))
 
+;; Org-mode links
+
+(defun gd/insert-link (address &optional name)
+  "Insert an Org link to ADDRESS.
+Prompts for a link name (the string that will be visible
+as the hyperlink text). If the prompt is left blank,
+uses NAME if it's provided, and ADDRESS otherwise."
+  (let* ((link-name (read-string "Link name: " "" nil (or name address)))
+         (link-string (org-link-make-string address link-name)))
+    (insert link-string)))
+
+(defun gd/consult-org-get-heading-text ()
+  "Get the text of an Org heading with completion, using `consult'."
+  (save-excursion
+    (consult-org-heading)
+    (org-get-heading 'no-tags 'no-todo 'no-priority 'no-comment)))
+
+(defun gd/org-insert-link ()
+  "Insert link to org-mode heading with completion."
+  (interactive)
+  (gd/insert-link (gd/consult-org-get-heading-text)))
+
+(defun gd/org-insert-link-from-clipboard ()
+  "Insert org link from clipboard.
+Prompts for link name."
+  (interactive)
+  (let ((address (substring-no-properties (current-kill 0))))
+    (gd/insert-link address)))
+
+(defun gd/org--get-heading-id-pair ()
+  "Get the text and ID of an org heading.
+Creates the ID if one isn't already present."
+  (save-excursion
+    (consult-org-heading)
+    (let ((heading (org-get-heading 'no-tags 'no-todo 'no-priority 'no-comment))
+          (id (concat "id:" (org-id-get-create))))
+      (cons heading id))))
+
+(defun gd/org-insert-link-with-id ()
+  "Insert a link to a heading with completion, using a unique ID."
+  (interactive)
+  (-let [(heading . id) (gd/org--get-heading-id-pair)]
+    (gd/insert-link id heading)))
+
+(defun gd/org-set-custom-id ()
+  "Create a new custom ID property at the current org heading.
+Prompts for user input, converts it to lisp-case, and
+sets that as the new CUSTOM_ID. If the input is left
+blank, uses the heading text itself.
+
+Returns the new CUSTOM_ID value as a string."
+  (let ((custom-id
+         (->> (org-get-heading)
+              (read-string "Create new custom ID: " "" nil)
+              (s-dashed-words)
+              (concat "sec:"))))
+    (org-set-property "CUSTOM_ID" custom-id)
+    custom-id))
+
+(defun gd/org-get-custom-id ()
+  "Retrieve the custom_id of a heading.
+If one does not exist, create it.
+
+The function prompts the user for a new custom ID. By default,
+the heading name is used. The user input or heading is then
+transformed into a lisp-case string."
+  (save-excursion
+    (consult-org-heading)
+    (let* ((props (org-entry-properties))
+           (custom-id (or (map-elt props "CUSTOM_ID")
+                          (gd/org-set-custom-id))))
+      custom-id)))
+
 ;; References in org-mode
+
+(defun gd/org-insert-reference (str &optional capitalize?)
+  (let ((str (if capitalize?
+                 (s-capitalize str)
+               str)))
+    (insert "[cite: @" str "]")))
+
+(defun gd/org-insert-reference-heading (&optional capitalize?)
+  "Insert a pandoc reference to a heading, with completion.
+We use narrowing to find the required heading, and then insert a link
+using its CUSTOM_ID property. If the property isn't set, it is
+created."
+  (interactive)
+  (let ((custom-id (gd/org-get-custom-id)))
+    (gd/org-insert-reference custom-id capitalize?)))
+
+(defun gd/org-insert-capitalized-reference-heading ()
+  (interactive)
+  (gd/org-insert-reference-heading 'capitalize))
 
 (defun gd/org--extract-latex-label (str)
   "Extract the text from inside a LaTeX label STR."
@@ -411,28 +416,25 @@ Searches for both org-mode and LaTeX style labels."
     (gd/org-get-labels-org type)
     (gd/org-get-labels-latex type))))
 
-(defun gd/org-insert-ref (type &optional capitalize?)
+(defun gd/org-insert-crossref (type &optional capitalize?)
   "Insert an org-cite reference of a given TYPE.
 Optionally capitalize it."
-  (let* ((choice (->> (gd/org-get-labels type)
-                      (completing-read "Choose candidate:")))
-         (cite-str (if capitalize?
-                       (s-capitalize choice)
-                     choice)))
-    (insert "[cite: @" cite-str "]")))
+  (let ((choice (->> (gd/org-get-labels type)
+                     (completing-read "Choose candidate:"))))
+    (gd/org-insert-reference choice capitalize?)))
 
 (defun gd/org-insert-table-ref ()
   (interactive)
-  (gd/org-insert-ref "tbl"))
+  (gd/org-insert-crossref "tbl"))
 
 (defun gd/org-insert-capitalized-table-ref ()
   (interactive)
-  (gd/org-insert-ref "tbl" 'capitalize))
+  (gd/org-insert-crossref "tbl" 'capitalize))
 
 (defun gd/org-insert-figure-ref ()
   (interactive)
-  (gd/org-insert-ref "fig"))
+  (gd/org-insert-crossref "fig"))
 
 (defun gd/org-insert-capitalized-figure-ref ()
   (interactive)
-  (gd/org-insert-ref "fig" 'capitalize))
+  (gd/org-insert-crossref "fig" 'capitalize))
