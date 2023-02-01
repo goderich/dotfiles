@@ -376,15 +376,40 @@ Works only on org files using my pdf template."
                   `("-o" ,output))))
       (apply #'start-process "pandoc" "*pandoc*" args))))
 
-(defun gd/org-get-labels (type)
-  "Get a list of all labels beginning with the string TYPE."
-  ;; TODO: also read in LaTeX style labels.
+;; References in org-mode
+
+(defun gd/org--extract-latex-label (str)
+  "Extract the text from inside a LaTeX label STR."
+  (let ((regex (rx "\\label{" (group (1+ (or alpha ?: ?- ?_))) "}")))
+    (string-match regex str)
+    (match-string 1 str)))
+
+(defun gd/org-get-labels-latex (type)
+  "Get a list of all LaTeX labels in this file beginning with the string TYPE."
+  (->> (f-this-file)
+       (shell-quote-argument)
+       (concat "grep \"\\\\\\label{\"" type " ")
+       (shell-command-to-string)
+       (s-trim-right)
+       (s-split "\n")
+       (-map #'gd/org--extract-latex-label)))
+
+(defun gd/org-get-labels-org (type)
+  "Get a list of all org labels in this file beginning with the string TYPE."
   (->> (f-this-file)
        (shell-quote-argument)
        (concat "awk \'/^#\\+label: " type "/ {print $2}\' ")
        (shell-command-to-string)
        (s-trim-right)
        (s-split "\n")))
+
+(defun gd/org-get-labels (type)
+  "Get a list of all labels in this file beginning with the string TYPE.
+Searches for both org-mode and LaTeX style labels."
+  (-remove #'s-blank? ;; removes nil as well
+   (-concat
+    (gd/org-get-labels-org type)
+    (gd/org-get-labels-latex type))))
 
 (defun gd/org-insert-ref (type &optional capitalize?)
   "Insert an org-cite reference of a given TYPE.
@@ -403,3 +428,11 @@ Optionally capitalize it."
 (defun gd/org-insert-capitalized-table-ref ()
   (interactive)
   (gd/org-insert-ref "tbl" 'capitalize))
+
+(defun gd/org-insert-figure-ref ()
+  (interactive)
+  (gd/org-insert-ref "fig"))
+
+(defun gd/org-insert-capitalized-figure-ref ()
+  (interactive)
+  (gd/org-insert-ref "fig" 'capitalize))
