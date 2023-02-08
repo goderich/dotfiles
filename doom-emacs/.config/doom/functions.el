@@ -249,13 +249,15 @@ tags."
 (defun gd/org-link-dwim ()
   "Do-what-I-mean for linking.
 If on a heading, link it. If on a link, open it.
-Elsewhere, insert last stored link.
+Elsewhere, insert last stored link:
+either from `org-stored-links', or from the clipboard.
 This is a convenience function to bind it to a single keystroke."
   (interactive)
   (cond
-   ((org-at-heading-p) (org-store-link nil))
+   ((org-at-heading-p) (org-store-link nil 1))
    ((org-in-regexp org-link-bracket-re 1) (org-open-at-point))
-   (t (org-insert-last-stored-link 1))))
+   ((and org-stored-links) (org-insert-last-stored-link 1))
+   (t (gd/org-insert-link-from-clipboard))))
 
 (defun gd/mu4e-link-dwim ()
   "If on a link, open it. If not, store the current message as link.
