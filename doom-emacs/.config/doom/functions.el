@@ -246,19 +246,6 @@ tags."
       (delete-matching-lines empty-line-regex (region-beginning) (region-end))
     (message "Select a region with visual mode first!")))
 
-(defun gd/org-link-dwim ()
-  "Do-what-I-mean for linking.
-If on a heading, link it. If on a link, open it.
-Elsewhere, insert last stored link:
-either from `org-stored-links', or from the clipboard.
-This is a convenience function to bind it to a single keystroke."
-  (interactive)
-  (cond
-   ((org-at-heading-p) (org-store-link nil 1))
-   ((org-in-regexp org-link-bracket-re 1) (org-open-at-point))
-   ((and org-stored-links) (org-insert-last-stored-link 1))
-   (t (gd/org-insert-link-from-clipboard))))
-
 (defun gd/mu4e-link-dwim ()
   "If on a link, open it. If not, store the current message as link.
 This is a convenience function to bind it to a single keystroke,
@@ -298,7 +285,9 @@ Works only on org files using my pdf template."
 Prompts for a link name (the string that will be visible
 as the hyperlink text). If the prompt is left blank,
 uses NAME if it's provided, and ADDRESS otherwise."
-  (let* ((link-name (read-string "Link name: " "" nil (or name address)))
+  (let* ((default (or name address))
+         (prompt (concat "Link name (default \"" default "\"): "))
+         (link-name (read-string prompt "" nil default))
          (link-string (org-link-make-string address link-name)))
     (insert link-string)))
 
@@ -363,6 +352,24 @@ transformed into a lisp-case string."
            (custom-id (or (map-elt props "CUSTOM_ID")
                           (gd/org-set-custom-id))))
       custom-id)))
+
+(defun gd/org-insert-last-stored-link ()
+  "Assumes that `org-stored-links' is non-nil."
+  (let ((link (pop org-stored-links)))
+    (gd/insert-link (car link) (cadr link))))
+
+(defun gd/org-link-dwim ()
+  "Do-what-I-mean for linking.
+If on a heading, link it. If on a link, open it.
+Elsewhere, insert last stored link:
+either from `org-stored-links', or from the clipboard.
+This is a convenience function to bind it to a single keystroke."
+  (interactive)
+  (cond
+   ((org-at-heading-p) (org-store-link nil 1))
+   ((org-in-regexp org-link-bracket-re 1) (org-open-at-point))
+   ((and org-stored-links) (gd/org-insert-last-stored-link))
+   (t (gd/org-insert-link-from-clipboard))))
 
 ;; References in org-mode
 
