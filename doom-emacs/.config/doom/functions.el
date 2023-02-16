@@ -30,30 +30,32 @@ amount of lines to create."
   ; which itself doesn't get loaded until it is called manually.
 
   (defun gd/ebib-get-author-names (key)
-    (-->
-     (ebib-get-field-value "author" key ebib--cur-db "default" 'unbraced)
-     (s-split " and " it)
-     (--map (car (s-split "," it)) it)
-     (if (< 2 (length it))
-         (concat (car it) " et al")
-       (s-join " and " it))))
+    (let ((names
+           (->>
+            (ebib-get-field-value "author" key ebib--cur-db "default" 'unbraced)
+            (s-split " and ")
+            (--map (car (s-split "," it))))))
+      (if (< 2 (length names))
+          (concat (car names) " et al")
+        (s-join " and " names))))
 
   (defun gd/ebib-get-year (key)
-    (->>
-     (or
-      (ebib-get-field-value "year" key ebib--cur-db 'noerror 'unbraced)
-      (ebib-get-field-value "date" key ebib--cur-db 'noerror 'unbraced))
-     (s-split "-")
-     (-first-item)))
+    (let ((date
+           (or
+            (ebib-get-field-value "year" key ebib--cur-db 'noerror 'unbraced)
+            (ebib-get-field-value "date" key ebib--cur-db 'noerror 'unbraced))))
+      (->> date
+           (s-split "-")
+           (-first-item))))
 
   (defun gd/ebib-get-title (key)
-    (-->
-     (ebib-get-field-value "title" key ebib--cur-db "default" 'unbraced)
-     (s-split ":" it)
-     (car it)
-     (replace-regexp-in-string "[{}]" "" it)
-     (s-trim it)
-     (s-truncate 100 it "")))
+    (let ((title
+           (->> (ebib-get-field-value "title" key ebib--cur-db "default" 'unbraced)
+                (s-split ":")
+                (car)
+                (replace-regexp-in-string "[{}]" "")
+                (s-trim))))
+      (s-truncate 100 title "")))
 
   (defun gd/ebib-generate-filename (key)
     (let ((names (gd/ebib-get-author-names key))
@@ -63,6 +65,7 @@ amount of lines to create."
        (-filter #'identity) ; remove nil values
        (s-join " ")
        (replace-regexp-in-string "/" "")
+       (replace-regexp-in-string "," "")
        (replace-regexp-in-string " " "_"))))
 
   (defun gd/ebib-edit-as-string ()
