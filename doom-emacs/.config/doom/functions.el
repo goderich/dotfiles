@@ -309,20 +309,19 @@ Prompts for link name."
   (let ((address (substring-no-properties (current-kill 0))))
     (gd/insert-link address)))
 
-(defun gd/org--get-heading-id-pair ()
+(defun gd/org--get-id-heading ()
   "Get the text and ID of an org heading.
 Creates the ID if one isn't already present."
   (save-excursion
     (consult-org-heading)
     (let ((heading (org-get-heading 'no-tags 'no-todo 'no-priority 'no-comment))
           (id (concat "id:" (org-id-get-create))))
-      (cons heading id))))
+      (list id heading))))
 
 (defun gd/org-insert-link-with-id ()
   "Insert a link to a heading with completion, using a unique ID."
   (interactive)
-  (-let [(heading . id) (gd/org--get-heading-id-pair)]
-    (gd/insert-link id heading)))
+  (apply #'gd/insert-link (gd/org--get-id-heading)))
 
 (defun gd/org-set-custom-id ()
   "Create a new custom ID property at the current org heading.
@@ -374,9 +373,7 @@ This is a convenience function to bind it to a single keystroke."
 ;; References in org-mode
 
 (defun gd/org-insert-reference (str &optional capitalize?)
-  (let ((str (if capitalize?
-                 (s-capitalize str)
-               str)))
+  (let ((str (if capitalize? (s-capitalize str) str)))
     (insert "[cite: @" str "]")))
 
 (defun gd/org-insert-reference-heading (&optional capitalize?)
@@ -398,7 +395,7 @@ created."
     (string-match regex str)
     (match-string 1 str)))
 
-(defun gd/org-get-labels-latex (type)
+(defun gd/org--get-labels-latex (type)
   "Get a list of all LaTeX labels in this file beginning with the string TYPE."
   (->> (f-this-file)
        (shell-quote-argument)
@@ -408,7 +405,7 @@ created."
        (s-split "\n")
        (-map #'gd/org--extract-latex-label)))
 
-(defun gd/org-get-labels-org (type)
+(defun gd/org--get-labels-org (type)
   "Get a list of all org labels in this file beginning with the string TYPE."
   (->> (f-this-file)
        (shell-quote-argument)
@@ -422,8 +419,8 @@ created."
 Searches for both org-mode and LaTeX style labels."
   (-remove #'s-blank? ;; removes nil as well
    (-concat
-    (gd/org-get-labels-org type)
-    (gd/org-get-labels-latex type))))
+    (gd/org--get-labels-org type)
+    (gd/org--get-labels-latex type))))
 
 (defun gd/org-insert-crossref (type &optional capitalize?)
   "Insert an org-cite reference of a given TYPE.
