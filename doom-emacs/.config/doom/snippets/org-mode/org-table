@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: org-table
+# key: <tbl
+# --
+#+caption: ${1: caption}
+#+label: tbl:${2: label}
+|${3:column 1} |             |
+|--------------+-------------|
