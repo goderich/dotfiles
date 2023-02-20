@@ -11,6 +11,7 @@
   (setq ebib-import-directory "~/Dropbox/papers/articles/")
   (setq ebib-file-associations '(("pdf" . "zathura") ("ps" . "gv")))
   (setq ebib-bibtex-dialect 'biblatex)
+  (setq ebib-citation-insert-multiple t)
   (setq ebib-index-columns '(("Author/Editor" 20 t)
                              ("Year" 6 t)
                              ("Title" 40 t)))
