@@ -1,0 +1,8 @@
+.reveal strong,
+.reveal b {
+    color: red;
+}
+
+.reveal em {
+    color: blue;
+}

@@ -1,0 +1,9 @@
+from: org+smart
+to: revealjs
+css: ${.}/style.css
+standalone: true
+bibliography: ${HOME}/Dropbox/pap.bib
+csl: ${HOME}/Dropbox/linguistics.csl
+filters:
+- pandoc-crossref
+- citeproc
