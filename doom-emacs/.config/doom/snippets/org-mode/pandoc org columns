@@ -1,0 +1,16 @@
+# key: <col
+# name: pandoc org columns
+# --
+#+BEGIN_columns
+
+#+ATTR_HTML: :width ${1:50}%
+#+BEGIN_column
+$0
+#+END_column
+
+#+ATTR_HTML: :width ${2:50}%
+#+BEGIN_column
+
+#+END_column
+
+#+END_columns
