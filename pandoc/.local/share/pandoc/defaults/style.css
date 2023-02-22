@@ -4,5 +4,11 @@
 }
 
 .reveal em {
-    color: blue;
+    color: greenyellow;
+    font-style: normal;
+}
+
+.reveal del {
+    color: lightslategray;
+    text-decoration: none;
 }
