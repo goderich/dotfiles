@@ -7,3 +7,4 @@ csl: ${HOME}/Dropbox/linguistics.csl
 filters:
 - pandoc-crossref
 - citeproc
+- ${.}/../lua-filters/stretch.lua
