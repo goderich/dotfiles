@@ -281,6 +281,18 @@ Works only on org files using my pdf template."
                   `("-o" ,output))))
       (apply #'start-process "pandoc" "*pandoc*" args))))
 
+(defun gd/pandoc-org->revealjs ()
+  "Convert the current file to revealjs using pandoc.
+Works only on org files using my revealjs template."
+  (interactive)
+  (when (string= "org" (f-ext (f-this-file)))
+    (let* ((input (f-this-file))
+           (output (f-swap-ext input "html"))
+           (args (-concat
+                  `("pandoc" "-i" ,input "-drev")
+                  `("-o" ,output))))
+      (apply #'start-process "pandoc" "*pandoc*" args))))
+
 ;; Org-mode links
 
 (defun gd/insert-link (address &optional name)
