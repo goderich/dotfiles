@@ -79,6 +79,12 @@
       :desc "Quit"             :ne "Q" #'save-buffers-kill-terminal
       :desc "Show keybindings" :ne "h" (cmd! (which-key-show-keymap '+doom-dashboard-mode-map)))
 
+(defhydra gd/hydra-pandoc (:exit t)
+  "Convert this file with pandoc...
+"
+  ("p" #'gd/pandoc-org->pdf "to pdf")
+  ("r" #'gd/pandoc-org->revealjs "to revealjs"))
+
 (map! :map org-mode-map
       :after org
       (:prefix "g"
@@ -130,12 +136,10 @@
        :desc "Ordinary org link"       "l" #'gd/org-insert-link
        :desc "Link from clipboard"     "c" #'gd/org-insert-link-from-clipboard
        :desc "Org link with unique ID" "i" #'gd/org-insert-link-with-id))
-      ;; Bindings for pandoc-mode
-      :after pandoc-mode
       ;; =, p= is a prefix in Doom's org keybindings,
       ;; so I need to unbind it first.
       "p" nil
-      :desc "Pandoc export" "p" #'pandoc-main-hydra/body)
+      :desc "Pandoc export" "p" #'gd/hydra-pandoc/body)
 
 ;; These are active when editing a source code block in a separate window.
 (map! :map org-src-mode-map
