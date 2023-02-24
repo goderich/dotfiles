@@ -83,7 +83,8 @@
   "Convert this file with pandoc...
 "
   ("p" #'gd/pandoc-org->pdf "to pdf")
-  ("r" #'gd/pandoc-org->revealjs "to revealjs"))
+  ("r" #'gd/pandoc-org->revealjs "to revealjs")
+  ("q" nil "quit"))
 
 (map! :map org-mode-map
       :after org
