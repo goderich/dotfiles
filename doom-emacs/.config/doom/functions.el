@@ -272,6 +272,7 @@ but apparently evil mode does not do this."
 Works only on org files using my pdf template."
   (interactive)
   (when (string= "org" (f-ext (f-this-file)))
+    (save-buffer)
     (let* ((input (f-this-file))
            (output (f-swap-ext input "pdf"))
            (metadata (f-join (f-dirname input) "metadata.yaml"))
@@ -286,6 +287,7 @@ Works only on org files using my pdf template."
 Works only on org files using my revealjs template."
   (interactive)
   (when (string= "org" (f-ext (f-this-file)))
+    (save-buffer)
     (let* ((input (f-this-file))
            (output (f-swap-ext input "html"))
            (args (-concat
