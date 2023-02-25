@@ -393,7 +393,7 @@ This is a convenience function to bind it to a single keystroke."
   (let ((str (if capitalize? (s-capitalize str) str)))
     (insert "[cite: @" str "]")))
 
-(defun gd/org-insert-reference-heading (&optional capitalize?)
+(defun gd/org-insert-ref-heading (&optional capitalize?)
   "Insert a pandoc reference to a heading, with completion.
 We use narrowing to find the required heading, and then insert a link
 using its CUSTOM_ID property. If the property isn't set, it is
@@ -402,9 +402,9 @@ created."
   (let ((custom-id (gd/org-get-custom-id)))
     (gd/org-insert-reference custom-id capitalize?)))
 
-(defun gd/org-insert-capitalized-reference-heading ()
+(defun gd/org-insert-ref-heading-capitalized ()
   (interactive)
-  (gd/org-insert-reference-heading 'capitalize))
+  (gd/org-insert-ref-heading 'capitalize))
 
 (defun gd/org--extract-latex-label (str)
   "Extract the text from inside a LaTeX label STR."
@@ -446,18 +446,18 @@ Optionally capitalize it."
                      (completing-read "Choose candidate:"))))
     (gd/org-insert-reference choice capitalize?)))
 
-(defun gd/org-insert-table-ref ()
+(defun gd/org-insert-ref-table ()
   (interactive)
   (gd/org-insert-crossref "tbl"))
 
-(defun gd/org-insert-capitalized-table-ref ()
+(defun gd/org-insert-ref-table-capitalized ()
   (interactive)
   (gd/org-insert-crossref "tbl" 'capitalize))
 
-(defun gd/org-insert-figure-ref ()
+(defun gd/org-insert-ref-figure ()
   (interactive)
   (gd/org-insert-crossref "fig"))
 
-(defun gd/org-insert-capitalized-figure-ref ()
+(defun gd/org-insert-ref-figure-capitalized ()
   (interactive)
   (gd/org-insert-crossref "fig" 'capitalize))

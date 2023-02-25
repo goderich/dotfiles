@@ -96,12 +96,12 @@
       ;; Insert mode keybindings
       (:prefix "C-i"
        :desc "Insert citation"        :i "c" #'ebib-insert-citation
-       :desc "Heading reference"      :i "r" #'gd/org-insert-reference-heading
-       :desc "Capitalized reference"  :i "R" #'gd/org-insert-capitalized-reference-heading
-       :desc "Table reference"        :i "t" #'gd/org-insert-table-ref
-       :desc "Capitalized table ref"  :i "T" #'gd/org-insert-capitalized-table-ref
-       :desc "Figure reference"       :i "f" #'gd/org-insert-figure-ref
-       :desc "Capitalized figure ref" :i "F" #'gd/org-insert-capitalized-figure-ref
+       :desc "Heading reference"      :i "r" #'gd/org-insert-ref-heading
+       :desc "Capitalized reference"  :i "R" #'gd/org-insert-ref-heading-capitalized
+       :desc "Table reference"        :i "t" #'gd/org-insert-ref-table
+       :desc "Capitalized table ref"  :i "T" #'gd/org-insert-ref-table-capitalized
+       :desc "Figure reference"       :i "f" #'gd/org-insert-ref-figure
+       :desc "Capitalized figure ref" :i "F" #'gd/org-insert-ref-figure-capitalized
        (:prefix ("l" . "links")
        :desc "Ordinary org link"       :i "l" #'gd/org-insert-link
        :desc "Link from clipboard"     :i "c" #'gd/org-insert-link-from-clipboard
@@ -127,12 +127,12 @@
       "i" nil
       (:prefix ("i" . "insert")
        :desc "Insert citation"        "c" #'ebib-insert-citation
-       :desc "Heading reference"      "r" #'gd/org-insert-reference-heading
-       :desc "Capitalized reference"  "R" #'gd/org-insert-capitalized-reference-heading
-       :desc "Table reference"        "t" #'gd/org-insert-table-ref
-       :desc "Capitalized table ref"  "T" #'gd/org-insert-capitalized-table-ref
-       :desc "Figure reference"       "f" #'gd/org-insert-figure-ref
-       :desc "Capitalized figure ref" "F" #'gd/org-insert-capitalized-figure-ref
+       :desc "Heading reference"      "r" #'gd/org-insert-ref-heading
+       :desc "Capitalized reference"  "R" #'gd/org-insert-ref-heading-capitalized
+       :desc "Table reference"        "t" #'gd/org-insert-ref-table
+       :desc "Capitalized table ref"  "T" #'gd/org-insert-ref-table-capitalized
+       :desc "Figure reference"       "f" #'gd/org-insert-ref-figure
+       :desc "Capitalized figure ref" "F" #'gd/org-insert-ref-figure-capitalized
        (:prefix ("l" . "links")
        :desc "Ordinary org link"       "l" #'gd/org-insert-link
        :desc "Link from clipboard"     "c" #'gd/org-insert-link-from-clipboard
@@ -165,7 +165,7 @@
       :desc "Send message and exit" :nv "s" #'gd/send-confirm-has-recipient
       :desc "Attach file"           :nv "a" #'gd/org-msg-attach-file)
 
-;; These are used with my own derived org-books-mode within the books.org file
+;; These are used with my own derived org-books-mode within `org-books-file'
 (map! :map org-books-mode-map
       :localleader
       :desc "Add book from URL"       "u" #'org-books-add-url
