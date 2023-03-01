@@ -24,7 +24,7 @@ super + p
 
 # Take a screenshot
 Print
-	gnome-screenshot
+	flameshot gui
 
 # bspwm hotkeys
 #
