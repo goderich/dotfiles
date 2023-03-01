@@ -8,3 +8,4 @@ filters:
 - pandoc-crossref
 - citeproc
 - ${.}/../lua-filters/stretch.lua
+- ${.}/../lua-filters/bg-image.lua
