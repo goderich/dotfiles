@@ -177,7 +177,8 @@
 ;; lisp editing keybindings
 (map! :map (emacs-lisp-mode-map ielm-map
             racket-mode-map racket-repl-mode-map
-            sly-mode-map dune-mode-map clojure-mode-map)
+            sly-mode-map dune-mode-map clojure-mode-map
+            fennel-mode-map)
       (:localleader
        :desc "Forward slurp"  :n ")" #'sp-forward-slurp-sexp
        :desc "Backward slurp" :n "(" #'sp-backward-slurp-sexp
