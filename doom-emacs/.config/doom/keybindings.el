@@ -150,12 +150,11 @@
 
 ;; These complement the keybinds already set in evil-collection
 (map! :map evil-org-agenda-mode-map
-      :after org-agenda
+      :after evil-org-agenda
       :m "b" #'org-agenda-earlier
       :m "f" #'org-agenda-later
       :m "(" #'org-agenda-earlier
       :m ")" #'org-agenda-later
-      :after link-hint
       :m "u" #'link-hint-open-link)
 
 ;; These are used when composing emails in mu4e
