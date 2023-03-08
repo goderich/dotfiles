@@ -267,33 +267,29 @@ but apparently evil mode does not do this."
   (let ((evil-kill-on-visual-paste nil))
     (evil-visual-paste 1)))
 
+(cl-defun gd/pandoc-org--convert (&key extension defaults)
+  "Convert the current file using pandoc.
+The format and the defaults file need to be supplied by the caller."
+  (save-buffer)
+  (let* ((input (f-this-file))
+         (output (f-swap-ext input extension))
+         (metadata (f-join (f-dirname input) "metadata.yaml"))
+         (args `("pandoc" "-i" ,input ,defaults
+                 ,@(when (f-exists? metadata) `("--metadata-file" ,metadata))
+                 "-o" ,output)))
+    (apply #'start-process "pandoc" "*pandoc*" args)))
+
 (defun gd/pandoc-org->pdf ()
   "Convert the current file to pdf using pandoc.
 Works only on org files using my pdf template."
   (interactive)
-  (when (string= "org" (f-ext (f-this-file)))
-    (save-buffer)
-    (let* ((input (f-this-file))
-           (output (f-swap-ext input "pdf"))
-           (metadata (f-join (f-dirname input) "metadata.yaml"))
-           (args `("pandoc" "-i" ,input "-dpdf"
-                    ,@(when (f-exists? metadata) `("--metadata-file" ,metadata))
-                    "-o" ,output)))
-      (apply #'start-process "pandoc" "*pandoc*" args))))
+  (gd/pandoc-org--convert :extension "pdf" :defaults "-dpdf"))
 
 (defun gd/pandoc-org->revealjs ()
   "Convert the current file to revealjs using pandoc.
 Works only on org files using my revealjs template."
   (interactive)
-  (when (string= "org" (f-ext (f-this-file)))
-    (save-buffer)
-    (let* ((input (f-this-file))
-           (output (f-swap-ext input "html"))
-           (metadata (f-join (f-dirname input) "metadata.yaml"))
-           (args `("pandoc" "-i" ,input "-drev"
-                   ,@(when (f-exists? metadata) `("--metadata-file" ,metadata))
-                   "-o" ,output)))
-      (apply #'start-process "pandoc" "*pandoc*" args))))
+  (gd/pandoc-org--convert :extension "html" :defaults "-drev"))
 
 ;; Org-mode links
 
