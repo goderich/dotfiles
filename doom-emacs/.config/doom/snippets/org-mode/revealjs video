@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: revealjs video
+# key: <v
+# --
+#+begin_html
+<video controls src=\"$1\"></video>
+#+end_html
