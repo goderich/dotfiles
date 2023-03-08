@@ -290,8 +290,10 @@ Works only on org files using my revealjs template."
     (save-buffer)
     (let* ((input (f-this-file))
            (output (f-swap-ext input "html"))
+           (metadata (f-join (f-dirname input) "metadata.yaml"))
            (args (-concat
                   `("pandoc" "-i" ,input "-drev")
+                  (when (f-exists? metadata) `("--metadata-file" ,metadata))
                   `("-o" ,output))))
       (apply #'start-process "pandoc" "*pandoc*" args))))
 
