@@ -1,5 +1,7 @@
 ;;; functions.el --- Various functions for my personal use -*- lexical-binding: t; -*-
 
+(require 'dash)
+
 (defun prepend-numbers (numlines)
   "Prepend numbers to the beginning of lines.
 Numbers start with 1 and increase by one
