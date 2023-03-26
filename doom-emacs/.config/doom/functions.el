@@ -230,6 +230,7 @@ tags."
 (defun gd/exercism-submit ()
   "Submit this file to exercism."
   (interactive)
+  (save-buffer)
   (call-process "exercism" nil nil nil "submit" (f-this-file)))
 
 (defun gd/consult-goto-org-heading ()
