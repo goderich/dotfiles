@@ -2,6 +2,8 @@ from: org+smart
 to: docx
 bibliography: ${HOME}/Dropbox/pap.bib
 csl: ${HOME}/Dropbox/linguistics.csl
+metadata-files:
+- ${.}/metadata/crossref.yaml
 filters:
 - pandoc-crossref
 - citeproc

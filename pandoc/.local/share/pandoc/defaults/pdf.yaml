@@ -4,7 +4,9 @@ pdf-engine: tectonic
 bibliography: ${HOME}/Dropbox/pap.bib
 csl: ${HOME}/Dropbox/linguistics.csl
 metadata-files:
-- ${.}/metadata.yaml
+- ${.}/metadata/fonts.yaml
+- ${.}/metadata/crossref.yaml
+- ${.}/metadata/latex.yaml
 filters:
 - pandoc-crossref
 - citeproc
