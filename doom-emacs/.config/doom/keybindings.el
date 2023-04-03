@@ -84,6 +84,7 @@
 "
   ("p" #'gd/pandoc-org->pdf "to pdf")
   ("r" #'gd/pandoc-org->revealjs "to revealjs")
+  ("d" #'gd/pandoc-org->docx "to docx")
   ("q" nil "quit"))
 
 (map! :map org-mode-map
