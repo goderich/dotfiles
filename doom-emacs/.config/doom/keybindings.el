@@ -79,13 +79,13 @@
       :desc "Quit"             :ne "Q" #'save-buffers-kill-terminal
       :desc "Show keybindings" :ne "h" (cmd! (which-key-show-keymap '+doom-dashboard-mode-map)))
 
-(defhydra gd/hydra-pandoc (:exit t)
+(defhydra gd/hydra-pandoc (:color blue)
   "Convert this file with pandoc...
 "
-  ("p" #'gd/pandoc-org->pdf "to pdf")
+  ("p" #'gd/pandoc-org->pdf "to pdf" :column "Format:")
   ("r" #'gd/pandoc-org->revealjs "to revealjs")
   ("d" #'gd/pandoc-org->docx "to docx")
-  ("q" nil "quit"))
+  ("q" nil "quit" :column "Other"))
 
 (map! :map org-mode-map
       :after org
