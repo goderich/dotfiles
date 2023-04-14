@@ -9,6 +9,7 @@
  (:leader
   :desc "Weekly agenda" "a" #'org-agenda-list
   :nv "u" #'link-hint-open-link
+  :nv "U" #'universal-argument
   :desc "Dashboard" "d" #'+doom-dashboard/open
   (:prefix "i"
    (:prefix ("n" . "Insert numbers")
@@ -180,7 +181,15 @@
             racket-mode-map racket-repl-mode-map
             sly-mode-map dune-mode-map clojure-mode-map
             fennel-mode-map)
-      (:localleader
+      (:desc "Move up a sexp" :n "(" #'sp-backward-up-sexp
+       ;; :desc "Move to end of sexp" :n ")" #'sp-up-sexp
+       :desc "Wrap with parens" :v "(" #'sp-wrap-round
+       :desc "Wrap with parens" :v ")" #'sp-wrap-round
+       :desc "Wrap with square" :v "[" #'sp-wrap-square
+       :desc "Wrap with square" :v "]" #'sp-wrap-square
+       :desc "Wrap with curly" :v "{" #'sp-wrap-curly
+       :desc "Wrap with curly" :v "{" #'sp-wrap-curly
+       :localleader
        :desc "Forward slurp"  :n ")" #'sp-forward-slurp-sexp
        :desc "Backward slurp" :n "(" #'sp-backward-slurp-sexp
        :desc "Forward barf"   :n ">" #'sp-forward-barf-sexp
