@@ -277,8 +277,11 @@ The format and the defaults file need to be supplied by the caller."
   (let* ((input (f-this-file))
          (output (f-swap-ext input extension))
          (metadata (f-join (f-dirname input) "metadata.yaml"))
+         (style (f-join (f-dirname input) "style.css"))
          (args `("pandoc" "-i" ,input ,defaults
                  ,@(when (f-exists? metadata) `("--metadata-file" ,metadata))
+                 ,@(when (and (string= extension "html") (f-exists? style))
+                     `("--css" ,style))
                  "-o" ,output)))
     (apply #'start-process "pandoc" "*pandoc*" args)))
 
