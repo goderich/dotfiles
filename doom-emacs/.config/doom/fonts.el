@@ -14,7 +14,7 @@
 
 (setq doom-variable-pitch-font
       (font-spec
-       :family "Linux Libertine O"
+       :family "Libertinus Serif"
        :size 24.0))
 
 (after! mixed-pitch
