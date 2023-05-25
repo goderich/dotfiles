@@ -8,7 +8,7 @@ if there is a second one, it will overwrite the first.
 function Header(h)
   local c = h.content
   -- null check, otherwise filter will crash
-  if next(c) ~= nil and c[#c].attr and
+  if next(c) and c[#c].attr and
       c[#c].attributes["tag-name"] == "animate" then
     -- For some reason tags in headings get interpreted as SmallCaps
     -- and appear in the generated file. We don't want that,
