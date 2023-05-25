@@ -299,7 +299,7 @@ Works only on org files using my revealjs template."
 
 (defun gd/pandoc-org->docx ()
   "Convert the current file to pdf using pandoc.
-Works only on org files using my pdf template."
+Works only on org files using my docx template."
   (interactive)
   (gd/pandoc-org--convert :extension "docx" :defaults "-ddoc"))
 
