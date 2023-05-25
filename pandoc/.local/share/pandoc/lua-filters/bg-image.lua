@@ -6,7 +6,6 @@ function Header(elem)
         ["background-repeat"]   = "no-repeat",
         ["background-position"] = "center",
         ["identifier"]          = "section" }
-    local h = pandoc.Header(2, pandoc.List(), attrs)
-    return h
+    return pandoc.Header(2, pandoc.List(), attrs)
   end
 end
