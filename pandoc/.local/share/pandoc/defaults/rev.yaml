@@ -9,3 +9,4 @@ filters:
 - citeproc
 - ${.}/../lua-filters/stretch.lua
 - ${.}/../lua-filters/bg-image.lua
+- ${.}/../lua-filters/animate.lua
