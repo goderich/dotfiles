@@ -187,8 +187,7 @@
        :desc "Wrap with parens" :v ")" #'sp-wrap-round
        :desc "Wrap with square" :v "[" #'sp-wrap-square
        :desc "Wrap with square" :v "]" #'sp-wrap-square
-       :desc "Wrap with curly" :v "{" #'sp-wrap-curly
-       :desc "Wrap with curly" :v "}" #'sp-wrap-curly
+       :desc "Wrap with curly" :v "B" #'sp-wrap-curly
        :localleader
        :desc "Forward slurp"  :n ")" #'sp-forward-slurp-sexp
        :desc "Backward slurp" :n "(" #'sp-backward-slurp-sexp
