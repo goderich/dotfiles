@@ -30,3 +30,9 @@
 
 ;; Use variable pitch in some environments
 (package! mixed-pitch)
+
+;; Use newest evil-collection for mu4e keybindings,
+;; see https://github.com/emacs-evil/evil-collection/issues/695
+(unpin! evil-collection)
+(package! evil-collection
+  :recipe (:repo "emacs-evil/evil-collection" :branch "master"))
