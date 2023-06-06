@@ -469,3 +469,25 @@ Optionally capitalize it."
 (defun gd/org-insert-ref-figure-capitalized ()
   (interactive)
   (gd/org-insert-crossref "fig" 'capitalize))
+
+;; Temporary shadowing of Doom's mu4e functions.
+;; Necessary because Doom does not yet fully support mu 1.10 fn names.
+;; [[file:~/.doom/modules/email/mu4e/config.el::defun +mu4e-view-select-attachment (][source]]
+
+(defun +mu4e-view-select-attachment ()
+      "Use completing-read to select a single attachment.
+Acts like a singular `mu4e-view-save-attachments', without the saving."
+      (if-let ((parts (delq nil (mapcar
+                                 (lambda (part)
+                                   (when (assoc "attachment" (cdr part))
+                                     part))
+                                 (mu4e--view-gather-mime-parts))))
+               (files (+mu4e-part-selectors parts)))
+          (cdr (assoc (completing-read "Select attachment: " (mapcar #'car files)) files))
+        (user-error (mu4e-format "No attached files found"))))
+
+(defun +mu4e-view-open-attachment ()
+  "Select an attachment, and open it."
+  (interactive)
+  (mu4e--view-open-file
+   (mu4e--view-mime-part-to-temp-file (cdr (+mu4e-view-select-attachment)))))
