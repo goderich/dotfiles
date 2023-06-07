@@ -5,7 +5,7 @@
 
 ;; Setup the startup dashboard
 (setq +doom-dashboard-banner-padding '(6 . 2))
-(setq +doom-dashboard-banner-file (expand-file-name "emacs-e.svg" doom-private-dir))
+(setq +doom-dashboard-banner-file (expand-file-name "emacs-e.svg" doom-user-dir))
 (remove-hook '+doom-dashboard-functions #'doom-dashboard-widget-shortmenu)
 (add-hook! '+doom-dashboard-mode-hook (hide-mode-line-mode 1) (hl-line-mode -1))
 (setq-hook! '+doom-dashboard-mode-hook evil-normal-state-cursor (list nil))
