@@ -28,6 +28,8 @@
    :nv "n" #'git-gutter:next-hunk)
   (:prefix "b"
    :nv "q" #'kill-current-buffer)
+  (:prefix "f"
+   :desc "Browse org files" :ne "o" #'gd/browse-org-directory)
   (:prefix "w"
    :nv "c" #'delete-other-windows)
   (:prefix ("B" . "org-books")
