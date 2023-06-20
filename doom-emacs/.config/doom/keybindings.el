@@ -251,6 +251,7 @@
       :n "z"   #'ebib-leave-ebib-windows
       :n "E"   #'gd/ebib-edit-as-string
       :n "s"   #'ebib-save-current-database
+      :n "S"   #'ebib-save-all-databases
       :n "D"   #'ebib-delete-current-field-contents
       (:localleader
        :n "f" #'ebib-import-file))

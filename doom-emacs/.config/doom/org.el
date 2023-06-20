@@ -65,3 +65,5 @@
 
 ;; Load org-books config
 (after! f (load! "org-books"))
+
+(add-hook 'gd/pandoc-org->pdf-hook #'gd/org-check-duplicates-all)

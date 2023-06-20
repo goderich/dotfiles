@@ -285,10 +285,15 @@ The format and the defaults file need to be supplied by the caller."
                  "-o" ,output)))
     (apply #'start-process "pandoc" "*pandoc*" args)))
 
+(defvar gd/pandoc-org->pdf-hook nil
+  "Hook to run before converting from org-mode to PDF.")
+
 (defun gd/pandoc-org->pdf ()
   "Convert the current file to pdf using pandoc.
 Works only on org files using my pdf template."
   (interactive)
+  (save-buffer)
+  (run-hooks 'gd/pandoc-org->pdf-hook)
   (gd/pandoc-org--convert :extension "pdf" :defaults "-dpdf"))
 
 (defun gd/pandoc-org->revealjs ()
@@ -492,3 +497,47 @@ Acts like a singular `mu4e-view-save-attachments', without the saving."
     (interactive)
     (mu4e--view-open-file
      (mu4e--view-mime-part-to-temp-file (cdr (+mu4e-view-select-attachment))))))
+
+;; Duplicate reference checks for papers written in org-mode
+
+(defun gd/org-check-duplicate (query)
+  (--> (f-this-file)
+       (shell-quote-argument it)
+       (concat
+        "rg \"" query "\" " it " | cut -d \" \" -f 2 | sort | uniq -d")
+       (shell-command-to-string it)
+       (if (s-blank? it)
+           (message "Success!")
+         (error "Duplicate found!\n%s\nAborting compilation..." it))))
+
+(defun gd/org-check-duplicate-tbl ()
+  "Check current org-mode file for duplicate tables."
+  (interactive)
+  (message "Checking for duplicate tables...")
+  (gd/org-check-duplicate "#\\+label: tbl:"))
+
+(defun gd/org-check-duplicate-sec ()
+  "Check current org-mode file for duplicate sections."
+  (interactive)
+  (message "Checking for duplicate sections...")
+  (gd/org-check-duplicate ":CUSTOM_ID: sec:"))
+
+(defun gd/org-check-duplicate-fn ()
+  "Check current org-mode file for duplicate footnotes."
+  (interactive)
+  (let* ((f (shell-quote-argument (f-this-file)))
+         (result (shell-command-to-string
+                  (concat "awk -F '[][]' '/\\[fn:/ {for (i=2; i<=NF; i+=2) {printf \"%s\\n\", $i}}' "
+                          f
+                          " | grep \"^fn:\" | sort | uniq -c | awk '($1 != 2) {print $0}'"))))
+    (message "Checking for duplicate or orphaned footnotes...")
+    (if (s-blank? result)
+        (message "Success!")
+      (error "Found footnotes occurring more or less than 2 times:\n%s\nAborting compilation..." result))))
+
+(defun gd/org-check-duplicates-all ()
+  (interactive)
+  (gd/org-check-duplicate-tbl)
+  (gd/org-check-duplicate-sec)
+  (gd/org-check-duplicate-fn)
+  (message "No duplicates found, compiling..."))
