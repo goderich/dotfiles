@@ -500,40 +500,51 @@ Acts like a singular `mu4e-view-save-attachments', without the saving."
 
 ;; Duplicate reference checks for papers written in org-mode
 
-(defun gd/org-check-duplicate (query)
-  (--> (f-this-file)
-       (shell-quote-argument it)
-       (concat
-        "rg \"" query "\" " it " | cut -d \" \" -f 2 | sort | uniq -d")
-       (shell-command-to-string it)
-       (if (s-blank? it)
-           (message "Success!")
-         (error "Duplicate found!\n%s\nAborting compilation..." it))))
+(defun gd/find-rx-all (regexp &optional group)
+  "Return a list of matches of GROUP in REGEXP in current buffer.
+If GROUP is not provided, default to matching the whole REGEXP."
+  (let ((matches))
+    (save-match-data
+      (save-excursion
+        (save-restriction
+          (widen)
+          (goto-char 1)
+          (while (search-forward-regexp regexp nil t)
+            (push (match-string-no-properties (or group 0)) matches)))))
+    matches))
+
+(defun gd/org-check-duplicate (lst typestr)
+  "Check LST for any duplicates and throw an error when one is found."
+  (let ((hash (make-hash-table :test #'equal)))
+    (--each lst
+      (if (map-elt hash it)
+          (error "Error! Duplicate %s name: %s." typestr it)
+        (map-put! hash it t)))
+    (message "Success!")))
 
 (defun gd/org-check-duplicate-tbl ()
-  "Check current org-mode file for duplicate tables."
   (interactive)
-  (message "Checking for duplicate tables...")
-  (gd/org-check-duplicate "#\\+label: tbl:"))
+  (let* ((regex (rx bol "#+label: " (group "tbl:" (+ (or alnum "-" "_")))))
+         (matches (gd/find-rx-all regex 1)))
+    (gd/org-check-duplicate matches "table")))
 
 (defun gd/org-check-duplicate-sec ()
-  "Check current org-mode file for duplicate sections."
   (interactive)
-  (message "Checking for duplicate sections...")
-  (gd/org-check-duplicate ":CUSTOM_ID: sec:"))
+  (let* ((get-custom-id (lambda () (org-entry-properties (point) "CUSTOM_ID")))
+         (ids (->>
+               (org-map-entries get-custom-id)
+               (-filter #'identity)
+               (--map (map-elt it "CUSTOM_ID")))))
+    (gd/org-check-duplicate ids "section")))
 
 (defun gd/org-check-duplicate-fn ()
-  "Check current org-mode file for duplicate footnotes."
   (interactive)
-  (let* ((f (shell-quote-argument (f-this-file)))
-         (result (shell-command-to-string
-                  (concat "awk -F '[][]' '/\\[fn:/ {for (i=2; i<=NF; i+=2) {printf \"%s\\n\", $i}}' "
-                          f
-                          " | grep \"^fn:\" | sort | uniq -c | awk '($1 != 2) {print $0}'"))))
-    (message "Checking for duplicate or orphaned footnotes...")
-    (if (s-blank? result)
-        (message "Success!")
-      (error "Found footnotes occurring more or less than 2 times:\n%s\nAborting compilation..." result))))
+  (let* ((fn (rx "[fn:" (group (+ (or alnum "-" "_"))) "]"))
+         (matches (gd/find-rx-all fn 1)))
+    (dolist (item (-frequencies matches))
+      (unless (= (cdr item) 2)
+        (error "Error! Footnote %s occurs %d times." (car item) (cdr item))))
+    (message "Success!")))
 
 (defun gd/org-check-duplicates-all ()
   (interactive)
