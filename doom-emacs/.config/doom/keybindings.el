@@ -76,6 +76,7 @@
       :desc "Switch buffer"    :ne "b" #'consult-buffer
       :desc "IBuffer"          :ne "i" #'ibuffer
       :desc "Previous buffer"  :ne "p" #'previous-buffer
+      :desc "Previous buffer"  :ne "q" #'previous-buffer
       :desc "Weekly agenda"    :ne "a" #'org-agenda-list
       :desc "Open mu4e"        :ne "m" #'=mu4e
       :desc "Set theme"        :ne "t" #'load-theme
