@@ -522,11 +522,33 @@ If GROUP is not provided, default to matching the whole REGEXP."
         (map-put! hash it t)))
     (message "Success!")))
 
+(defun gd/org-check-orphan-refs (labels refs)
+  (let ((orphan-refs (-difference refs labels)))
+    (when orphan-refs
+      (error
+       "Error! The following references do not have a parent:\n%s"
+       orphan-refs))))
+
 (defun gd/org-check-duplicate-tbl ()
   (interactive)
   (let* ((regex (rx bol "#+label: " (group "tbl:" (+ (or alnum "-" "_")))))
-         (matches (gd/find-rx-all regex 1)))
-    (gd/org-check-duplicate matches "table")))
+         (labels (gd/find-rx-all regex 1))
+         (ref-rx (rx "[cite" (opt "/t") ":" (* space) "@"
+                     (group "tbl:" (+ (or alnum "-" "_"))) "]"))
+         (refs (gd/find-rx-all ref-rx 1)))
+    (gd/org-check-duplicate labels "table")
+    (gd/org-check-orphan-refs labels refs)))
+
+(defun gd/org-check-section-ids (ids)
+  "Check that section IDS conform to pandoc-crossref requirements."
+  (let ((incorrect-ids
+         (--remove (s-starts-with? "sec:" it) ids)))
+    (when incorrect-ids
+        (error
+         (concat
+          "Error! All section IDs need to start with `sec:'\n"
+          "The following sections violate this:\n%s")
+         incorrect-ids))))
 
 (defun gd/org-check-duplicate-sec ()
   (interactive)
@@ -534,8 +556,13 @@ If GROUP is not provided, default to matching the whole REGEXP."
          (ids (->>
                (org-map-entries get-custom-id)
                (-filter #'identity)
-               (--map (map-elt it "CUSTOM_ID")))))
-    (gd/org-check-duplicate ids "section")))
+               (--map (map-elt it "CUSTOM_ID"))))
+         (ref-rx (rx "[cite" (* (or "/" alpha)) ":" (* space) "@"
+                     (group "sec:" (+ (or alnum "-" "_"))) "]"))
+         (refs (gd/find-rx-all ref-rx 1)))
+    (gd/org-check-section-ids ids)
+    (gd/org-check-duplicate ids "section")
+    (gd/org-check-orphan-refs ids refs)))
 
 (defun gd/org-check-duplicate-fn ()
   (interactive)
