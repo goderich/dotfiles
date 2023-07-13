@@ -1,6 +1,7 @@
 ;;; functions.el --- Various functions for my personal use -*- lexical-binding: t; -*-
 
 (require 'dash)
+(require 's)
 
 (defun prepend-numbers (numlines)
   "Prepend numbers to the beginning of lines.
@@ -499,6 +500,8 @@ Acts like a singular `mu4e-view-save-attachments', without the saving."
      (mu4e--view-mime-part-to-temp-file (cdr (+mu4e-view-select-attachment))))))
 
 ;; Duplicate reference checks for papers written in org-mode
+;; (make into a separate package?)
+;; (name idea: orca (org ref checker assistance))
 
 (defun gd/find-rx-all (regexp &optional group)
   "Return a list of matches of GROUP in REGEXP in current buffer.
@@ -513,30 +516,34 @@ If GROUP is not provided, default to matching the whole REGEXP."
             (push (match-string-no-properties (or group 0)) matches)))))
     matches))
 
-(defun gd/org-check-duplicate (lst typestr)
+(defun gd/org-check-duplicate (lst)
   "Check LST for any duplicates and throw an error when one is found."
   (let ((hash (make-hash-table :test #'equal)))
     (--each lst
       (if (map-elt hash it)
-          (error "Error! Duplicate %s name: %s." typestr it)
+          (error "Error! Duplicate name: %s." it)
         (map-put! hash it t)))
     (message "Success!")))
 
 (defun gd/org-check-orphan-refs (labels refs)
-  (let ((orphan-refs (-difference refs labels)))
+  "Check whether any members of LABELS are absent from REFS.
+Means an in-text reference that does not point to anything."
+  (let ((orphan-refs (-difference (-map #'s-downcase refs) labels)))
     (when orphan-refs
       (error
        "Error! The following references do not have a parent:\n%s"
        orphan-refs))))
 
-(defun gd/org-check-duplicate-tbl ()
+;; TODO: check table syntax (starts with "tbl:")
+
+(defun gd/org-check-tbl ()
   (interactive)
   (let* ((regex (rx bol "#+label: " (group "tbl:" (+ (or alnum "-" "_")))))
          (labels (gd/find-rx-all regex 1))
          (ref-rx (rx "[cite" (opt "/t") ":" (* space) "@"
                      (group "tbl:" (+ (or alnum "-" "_"))) "]"))
          (refs (gd/find-rx-all ref-rx 1)))
-    (gd/org-check-duplicate labels "table")
+    (gd/org-check-duplicate labels)
     (gd/org-check-orphan-refs labels refs)))
 
 (defun gd/org-check-section-ids (ids)
@@ -550,7 +557,7 @@ If GROUP is not provided, default to matching the whole REGEXP."
           "The following sections violate this:\n%s")
          incorrect-ids))))
 
-(defun gd/org-check-duplicate-sec ()
+(defun gd/org-check-sec ()
   (interactive)
   (let* ((get-custom-id (lambda () (org-entry-properties (point) "CUSTOM_ID")))
          (ids (->>
@@ -561,7 +568,7 @@ If GROUP is not provided, default to matching the whole REGEXP."
                      (group "sec:" (+ (or alnum "-" "_"))) "]"))
          (refs (gd/find-rx-all ref-rx 1)))
     (gd/org-check-section-ids ids)
-    (gd/org-check-duplicate ids "section")
+    (gd/org-check-duplicate ids)
     (gd/org-check-orphan-refs ids refs)))
 
 (defun gd/org-check-duplicate-fn ()
@@ -575,7 +582,7 @@ If GROUP is not provided, default to matching the whole REGEXP."
 
 (defun gd/org-check-duplicates-all ()
   (interactive)
-  (gd/org-check-duplicate-tbl)
-  (gd/org-check-duplicate-sec)
+  (gd/org-check-tbl)
+  (gd/org-check-sec)
   (gd/org-check-duplicate-fn)
-  (message "No duplicates found, compiling..."))
+  (message "No errors found, compiling..."))
