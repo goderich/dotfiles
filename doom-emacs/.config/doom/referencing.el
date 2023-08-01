@@ -31,7 +31,9 @@
   (map-put! ebib-citation-commands
             'org-mode
             '((("text" "[cite/t: %(@%K%< %A%>%; )]")
-               ("paren" "[cite: %(@%K%< %A%>%; )]")))))
+               ("paren" "[cite: %(@%K%< %A%>%; )]")
+               ("bare" "@%K")
+               ("no-name" "[cite/na: %(@%K%< %A%>%; )]")))))
 
 ;; Visual line mode makes entries occupy 2 or even more lines in the index.
 ;; This is unnecessary, because I can see the full list of authors and title
