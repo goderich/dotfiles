@@ -44,3 +44,14 @@
 (add-hook! 'ebib-index-mode-hook #'turn-off-visual-line-mode
                                  #'turn-off-evil-snipe-mode)
 (add-hook! 'ebib-entry-mode-hook #'turn-off-evil-snipe-mode)
+
+; Org-cite settings
+(after! oc
+
+  ;; Dummy processor for later use
+  (org-cite-register-processor 'gd/org-cite-processor
+    ;; note that the citation is passed as an object, not a string
+    :follow (lambda (citation arg) (message "hai: %s" citation)))
+
+  (setq org-cite-global-bibliography (list my/default-bibliography))
+  (setq org-cite-follow-processor 'gd/org-cite-processor))
