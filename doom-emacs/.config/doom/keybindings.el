@@ -11,6 +11,7 @@
   :nv "u" #'link-hint-open-link
   :nv "U" #'universal-argument
   :desc "Dashboard" "d" #'+doom-dashboard/open
+  :nv "/" #'+default/search-buffer
   (:prefix "i"
    (:prefix ("n" . "Insert numbers")
     :desc "Insert on new lines"       :n "n" #'insert-numbers
