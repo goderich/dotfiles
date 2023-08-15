@@ -48,10 +48,18 @@
 ; Org-cite settings
 (after! oc
 
+  (defun gd/ebib-open-on-citation (citation _)
+    (let ((key (map-elt (cadr citation) :key)))
+      (ebib)
+      (ebib-db-set-current-entry-key key ebib--cur-db)
+      (ebib--update-buffers 'no-refresh)))
+
   ;; Dummy processor for later use
-  (org-cite-register-processor 'gd/org-cite-processor
-    ;; note that the citation is passed as an object, not a string
-    :follow (lambda (citation arg) (message "hai: %s" citation)))
+  (org-cite-register-processor 'gd/org-cite-follow-processor
+    ;; Note that the citation is passed as an object, not a string.
+    ;; The follow function must take two arguments.
+    ;; See `org-cite-register-processor' documentation for details.
+    :follow #'gd/ebib-open-on-citation)
 
   (setq org-cite-global-bibliography (list my/default-bibliography))
-  (setq org-cite-follow-processor 'gd/org-cite-processor))
+  (setq org-cite-follow-processor 'gd/org-cite-follow-processor))
