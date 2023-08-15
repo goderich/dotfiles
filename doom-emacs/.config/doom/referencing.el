@@ -54,7 +54,6 @@
       (ebib-db-set-current-entry-key key ebib--cur-db)
       (ebib--update-buffers 'no-refresh)))
 
-  ;; Dummy processor for later use
   (org-cite-register-processor 'gd/org-cite-follow-processor
     ;; Note that the citation is passed as an object, not a string.
     ;; The follow function must take two arguments.
