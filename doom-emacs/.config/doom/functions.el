@@ -262,14 +262,6 @@ to be used within mu4e's view mode."
     (mu4e~view-browse-url-from-binding)
     (org-store-link nil 1)))
 
-(defun gd/evil-paste-no-kill ()
-  "Paste over visual selection without copying it.
-This is how shift+p functions in visual mode in vim,
-but apparently evil mode does not do this."
-  ;; TODO: add issue?
-  (interactive)
-  (let ((evil-kill-on-visual-paste nil))
-    (evil-visual-paste 1)))
 
 (cl-defun gd/pandoc-org--convert (&key extension defaults)
   "Convert the current file using pandoc.
