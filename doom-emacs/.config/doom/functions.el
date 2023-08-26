@@ -262,20 +262,32 @@ to be used within mu4e's view mode."
     (mu4e~view-browse-url-from-binding)
     (org-store-link nil 1)))
 
+(defun gd/pandoc--find-csl (dir)
+  "Find a single CSL file in DIR or supply a default."
+  (let ((fs (f-glob "*.csl" dir))
+        (default (f-full "~/dotfiles/pandoc/.local/share/pandoc/defaults/linguistics.csl")))
+    (cond
+     ((length> fs 1) (error "Error: more than one CSL file in current directory!"))
+     ((null fs) default)
+     (t (-first-item fs)))))
 
 (cl-defun gd/pandoc-org--convert (&key extension defaults)
   "Convert the current file using pandoc.
 The format and the defaults file need to be supplied by the caller."
   (save-buffer)
   (let* ((input (f-this-file))
+         (dir (f-dirname input))
          (output (f-swap-ext input extension))
-         (metadata (f-join (f-dirname input) "metadata.yaml"))
-         (style (f-join (f-dirname input) "style.css"))
+         (metadata (f-join dir "metadata.yaml"))
+         (style (f-join dir "style.css"))
+         (csl (gd/pandoc--find-csl dir))
          (args `("pandoc" "-i" ,input ,defaults
                  ,@(when (f-exists? metadata) `("--metadata-file" ,metadata))
                  ,@(when (and (string= extension "html") (f-exists? style))
                      `("--css" ,style))
+                 "--csl" ,csl
                  "-o" ,output)))
+    (message "Calling: %s" args)
     (apply #'start-process "pandoc" "*pandoc*" args)))
 
 (defvar gd/pandoc-org->pdf-hook nil
