@@ -65,7 +65,7 @@ amount of lines to create."
           (year (gd/ebib-get-year key))
           (title (gd/ebib-get-title key)))
       (->> (list names year title)
-       (-filter #'identity) ; remove nil values
+       (-non-nil)
        (s-join " ")
        (replace-regexp-in-string "/" "")
        (replace-regexp-in-string "," "")
@@ -538,8 +538,6 @@ Means an in-text reference that does not point to anything."
        "Error! The following references do not have a parent:\n%s"
        orphan-refs))))
 
-;; TODO: check table syntax (starts with "tbl:")
-
 (defun gd/org-check-tbl ()
   (interactive)
   (let* ((regex (rx bol "#+label: " (group "tbl:" (+ (or alnum "-" "_")))))
@@ -566,7 +564,7 @@ Means an in-text reference that does not point to anything."
   (let* ((get-custom-id (lambda () (org-entry-properties (point) "CUSTOM_ID")))
          (ids (->>
                (org-map-entries get-custom-id)
-               (-filter #'identity)
+               (-non-nil)
                (--map (map-elt it "CUSTOM_ID"))))
          (ref-rx (rx "[cite" (* (or "/" alpha)) ":" (* space) "@"
                      (group "sec:" (+ (or alnum "-" "_"))) "]"))
