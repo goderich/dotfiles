@@ -3,7 +3,7 @@
 (require 'dash)
 (require 's)
 
-(defun prepend-numbers (numlines)
+(defun gd/prepend-numbers-normal (numlines)
   "Prepend numbers to the beginning of lines.
 Numbers start with 1 and increase by one
 each time. The argument specifies the total
@@ -17,7 +17,24 @@ The numbers are followed by a dot and whitespace."
       (forward-line)
       (beginning-of-line))))
 
-(defun insert-numbers (numlines)
+(defun gd/prepend-numbers-visual ()
+  "Prepend numbers to the beginning of visually selected lines."
+  (interactive)
+  (let* ((begin (line-number-at-pos evil-visual-beginning))
+         (end (line-number-at-pos evil-visual-end))
+         (times (- end begin)))
+    (goto-char evil-visual-beginning)
+    (prepend-numbers times)))
+
+(defun gd/prepend-numbers-dispatch ()
+  "Decide how to prepend numbers based on the current mode."
+  (interactive)
+  (pcase evil-state
+    ('normal (call-interactively #'gd/prepend-numbers-normal))
+    ('visual (funcall #'gd/prepend-numbers-visual))
+    (_ (error "Can only be called in normal or visual state."))))
+
+(defun gd/insert-numbers (numlines)
   "Insert new lines with incrementing numbers.
 Numbers start with 1 and increase by one
 each time. The argument specifies the total

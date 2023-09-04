@@ -14,8 +14,8 @@
   :nv "/" #'+default/search-buffer
   (:prefix "i"
    (:prefix ("n" . "Insert numbers")
-    :desc "Insert on new lines"       :n "n" #'insert-numbers
-    :desc "Prepend to existing lines" :n "p" #'prepend-numbers))
+    :desc "Insert on new lines"       :n "n" #'gd/insert-numbers
+    :desc "Prepend to existing lines" :nv "p" #'gd/prepend-numbers-dispatch))
   (:prefix ("t" . "Toggle...")
    :desc "Writeroom mode"   :n "w" #'writeroom-mode
    :desc "Flyspell mode"    :n "s" #'flyspell-mode
