@@ -276,7 +276,7 @@ This is a convenience function to bind it to a single keystroke,
 to be used within mu4e's view mode."
   (interactive)
   (if (thing-at-point-url-at-point)
-    (mu4e~view-browse-url-from-binding)
+    (mu4e--view-browse-url-from-binding)
     (org-store-link nil 1)))
 
 (defun gd/pandoc--find-csl (dir)
