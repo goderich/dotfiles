@@ -283,10 +283,9 @@ to be used within mu4e's view mode."
   "Find a single CSL file in DIR or supply a default."
   (let ((fs (f-glob "*.csl" dir))
         (default (f-full "~/dotfiles/pandoc/.local/share/pandoc/defaults/linguistics.csl")))
-    (cond
-     ((length> fs 1) (error "Error: more than one CSL file in current directory!"))
-     ((null fs) default)
-     (t (-first-item fs)))))
+    (when (length> fs 1)
+      (error "Error: more than one CSL file in current directory!"))
+    (or (-first-item fs) default)))
 
 (cl-defun gd/pandoc-org--convert (&key extension defaults)
   "Convert the current file using pandoc.
