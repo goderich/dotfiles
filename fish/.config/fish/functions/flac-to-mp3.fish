@@ -1,6 +1,9 @@
 function flac-to-mp3
-  for i in **/*.{flac,FLAC}
-    set o (string replace -ri 'flac$' 'mp3' $i)
-    ffmpeg -i $i -codec:a libmp3lame -q:a 2 $o
-  end
+  # use fd for parallelization
+  echo "Converting" (count **/*.{flac,FLAC}) "files..."
+  fd --type f --extension flac --exec \
+      ffmpeg -i "{}" -codec:a libmp3lame -qscale:a 2 \
+      # run quietly, but show conversion progress
+      -loglevel warning -stats \
+      "{.}.mp3"
 end
