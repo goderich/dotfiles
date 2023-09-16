@@ -91,3 +91,6 @@
 
 (after! org-msg
   (setq org-msg-text-plain-alternative nil))
+
+;; Use a function to decide how to open attachments
+(setq mu4e-view-open-program #'gd/mu4e-open-file)

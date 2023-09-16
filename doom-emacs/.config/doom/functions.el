@@ -519,6 +519,18 @@ Acts like a singular `mu4e-view-save-attachments', without the saving."
     (mu4e--view-open-file
      (mu4e--view-mime-part-to-temp-file (cdr (+mu4e-view-select-attachment))))))
 
+(defun gd/mu4e-open-file (file)
+  "Open FILE in a specified way.
+This function is written to be used as `mu4e-view-open-program',
+which can be either a string or a function.
+The default value was xdg-open, which I am keeping here as
+the fallback."
+  (let ((opener
+         (pcase (f-ext file)
+           ((or "doc" "docx") "zaread")
+           (_ "xdg-open"))))
+    (call-process opener nil 0 nil file)))
+
 ;; Duplicate reference checks for papers written in org-mode
 ;; (make into a separate package?)
 ;; (name idea: orca (org ref checker assistance))
