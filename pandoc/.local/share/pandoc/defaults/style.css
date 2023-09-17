@@ -1,6 +1,7 @@
 .reveal strong,
 .reveal b {
     color: red;
+    font-weight: normal;
 }
 
 .reveal em {
