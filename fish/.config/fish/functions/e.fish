@@ -1,4 +1,4 @@
 function e
-  command exa $argv
+  command eza $argv
 end
 
