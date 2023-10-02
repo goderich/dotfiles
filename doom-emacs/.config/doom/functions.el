@@ -313,7 +313,6 @@ The format and the defaults file need to be supplied by the caller."
   "Convert the current file to pdf using pandoc.
 Works only on org files using my pdf template."
   (interactive)
-  (save-buffer)
   (run-hooks 'gd/pandoc-org->pdf-hook)
   (gd/pandoc-org--convert :extension "pdf" :defaults "-dpdf"))
 
