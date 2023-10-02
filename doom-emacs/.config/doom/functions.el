@@ -335,7 +335,7 @@ Works only on org files using my docx template."
 Prompts for a link name (the string that will be visible
 as the hyperlink text). If the prompt is left blank,
 uses NAME if it's provided, and ADDRESS otherwise."
-  (let* ((default (or name address))
+  (let* ((default (substring-no-properties (or name address)))
          (prompt (concat "Link name (default \"" default "\"): "))
          (link-name (read-string prompt "" nil default))
          (link-string (org-link-make-string address link-name)))
