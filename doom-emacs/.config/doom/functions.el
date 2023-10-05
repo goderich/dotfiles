@@ -339,7 +339,13 @@ uses NAME if it's provided, and ADDRESS otherwise."
          (prompt (concat "Link name (default \"" default "\"): "))
          (link-name (read-string prompt "" nil default))
          (link-string (org-link-make-string address link-name)))
-    (insert link-string)))
+    ;; If on a whitespace at the end of the line,
+    ;; insert link after the space.
+    (if (and (evil-eolp) (= (char-after) 32))
+        (progn
+          (insert " " link-string)
+          (delete-char 1))
+      (insert link-string))))
 
 (defun gd/consult-org-get-heading-text ()
   "Get the text of an Org heading with completion, using `consult'."
