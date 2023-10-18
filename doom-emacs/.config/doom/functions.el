@@ -297,7 +297,7 @@ The format and the defaults file need to be supplied by the caller."
          (metadata (f-join dir "metadata.yaml"))
          (style (f-join dir "style.css"))
          (csl (gd/pandoc--find-csl dir))
-         (args `("pandoc" "-i" ,input ,defaults
+         (args `("pandoc" ,input ,defaults
                  ,@(when (f-exists? metadata) `("--metadata-file" ,metadata))
                  ,@(when (and (string= extension "html") (f-exists? style))
                      `("--css" ,style))
