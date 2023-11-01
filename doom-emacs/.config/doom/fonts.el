@@ -6,7 +6,7 @@
        :family "Source Code Pro"
        :size 20.0))
 
-(setq doom-unicode-font
+(setq doom-symbol-font
       (font-spec
        :family "Noto Sans Mono CJK TC"
        :lang "zh"
