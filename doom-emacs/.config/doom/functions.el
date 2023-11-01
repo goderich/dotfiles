@@ -465,7 +465,7 @@ created."
   "Get a list of all org labels in this file beginning with the string TYPE."
   (->> (f-this-file)
        (shell-quote-argument)
-       (concat "awk \'/^#\\+label: " type "/ {print $2}\' ")
+       (concat "awk \'/^#\\+label:\\s+" type "/ {print $2}\' ")
        (shell-command-to-string)
        (s-trim-right)
        (s-split "\n")))
