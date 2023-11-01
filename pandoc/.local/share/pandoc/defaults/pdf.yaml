@@ -9,4 +9,5 @@ metadata-files:
 filters:
 - pandoc-crossref
 - citeproc
+- ${.}/../lua-filters/center.lua
 number-sections: true
