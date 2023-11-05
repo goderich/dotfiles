@@ -334,17 +334,17 @@ Works only on org files using my docx template."
   "Insert an Org link to ADDRESS.
 Prompts for a link name (the string that will be visible
 as the hyperlink text). If the prompt is left blank,
-uses NAME if it's provided, and ADDRESS otherwise."
+uses NAME if it's provided, and ADDRESS otherwise.
+
+If on a whitespace at the end of the line,insert an extra
+space before the link. This is useful when inserting links
+in normal mode."
   (let* ((default (substring-no-properties (or name address)))
          (prompt (concat "Link name (default \"" default "\"): "))
          (link-name (read-string prompt "" nil default))
          (link-string (org-link-make-string address link-name)))
-    ;; If on a whitespace at the end of the line,
-    ;; insert link after the space.
     (if (and (evil-eolp) (= (char-after) 32))
-        (progn
-          (insert " " link-string)
-          (delete-char 1))
+        (insert " " link-string)
       (insert link-string))))
 
 (defun gd/consult-org-get-heading-text ()
