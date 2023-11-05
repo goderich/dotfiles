@@ -295,12 +295,12 @@ The format and the defaults file need to be supplied by the caller."
          (dir (f-dirname input))
          (output (f-swap-ext input extension))
          (metadata (f-join dir "metadata.yaml"))
-         (style (f-join dir "style.css"))
+         (style? (f-exists? (f-join dir "style.css")))
          (csl (gd/pandoc--find-csl dir))
          (args `("pandoc" ,input ,defaults
                  ,@(when (f-exists? metadata) `("--metadata-file" ,metadata))
-                 ,@(when (and (string= extension "html") (f-exists? style))
-                     `("--css" ,style))
+                 ,@(when (and (string= extension "html") style?)
+                     `("--css" "./style.css"))
                  "--csl" ,csl
                  "-o" ,output)))
     (message "Calling: %s" args)
