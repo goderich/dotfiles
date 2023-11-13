@@ -3,6 +3,8 @@
 # Post-alveolars
 <Multi_key> <s> <h> : "ʃ" U0283
 <Multi_key> <z> <h> : "ʒ" U0292
+<Multi_key> <t> <s> <h> : "t͡ʃ"
+<Multi_key> <d> <z> <h> : "d͡ʒ"
 
 # Retroflexes
 <Multi_key> <s> <comma> : "ʂ" U0283
