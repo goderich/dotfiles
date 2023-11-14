@@ -37,7 +37,8 @@
 (defn header-parse-tags
   "Parse the :tags: in an org header into Pandoc classes in the Header object."
   [el]
-  (if (pandoc/header? el)
+  (if (and (pandoc/header? el)
+           (some pandoc/span? (pandoc/inlines el)))
     (let [tags (extract-tags el)
           add-tags (fn [classes] (into classes tags))]
       (-> el

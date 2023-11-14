@@ -11,9 +11,11 @@
 (defn- centering-latex
   "Insert raw LaTeX centering command around the input element."
   [el]
-  (concat [(pandoc/raw-inline "latex" "\\centering{")]
-          el
-          [(pandoc/raw-inline "latex" "}")]))
+  (vec
+   (concat
+    [(pandoc/raw-inline "latex" "\\centering{")]
+    el
+    [(pandoc/raw-inline "latex" "}")])))
 
 (defn center-header [el]
   (if (and (pandoc/header? el) (center? el))
