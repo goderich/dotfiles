@@ -24,12 +24,12 @@
        (filter pandoc/span?)
        (map span->tag)))
 
-(defn- extract-title
-  "Return the title of an org Header (minus tags) as a JSON object.
-  The last object before the first tag (Span) is always a Space,
-  so we remove it."
-  [h]
-  (->> (pandoc/inlines h)
+(defn- remove-spans
+  "Remove Span objects at the end of an Inlines in a Header.
+  The last object before the first Span is always a Space,
+  so we remove it as well."
+  [inlines]
+  (->> inlines
        (take-while (complement pandoc/span?))
        butlast
        vec))
@@ -37,10 +37,8 @@
 (defn header-parse-tags
   "Parse the :tags: in an org header into Pandoc classes in the Header object."
   [h]
-  (let [title (extract-title h)
-        tags (extract-tags h)
-        attrs (-> (pandoc/attributes h)
-                  (update-in [1] (fn [classes] (into classes tags))))]
+  (let [tags (extract-tags h)
+        add-tags (fn [classes] (into classes tags))]
     (-> h
-        (pandoc/assoc-inlines title)
-        (pandoc/assoc-attributes attrs))))
+        (pandoc/update-inlines remove-spans)
+        (pandoc/update-classes add-tags))))

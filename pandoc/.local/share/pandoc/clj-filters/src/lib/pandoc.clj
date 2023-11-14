@@ -8,8 +8,8 @@
   Use destructuring to get the values you need."
   [el]
   (case (:t el)
-    "Header" (get-in el [:c 1])
-    "Span" (get-in el [:c 0])))
+    "Header" [:c 1]
+    "Span" [:c 0]))
 
 (defn attributes [el]
   (get-in el (attributes-dispatch el)))
@@ -19,6 +19,12 @@
 
 (defn assoc-attributes [el val]
   (assoc-in el (attributes-dispatch el) val))
+
+(defn update-classes [el f]
+  (update-in el (conj (attributes-dispatch el) 1) f))
+
+(defn assoc-classes [el val]
+  (assoc-in el (conj (attributes-dispatch el) 1) val))
 
 (defn- inlines-dispatch
   "Get the correct location of the Inlines based on type.
