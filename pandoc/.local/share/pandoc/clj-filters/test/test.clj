@@ -51,3 +51,10 @@
                  {:t "Str", :c "Head"}
                  {:t "RawInline", :c ["latex" "}"]}]]})))
    ))
+
+(def test-results
+  (t/run-tests))
+
+(let [{:keys [fail error]} test-results]
+  (when (pos? (+ fail error))
+    (System/exit 1)))
