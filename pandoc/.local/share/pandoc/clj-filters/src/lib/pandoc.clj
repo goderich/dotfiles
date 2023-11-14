@@ -1,16 +1,26 @@
 (ns lib.pandoc)
 
-(defn attributes
-  "Return the Attributes based on type.
+(defn- attributes-dispatch
+  "Get the correct Attributes location based on type.
   According to the docstring on the Attr type in the pandoc source code,
   attributes are [identifier, classes, key-value pairs].
   This is how they get returned, as a vector, in that order.
   Use destructuring to get the values you need."
   [el]
   (case (:t el)
-    "Header" (get-in el [:c 1])))
+    "Header" (get-in el [:c 1])
+    "Span" (get-in el [:c 0])))
 
-(defn inlines-dispatch
+(defn attributes [el]
+  (get-in el (attributes-dispatch el)))
+
+(defn update-attributes [el f]
+  (update-in el (attributes-dispatch el) f))
+
+(defn assoc-attributes [el val]
+  (assoc-in el (attributes-dispatch el) val))
+
+(defn- inlines-dispatch
   "Get the correct location of the Inlines based on type.
   Used for get, assoc, and update functions."
   [el]
