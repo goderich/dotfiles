@@ -1,4 +1,4 @@
-(ns filter.latex.classes
+(ns filter.classes
   (:require [lib.pandoc :as pandoc]))
 
 (defn- span->tag
@@ -36,9 +36,11 @@
 
 (defn header-parse-tags
   "Parse the :tags: in an org header into Pandoc classes in the Header object."
-  [h]
-  (let [tags (extract-tags h)
-        add-tags (fn [classes] (into classes tags))]
-    (-> h
-        (pandoc/update-inlines remove-spans)
-        (pandoc/update-classes add-tags))))
+  [el]
+  (if (pandoc/header? el)
+    (let [tags (extract-tags el)
+          add-tags (fn [classes] (into classes tags))]
+      (-> el
+          (pandoc/update-inlines remove-spans)
+          (pandoc/update-classes add-tags)))
+    el))
