@@ -1,23 +1,21 @@
 (ns lib.pandoc)
 
-(defmulti attributes
+(defn attributes
   "Return the Attributes based on type.
   According to the docstring on the Attr type in the pandoc source code,
   attributes are [identifier, classes, key-value pairs].
   This is how they get returned, as a vector, in that order.
   Use destructuring to get the values you need."
-  :t)
-
-(defmethod attributes "Header"
   [el]
-  (get-in el [:c 1]))
+  (case (:t el)
+    "Header" (get-in el [:c 1])))
 
-(defmulti inlines-dispatch
+(defn inlines-dispatch
   "Get the correct location of the Inlines based on type.
   Used for get, assoc, and update functions."
-  :t)
-
-(defmethod inlines-dispatch "Header" [_] [:c 2])
+  [el]
+  (case (:t el)
+    "Header" [:c 2]))
 
 (defn inlines [el]
   (get-in el (inlines-dispatch el)))
@@ -30,6 +28,9 @@
 
 (defn header? [el]
   (= (:t el) "Header"))
+
+(defn span? [el]
+  (= (:t el) "Span"))
 
 (defn raw-inline [format text]
   {:t "RawInline" :c [format text]})
