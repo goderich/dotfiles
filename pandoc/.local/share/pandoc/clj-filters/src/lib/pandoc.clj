@@ -42,11 +42,25 @@
 (defn assoc-inlines [el val]
   (assoc-in el (inlines-dispatch el) val))
 
+(defn- target-dispatch
+  "Get the correct location of the Target based on type.
+  Used with Links and Images.
+  Note that Target is a vector of [URL, title]."
+  [el]
+  (case (:t el)
+    "Image" [:c 2]))
+
+(defn target [el]
+  (get-in el (target-dispatch el)))
+
 (defn header? [el]
   (= (:t el) "Header"))
 
 (defn span? [el]
   (= (:t el) "Span"))
+
+(defn image? [el]
+  (= (:t el) "Image"))
 
 (defn raw-inline [format text]
   {:t "RawInline" :c [format text]})

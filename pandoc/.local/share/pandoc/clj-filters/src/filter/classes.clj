@@ -7,7 +7,7 @@
   {:t \"Span\",
    :c [[\"\" [\"tag\"] [[\"tag-name\" \"center\"]]]             ;; Attributes
        [{:t \"SmallCaps\", :c [{:t \"Str\", :c \"center\"}]}]]} ;; Inlines
-  The Haskel type signature is: Span Attr [Inline]
+  The Haskell type signature is: Span Attr [Inline]
 
   We can extract the tag name from the Attributes or the Inlines,
   it does not seem to matter which.
