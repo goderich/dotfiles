@@ -1,12 +1,12 @@
 #!/usr/bin/bb
-(ns core.latex
+(ns core.reveal
   (:require [cheshire.core :as json]
             [clojure.walk :refer [prewalk]]
             [filter.classes :as classes]
-            [filter.latex.center :as center]))
+            [filter.reveal.bg-img :as bg-img]))
 
 (def filters
-  (comp center/center-header classes/header-parse-tags))
+  (comp bg-img/bg-image classes/header-parse-tags))
 
 (->> (json/decode (slurp *in*) true)
      (prewalk filters)
