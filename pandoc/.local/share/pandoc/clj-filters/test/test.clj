@@ -4,7 +4,8 @@
             [clojure.walk :refer [prewalk]]
             [lib.pandoc :as pandoc]
             [filter.classes :as classes]
-            [filter.latex.center :as center]))
+            [filter.latex.center :as center]
+            [filter.reveal.bg-img :as bg-img]))
 
 (deftest parse-test
   (testing "Basic tag parsing"
@@ -51,6 +52,27 @@
                  {:t "Str", :c "Head"}
                  {:t "RawInline", :c ["latex" "}"]}]]})))
    ))
+
+(deftest bg-image-test
+   (testing "Fullscreen background images in Headers."
+     (let [h
+           {:t "Header",
+            :c [2
+                ["section-id" ["class"] [["attribute" "t"]]]
+                [{:t "Image", :c [["" [] []] [] ["./img.png" ""]]}]]}]
+       (is (=
+            (bg-img/bg-image h)
+            {:t "Header",
+             :c
+             [2
+              ["section-id"
+               ["class"]
+               [["attribute" "t"]
+                ["background-image" "./img.png"]
+                ["background-size" "contain"]
+                ["background-repeat" "no-repeat"]
+                ["background-position" "contain"]]]
+              []]})))))
 
 (def test-results
   (t/run-tests))
