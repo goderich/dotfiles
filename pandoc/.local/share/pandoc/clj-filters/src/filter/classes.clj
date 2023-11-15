@@ -5,7 +5,7 @@
   "Extract a tag name from a Span pandoc object.
   A typical Span object looks like this:
   {:t \"Span\",
-   :c [[\"\" [\"tag\"] [[\"tag-name\" \"center\"]]]             ;; Attributes
+   :c [[\"\" [\"tag\"] [[\"tag-name\" \"center\"]]]             ;; Attrs
        [{:t \"SmallCaps\", :c [{:t \"Str\", :c \"center\"}]}]]} ;; Inlines
   The Haskell type signature is: Span Attr [Inline]
 
@@ -14,7 +14,7 @@
   There is just the one key-value pair per tag.
   Here I am going with the Attributes."
   [el]
-  (let [[_ _ [[_ tag]]] (pandoc/attributes el)]
+  (let [[[_ tag]] (pandoc/attributes el)]
     tag))
 
 (defn- extract-tags

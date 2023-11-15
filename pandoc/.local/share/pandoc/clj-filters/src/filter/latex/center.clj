@@ -2,8 +2,8 @@
   (:require [lib.pandoc :as pandoc]))
 
 (defn- center? [el]
-  (let [[_ classes attrs] (pandoc/attributes el)
-        keys (map first attrs)]
+  (let [[_ classes attributes] (pandoc/attrs el)
+        keys (map first attributes)]
     (or
      (some #{"center" "centered" "centering"} classes)
      (some #{"center" "centered" "centering"} keys))))

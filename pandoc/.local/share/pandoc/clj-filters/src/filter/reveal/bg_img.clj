@@ -4,7 +4,7 @@
 (defn- bg-image-attrs
   "Update (Header) Attrs with Image source and styling.
   The styling makes sure that the image is fullscreen.
-  Takes two arguments: Header Attributes and Image Target,
+  Takes two arguments: Header Attrs and Image Target,
   deconstructing them."
   [attrs target]
   (let [[header-id classes kvs] attrs
@@ -20,9 +20,9 @@
   "Insert Image Attrs into Header, making it into a full-screen image."
   [h]
   (let [target (-> h pandoc/inlines first pandoc/target)
-        attrs (bg-image-attrs (pandoc/attributes h) target)
+        attrs (bg-image-attrs (pandoc/attrs h) target)
         inlines (-> h pandoc/inlines rest vec)]
-    (-> (pandoc/assoc-attributes h attrs)
+    (-> (pandoc/assoc-attrs h attrs)
         (pandoc/assoc-inlines inlines))))
 
 (defn bg-image

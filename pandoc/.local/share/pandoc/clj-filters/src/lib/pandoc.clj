@@ -1,9 +1,9 @@
 (ns lib.pandoc)
 
-(defn- attributes-dispatch
-  "Get the correct Attributes location based on type.
+(defn- attrs-dispatch
+  "Get the correct Attrs location based on type.
   According to the docstring on the Attr type in the pandoc source code,
-  attributes are [identifier, classes, key-value pairs].
+  Attrs are [identifier, classes, attribute key-value pairs].
   This is how they get returned, as a vector, in that order.
   Use destructuring to get the values you need."
   [el]
@@ -11,20 +11,32 @@
     "Header" [:c 1]
     "Span" [:c 0]))
 
-(defn attributes [el]
-  (get-in el (attributes-dispatch el)))
+(defn attrs [el]
+  (get-in el (attrs-dispatch el)))
 
-(defn update-attributes [el f]
-  (update-in el (attributes-dispatch el) f))
+(defn update-attrs [el f]
+  (update-in el (attrs-dispatch el) f))
 
-(defn assoc-attributes [el val]
-  (assoc-in el (attributes-dispatch el) val))
+(defn assoc-attrs [el val]
+  (assoc-in el (attrs-dispatch el) val))
 
 (defn update-classes [el f]
-  (update-in el (conj (attributes-dispatch el) 1) f))
+  (update-in el (conj (attrs-dispatch el) 1) f))
 
 (defn assoc-classes [el val]
-  (assoc-in el (conj (attributes-dispatch el) 1) val))
+  (assoc-in el (conj (attrs-dispatch el) 1) val))
+
+(defn attributes [el]
+  (get-in el (conj (attrs-dispatch el) 2)))
+
+(defn update-attributes [el f]
+  (update-in el (conj (attrs-dispatch el) 2) f))
+
+(defn assoc-attributes [el val]
+  (assoc-in el (conj (attrs-dispatch el) 2) val))
+
+(defn assoc-in-attributes [el key val]
+  (assoc-in el (conj (attrs-dispatch el) 2 key) val))
 
 (defn- inlines-dispatch
   "Get the correct location of the Inlines based on type.
