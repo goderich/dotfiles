@@ -301,8 +301,8 @@ The format and the defaults file need to be supplied by the caller."
                  ,@(when (f-exists? metadata) `("--metadata-file" ,metadata))
                  ,@(when (and (string= extension "html") style?)
                      '("--css" "./style.css"))
-                 ,@(when (and (string= extension "html") incremental)
-                     '("--incremental=true"))
+                 ,(when (and (string= extension "html") incremental)
+                     "--incremental=true")
                  "--csl" ,csl
                  "-o" ,output)))
     (message "Calling: %s" args)
@@ -318,11 +318,11 @@ Works only on org files using my pdf template."
   (run-hooks 'gd/pandoc-org->pdf-hook)
   (gd/pandoc-org--convert :extension "pdf" :defaults "-dpdf"))
 
-(defun gd/pandoc-org->revealjs (&optional args)
+(defun gd/pandoc-org->revealjs ()
   "Convert the current file to revealjs using pandoc.
 Works only on org files using my revealjs template."
-  (interactive (list (transient-args 'gd/pandoc-transient)))
-  (let ((inc? (not (member "off" args))))
+  (interactive)
+  (let ((inc? (not (transient-arg-value "non-inc" (transient-args 'gd/pandoc-transient)))))
     (gd/pandoc-org--convert :extension "html" :defaults "-drev" :incremental inc?)))
 
 (defun gd/pandoc-org->docx ()
@@ -338,7 +338,7 @@ Works only on org files using my docx template."
     ("d" "to docx" gd/pandoc-org->docx)]
    [("q" "quit" transient-quit-all)]]
   ["Options"
-   ("i" "Turn off incremental lists in reveal.js" "off")])
+   ("i" "Turn off incremental lists in reveal.js" "non-inc")])
 
 ;; Org-mode links
 
