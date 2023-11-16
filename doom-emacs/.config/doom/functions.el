@@ -287,7 +287,7 @@ to be used within mu4e's view mode."
       (error "Error: more than one CSL file in current directory!"))
     (or (-first-item fs) default)))
 
-(cl-defun gd/pandoc-org--convert (&key extension defaults)
+(cl-defun gd/pandoc-org--convert (&key extension defaults incremental)
   "Convert the current file using pandoc.
 The format and the defaults file need to be supplied by the caller."
   (save-buffer)
@@ -300,7 +300,9 @@ The format and the defaults file need to be supplied by the caller."
          (args `("pandoc" ,input ,defaults
                  ,@(when (f-exists? metadata) `("--metadata-file" ,metadata))
                  ,@(when (and (string= extension "html") style?)
-                     `("--css" "./style.css"))
+                     '("--css" "./style.css"))
+                 ,@(when (and (string= extension "html") incremental)
+                     '("--incremental=true"))
                  "--csl" ,csl
                  "-o" ,output)))
     (message "Calling: %s" args)
@@ -316,17 +318,27 @@ Works only on org files using my pdf template."
   (run-hooks 'gd/pandoc-org->pdf-hook)
   (gd/pandoc-org--convert :extension "pdf" :defaults "-dpdf"))
 
-(defun gd/pandoc-org->revealjs ()
+(defun gd/pandoc-org->revealjs (&optional args)
   "Convert the current file to revealjs using pandoc.
 Works only on org files using my revealjs template."
-  (interactive)
-  (gd/pandoc-org--convert :extension "html" :defaults "-drev"))
+  (interactive (list (transient-args 'gd/pandoc-transient)))
+  (let ((inc? (not (member "off" args))))
+    (gd/pandoc-org--convert :extension "html" :defaults "-drev" :incremental inc?)))
 
 (defun gd/pandoc-org->docx ()
   "Convert the current file to pdf using pandoc.
 Works only on org files using my docx template."
   (interactive)
   (gd/pandoc-org--convert :extension "docx" :defaults "-ddoc"))
+
+(transient-define-prefix gd/pandoc-transient ()
+  ["Convert this file with pandoc..."
+   [("p" "to pdf" gd/pandoc-org->pdf)
+    ("r" "to revealjs" gd/pandoc-org->revealjs)
+    ("d" "to docx" gd/pandoc-org->docx)]
+   [("q" "quit" transient-quit-all)]]
+  ["Options"
+   ("i" "Turn off incremental lists in reveal.js" "off")])
 
 ;; Org-mode links
 
