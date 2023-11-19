@@ -280,6 +280,14 @@ to be used within mu4e's view mode."
     (mu4e--view-browse-url-from-binding)
     (org-store-link nil 1)))
 
+;; Pandoc
+
+(defun gd/pandoc--defaults-option (extension)
+  (pcase extension
+    ("pdf" "-dpdf")
+    ("html" "-drev")
+    ("docx" "-ddoc")))
+
 (defun gd/pandoc--find-csl (dir)
   "Find a single CSL file in DIR or supply a default."
   (let ((fs (f-glob "*.csl" dir))
@@ -288,13 +296,14 @@ to be used within mu4e's view mode."
       (error "Error: more than one CSL file in current directory!"))
     (or (-first-item fs) default)))
 
-(cl-defun gd/pandoc-org--convert (&key extension defaults incremental)
+(cl-defun gd/pandoc-org--convert (&key extension incremental)
   "Convert the current file using pandoc.
 The format and the defaults file need to be supplied by the caller."
   (save-buffer)
   (let* ((input (f-this-file))
          (dir (f-dirname input))
          (output (f-swap-ext input extension))
+         (defaults (gd/pandoc--defaults-option extension))
          (metadata (f-join dir "metadata.yaml"))
          (style? (f-exists? (f-join dir "style.css")))
          (csl (gd/pandoc--find-csl dir))
@@ -317,21 +326,19 @@ The format and the defaults file need to be supplied by the caller."
 Works only on org files using my pdf template."
   (interactive)
   (run-hooks 'gd/pandoc-org->pdf-hook)
-  (gd/pandoc-org--convert :extension "pdf" :defaults "-dpdf"))
+  (gd/pandoc-org--convert :extension "pdf"))
 
 (defun gd/pandoc-org->revealjs ()
   "Convert the current file to revealjs using pandoc.
 Works only on org files using my revealjs template."
   (interactive)
-    (gd/pandoc-org--convert :extension "html" :defaults "-drev" :incremental inc?)))
   (let ((inc? (transient-arg-value "--incremental=true" (transient-args 'gd/pandoc-transient))))
+    (gd/pandoc-org--convert :extension "html" :incremental inc?)))
 
 (defun gd/pandoc-org->docx ()
   "Convert the current file to pdf using pandoc.
 Works only on org files using my docx template."
   (interactive)
-  (gd/pandoc-org--convert :extension "docx" :defaults "-ddoc"))
-
   (gd/pandoc-org--convert :extension "docx"))
 
 (after! transient
