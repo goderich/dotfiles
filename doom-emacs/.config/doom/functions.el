@@ -2,6 +2,7 @@
 
 (require 'dash)
 (require 's)
+(require 'transient)
 
 (defun gd/prepend-numbers-normal (numlines)
   "Prepend numbers to the beginning of lines.
@@ -301,8 +302,8 @@ The format and the defaults file need to be supplied by the caller."
                  ,@(when (f-exists? metadata) `("--metadata-file" ,metadata))
                  ,@(when (and (string= extension "html") style?)
                      '("--css" "./style.css"))
-                 ,(when (and (string= extension "html") incremental)
-                     "--incremental=true")
+                 ,@(when (and (string= extension "html") incremental)
+                     '("--incremental=true"))
                  "--csl" ,csl
                  "-o" ,output)))
     (message "Calling: %s" args)
@@ -322,8 +323,8 @@ Works only on org files using my pdf template."
   "Convert the current file to revealjs using pandoc.
 Works only on org files using my revealjs template."
   (interactive)
-  (let ((inc? (not (transient-arg-value "non-inc" (transient-args 'gd/pandoc-transient)))))
     (gd/pandoc-org--convert :extension "html" :defaults "-drev" :incremental inc?)))
+  (let ((inc? (transient-arg-value "--incremental=true" (transient-args 'gd/pandoc-transient))))
 
 (defun gd/pandoc-org->docx ()
   "Convert the current file to pdf using pandoc.
@@ -331,14 +332,26 @@ Works only on org files using my docx template."
   (interactive)
   (gd/pandoc-org--convert :extension "docx" :defaults "-ddoc"))
 
-(transient-define-prefix gd/pandoc-transient ()
-  ["Convert this file with pandoc..."
-   [("p" "to pdf" gd/pandoc-org->pdf)
-    ("r" "to revealjs" gd/pandoc-org->revealjs)
-    ("d" "to docx" gd/pandoc-org->docx)]
-   [("q" "quit" transient-quit-all)]]
-  ["Options"
-   ("i" "Turn off incremental lists in reveal.js" "non-inc")])
+  (gd/pandoc-org--convert :extension "docx"))
+
+(after! transient
+  (transient-define-infix gd/pandoc--incremental? ()
+    :argument "--incremental=true"
+    :shortarg "i"
+    :class 'transient-switch
+    :description "Toggle incremental lists (reveal.js only)."
+    :init-value (lambda (obj)
+                  (oset obj value "--incremental=true")))
+
+  (transient-define-prefix gd/pandoc-transient ()
+    ["Convert this file with pandoc..."
+     [("p" "to pdf" gd/pandoc-org->pdf)
+      ("r" "to revealjs" gd/pandoc-org->revealjs)
+      ("d" "to docx" gd/pandoc-org->docx)]
+     [("q" "quit" transient-quit-all)]]
+    ["Options"
+     (gd/pandoc--incremental?)])
+  )
 
 ;; Org-mode links
 
