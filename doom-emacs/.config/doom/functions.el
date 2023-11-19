@@ -544,6 +544,7 @@ the fallback."
   (let ((opener
          (pcase (f-ext file)
            ((or "doc" "docx") "zaread")
+           ("jpg" "sxiv")
            (_ "xdg-open"))))
     (call-process opener nil 0 nil file)))
 
