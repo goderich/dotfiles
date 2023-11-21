@@ -83,7 +83,7 @@
            :c [{:t "Image", :c [["" [] []] [] ["./logo.png" ""]]}]}]
       (is (=
            (stretch/stretch el)
-            {:t "Image", :c [["" ["r-stretch"] []] [] ["./logo.png" ""]]}))))
+           {:t "Para", :c [{:t "Image", :c [["" ["r-stretch"] []] [] ["./logo.png" ""]]}]}))))
 
   (testing ":nostretch flag"
     (let [el
