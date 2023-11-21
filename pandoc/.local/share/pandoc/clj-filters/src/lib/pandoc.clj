@@ -57,8 +57,11 @@
 (defn update-inlines [el f]
   (update-in el (inlines-dispatch el) f))
 
-(defn assoc-inlines [el val]
-  (assoc-in el (inlines-dispatch el) val))
+(defn assoc-inlines
+  ([el val]
+   (assoc-inlines el [] val))
+  ([el [& keys] val]
+   (assoc-in el (into (inlines-dispatch el) keys) val)))
 
 ;; Targets
 
