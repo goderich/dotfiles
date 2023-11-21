@@ -5,7 +5,8 @@
             [lib.pandoc :as pandoc]
             [filter.classes :as classes]
             [filter.latex.center :as center]
-            [filter.reveal.bg-img :as bg-img]))
+            [filter.reveal.bg-img :as bg-img]
+            [filter.reveal.stretch :as stretch]))
 
 (deftest parse-test
   (testing "Basic tag parsing"
@@ -73,6 +74,24 @@
                 ["background-repeat" "no-repeat"]
                 ["background-position" "contain"]]]
               []]})))))
+
+(deftest stretch-test
+  (testing "Normal stretching functionality"
+
+    (let [el
+          {:t "Para",
+           :c [{:t "Image", :c [["" [] []] [] ["./logo.png" ""]]}]}]
+      (is (=
+           (stretch/stretch el)
+            {:t "Image", :c [["" ["r-stretch"] []] [] ["./logo.png" ""]]}))))
+
+  (testing ":nostretch flag"
+    (let [el
+          {:t "Para",
+           :c [{:t "Image", :c [["" [] [["nostretch" ""]]] [] ["./logo.png" ""]]}]}]
+      (is (=
+           (stretch/stretch el)
+           {:t "Para", :c [{:t "Image", :c [["" [] []] [] ["./logo.png" ""]]}]})))))
 
 (def test-results
   (t/run-tests))
