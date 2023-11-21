@@ -4,10 +4,12 @@
             [clojure.walk :refer [prewalk]]
             [filter.classes :as classes]
             [filter.reveal.bg-img :as bg-img]
-            [filter.reveal.stretch :as stretch]))
+            [filter.reveal.stretch :as stretch]
+            [filter.reveal.animate :as animate]))
 
 (def filters
-  (comp stretch/stretch
+  (comp animate/animate
+        stretch/stretch
         bg-img/bg-image
         classes/header-parse-tags))
 

@@ -23,6 +23,9 @@
 (defn assoc-attrs [el val]
   (assoc-in el (attrs-dispatch el) val))
 
+(defn classes [el]
+  (get-in el (conj (attrs-dispatch el) 1)))
+
 (defn update-classes [el f & args]
    (apply update-in el (conj (attrs-dispatch el) 1) f args))
 
@@ -39,7 +42,11 @@
   ([el val]
    (assoc-in el (conj (attrs-dispatch el) 2) val))
   ([el key val]
-   (assoc-in el (conj (attrs-dispatch el) 2 key) val)))
+   (let [attrs (as-> (attributes el) it
+                 (into {} it)
+                 (assoc it key val)
+                 (into [] it))]
+     (assoc-attributes el attrs))))
 
 ;; Inlines
 

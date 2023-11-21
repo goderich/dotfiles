@@ -6,7 +6,8 @@
             [filter.classes :as classes]
             [filter.latex.center :as center]
             [filter.reveal.bg-img :as bg-img]
-            [filter.reveal.stretch :as stretch]))
+            [filter.reveal.stretch :as stretch]
+            [filter.reveal.animate :as animate]))
 
 (deftest parse-test
   (testing "Basic tag parsing"
@@ -92,6 +93,18 @@
       (is (=
            (stretch/stretch el)
            {:t "Para", :c [{:t "Image", :c [["" [] []] [] ["./logo.png" ""]]}]})))))
+
+(deftest animate-test
+  (testing "Animate tag"
+    (let [h
+          {:t "Header",
+           :c [2 ["header" ["class" "animate"] []] [{:t "Str", :c "Header"}]]}]
+      (is (=
+           (animate/animate h)
+           {:t "Header",
+            :c [2
+                ["header" ["class" "animate"] [["auto-animate" "true"]]]
+                [{:t "Str", :c "Header"}]]})))))
 
 (def test-results
   (t/run-tests))
