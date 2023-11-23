@@ -8,10 +8,17 @@
 (load! "vars")
 (load! "functions")
 (load! "fonts")
-(after! org (load! "org"))
+(after! org
+  (load! "org")
+  (load! "links")
+  (load! "refs")
+  (load! "orca")
+  (after! transient
+    (load! "pandoc")))
 (load! "ui-ux")
 (load! "keybindings")
-(load! "referencing")
-(after! mu4e (load! "mail"))
+(load! "cite")
+(after! mu4e
+  (load! "mail"))
 
 ;;; config.el ends here
