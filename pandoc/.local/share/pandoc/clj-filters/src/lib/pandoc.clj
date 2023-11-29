@@ -104,3 +104,52 @@
 
 (defn para [& inlines]
   {:t "Para" :c (vec inlines)})
+
+;; Defining filters
+
+(defn- expand-filter-conds [attr-map]
+  (when-let [conds (:if attr-map)]
+    (if (vector? conds)
+      conds
+      (vector conds))))
+
+(defmacro deffilter
+  "Syntactic sugar for creating pandoc filters.
+  All filters are called `filter`, since they
+  are expected to be called from different namespaces.
+
+  TYPE is a pandoc predicate, choosing which elements
+  the filter will run on.
+
+  ARG is a binding to be used in conditions and in RESULT.
+
+  ATTR-MAP is a map of various attributes passed to the macro,
+  the main being `:if`, which takes either a single s-exp or
+  a vector of s-exp as a value.
+  Each s-exp is evaluated with the element in place of ARG,
+  and if all conditions are true, the element is replaced
+  with the output of running RESULT.
+
+  Note that due to arity constraints, if a docstring is present,
+  then an ATTR-MAP *must* be supplied (even an empty map).
+
+  Example usage:
+  (deffilter header?
+     \"Docstr\"
+     [el]
+     {:if (some #{\"animate\"} (classes el))}
+     (assoc-attributes el \"auto-animate\" \"true\"))
+  "
+  {:clj-kondo/ignore [:unresolved-symbol]}
+  ([type [arg] result]
+   `(deffilter ~type [~arg] {} ~result))
+  ([type ^String docstring [arg] attr-map result]
+   `(deffilter ~type [~arg] ~(assoc attr-map :doc docstring) ~result))
+  ([type [arg] attr-map result]
+   (assert (map? attr-map))
+   `(defn ~(with-meta 'filter (select-keys attr-map [:doc]))
+      [~arg]
+      (if (and (~type ~arg)
+               ~@(expand-filter-conds attr-map))
+        ~result
+        ~arg))))
