@@ -8,9 +8,9 @@
             [filter.reveal.animate :as animate]))
 
 (def filters
-  (comp animate/animate
-        stretch/stretch
-        bg-img/bg-image
+  (comp animate/filter
+        stretch/filter
+        bg-img/filter
         classes/header-parse-tags))
 
 (->> (json/decode (slurp *in*) true)

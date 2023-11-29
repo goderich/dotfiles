@@ -1,5 +1,5 @@
 (ns filter.reveal.bg-img
-  (:require [lib.pandoc :as pandoc]))
+  (:require [lib.pandoc :as pandoc :refer [deffilter]]))
 
 (defn- bg-image-attrs
   "Update (Header) Attrs with Image source and styling.
@@ -25,10 +25,8 @@
     (-> (pandoc/assoc-attrs h attrs)
         (pandoc/assoc-inlines inlines))))
 
-(defn bg-image
+(deffilter pandoc/header?
   "Transform a Header with an image link into a full-screen image."
   [el]
-  (if (and (pandoc/header? el)
-           (pandoc/image? (first (pandoc/inlines el))))
-    (insert-img-attrs el)
-    el))
+  {:if (pandoc/image? (first (pandoc/inlines el)))}
+  (insert-img-attrs el))

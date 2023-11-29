@@ -6,7 +6,7 @@
             [filter.latex.center :as center]))
 
 (def filters
-  (comp center/center-header classes/header-parse-tags))
+  (comp center/filter classes/header-parse-tags))
 
 (->> (json/decode (slurp *in*) true)
      (prewalk filters)

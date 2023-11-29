@@ -30,7 +30,7 @@
            {:t "Header",
             :c [1 ["head" [] [["centering" "t"]]] [{:t "Str", :c "Head"}]]}]
        (is (=
-            (center/center-header h)
+            (center/filter h)
             {:t "Header",
              :c [1 ["head" [] [["centering" "t"]]]
               [{:t "RawInline", :c ["latex" "\\centering{"]}
@@ -47,7 +47,7 @@
                  :c [["" ["tag"] [["tag-name" "center"]]]
                      [{:t "SmallCaps", :c [{:t "Str", :c "center"}]}]]}]]}]
       (is (=
-           (center/center-header (classes/header-parse-tags h))
+           (center/filter (classes/header-parse-tags h))
            {:t "Header",
             :c [1 ["head" ["center"] []]
                 [{:t "RawInline", :c ["latex" "\\centering{"]}
@@ -63,7 +63,7 @@
                 ["section-id" ["class"] [["attribute" "t"]]]
                 [{:t "Image", :c [["" [] []] [] ["./img.png" ""]]}]]}]
        (is (=
-            (bg-img/bg-image h)
+            (bg-img/filter h)
             {:t "Header",
              :c
              [2
@@ -83,7 +83,7 @@
           {:t "Para",
            :c [{:t "Image", :c [["" [] []] [] ["./logo.png" ""]]}]}]
       (is (=
-           (stretch/stretch el)
+           (stretch/filter el)
            {:t "Para", :c [{:t "Image", :c [["" ["r-stretch"] []] [] ["./logo.png" ""]]}]}))))
 
   (testing ":nostretch flag"
@@ -91,7 +91,7 @@
           {:t "Para",
            :c [{:t "Image", :c [["" [] [["nostretch" ""]]] [] ["./logo.png" ""]]}]}]
       (is (=
-           (stretch/stretch el)
+           (stretch/filter el)
            {:t "Para", :c [{:t "Image", :c [["" [] []] [] ["./logo.png" ""]]}]})))))
 
 (deftest animate-test
@@ -100,7 +100,7 @@
           {:t "Header",
            :c [2 ["header" ["class" "animate"] []] [{:t "Str", :c "Header"}]]}]
       (is (=
-           (animate/animate h)
+           (animate/filter h)
            {:t "Header",
             :c [2
                 ["header" ["class" "animate"] [["auto-animate" "true"]]]

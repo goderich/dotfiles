@@ -1,8 +1,6 @@
 (ns filter.reveal.animate
-  (:require [lib.pandoc :as pandoc]))
+  (:require [lib.pandoc :as pandoc :refer [deffilter]]))
 
-(defn animate [el]
-  (if (and (pandoc/header? el)
-           (some #{"animate"} (pandoc/classes el)))
-    (pandoc/assoc-attributes el "auto-animate" "true")
-    el))
+(deffilter pandoc/header? [el]
+  {:if (some #{"animate"} (pandoc/classes el))}
+  (pandoc/assoc-attributes el "auto-animate" "true"))

@@ -1,5 +1,5 @@
 (ns filter.latex.center
-  (:require [lib.pandoc :as pandoc]))
+  (:require [lib.pandoc :as pandoc :refer [deffilter]]))
 
 (defn- center? [el]
   (let [[_ classes attributes] (pandoc/attrs el)
@@ -17,7 +17,6 @@
     el
     [(pandoc/raw-inline "latex" "}")])))
 
-(defn center-header [el]
-  (if (and (pandoc/header? el) (center? el))
-    (pandoc/update-inlines el centering-latex)
-    el))
+(deffilter pandoc/header? [el]
+  {:if (center? el)}
+  (pandoc/update-inlines el centering-latex))
