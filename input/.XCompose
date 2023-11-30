@@ -3,8 +3,6 @@
 # Post-alveolars
 <Multi_key> <s> <h> : "ʃ" U0283
 <Multi_key> <z> <h> : "ʒ" U0292
-<Multi_key> <t> <s> <h> : "t͡ʃ"
-<Multi_key> <d> <z> <h> : "d͡ʒ"
 
 # Retroflexes
 <Multi_key> <s> <comma> : "ʂ" U0283
@@ -64,6 +62,14 @@
 <Multi_key> <e> <u> : "ʉ" U0289
 <Multi_key> <u> <e> : "ʉ" U0289
 <Multi_key> <minus> <minus> <i> : "ɨ" U0268
+
+# Affricates and digraphs
+<Multi_key> <t> <s> <h> : "t͡ʃ"
+<Multi_key> <d> <z> <h> : "d͡ʒ"
+<Multi_key> <t> <c> <p> : "t͡ɕ"
+<Multi_key> <d> <z> <p> : "d͡ʑ"
+<Multi_key> <t> <s> <s> : "t͡s"
+<Multi_key> <d> <z> <z> : "d͡z"
 
 # Diacritics
 <Multi_key> <1> <s> : "ˈ" U02C8
