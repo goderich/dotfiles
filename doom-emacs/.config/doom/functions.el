@@ -292,5 +292,6 @@ the fallback."
          (pcase (f-ext file)
            ((or "doc" "docx") "zaread")
            ("jpg" "sxiv")
+           ((or "xls" "xlsx") "gnumeric")
            (_ "xdg-open"))))
     (call-process opener nil 0 nil file)))
