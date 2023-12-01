@@ -31,5 +31,4 @@
   so it can be anything.)"
   [el]
   {:if (-> el pandoc/inlines first pandoc/image?)}
-  (let [img (-> el pandoc/inlines first stretch-image)]
-      (pandoc/assoc-inlines el [0] img)))
+  (-> el pandoc/inlines first stretch-image))

@@ -84,7 +84,7 @@
            :c [{:t "Image", :c [["" [] []] [] ["./logo.png" ""]]}]}]
       (is (=
            (stretch/filter el)
-           {:t "Para", :c [{:t "Image", :c [["" ["r-stretch"] []] [] ["./logo.png" ""]]}]}))))
+           {:t "Image", :c [["" ["r-stretch"] []] [] ["./logo.png" ""]]}))))
 
   (testing ":nostretch flag"
     (let [el
@@ -92,7 +92,7 @@
            :c [{:t "Image", :c [["" [] [["nostretch" ""]]] [] ["./logo.png" ""]]}]}]
       (is (=
            (stretch/filter el)
-           {:t "Para", :c [{:t "Image", :c [["" [] []] [] ["./logo.png" ""]]}]})))))
+           {:t "Image", :c [["" [] []] [] ["./logo.png" ""]]})))))
 
 (deftest animate-test
   (testing "Animate tag"
