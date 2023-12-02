@@ -14,3 +14,5 @@ pom.xml.asc
 /.nrepl-port
 /.prepl-port
 /.cpcache
+reveal.clj
+latex.clj
