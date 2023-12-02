@@ -14,6 +14,14 @@
 ;;      Alternatively, press 'gd' (or 'C-c c d') on a module to browse its
 ;;      directory (for easy access to its source code).
 
+;; comma as localleader is baws
+;; NB. During a recent [2023-12-02] upgrade, localleader stopped working
+;; (at least in org mode). I moved the setting from keybinds to init, according to:
+;; https://github.com/doomemacs/doomemacs/issues/7130
+;; This fix works, although I'm not entirely sure why it's necessary,
+;; or when I'll be able to revert it. Leaving it here for now.
+(setq doom-localleader-key ",")
+
 (doom! :input
        ;;chinese
        ;;japanese

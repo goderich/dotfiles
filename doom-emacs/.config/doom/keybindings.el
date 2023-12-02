@@ -1,8 +1,5 @@
 ;;; ~/dotfiles/doom-emacs/.config/doom/+keybindings.el -*- lexical-binding: t; -*-
 
-;; comma as localleader is baws
-(setq doom-localleader-key ",")
-
 ;; Global keybindings
 (map!
  :nv ";" #'execute-extended-command
