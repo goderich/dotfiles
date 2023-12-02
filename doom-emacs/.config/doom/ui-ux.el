@@ -117,3 +117,6 @@
 
 ;; Use babashka REPL outside Clojure projects.
 (setq cider-jack-in-default 'babashka)
+
+;; Run hyperbole
+(hyperbole-mode)

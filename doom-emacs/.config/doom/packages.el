@@ -28,3 +28,5 @@
 ;; Use variable pitch in some environments
 (package! mixed-pitch)
 
+;; Trying out mystery package
+(package! hyperbole)
