@@ -1,3 +1,0 @@
-# Put this in your $PATH and use it to launch emacs.
-# This will make fcitx input work.
-LC_CTYPE=zh_TW.UTF-8 XMODIFIERS=@im=fcitx emacs
