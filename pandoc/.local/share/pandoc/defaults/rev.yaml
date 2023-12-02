@@ -6,6 +6,5 @@ bibliography: ${HOME}/Dropbox/pap.bib
 filters:
 - pandoc-crossref
 - citeproc
-- ${.}/../lua-filters/stretch.lua
-- ${.}/../lua-filters/bg-image.lua
-- ${.}/../lua-filters/animate.lua
+- type: json
+  path: ${.}/../clj-filters/reveal.clj
