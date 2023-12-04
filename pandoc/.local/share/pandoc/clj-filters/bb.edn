@@ -1,11 +1,13 @@
 {:paths ["src"]
  :tasks
  {:requires ([babashka.fs :as fs])
-  uber:rev (do
-             (print "Compiling reveal.clj uberscript... ")
-             (fs/delete-if-exists "reveal.clj")
-             (shell "bb uberscript reveal.clj src/core/reveal.clj")
-             (shell "sed -i '1i#!/usr/bin/bb' reveal.clj")
-             (shell "chmod +x reveal.clj")
-             (println "Success!"))
+  uber:rev
+  {:doc "Compile revealjs filters into a single executable uberscript"
+   :task (do
+           (print "Compiling reveal.clj uberscript... ")
+           (fs/delete-if-exists "reveal.clj")
+           (shell "bb uberscript reveal.clj src/core/reveal.clj")
+           (shell "sed -i '1i#!/usr/bin/bb' reveal.clj")
+           (shell "chmod +x reveal.clj")
+           (println "Success!"))}
   }}
