@@ -149,13 +149,13 @@
        ;;lean
        ;;factor
        ;;ledger            ; an accounting system in Emacs
-       (lua               ; one-based indices? one-based indices
-        +fennel
-        +lsp)
+       ;;(lua               ; one-based indices? one-based indices
+       ;; +fennel
+       ;; +lsp)
        markdown          ; writing docs for people to ignore
        ;;nim               ; python + lisp at the speed of c
        ;;nix               ; I hereby declare "nix geht mehr!"
-       ocaml             ; an objective camel
+       ;; ocaml             ; an objective camel
        (org              ; organize your plain life in plain text
         +babel)           ; running code in org
         ;;+present)        ; Emacs for presentations
@@ -164,8 +164,7 @@
        ;;purescript        ; javascript, but functional
        ;;python            ; beautiful is better than ugly
        ;;qt                ; the 'cutest' gui framework ever
-       (racket           ; a DSL for DSLs
-       +xp)
+       ;;(racket +xp)      ; a DSL for DSLs
        ;;raku              ; the artist formerly known as perl6
        ;;rest              ; Emacs as a REST client
        ;;rst               ; ReST in peace
