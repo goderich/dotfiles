@@ -36,6 +36,10 @@
 ;; (after marking them as done)
 (setq org-todo-repeat-to-state "LOOP")
 
+;; Archive everything from org files in one directory
+;; into a single hidden file.
+(setq org-archive-location ".archive.org::")
+
 ;; My custom faces for todo items. I'm reusing most from:
 ;; ~/.emacs.d/modules/lang/org/config.el
 (with-no-warnings
