@@ -1,7 +1,7 @@
 from: org+smart
 to: pdf
 pdf-engine: tectonic
-bibliography: ${HOME}/Dropbox/pap.bib
+bibliography: ${HOME}/files/academic/bib/bibliography.bib
 metadata-files:
 - ${.}/metadata/fonts.yaml
 - ${.}/metadata/crossref.yaml

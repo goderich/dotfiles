@@ -1,6 +1,6 @@
 from: org+smart
 to: docx
-bibliography: ${HOME}/Dropbox/pap.bib
+bibliography: ${HOME}/files/academic/bib/bibliography.bib
 metadata-files:
 - ${.}/metadata/crossref.yaml
 filters:

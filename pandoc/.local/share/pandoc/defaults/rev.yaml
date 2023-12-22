@@ -2,7 +2,7 @@ from: org+smart
 to: revealjs
 css: ${.}/style.css
 standalone: true
-bibliography: ${HOME}/Dropbox/pap.bib
+bibliography: ${HOME}/files/academic/bib/bibliography.bib
 filters:
 - pandoc-crossref
 - citeproc
