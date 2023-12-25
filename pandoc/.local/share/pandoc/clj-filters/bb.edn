@@ -1,13 +1,26 @@
 {:paths ["src"]
  :tasks
  {:requires ([babashka.fs :as fs])
+  :init (do (def verbose? (= "-v" (first *command-line-args*))))
   uber:rev
   {:doc "Compile revealjs filters into a single executable uberscript"
    :task (do
-           (print "Compiling reveal.clj uberscript... ")
+           (when verbose? (println "Compiling reveal.js uberscript... "))
            (fs/delete-if-exists "reveal.clj")
            (shell "bb uberscript reveal.clj src/core/reveal.clj")
            (shell "sed -i '1i#!/usr/bin/bb' reveal.clj")
            (shell "chmod +x reveal.clj")
-           (println "Success!"))}
-  }}
+           (when verbose? (println "Reveal.js uberscript compiled!")))}
+  uber:latex
+  {:doc "Compile latex filters into a single executable uberscript"
+   :task (do
+           (when verbose? (println "Compiling latex uberscript... "))
+           (fs/delete-if-exists "latex.clj")
+           (shell "bb uberscript latex.clj src/core/latex.clj")
+           (shell "sed -i '1i#!/usr/bin/bb' latex.clj")
+           (shell "chmod +x latex.clj")
+           (when verbose? (println "Latex uberscript compiled!")))}
+  -uber {:depends [uber:rev uber:latex]}
+  uber
+  {:doc "Compile all uberscript filters (in parallel)"
+   :task (run '-uber {:parallel true})}}}
