@@ -9,5 +9,6 @@ metadata-files:
 filters:
 - pandoc-crossref
 - citeproc
-- ${.}/../lua-filters/center.lua
+- type: json
+  path: ${.}/../clj-filters/latex.clj
 number-sections: true
