@@ -16,7 +16,7 @@
       (error "Error: more than one CSL file in current directory!"))
     (or (-first-item fs) default)))
 
-(cl-defun gd/pandoc-org--convert (&key extension incremental)
+(cl-defun gd/pandoc-org--convert (&key extension incremental numbered)
   "Convert the current file using pandoc.
 The format and the defaults file need to be supplied by the caller."
   (save-buffer)
@@ -33,6 +33,8 @@ The format and the defaults file need to be supplied by the caller."
                      '("--css" "./style.css"))
                  ,@(when (and (string= extension "html") incremental)
                      '("--incremental=true"))
+                 ,@(when (and (member extension '("pdf" "docx")) numbered)
+                     '("--number-sections"))
                  "--csl" ,csl
                  "-o" ,output)))
     (message "Calling: %s" args)
@@ -46,7 +48,8 @@ The format and the defaults file need to be supplied by the caller."
 Works only on org files using my pdf template."
   (interactive)
   (run-hooks 'gd/pandoc-org->pdf-hook)
-  (gd/pandoc-org--convert :extension "pdf"))
+  (let ((num? (transient-arg-value "--number-sections" (transient-args 'gd/pandoc-transient))))
+    (gd/pandoc-org--convert :extension "pdf" :numbered num?)))
 
 (defun gd/pandoc-org->revealjs ()
   "Convert the current file to revealjs using pandoc.
@@ -69,6 +72,14 @@ Works only on org files using my docx template."
   :init-value (lambda (obj)
                 (oset obj value "--incremental=true")))
 
+(transient-define-infix gd/pandoc--number-sections? ()
+  :argument "--number-sections"
+  :shortarg "n"
+  :class 'transient-switch
+  :description "Toggle section numbering (pdf/doc)."
+  :init-value (lambda (obj)
+                (oset obj value "--number-sections")))
+
 (transient-define-prefix gd/pandoc-transient ()
   ["Convert this file with pandoc..."
    [("p" "to pdf" gd/pandoc-org->pdf)
@@ -76,4 +87,5 @@ Works only on org files using my docx template."
     ("d" "to docx" gd/pandoc-org->docx)]
    [("q" "quit" transient-quit-all)]]
   ["Options"
-   (gd/pandoc--incremental?)])
+   [(gd/pandoc--incremental?)
+    (gd/pandoc--number-sections?)]])

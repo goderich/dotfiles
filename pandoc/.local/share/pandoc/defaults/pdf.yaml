@@ -11,4 +11,3 @@ filters:
 - citeproc
 - type: json
   path: ${.}/../clj-filters/latex.clj
-number-sections: true

@@ -6,4 +6,3 @@ metadata-files:
 filters:
 - pandoc-crossref
 - citeproc
-number-sections: true
