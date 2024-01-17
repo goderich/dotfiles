@@ -87,13 +87,13 @@ transformed into a lisp-case string."
 
 (defun gd/org-link-dwim ()
   "Do-what-I-mean for linking.
-If on a heading, link it. If on a link, open it.
+If on a heading, link it. If on a link, edit it.
 Elsewhere, insert last stored link:
 either from `org-stored-links', or from the clipboard.
 This is a convenience function to bind it to a single keystroke."
   (interactive)
   (cond
    ((org-at-heading-p) (org-store-link nil 1))
-   ((org-in-regexp org-link-bracket-re 1) (org-open-at-point))
+   ((org-in-regexp org-link-bracket-re 1) (org-insert-link))
    ((and org-stored-links) (gd/org-insert-last-stored-link))
    (t (gd/org-insert-link-from-clipboard))))
