@@ -5,7 +5,7 @@
 ;; Laptop
 (when (string= (system-name) "iwaka-thinkpad")
   (setq my/org-directory "~/org"
-        my/default-bibliography "~/Dropbox/pap.bib"
+        my/default-bibliography "~/files/academic/bib/bibliography.bib"
         my/ebib-notes "~/org/literature-notes"
         my/ebib-file-search-dir "~/files/syncthing/papers/ebib"))
 
