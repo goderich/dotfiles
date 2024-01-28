@@ -214,9 +214,7 @@
        :nv "k" #'markdown-previous-visible-heading)
       (:localleader
        :desc "Insert citation"    "c" #'ebib-insert-citation
-       :desc "Toggle valign mode" "v" #'valign-mode
-       :after pandoc-mode
-       :desc "Pandoc export" "p" #'pandoc-main-hydra/body))
+       :desc "Toggle valign mode" "v" #'valign-mode))
 
 (map! :map pdf-view-mode-map
       (:localleader
@@ -255,6 +253,11 @@
        :nv "R"   #'racket-run))
 
 ;; mu4e keybindings
+;; Main splash screen
+(map! :map mu4e-main-mode-map
+      :after mu4e
+      :nv "j" #'mu4e-search-maildir)
+
 ;; When viewing email headers as a list
 (map! :map mu4e-headers-mode-map
       :after mu4e

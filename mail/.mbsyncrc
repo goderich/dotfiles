@@ -1,63 +1,35 @@
 # Automatically create missing mailboxes, both locally and on the server
 Create Both
-# Save the synchronization state files in the relevant directory
+
+# Fastmail config
+
+# First section: remote IMAP account
+IMAPAccount fastmail
+Host imap.fastmail.com
+Port 993
+User goderich@fastmail.com
+PassCmd "gpg -q --for-your-eyes-only --no-tty -d ~/org/.password-store/fastmail.mbsync.gpg"
+SSLType IMAPS
+SSLVersions TLSv1.2
+
+IMAPStore fastmail-remote
+Account fastmail
+
+# This section describes the local storage
+MaildirStore fastmail-local
+Path ~/.mail/fastmail/
+Inbox ~/.mail/fastmail/inbox
+# The SubFolders option allows to represent all
+# IMAP subfolders as local subfolders
+SubFolders Verbatim
+
+# This section a "channel", a connection between remote and local
+Channel fastmail
+Far :fastmail-remote:
+Near :fastmail-local:
+Patterns *
+Expunge None
+CopyArrivalDate yes
+Sync All
+Create Near
 SyncState *
-
-IMAPAccount ncue
-# Address to connect to
-Host imap.gmail.com
-User goderich@gm.ncue.edu.tw
-# To store the password in an encrypted file use PassCmd instead of Pass
-PassCmd "gpg -q --for-your-eyes-only --no-tty -d ~/Dropbox/.password-store/ncue.gmail.mu4e.gpg"
-# Use SSL
-SSLType IMAPS
-AuthMechs LOGIN
-# The following line should work. If get certificate errors, uncomment the two following lines and read the "Troubleshooting" section.
-CertificateFile /etc/ssl/certs/ca-certificates.crt
-#CertificateFile ~/.cert/imap.gmail.com.pem
-#CertificateFile ~/.cert/Equifax_Secure_CA.pem
-
-IMAPStore ncue-remote
-Account ncue
-
-MaildirStore ncue-local
-SubFolders Verbatim
-# The trailing "/" is important
-Path ~/.mail/ncue/
-Inbox ~/.mail/ncue/inbox
-
-Channel ncue
-Far :ncue-remote:
-Near :ncue-local:
-# Exclude everything under the internal [Gmail] folder, except the interesting folders
-Patterns * ![Gmail]* "[Gmail]/Starred" "[Gmail]/All Mail"
-
-# PERSONAL ACCOUNT
-IMAPAccount gmail
-Host imap.gmail.com
-User yuhsien77@gmail.com
-PassCmd "gpg -q --for-your-eyes-only --no-tty -d ~/Dropbox/.password-store/gmail.2fa.gpg"
-SSLType IMAPS
-AuthMechs LOGIN
-CertificateFile /etc/ssl/certs/ca-certificates.crt
-
-# Define the Maildir
-MaildirStore gmail-local
-# Flatten nested Gmail labels. E.g /[Gmail]/Trash becomes /[Gmail].Trash
-# This also renders 'SubFolders' setting irrelevant
-SubFolders Verbatim
-# Flatten .
-# The trailing "/" is important.  Make sure both ~/Mail &
-# ~/mail/example@gmail.com directories exist, otherwise mbsync will complain.
-Path ~/.mail/gmail/
-Inbox ~/.mail/gmail/inbox
-
-# Define the IMAP4
-IMAPStore gmail-remote
-Account gmail
-
-# Define the Channel
-Channel gmail
-Far :gmail-remote:
-Near :gmail-local:
-Patterns * ![Gmail]* "[Gmail]/Starred" "[Gmail]/All Mail"
