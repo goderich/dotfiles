@@ -118,5 +118,8 @@
 ;; Use babashka REPL outside Clojure projects.
 (setq cider-jack-in-default 'babashka)
 
+;; Format Zig files on save
+(add-hook 'zig-mode-hook #'zig-format-on-save-mode)
+
 ;; Run hyperbole
 (hyperbole-mode)
