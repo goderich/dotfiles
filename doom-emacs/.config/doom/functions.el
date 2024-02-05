@@ -184,15 +184,16 @@ headings of a higher level. Use instead of mashing Alt+up."
       (insert "Received, thank you.\n")
       (message-send-and-exit))))
 
-(defun gd/org-copy-this-link ()
-  "Copy the link under cursor."
+(defun gd/org-copy-link-dwim ()
+  "Copy link under cursor, or by selecting one on the screen."
   (interactive)
   (if (org-in-regexp org-link-bracket-re 1) ; in a link
       (progn
         ;; Copy the first parenthesized group in the regexp
         (kill-new (match-string-no-properties 1))
-        (message "Copied link!"))
-    (message "Not on a valid link!")))
+        (let ((link (car kill-ring)))
+          (message "Copied %s" link)))
+    (link-hint-copy-link)))
 
 (defun gd/set-racket-do-indent ()
   "Set up indentation for `do' in Racket."
@@ -271,6 +272,8 @@ tags."
       (delete-matching-lines empty-line-regex (region-beginning) (region-end))
     (message "Select a region with visual mode first!")))
 
+;; mu4e
+
 (defun gd/mu4e-link-dwim ()
   "If on a link, open it. If not, store the current message as link.
 This is a convenience function to bind it to a single keystroke,
@@ -279,8 +282,6 @@ to be used within mu4e's view mode."
   (if (thing-at-point-url-at-point)
     (mu4e--view-browse-url-from-binding)
     (org-store-link nil 1)))
-
-;; mu4e
 
 (defun gd/mu4e-open-file (file)
   "Open FILE in a specified way.

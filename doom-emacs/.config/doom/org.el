@@ -67,6 +67,9 @@
                'agenda  'tree
                'default 'tree)
 
+;; Set modules
+(setq org-modules '(ol-info))
+
 ;; Load org-books config
 (after! f (load! "org-books"))
 
