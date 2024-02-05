@@ -269,6 +269,7 @@
       :nv "r" #'mu4e-compose-reply
       :nv "R" #'gd/reply-received
       :nv "p" #'mu4e-view-mime-part-action
+      :nv "s" #'mu4e-view-save-attachments
       :nv [RET] #'mu4e--view-browse-url-from-binding
       :localleader
       :nv "l" #'gd/mu4e-link-dwim)
