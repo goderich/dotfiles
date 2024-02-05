@@ -182,6 +182,7 @@
 
        :email
        (mu4e +gmail +org)
+       (mu4e +org)
        ;;notmuch
        ;;(wanderlust +gmail)
 
