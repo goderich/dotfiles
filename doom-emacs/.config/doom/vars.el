@@ -7,7 +7,8 @@
   (setq my/org-directory "~/org"
         my/default-bibliography "~/files/academic/bib/bibliography.bib"
         my/ebib-notes "~/org/literature-notes"
-        my/ebib-file-search-dir "~/files/syncthing/papers/ebib"))
+        my/ebib-file-search-dir "~/files/syncthing/papers/ebib"
+        my/ebib-import-directory "~/files/syncthing/papers/papers/articles"))
 
 ;; Office PC
 (when (string= (system-name) "goderich-ncue")
