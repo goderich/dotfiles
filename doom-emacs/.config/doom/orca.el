@@ -75,7 +75,9 @@ Means an in-text reference that does not point to anything."
          (matches (gd/find-rx-all fn 1)))
     (dolist (item (-frequencies matches))
       (unless (= (cdr item) 2)
-        (error "Error! Footnote %s occurs %d times." (car item) (cdr item))))
+        (unless (yes-or-no-p
+                 (message "Warning! Footnote %s occurs %d times. Proceed?" (car item) (cdr item)))
+          (error "Compilation cancelled."))))
     (message "Success!")))
 
 (defun gd/org-check-duplicates-all ()
