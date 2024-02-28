@@ -3,6 +3,7 @@
 (require 'dash)
 (require 's)
 (require 'transient)
+(require 'map)
 
 (defun gd/prepend-numbers-normal (numlines)
   "Prepend numbers to the beginning of lines.

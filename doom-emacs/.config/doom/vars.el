@@ -15,4 +15,5 @@
   (setq my/org-directory "~/org"
         my/default-bibliography "~/files/academic/bib/bibliography.bib"
         my/ebib-notes "~/org/literature-notes"
-        my/ebib-file-search-dir "~/files/papers/ebib"))
+        my/ebib-file-search-dir "~/files/papers/ebib"
+        my/ebib-import-directory "~/files/papers/papers/articles"))

@@ -101,7 +101,7 @@ ly
 make
 man-db
 man-pages
-masterpdfeditor-free
+masterpdfeditor
 moc
 mplayer
 mpv
@@ -156,7 +156,6 @@ rofi
 rofi-greenclip
 rofi-pass
 rsync
-rxvt-unicode
 s-nail
 screenfetch
 sed

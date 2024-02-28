@@ -26,7 +26,9 @@
       mu4e-trash-folder  "/fastmail/Trash"
       ;; Save sent messages to `mu4e-sent-folder'
       mu4e-sent-messages-behavior 'sent
-      smtpmail-smtp-service 587)
+      smtpmail-smtp-service 587
+      ;; Do not wait for errors when sending mail
+      mail-interactive nil)
 
 ;; Composing mail
 (setq mu4e-compose-format-flowed nil
