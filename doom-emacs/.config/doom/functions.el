@@ -297,3 +297,9 @@ the fallback."
            ((or "xls" "xlsx") "gnumeric")
            (_ "xdg-open"))))
     (call-process opener nil 0 nil file)))
+
+(defun gd/tectonic-this-file ()
+  "Compile the current file using tectonic."
+  (interactive)
+  (let ((f (f-this-file)))
+    (start-process "tectonic" "*tectonic*" "tectonic" f)))
