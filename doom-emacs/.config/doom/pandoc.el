@@ -16,7 +16,7 @@
       (error "Error: more than one CSL file in current directory!"))
     (or (-first-item fs) default)))
 
-(cl-defun gd/pandoc-org--convert (&key extension incremental numbered)
+(cl-defun gd/pandoc-org--convert (&key extension incremental self-contained numbered)
   "Convert the current file using pandoc.
 The format and the defaults file need to be supplied by the caller."
   (save-buffer)
@@ -33,6 +33,8 @@ The format and the defaults file need to be supplied by the caller."
                      '("--css" "./style.css"))
                  ,@(when (and (string= extension "html") incremental)
                      '("--incremental=true"))
+                 ,@(when (and (string= extension "html") self-contained)
+                     '("--embed-resources=true" "--standalone"))
                  ,@(when (and (member extension '("pdf" "docx")) numbered)
                      '("--number-sections"))
                  "--csl" ,csl
@@ -48,15 +50,16 @@ The format and the defaults file need to be supplied by the caller."
 Works only on org files using my pdf template."
   (interactive)
   (run-hooks 'gd/pandoc-org->pdf-hook)
-  (let ((num? (transient-arg-value "--number-sections" (transient-args 'gd/pandoc-transient))))
+  (let ((num? (transient-arg-value "number-sections" (transient-args 'gd/pandoc-transient))))
     (gd/pandoc-org--convert :extension "pdf" :numbered num?)))
 
 (defun gd/pandoc-org->revealjs ()
   "Convert the current file to revealjs using pandoc.
 Works only on org files using my revealjs template."
   (interactive)
-  (let ((inc? (transient-arg-value "--incremental=true" (transient-args 'gd/pandoc-transient))))
-    (gd/pandoc-org--convert :extension "html" :incremental inc?)))
+  (let ((inc? (transient-arg-value "incremental" (transient-args 'gd/pandoc-transient)))
+        (self-con? (transient-arg-value "self-contained" (transient-args 'gd/pandoc-transient))))
+    (gd/pandoc-org--convert :extension "html" :incremental inc? :self-contained self-con?)))
 
 (defun gd/pandoc-org->docx ()
   "Convert the current file to pdf using pandoc.
@@ -65,20 +68,28 @@ Works only on org files using my docx template."
   (gd/pandoc-org--convert :extension "docx"))
 
 (transient-define-infix gd/pandoc--incremental? ()
-  :argument "--incremental=true"
+  :argument "incremental"
   :shortarg "i"
   :class 'transient-switch
   :description "Toggle incremental lists (reveal.js only)."
   :init-value (lambda (obj)
-                (oset obj value "--incremental=true")))
+                (oset obj value "incremental")))
 
 (transient-define-infix gd/pandoc--number-sections? ()
-  :argument "--number-sections"
+  :argument "number-sections"
   :shortarg "n"
   :class 'transient-switch
   :description "Toggle section numbering (pdf/doc)."
   :init-value (lambda (obj)
-                (oset obj value "--number-sections")))
+                (oset obj value "number-sections")))
+
+(transient-define-infix gd/pandoc--self-contained? ()
+  :argument "self-contained"
+  :shortarg "s"
+  :class 'transient-switch
+  :description "Toggle self-contained file (reveal.js only)."
+  :init-value (lambda (obj)
+                (oset obj value nil)))
 
 (transient-define-prefix gd/pandoc-transient ()
   ["Convert this file with pandoc..."
@@ -88,4 +99,5 @@ Works only on org files using my docx template."
    [("q" "quit" transient-quit-all)]]
   ["Options"
    [(gd/pandoc--incremental?)
+    (gd/pandoc--self-contained?)
     (gd/pandoc--number-sections?)]])
