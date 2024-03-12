@@ -298,8 +298,16 @@ the fallback."
            (_ "xdg-open"))))
     (call-process opener nil 0 nil file)))
 
+(defun gd/xelatex-this-file ()
+  "Compile the current file using xelatex."
+  (interactive)
+  (let ((f (f-this-file)))
+    (save-buffer)
+    (start-process "xelatex" "*latex*" "xelatex" f)))
+
 (defun gd/tectonic-this-file ()
   "Compile the current file using tectonic."
   (interactive)
   (let ((f (f-this-file)))
-    (start-process "tectonic" "*tectonic*" "tectonic" f)))
+    (save-buffer)
+    (start-process "tectonic" "*latex*" "tectonic" f)))

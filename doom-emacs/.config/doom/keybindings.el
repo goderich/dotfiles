@@ -299,3 +299,9 @@
 (map! :map shortdoc-mode-map
       :after shortdoc
       :nv "q" #'evil-delete-buffer)
+
+(map! :map LaTeX-mode-map
+      :after latex
+      :localleader
+      :desc "Compile with tectonic" "t" #'gd/tectonic-this-file
+      :desc "Compile with xelatex" "x" #'gd/xelatex-this-file)
