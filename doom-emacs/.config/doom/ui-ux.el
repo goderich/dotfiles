@@ -123,3 +123,7 @@
 
 ;; Run hyperbole
 (hyperbole-mode)
+
+;; LaTeX options
+(after! tex
+  (remove-hook 'TeX-mode-hook #'TeX-fold-mode))
