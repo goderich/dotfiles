@@ -97,6 +97,12 @@
 (defn para? [el]
   (= (:t el) "Para"))
 
+(defn str? [el]
+  (= (:t el) "Str"))
+
+(defn space? [el]
+  (= (:t el) "Space"))
+
 ;; Constructors
 
 (defn raw-inline [format text]

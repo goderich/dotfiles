@@ -1,5 +1,5 @@
 (ns filter.classes
-  (:require [lib.pandoc :as pandoc]))
+  (:require [lib.pandoc :as pandoc :refer [deffilter]]))
 
 (defn- span->tag
   "Extract a tag name from a Span pandoc object.
@@ -34,14 +34,15 @@
        butlast
        vec))
 
-(defn header-parse-tags
-  "Parse the :tags: in an org header into Pandoc classes in the Header object."
+(deffilter pandoc/header?
+  "Parse the :tags: in an org header into Pandoc classes in the Header object.
+  The :tags: are encoded as Spans at the end of a Header.
+  However, TODOs are also encoded as Spans, so we need to be careful here.
+  Right now, the solution is to get rid of TODOs first."
   [el]
-  (if (and (pandoc/header? el)
-           (some pandoc/span? (pandoc/inlines el)))
-    (let [tags (extract-tags el)
-          add-tags (fn [classes] (into classes tags))]
-      (-> el
-          (pandoc/update-inlines remove-spans)
-          (pandoc/update-classes add-tags)))
-    el))
+  {:if (some pandoc/span? (pandoc/inlines el))}
+  (let [tags (extract-tags el)
+        add-tags (fn [classes] (into classes tags))]
+    (-> el
+        (pandoc/update-inlines remove-spans)
+        (pandoc/update-classes add-tags))))
