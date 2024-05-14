@@ -1,0 +1,9 @@
+from: markdown
+to: revealjs
+css: style.css
+standalone: true
+incremental: true
+filters:
+- pandoc-crossref
+- citeproc
+- stretch.lua
