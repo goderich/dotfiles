@@ -30,3 +30,7 @@
 
 ;; Trying out mystery package
 (package! hyperbole)
+
+;; Odin lang
+(package! odin-mode :recipe (:host github
+                             :repo "mattt-b/odin-mode"))

@@ -127,3 +127,8 @@
 ;; LaTeX options
 (after! tex
   (remove-hook 'TeX-mode-hook #'TeX-fold-mode))
+
+;; Odin LSP
+(with-eval-after-load 'eglot
+  (add-to-list 'eglot-server-programs
+               '(odin-mode . ("ols"))))
