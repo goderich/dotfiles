@@ -3,7 +3,8 @@ to: revealjs
 css: style.css
 standalone: true
 incremental: true
+bibliography: sample.bib
+csl: apa.csl
 filters:
-- pandoc-crossref
 - citeproc
 - stretch.lua
