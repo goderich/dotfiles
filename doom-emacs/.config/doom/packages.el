@@ -28,9 +28,6 @@
 ;; Use variable pitch in some environments
 (package! mixed-pitch)
 
-;; Trying out mystery package
-(package! hyperbole)
-
 ;; Odin lang
 (package! odin-mode :recipe (:host github
                              :repo "mattt-b/odin-mode"))
