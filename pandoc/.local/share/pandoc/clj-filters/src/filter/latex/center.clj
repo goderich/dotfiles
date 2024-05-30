@@ -3,10 +3,11 @@
 
 (defn- center? [el]
   (let [[_ classes attributes] (pandoc/attrs el)
-        keys (map first attributes)]
+        keys (map first attributes)
+        commands #{"center" "centered" "centering"}]
     (or
-     (some #{"center" "centered" "centering"} classes)
-     (some #{"center" "centered" "centering"} keys))))
+     (some commands classes)
+     (some commands keys))))
 
 (defn- centering-latex
   "Insert raw LaTeX centering command around the input element."

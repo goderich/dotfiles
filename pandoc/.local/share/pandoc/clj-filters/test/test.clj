@@ -20,7 +20,7 @@
                  :c [["" ["tag"] [["tag-name" "center"]]]
                      [{:t "SmallCaps", :c [{:t "Str", :c "center"}]}]]}]]}]
       (is (=
-           (classes/header-parse-tags h)
+           (classes/filter h)
            {:t "Header", :c [1 ["head" ["center"] []] [{:t "Str", :c "Head"}]]})))
     ))
 
@@ -47,7 +47,7 @@
                  :c [["" ["tag"] [["tag-name" "center"]]]
                      [{:t "SmallCaps", :c [{:t "Str", :c "center"}]}]]}]]}]
       (is (=
-           (center/filter (classes/header-parse-tags h))
+           (center/filter (classes/filter h))
            {:t "Header",
             :c [1 ["head" ["center"] []]
                 [{:t "RawInline", :c ["latex" "\\centering{"]}
