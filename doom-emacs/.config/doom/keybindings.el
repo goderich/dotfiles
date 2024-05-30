@@ -147,7 +147,7 @@ See https://github.com/doomemacs/doomemacs/issues/7733"
 
 (map! :map evil-org-mode-map
       :after evil-org
-      ;; :i "C-h" nil
+      :i "C-h" nil ;; default to help in insert mode
       :i "<tab>" #'gd/tmp/org-tab-conditional)
 
 ;; These are active when editing a source code block in a separate window.
