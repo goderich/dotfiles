@@ -137,18 +137,10 @@
       "p" nil
       :desc "Pandoc export" "p" #'gd/pandoc-transient)
 
-(defun gd/tmp/org-tab-conditional ()
-  "Temporary workaround for Yasnippets misbehaving in org-mode.
-See https://github.com/doomemacs/doomemacs/issues/7733"
-  (interactive)
-  (if (yas-active-snippets)
-      (yas-next-field-or-maybe-expand)
-    (org-cycle)))
-
 (map! :map evil-org-mode-map
       :after evil-org
       :i "C-h" nil ;; default to help in insert mode
-      :i "<tab>" #'gd/tmp/org-tab-conditional)
+      )
 
 ;; These are active when editing a source code block in a separate window.
 (map! :map org-src-mode-map
