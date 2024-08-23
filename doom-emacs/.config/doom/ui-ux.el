@@ -28,9 +28,9 @@
 ;; Disable company-mode in the following modes
 (setq company-global-modes
       '(not org-mode
-            org-msg-edit-mode
-            org-books-mode
-            markdown-mode))
+        org-msg-edit-mode
+        org-books-mode
+        markdown-mode))
 
 ;; Add detailed diffs in magit
 (setq magit-diff-refine-hunk 'all)
@@ -41,7 +41,7 @@
 
 ;; Do not display line numbers
 (remove-hook! '(prog-mode-hook text-mode-hook conf-mode-hook)
-              #'display-line-numbers-mode)
+  #'display-line-numbers-mode)
 
 ;; Make evil commands operate on logical, not visual lines
 (after! evil
@@ -122,7 +122,14 @@
 (after! tex
   (remove-hook 'TeX-mode-hook #'TeX-fold-mode))
 
-;; Odin LSP
+;; Odin and Nim LSP
 (with-eval-after-load 'eglot
   (add-to-list 'eglot-server-programs
-               '(odin-mode . ("ols"))))
+               '(odin-mode . ("ols")))
+  (add-to-list 'eglot-server-programs
+               '(nim-mode . ("nimlangserver"))))
+
+(add-hook 'odin-mode-hook #'eglot-ensure)
+
+(setq nimsuggest-path "/usr/bin/nimsuggest")
+(add-hook 'nim-mode-hook #'eglot-ensure)

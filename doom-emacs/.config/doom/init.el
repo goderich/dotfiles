@@ -62,7 +62,7 @@
        (evil +everywhere); come to the dark side, we have cookies
        file-templates    ; auto-snippets for empty files
        ;; fold              ; (nigh) universal code folding
-       ;;(format +onsave)  ; automated prettiness
+       (format +onsave)  ; automated prettiness
        ;;god               ; run Emacs commands without modifier keys
        ;;lispy             ; vim for lisp, for people who don't like vim
        ;;multiple-cursors  ; editing in many places at once
@@ -74,8 +74,8 @@
 
        :emacs
        (dired             ; making dired pretty [functional]
-       ;; +ranger
-       +icons)
+        ;; +ranger
+        +icons)
        electric          ; smarter, keyword-based electric-indent
        ;;ibuffer         ; interactive buffer management
        undo              ; persistent, smarter undo for your inevitable mistakes
@@ -154,12 +154,12 @@
        ;; +fennel
        ;; +lsp)
        markdown          ; writing docs for people to ignore
-       ;;nim               ; python + lisp at the speed of c
+       nim               ; python + lisp at the speed of c
        ;;nix               ; I hereby declare "nix geht mehr!"
-       ;; ocaml             ; an objective camel
-       (org              ; organize your plain life in plain text
-        +babel)           ; running code in org
-        ;;+present)        ; Emacs for presentations
+       ;; (ocaml +lsp +tree-sitter)             ; an objective camel
+       (org                ; organize your plain life in plain text
+        +babel)            ; running code in org
+       ;;+present          ; Emacs for presentations
        ;;php               ; perl's insecure younger brother
        ;;plantuml          ; diagrams for confusing people more
        ;;purescript        ; javascript, but functional
