@@ -3,6 +3,7 @@ to: revealjs
 css: ${.}/style.css
 standalone: true
 bibliography: ${HOME}/files/academic/bib/bibliography.bib
+# pdfSeparateFragments: false
 filters:
 - pandoc-crossref
 - citeproc
