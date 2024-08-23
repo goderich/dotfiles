@@ -12,3 +12,6 @@ fish/.config/fish/fish_variables
 fish/.config/fish/functions/__fzf*
 fish/.config/fish/conf.d/
 doom-emacs/.config/doom/custom.el
+.clj-kondo/
+.lsp/
+**/*.rej
