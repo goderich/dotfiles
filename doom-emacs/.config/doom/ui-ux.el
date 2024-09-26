@@ -122,14 +122,9 @@
 (after! tex
   (remove-hook 'TeX-mode-hook #'TeX-fold-mode))
 
-;; Odin and Nim LSP
+;; Odin LSP
 (with-eval-after-load 'eglot
   (add-to-list 'eglot-server-programs
-               '(odin-mode . ("ols")))
-  (add-to-list 'eglot-server-programs
-               '(nim-mode . ("nimlangserver"))))
+               '(odin-mode . ("ols"))))
 
 (add-hook 'odin-mode-hook #'eglot-ensure)
-
-(setq nimsuggest-path "/usr/bin/nimsuggest")
-(add-hook 'nim-mode-hook #'eglot-ensure)
