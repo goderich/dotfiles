@@ -85,6 +85,15 @@ transformed into a lisp-case string."
   (let ((link (pop org-stored-links)))
     (gd/insert-link (car link) (cadr link))))
 
+(defun gd/org-insert-file-path ()
+  "Insert file path at point as an org-link, with autocompletion."
+  (interactive)
+  (let ((result (find-file-read-args "Copy file path: "
+                                     (confirm-nonexistent-file-or-buffer))))
+    (if (-second-item result)
+        (gd/insert-link (-first-item result))
+      (message "Error retrieving file path."))))
+
 (defun gd/org-link-dwim ()
   "Do-what-I-mean for linking.
 If on a heading, link it. If on a link, edit it.

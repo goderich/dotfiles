@@ -10,9 +10,9 @@
   :desc "Dashboard" "d" #'+doom-dashboard/open
   :nv "/" #'+default/search-buffer
   (:prefix "i"
-   (:prefix ("n" . "Insert numbers")
-    :desc "Insert on new lines"       :n "n" #'gd/insert-numbers
-    :desc "Prepend to existing lines" :nv "p" #'gd/prepend-numbers-dispatch))
+           (:prefix ("n" . "Insert numbers")
+            :desc "Insert on new lines"       :n "n" #'gd/insert-numbers
+            :desc "Prepend to existing lines" :nv "p" #'gd/prepend-numbers-dispatch))
   (:prefix ("t" . "Toggle...")
    :desc "Writeroom mode"   :n "w" #'writeroom-mode
    :desc "Flyspell mode"    :n "s" #'flyspell-mode
@@ -48,12 +48,12 @@
 
 (map! :map evil-snipe-parent-transient-map
       :after evil-snipe
-;; After a successful snipe, evil-snipe switches to a
-;; transient mode, where f/t/s (whichever one was used
-;; for the search), search for the next occurrence instead
-;; of the usual behaviour, and F/T/S search in the other
-;; direction. This mode also grabs the ";" and "," keys
-;; for the same purpose. I want those keys for myself.
+      ;; After a successful snipe, evil-snipe switches to a
+      ;; transient mode, where f/t/s (whichever one was used
+      ;; for the search), search for the next occurrence instead
+      ;; of the usual behaviour, and F/T/S search in the other
+      ;; direction. This mode also grabs the ";" and "," keys
+      ;; for the same purpose. I want those keys for myself.
       "," nil
       ";" nil)
 
@@ -98,9 +98,10 @@
        :desc "Figure reference"       :i "f" #'gd/org-insert-ref-figure
        :desc "Capitalized figure ref" :i "F" #'gd/org-insert-ref-figure-capitalized
        (:prefix ("l" . "links")
-       :desc "Ordinary org link"       :i "l" #'gd/org-insert-link
-       :desc "Link from clipboard"     :i "c" #'gd/org-insert-link-from-clipboard
-       :desc "Org link with unique ID" :i "i" #'gd/org-insert-link-with-id))
+        :desc "Ordinary org link"       :i "l" #'gd/org-insert-link
+        :desc "Link from clipboard"     :i "c" #'gd/org-insert-link-from-clipboard
+        :desc "Org link with unique ID" :i "i" #'gd/org-insert-link-with-id
+        :desc "Link to file"            :i "f" #'gd/org-insert-file-path))
       :localleader
       :desc "Find heading"      "." #'gd/consult-goto-org-heading
       :desc "C-c C-c"           "," #'org-ctrl-c-ctrl-c
@@ -129,9 +130,10 @@
        :desc "Figure reference"       "f" #'gd/org-insert-ref-figure
        :desc "Capitalized figure ref" "F" #'gd/org-insert-ref-figure-capitalized
        (:prefix ("l" . "links")
-       :desc "Ordinary org link"       "l" #'gd/org-insert-link
-       :desc "Link from clipboard"     "c" #'gd/org-insert-link-from-clipboard
-       :desc "Org link with unique ID" "i" #'gd/org-insert-link-with-id))
+        :desc "Ordinary org link"       "l" #'gd/org-insert-link
+        :desc "Link from clipboard"     "c" #'gd/org-insert-link-from-clipboard
+        :desc "Org link with unique ID" "i" #'gd/org-insert-link-with-id
+        :desc "Link to file"            "f" #'gd/org-insert-file-path))
       ;; =, p= is a prefix in Doom's org keybindings,
       ;; so I need to unbind it first.
       "p" nil
@@ -176,9 +178,9 @@
 
 ;; lisp editing keybindings
 (map! :map (emacs-lisp-mode-map ielm-map
-            racket-mode-map racket-repl-mode-map
-            sly-mode-map dune-mode-map clojure-mode-map
-            fennel-mode-map)
+                                racket-mode-map racket-repl-mode-map
+                                sly-mode-map dune-mode-map clojure-mode-map
+                                fennel-mode-map)
       (:desc "Move up a sexp" :n "(" #'sp-backward-up-sexp
        :desc "Move to end of sexp" :n ")" #'sp-up-sexp
        :desc "Wrap with parens" :v "(" #'sp-wrap-round
@@ -223,8 +225,8 @@
 
 (map! :map pdf-view-mode-map
       (:localleader
-      :desc "Add text annotation" "t" #'pdf-annot-add-text-annotation
-      :desc "Add highlight"       "h" #'pdf-annot-add-highlight-markup-annotation))
+       :desc "Add text annotation" "t" #'pdf-annot-add-text-annotation
+       :desc "Add highlight"       "h" #'pdf-annot-add-highlight-markup-annotation))
 
 (map! :map pdf-annot-edit-contents-minor-mode-map
       :desc "Commit annotation" :nv "Z Z" #'pdf-annot-edit-contents-commit
