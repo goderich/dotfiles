@@ -157,7 +157,11 @@
       :m "f" #'org-agenda-later
       :m "(" #'org-agenda-earlier
       :m ")" #'org-agenda-later
-      :m "u" #'link-hint-open-link)
+      :m "u" #'link-hint-open-link
+      "v" nil
+      (:prefix ("v" . "switch view...")
+       :desc "week view"  :m "w" #'org-agenda-week-view
+       :desc "month view" :m "m" #'org-agenda-month-view))
 
 ;; These are used when composing emails in mu4e
 (map! :map org-msg-edit-mode-map
