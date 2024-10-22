@@ -31,6 +31,9 @@
 <Multi_key> <h> <minus> : "ħ" U0127
 <Multi_key> <minus> <h> : "ħ" U0127
 <Multi_key> <g> <s> : "ʔ" U0294
+<Multi_key> <H> <H> : "ɦ" U+0266
+<Multi_key> <comma> <h> : "ɦ" U+0266
+<Multi_key> <h> <comma> : "ɦ" U+0266
 
 # Lateral fricatives
 <Multi_key> <l> <z> : "ɮ" U026E
@@ -76,8 +79,11 @@
 <Multi_key> <2> <s> : "ˌ" U02CC
 <Multi_key> <colon> <colon> : "ː" U02D0
 <Multi_key> <h> <h> : "ʰ" U02B0
+<Multi_key> <h> <'> : "ʰ" U02B0
 <Multi_key> <j> <j> : "ʲ" U02B2
+<Multi_key> <j> <'> : "ʲ" U02B2
 <Multi_key> <w> <w> : "ʷ" U02B7
+<Multi_key> <w> <'> : "ʷ" U02B7
 
 # Greek letters
 <Multi_key> <b> <b> : "β" U03B2
@@ -2191,12 +2197,12 @@
 <dead_diaeresis> <h>             	: "ḧ"   U1E27 # LATIN SMALL LETTER H WITH DIAERESIS
 <Multi_key> <quotedbl> <h>       	: "ḧ"   U1E27 # LATIN SMALL LETTER H WITH DIAERESIS
 <dead_cedilla> <H>               	: "Ḩ"   U1E28 # LATIN CAPITAL LETTER H WITH CEDILLA
-<Multi_key> <comma> <H>          	: "Ḩ"   U1E28 # LATIN CAPITAL LETTER H WITH CEDILLA
-<Multi_key> <H> <comma>          	: "Ḩ"   U1E28 # LATIN CAPITAL LETTER H WITH CEDILLA
+# <Multi_key> <comma> <H>          	: "Ḩ"   U1E28 # LATIN CAPITAL LETTER H WITH CEDILLA
+# <Multi_key> <H> <comma>          	: "Ḩ"   U1E28 # LATIN CAPITAL LETTER H WITH CEDILLA
 <Multi_key> <cedilla> <H>          	: "Ḩ"   U1E28 # LATIN CAPITAL LETTER H WITH CEDILLA
 <dead_cedilla> <h>               	: "ḩ"   U1E29 # LATIN SMALL LETTER H WITH CEDILLA
-<Multi_key> <comma> <h>          	: "ḩ"   U1E29 # LATIN SMALL LETTER H WITH CEDILLA
-<Multi_key> <h> <comma>          	: "ḩ"   U1E29 # LATIN SMALL LETTER H WITH CEDILLA
+# <Multi_key> <comma> <h>          	: "ḩ"   U1E29 # LATIN SMALL LETTER H WITH CEDILLA
+# <Multi_key> <h> <comma>          	: "ḩ"   U1E29 # LATIN SMALL LETTER H WITH CEDILLA
 <Multi_key> <cedilla> <h>          	: "ḩ"   U1E29 # LATIN SMALL LETTER H WITH CEDILLA
 <dead_belowbreve> <H>                  	: "Ḫ"   U1E2A # LATIN CAPITAL LETTER H WITH BREVE BELOW
 <dead_belowbreve> <h>                  	: "ḫ"   U1E2B # LATIN SMALL LETTER H WITH BREVE BELOW
