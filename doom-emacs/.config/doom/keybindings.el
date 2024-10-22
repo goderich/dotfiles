@@ -3,6 +3,10 @@
 ;; Global keybindings
 (map!
  :nv ";" #'execute-extended-command
+ ;; I keep hitting C-a instead of "ea"
+ ;; because of my space cadet keybinds,
+ ;; so I'm unbinding it.
+ "C-a" nil
  (:leader
   :desc "Weekly agenda" "a" #'org-agenda-list
   :nv "u" #'link-hint-open-link
