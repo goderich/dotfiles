@@ -13,24 +13,31 @@
   (let ((fs (f-glob "*.csl" dir))
         (default (f-full "~/dotfiles/pandoc/.local/share/pandoc/defaults/linguistics.csl")))
     (when (length> fs 1)
+      ;; TODO: allow user to select CSL file?
       (error "Error: more than one CSL file in current directory!"))
     (or (-first-item fs) default)))
 
-(cl-defun gd/pandoc-org--convert (&key extension incremental self-contained numbered empty)
+(defun gd/pandoc--output-name (input extension handout?)
+  "Generate output file name from the INPUT."
+  (if handout?
+      (-> input (f-no-ext) (s-concat "-handout." extension))
+    (f-swap-ext input extension)))
+
+(cl-defun gd/pandoc-org--convert (&key extension self-contained numbered handout empty)
   "Convert the current file using pandoc.
 The format and the defaults file need to be supplied by the caller."
   (save-buffer)
-  (let* ((args (gd/pandoc-org--get-args extension incremental self-contained numbered empty)))
+  (let* ((args (gd/pandoc-org--get-args extension self-contained numbered handout empty)))
     (message "Calling: %s" args)
     (set-process-sentinel
      (apply #'start-process "pandoc" "*pandoc*" args)
      #'gd/pandoc-process-sentinel)))
 
-(defun gd/pandoc-org--get-args (extension incremental self-contained numbered empty)
+(defun gd/pandoc-org--get-args (extension self-contained numbered handout empty)
   "Helper function to construct the correct pandoc call."
   (let* ((input (f-this-file))
          (dir (f-dirname input))
-         (output (f-swap-ext input extension))
+         (output (gd/pandoc--output-name input extension handout))
          (defaults (gd/pandoc--defaults-option extension))
          (metadata (f-join dir "metadata.yaml"))
          (style? (f-exists? (f-join dir "style.css")))
@@ -39,8 +46,10 @@ The format and the defaults file need to be supplied by the caller."
       ,@(when (f-exists? metadata) `("--metadata-file" ,metadata))
       ,@(when (and (string= extension "html") style?)
           '("--css" "./style.css"))
-      ,@(when (and (string= extension "html") incremental)
-          '("--incremental=true"))
+      ,@(when (string= extension "html")
+          (if handout
+              '("--metadata=handout" "--incremental=false")
+            '("--incremental=true")))
       ,@(when (and (string= extension "html") self-contained)
           '("--embed-resources=true" "--standalone"))
       ,@(when (and (member extension '("pdf" "docx")) numbered)
@@ -66,9 +75,9 @@ Works only on org files using my pdf template."
   "Convert the current file to revealjs using pandoc.
 Works only on org files using my revealjs template."
   (interactive)
-  (let ((inc? (transient-arg-value "incremental" (transient-args 'gd/pandoc-transient)))
+  (let ((handout? (transient-arg-value "handout" (transient-args 'gd/pandoc-transient)))
         (self-con? (transient-arg-value "self-contained" (transient-args 'gd/pandoc-transient))))
-    (gd/pandoc-org--convert :extension "html" :incremental inc? :self-contained self-con?)))
+    (gd/pandoc-org--convert :extension "html" :handout handout? :self-contained self-con?)
 
 (defun gd/pandoc-org->docx ()
   "Convert the current file to pdf using pandoc.
@@ -76,13 +85,13 @@ Works only on org files using my docx template."
   (interactive)
   (gd/pandoc-org--convert :extension "docx"))
 
-(transient-define-infix gd/pandoc--incremental? ()
-  :argument "incremental"
-  :shortarg "i"
+(transient-define-infix gd/pandoc--handout? ()
+  :argument "handout"
+  :shortarg "h"
   :class 'transient-switch
-  :description "Toggle incremental lists (reveal.js only)."
+  :description "Toggle handout mode (reveal.js only)."
   :init-value (lambda (obj)
-                (oset obj value "incremental")))
+                (oset obj value nil)))
 
 (transient-define-infix gd/pandoc--number-sections? ()
   :argument "number-sections"
@@ -115,9 +124,9 @@ Works only on org files using my docx template."
     ("d" "to docx" gd/pandoc-org->docx)]
    [("q" "quit" transient-quit-all)]]
   ["Options"
-   [(gd/pandoc--incremental?)
-    (gd/pandoc--self-contained?)
+   [(gd/pandoc--self-contained?)
     (gd/pandoc--number-sections?)
+    (gd/pandoc--handout?)
     (gd/pandoc--empty?)]])
 
 (defun gd/pandoc-process-sentinel (process event)
