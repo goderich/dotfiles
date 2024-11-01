@@ -1,7 +1,7 @@
 {:paths ["src"]
  :tasks
  {:requires ([babashka.fs :as fs])
-  :init (do (def verbose? (= "-v" (first *command-line-args*))))
+  :init (do (def verbose? (some #{"-v"} *command-line-args*)))
   uber:rev
   {:doc "Compile revealjs filters into a single executable uberscript"
    :task (do

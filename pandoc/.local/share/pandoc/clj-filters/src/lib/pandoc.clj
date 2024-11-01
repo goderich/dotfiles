@@ -27,7 +27,7 @@
   (get-in el (conj (attrs-dispatch el) 1)))
 
 (defn update-classes [el f & args]
-   (apply update-in el (conj (attrs-dispatch el) 1) f args))
+  (apply update-in el (conj (attrs-dispatch el) 1) f args))
 
 (defn assoc-classes [el val]
   (assoc-in el (conj (attrs-dispatch el) 1) val))
@@ -47,6 +47,9 @@
                  (assoc it key val)
                  (into [] it))]
      (assoc-attributes el attrs))))
+
+(defn header-level [el]
+  (-> el :c first))
 
 ;; Inlines
 
