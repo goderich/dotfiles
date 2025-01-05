@@ -1,6 +1,8 @@
 [Hotkey]
 # Enumerate when press trigger key repeatedly
 EnumerateWithTriggerKeys=True
+# Temporally switch between first and current Input Method
+AltTriggerKeys=
 # Enumerate Input Method Forward
 EnumerateForwardKeys=
 # Enumerate Input Method Backward
@@ -20,9 +22,6 @@ DeactivateKeys=
 0=Control+space
 1=Super+space
 
-[Hotkey/AltTriggerKeys]
-0=Shift_L
-
 [Hotkey/PrevPage]
 0=Up
 
@@ -41,6 +40,8 @@ DeactivateKeys=
 [Behavior]
 # Active By Default
 ActiveByDefault=False
+# Reset state on Focus In
+resetStateWhenFocusIn=No
 # Share Input State
 ShareInputState=No
 # Show preedit in application
@@ -55,10 +56,20 @@ CompactInputMethodInformation=True
 ShowFirstInputMethodInformation=True
 # Default page size
 DefaultPageSize=5
+# Override Xkb Option
+OverrideXkbOption=False
+# Custom Xkb Option
+CustomXkbOption=
 # Force Enabled Addons
 EnabledAddons=
 # Force Disabled Addons
 DisabledAddons=
 # Preload input method to be used by default
 PreloadInputMethod=True
+# Allow input method in the password field
+AllowInputMethodForPassword=False
+# Show preedit text when typing password
+ShowPreeditForPassword=False
+# Interval of saving user data in minutes
+AutoSavePeriod=30
 

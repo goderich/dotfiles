@@ -17,11 +17,6 @@ alias pacman='sudo pacman'
 alias pm='sudo pacman'
 alias rm='rm -v'
 
-# open an instance of emacs that recognizes the compose key and fcitx
-# the locale should already be enabled on the system (as per the arch wiki)
-# for just the compose key, you can use 'XMODIFIERS=@im=none emacs'
-alias emacs-compose='LC_CTYPE=zh_TW.UTF-8 XMODIFIERS=@im=fcitx emacs'
-
 export EDITOR=/usr/bin/nvim
 export BROWSER=/usr/bin/qutebrowser
 export PAGER=less

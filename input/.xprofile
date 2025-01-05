@@ -2,7 +2,7 @@ export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 
-setxkbmap us -variant dvorak \
+setxkbmap us -variant colemak_dh_ortho \
              -option 'caps:ctrl_modifier' \
              -option 'compose:ralt'
 xcape -e 'Caps_Lock=Escape;Shift_L=parenleft;Shift_R=parenright'
