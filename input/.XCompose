@@ -51,10 +51,12 @@
 # Vowels
 <Multi_key> <i> <i> : "ɪ" U026A
 <Multi_key> <u> <u> : "ʊ" U028A
-<Multi_key> <o> <o> : "ɔ" U0254
+<Multi_key> <c> <c> : "ɔ" U0254
 <Multi_key> <3> <3> : "ɛ" U025B
 <Multi_key> <a> <a> : "ɐ" U0250
 <Multi_key> <a> <o> : "ɑ" U0251
+<Multi_key> <o> <o> : "ɒ" U0252
+<Multi_key> <o> <a> : "ɒ" U0252
 <Multi_key> <e> <r> : "ɚ" U02DE
 <Multi_key> <3> <r> : "ɝ" U025D
 <Multi_key> <3> <e> : "ɜ" U025C
@@ -774,7 +776,7 @@
 <Multi_key> <diaeresis> <a> 		: "ä"   adiaeresis # LATIN SMALL LETTER A WITH DIAERESIS
 <Multi_key> <a> <diaeresis> 		: "ä"   adiaeresis # LATIN SMALL LETTER A WITH DIAERESIS
 <dead_abovering> <a>             	: "å"   aring # LATIN SMALL LETTER A WITH RING ABOVE
-<Multi_key> <o> <a>              	: "å"   aring # LATIN SMALL LETTER A WITH RING ABOVE
+# <Multi_key> <o> <a>              	: "å"   aring # LATIN SMALL LETTER A WITH RING ABOVE
 <Multi_key> <asterisk> <a> 		: "å"   aring # LATIN SMALL LETTER A WITH RING ABOVE
 <Multi_key> <a> <asterisk> 		: "å"   aring # LATIN SMALL LETTER A WITH RING ABOVE
 <dead_cedilla> <c>               	: "ç"   ccedilla # LATIN SMALL LETTER C WITH CEDILLA
@@ -937,7 +939,7 @@
 <Multi_key> <less> <C> 			: "Č"   U010C # LATIN CAPITAL LETTER C WITH CARON
 <Multi_key> <C> <less> 			: "Č"   U010C # LATIN CAPITAL LETTER C WITH CARON
 <dead_caron> <c>                 	: "č"   U010D # LATIN SMALL LETTER C WITH CARON
-<Multi_key> <c> <c>              	: "č"   U010D # LATIN SMALL LETTER C WITH CARON
+# <Multi_key> <c> <c>              	: "č"   U010D # LATIN SMALL LETTER C WITH CARON
 <Multi_key> <less> <c> 			: "č"   U010D # LATIN SMALL LETTER C WITH CARON
 <Multi_key> <c> <less> 			: "č"   U010D # LATIN SMALL LETTER C WITH CARON
 <dead_caron> <D>                 	: "Ď"   U010E # LATIN CAPITAL LETTER D WITH CARON
