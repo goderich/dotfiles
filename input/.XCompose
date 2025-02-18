@@ -78,7 +78,9 @@
 
 # Diacritics
 <Multi_key> <1> <s> : "ˈ" U02C8
+<Multi_key> <'> <'> : "ˈ" U02C8
 <Multi_key> <2> <s> : "ˌ" U02CC
+<Multi_key> <comma> <comma> : "ˌ" U02CC
 <Multi_key> <colon> <colon> : "ː" U02D0
 <Multi_key> <h> <h> : "ʰ" U02B0
 <Multi_key> <h> <'> : "ʰ" U02B0
@@ -165,7 +167,7 @@
 
 <Multi_key> <comma> <space>      	: "¸"   cedilla # CEDILLA
 <Multi_key> <space> <comma>      	: "¸"   cedilla # CEDILLA
-<Multi_key> <comma> <comma> 		: "¸"   cedilla # CEDILLA
+# <Multi_key> <comma> <comma> 		: "¸"   cedilla # CEDILLA
 
 <Multi_key> <parenleft> <minus>  	: "{"   braceleft # LEFT CURLY BRACKET
 <Multi_key> <minus> <parenleft>  	: "{"   braceleft # LEFT CURLY BRACKET
