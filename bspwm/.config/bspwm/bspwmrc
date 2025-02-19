@@ -34,8 +34,8 @@ if [ -x /usr/bin/picom ]; then
     picom -b &
 fi
 
-if [ -x /usr/bin/devmon ]; then
-    devmon &
+if [ -x /usr/bin/udiskie ]; then
+    udiskie &
 fi
 
 if [ -x /usr/bin/unclutter ]; then
