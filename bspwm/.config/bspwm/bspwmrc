@@ -45,8 +45,3 @@ fi
 if [ -x /usr/bin/fcitx5 ]; then
     fcitx5 &
 fi
-
-if [ -x /usr/bin/dropbox ]; then
-    dropbox &
-fi
-
