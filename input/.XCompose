@@ -31,6 +31,7 @@
 <Multi_key> <h> <minus> : "ħ" U0127
 <Multi_key> <minus> <h> : "ħ" U0127
 <Multi_key> <g> <s> : "ʔ" U0294
+<Multi_key> <question> <question> : "ʔ" U0294
 <Multi_key> <H> <H> : "ɦ" U0266
 <Multi_key> <comma> <h> : "ɦ" U0266
 <Multi_key> <h> <comma> : "ɦ" U0266
