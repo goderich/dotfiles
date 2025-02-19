@@ -1,9 +1,0 @@
-# -*- mode: snippet -*-
-# name: revealjs fullscreen image
-# key: <bg
-# --
-**  
-:PROPERTIES:
-:data-background-image: .$1
-:data-background-size: contain
-:END:

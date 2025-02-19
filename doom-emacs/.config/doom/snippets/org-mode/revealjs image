@@ -1,7 +1,0 @@
-# -*- mode: snippet -*-
-# name: revealjs image
-# key: <img
-# --
-#+BEGIN_html
-<img class="r-stretch" src=".$1">
-#+END_html

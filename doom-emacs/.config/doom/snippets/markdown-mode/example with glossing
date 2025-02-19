@@ -1,9 +1,0 @@
-# key: <ex
-# name: example with glossing
-# --
-\begin{exe}
-\ex ${5:source or language}\label{exe:${4:label}}
-\gll ${1:original}\\\\
-     ${2:glossing}\\\\
-\trans `${3:translation}'.
-\end{exe}

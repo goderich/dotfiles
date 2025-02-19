@@ -1,7 +1,0 @@
-# -*- mode: snippet -*-
-# name: import std
-# uuid:
-# key: std
-# condition: t
-# --
-const std = @import("std");
