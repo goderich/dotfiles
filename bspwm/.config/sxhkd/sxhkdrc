@@ -14,9 +14,9 @@ super + l
 super + Escape
 	pkill -USR1 -x sxhkd
 
-# Clipboard manager (Greenclip)
-super + c
-	rofi -m -1 -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
+# Clipboard manager
+# super + c
+	# rofi -m -1 -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
 
 # Open pass in rofi
 super + p
