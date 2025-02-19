@@ -15,8 +15,8 @@ super + Escape
 	pkill -USR1 -x sxhkd
 
 # Clipboard manager
-# super + c
-	# rofi -m -1 -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}'
+super + c
+        clipmenu -i -fn Terminus:size=14
 
 # Open pass in rofi
 super + p
