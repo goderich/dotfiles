@@ -24,6 +24,7 @@
 <Multi_key> <c> <p> : "ɕ" U0255
 <Multi_key> <v> <p> <s> : "ʑ" U0291
 <Multi_key> <z> <p> : "ʑ" U0291
+<Multi_key> <y> <y> : "ʎ" U028E
 
 # Dorsals
 <Multi_key> <g> <g> : "ɣ" U0263
