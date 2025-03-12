@@ -1296,6 +1296,8 @@ c.tabs.show_switching_delay = 2000
 # config.bind('+', 'zoom-in')
 # config.bind('-', 'zoom-out')
 # config.bind('.', 'repeat-command')
+config.bind('.', 'search-next')
+config.bind(',', 'search-prev')
 # config.bind('/', 'set-cmd-text /')
 # config.bind(':', 'set-cmd-text :')
 # config.bind(';I', 'hint images tab')
