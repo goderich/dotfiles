@@ -1,0 +1,10 @@
+from: org+smart
+to: typst
+# bibliography: ${HOME}/academic/bib/bibliography.bib
+metadata-files:
+- ${.}/metadata/fonts.yaml
+- ${.}/metadata/typst-metadata.yaml
+- ${.}/metadata/crossref.yaml
+filters:
+- pandoc-crossref
+- citeproc
